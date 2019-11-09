@@ -1,0 +1,274 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on November 9, 2019 by texi2html 5.0
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>APRON 0.9.10: Environments (ap_environment.h)</title>
+
+<meta name="description" content="APRON 0.9.10: Environments (ap_environment.h)">
+<meta name="keywords" content="APRON 0.9.10: Environments (ap_environment.h)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html 5.0">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Environments"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_23.html#Level-1-of-the-interface" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_24.html#Variables-and-related-operations" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_23.html#Level-1-of-the-interface" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="apron_26.html#Linear-expressions-of-level-1" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_32.html#Level-0-of-the-interface" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="apron.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="apron_42.html#Appendices" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="apron_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Environments-_0028ap_005fenvironment_002eh_0029"></a>
+<h2 class="section">Environments (&lsquo;<tt>ap_environment.h</tt>&rsquo;)</h2>
+
+<p>Environments bind variables (of level 1) to dimensions (of level 0).
+</p>
+<dl>
+<dt><a name="index-ap_005fenvironment_005ft"></a>datatype: <strong>ap_environment_t</strong></dt>
+<dd><p>Internal datatype for environments.
+</p>
+<p>For information, the definition is:
+</p><div class="example">
+<pre class="example">typedef struct ap_environment_t {
+  ap_var_t* var_of_dim;
+  /*
+    Array of size intdim+realdim, indexed by dimensions.
+    - It should not contain identical strings..
+    - Slice [0..intdim-1] is lexicographically sorted,
+      and denotes integer variables.
+    - Slice [intdim..intdim+realdim-1] is lexicographically sorted,
+      and denotes real variables.
+    - The memory allocated for the variables are attached to the structure
+      (they are freed when the structure is no longer in use)
+  */
+  size_t intdim; /* Number of integer variables */
+  size_t realdim;/* Number of real variables */
+  size_t count; /* For reference counting */
+} ap_environment_t;
+</pre></div>
+</dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fenvironment_005ffree"></a>Function: <em>void</em> <strong>ap_environment_free</strong><em> (ap_environment_t* <var>env</var>)</em></dt>
+<dt><a name="index-ap_005fenvironment_005fcopy"></a>Function: <em>ap_environment_t*</em> <strong>ap_environment_copy</strong><em> (ap_environment_t* <var>env</var>)</em></dt>
+<dd><p>Respectively free and duplicate an environment.
+</p>
+<p>(<code>copy</code> is cheap, as environments are managed with reference
+counters).
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fenvironment_005ffdump"></a>Function: <em>void</em> <strong>ap_environment_fdump</strong><em> (FILE* <var>stream</var>, ap_environment_t* <var>env</var>)</em></dt>
+<dd><p>Print an environment under the form:
+</p><div class="example">
+<pre class="example">  environment: dim = (..,..), count = ..
+  0: name0
+  1: name1
+  ...
+</pre></div>
+</dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fenvironment_005falloc_005fempty"></a>Function: <em>ap_environment_t*</em> <strong>ap_environment_alloc_empty</strong><em> ()</em></dt>
+<dd><p>Build an empty environment.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fenvironment_005falloc"></a>Function: <em>ap_environment_t*</em> <strong>ap_environment_alloc</strong><em> (ap_var_t* <var>var_of_intdim</var>, size_t <var>intdim</var>, ap_var_t* <var>var_of_realdim</var>, size_t <var>realdim</var>)</em></dt>
+<dd><p>Build an environment from an array of integer and an array of real variables.
+</p>
+<p><var>var_of_intdim</var> is an array of variables of size <var>intdim</var>,
+<var>var_of_realdim</var> is an array of variables of size
+<var>realdim</var>. Pointers to arrays may be <code>NULL</code> if their size is
+0.
+</p>
+<p>Variables are duplicated in the result, so it is the responsability of
+the user to free the variables he provides.
+</p>
+<p>If some variables are duplicated, return <code>NULL</code>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fenvironment_005fadd"></a>Function: <em>ap_environment_t*</em> <strong>ap_environment_add</strong><em> (ap_environment_t* <var>env</var>, ap_var_t* <var>var_of_intdim</var>, size_t <var>intdim</var>, ap_var_t* <var>var_of_realdim</var>, size_t <var>realdim</var>)</em></dt>
+<dt><a name="index-ap_005fenvironment_005fremove"></a>Function: <em>ap_environment_t*</em> <strong>ap_environment_remove</strong><em> (ap_environment_t* <var>env</var>, ap_var_t* <var>tvar</var>, size_t <var>size</var>)</em></dt>
+<dd><p>Resp. add or remove new variables to an existing environment, with
+a functional semantics. Same conventions as for
+<code>ap_environment_alloc</code> function apply. If the result is
+non-sense (or in case of attempt to remove an unknwon variable),
+return <code>NULL</code>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fenvironment_005fdim_005fof_005fvar"></a>Function: <em>ap_dim_t</em> <strong>ap_environment_dim_of_var</strong><em> (ap_environment_t* <var>env</var>, ap_var_t <var>var</var>)</em></dt>
+<dd><p>Convert a variable in its corresponding dimension in the environment <var>env</var>. If <var>var</var> is unknown in <var>env</var>, return <code>AP_DIM_MAX</code>.
+</p></dd></dl>
+<dl>
+<dt><a name="index-ap_005fenvironment_005fvar_005fof_005fdim"></a>Function: <em>ap_dim_t</em> <strong>ap_environment_var_of_dim</strong><em> (ap_environment_t* <var>env</var>, ap_dim_t <var>dim</var>)</em></dt>
+<dd><p>Return the variable associated to the dimension <var>dim</var> in the environment <var>env</var>. There is no bound check here.
+</p></dd></dl>
+
+<p>The remaining functions are much less useful for normal user.
+</p>
+<dl>
+<dt><a name="index-ap_005fenvironment_005fis_005feq"></a>Function: <em>bool</em> <strong>ap_environment_is_eq</strong><em> (ap_environment_t* <var>env1</var>, ap_environment_t* <var>env2</var>)</em></dt>
+<dt><a name="index-ap_005fenvironment_005fis_005fleq"></a>Function: <em>bool</em> <strong>ap_environment_is_leq</strong><em> (ap_environment_t* <var>env1</var>, ap_environment_t* <var>env2</var>)</em></dt>
+<dd><p>Resp. test the equality and the inclusion of two environments.
+</p></dd></dl>
+<dl>
+<dt><a name="index-ap_005fenvironment_005fcompare"></a>Function: <em>int</em> <strong>ap_environment_compare</strong><em> (ap_environment_t* <var>env1</var>, ap_environment_t* <var>env2</var>)</em></dt>
+<dd><p>Return:
+</p><dl compact="compact">
+<dt><code>-2</code></dt>
+<dd><p>if the environments are not compatible (a variable has a different
+type in the 2 environments);
+</p></dd>
+<dt><code>-1</code></dt>
+<dd><p>if <var>env1</var> is a subset of (included in) <var>env2</var>;
+</p></dd>
+<dt><code>0</code></dt>
+<dd><p>if they are equal;
+</p></dd>
+<dt><code>+1</code></dt>
+<dd><p>if <var>env1</var> is a superset of <var>env2</var>;
+</p></dd>
+<dt><code>+2</code></dt>
+<dd><p>otherwise: the least common environment exists and is a strict
+superset of both environments.
+</p></dd>
+</dl>
+</dd></dl>
+<dl>
+<dt><a name="index-ap_005fenvironment_005fhash"></a>Function: <em>int</em> <strong>ap_environment_hash</strong><em> (ap_environment_t* <var>env</var>)</em></dt>
+<dd><p>Return an hash code for an environment.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fenvironment_005fdimchange"></a>Function: <em>ap_dimchange_t*</em> <strong>ap_environment_dimchange</strong><em> (ap_environment_t* <var>env1</var>, ap_environment_t* <var>env</var>)</em></dt>
+<dd><p>Compute the transformation for converting from an environment
+<var>env1</var> to a superenvironment <var>env</var>.  Return NULL if <var>env</var>
+is not a superenvironment.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fenvironment_005fdimchange2"></a>Function: <em>ap_dimchange2_t*</em> <strong>ap_environment_dimchange2</strong><em> (ap_environment_t* <var>env1</var>, ap_environment_t* <var>env2</var>)</em></dt>
+<dd><p>Compute the transformation for switching from an environment
+<var>env1</var> to an <var>env2</var>, by first adding (some) variables of
+<var>env2</var>, and then removing (some) variables of <var>env1</var>.  Return
+NULL if <var>env1</var> and <var>env2</var> ar enot compatible environments.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fenvironment_005flce"></a>Function: <em>ap_environment_t*</em> <strong>ap_environment_lce</strong><em> (ap_environment_t* <var>env1</var>, ap_environment_t* <var>env2</var>, ap_dimchange_t** <var>dimchange1</var>, ap_dimchange_t** <var>dimchange2</var>)</em></dt>
+<dd><p>Least common environment to two enviroenments.
+</p><ul>
+<li>
+Assume <code>ap_environment_is_eq(env1,env2)==false</code>
+</li><li>
+If environments are not compatible (a variable has different types in
+the 2 environments), return NULL
+</li><li>
+Compute also in <var>dimchange1</var> and <var>dimchange2</var> the conversion transformations to the lce.
+</li><li>
+If no dimensions to add to <var>env1</var>, this implies that <var>env</var> is
+actually <var>env1</var>. In this case,
+<code>*dimchange1==NULL</code>. Otherwise, the function allocates the
+<code>*dimchange1</code> with <code>ap_dimchange_alloc</code>.
+</li></ul>
+</dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fenvironment_005flce_005farray"></a>Function: <em>ap_environment_t*</em> <strong>ap_environment_lce_array</strong><em> (ap_environment_t** <var>tenv</var>, size_t <var>size</var>, ap_dimchange_t*** <var>ptdimchange</var>)</em></dt>
+<dd><p>Least common environment to an array of environments.
+</p><ul>
+<li>
+Assume the size <var>size</var> of the array <var>tenv</var> is at least one;
+</li><li>
+If all input environments are the same, <code>*ptdimchange==NULL</code>.
+Otherwise, compute in <code>*ptdimchange</code> the conversion permutations
+</li><li>
+If no dimensions to add to <code>tenv[i]</code>, this implies that the
+result is actually <code>tenv[i]</code>. In this case,
+<code>(*ptdimchange)[i]==NULL</code>. Otherwise, the function allocates the
+<code>(*ptdimchange)[i]</code> with <code>ap_dimchange_alloc</code>.
+</li></ul>
+</dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fenvironment_005frename"></a>Function: <em>ap_environment_t*</em> <strong>ap_environment_rename</strong><em> (ap_environment_t* <var>env</var>, ap_var_t* <var>tvar1</var>, ap_var_t* <var>tvar2</var>, size_t <var>size</var>, ap_dimperm_t* <var>perm</var>)</em></dt>
+<dd><p>Rename the variables in the environment.  <var>size</var> is the common
+size of arrays <var>tvar1</var> and <var>tvar2</var>, and <var>perm</var> is a
+result-parameter pointing to an <em>existing but not initialized</em>
+object of type <code>ap_dimperm_t</code>.
+</p>
+<p>The function applies the variable substitution <code>tvar1[i]-&gt;tvar2[i]</code>
+to the environment, and returns the resulting environment and the
+allocated transformation permutation in <code>*perm</code>.
+</p>
+<p>If the parameters are not valid, return <code>NULL</code> with
+<code>perm-&gt;dim==NULL</code>.
+</p></dd></dl>
+
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_23.html#Level-1-of-the-interface" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_24.html#Variables-and-related-operations" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_23.html#Level-1-of-the-interface" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="apron_26.html#Linear-expressions-of-level-1" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_32.html#Level-0-of-the-interface" title="Next chapter"> &gt;&gt; </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated on <i>November 9, 2019</i> using <a href="http://www.nongnu.org/texi2html/"><i>texi2html 5.0</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

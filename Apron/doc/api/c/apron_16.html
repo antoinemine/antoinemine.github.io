@@ -1,0 +1,459 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on November 9, 2019 by texi2html 5.0
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>APRON 0.9.10: NewPolka (pk.h): convex polyhedra and linear equalities abstract domains</title>
+
+<meta name="description" content="APRON 0.9.10: NewPolka (pk.h): convex polyhedra and linear equalities abstract domains">
+<meta name="keywords" content="APRON 0.9.10: NewPolka (pk.h): convex polyhedra and linear equalities abstract domains">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html 5.0">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="NewPolka"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_12.html#Managers-and-Abstract-Domains" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_15.html#Oct" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_12.html#Managers-and-Abstract-Domains" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Use-of-NewPolka" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_19.html#Scalars-_0026-Intervals-_0026-Coefficients" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="apron.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="apron_42.html#Appendices" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="apron_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="NewPolka-_0028pk_002eh_0029_003a-convex-polyhedra-and-linear-equalities-abstract-domains"></a>
+<h2 class="section">NewPolka (&lsquo;<tt>pk.h</tt>&rsquo;): convex polyhedra and linear equalities abstract domains</h2>
+
+
+
+<p>The <small>NEWPOLKA</small> convex polyhedra and linear equalities library is
+aimed to be used through the APRON interface. However some specific
+points should be precised.  First, <small>NEWPOLKA</small> can use several
+underlying representations for numbers, which lead to several library
+variants. Second, some specific functions are needed, typically to
+allocate managers, and to specify special options.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#Use-of-NewPolka">Use of NewPolka</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Allocating-NewPolka-managers-and-setting-specific-options">Allocating NewPolka managers and setting specific options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#NewPolka-standard-options">NewPolka standard options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<a name="Use-of-NewPolka"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_12.html#Managers-and-Abstract-Domains" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#NewPolka" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#NewPolka" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Allocating-NewPolka-managers-and-setting-specific-options" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_19.html#Scalars-_0026-Intervals-_0026-Coefficients" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="apron.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="apron_42.html#Appendices" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="apron_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Use-of-NewPolka-1"></a>
+<h3 class="subsection">Use of NewPolka</h3>
+
+<p>To use <small>NEWPOLKA</small> in C, add
+</p><div class="example">
+<pre class="example">#include &quot;pk.h&quot;
+#include &quot;pkeq.h&quot;
+  /* if you want linear equalities */
+</pre></div>
+<p>in your source file(s) and add &lsquo;<samp>-I$(APRON_PREFIX)/include</samp>&rsquo; in the
+command line in your Makefile.
+</p>
+<p>You should also link your object files with the <small>NEWPOLKA</small> library
+to produce an executable, by adding something like
+&lsquo;<samp>-L$(APRON_PREFIX)/lib -lpolkag</samp>&rsquo; in the command line in your
+Makefile (followed by the standard &lsquo;<samp>-lapron -litvmpq -litvdbl
+-L$(MPFR_PREFIX)/lib -lmpfr -L$(GMP_PREFIX)/lib -lgmp</samp>&rsquo;).
+</p>
+<p>There are actually several variants of the library:
+</p><dl compact="compact">
+<dt>&lsquo;<tt>libpolkai.a</tt>&rsquo;</dt>
+<dd><p>The underlying representation for integers is <code>long int</code>. This
+may easily cause overflows, especially with many dimensions or
+variables. Overflows are not detected but usually result in infinite
+looping.
+The underlying representation for integers is <code>long long
+int</code>. This may (less) easily cause overflows.
+</p></dd>
+<dt>&lsquo;<tt>libpolkag.a</tt>&rsquo;</dt>
+<dd><p>The underlying representation for integers is <code>mpz_t</code>, the
+multi-precision integers from the GNU GMP library. Overflows are not
+possible any more, but huge numbers may appear.
+</p></dd>
+</dl>
+
+<p>All scalars of type <code>double</code> are converted to scalars of type
+<code>mpq_t</code> inside NewPolka, as NewPolka works internally with exact
+rational arithmetics. So when possible it is better for the user (in
+term of efficiency) to convert already <code>double</code> scalars to
+<code>mpq_t</code> scalars.
+</p>
+<p>There is a way to prevent overflow and/or huge numbers, which is to
+position the options <code>max_coeff_size</code> and
+<code>approximate_max_coeff_size</code>, see
+<a href="#Allocating-NewPolka-managers-and-setting-specific-options">Allocating NewPolka managers and setting specific options</a>.
+</p>
+<p>Also, all library are available in debug mode
+(&lsquo;<samp>libpolkai_debug.a</samp>&rsquo;, ....
+</p>
+<hr>
+<a name="Allocating-NewPolka-managers-and-setting-specific-options"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_12.html#Managers-and-Abstract-Domains" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Use-of-NewPolka" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#NewPolka" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#NewPolka-standard-options" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_19.html#Scalars-_0026-Intervals-_0026-Coefficients" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="apron.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="apron_42.html#Appendices" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="apron_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Allocating-NewPolka-managers-and-setting-specific-options-1"></a>
+<h3 class="subsection">Allocating NewPolka managers and setting specific options</h3>
+
+<dl>
+<dt><a name="index-pk_005finternal_005ft"></a>datatype: <strong>pk_internal_t</strong></dt>
+<dd><p>NewPolka type for internal managers (specific to NewPolka, and
+specific to each execution thread in multithreaded programs).
+</p></dd></dl>
+
+<a name="Allocating-managers"></a>
+<h3 class="subheading">Allocating managers</h3>
+
+<dl>
+<dt><a name="index-pk_005fmanager_005falloc"></a>Function: <em>ap_manager_t*</em> <strong>pk_manager_alloc</strong><em> (bool <var>strict</var>)</em></dt>
+<dd><p>Allocate an APRON manager for convex polyhedra, linked to the NewPolka
+library.
+</p>
+<p>The <var>strict</var> option, when true, enables strict constraints in polyhedra
+(like <code>x&gt;0</code>). Managers in strict mode or in loose mode
+(strict constraints disabled) are not compatible, and so are
+corresponding abstract values.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-pkeq_005fmanager_005falloc"></a>Function: <em>ap_manager_t*</em> <strong>pkeq_manager_alloc</strong><em> ()</em></dt>
+<dd><p>Allocate an APRON manager for linear equalities, linked to the NewPolka
+library.
+</p>
+<p>Most options which makes sense for convex polyhedra are meaningless
+for linear equalities. It is better to set the standard options
+associated to functions so that abstract values are in canonical form
+(see section <a href="#NewPolka-standard-options">NewPolka standard options</a>). This is the default anyway.
+</p></dd></dl>
+
+<a name="Setting-options"></a>
+<h3 class="subheading">Setting options</h3>
+
+<p>Options specific to <small>NEWPOLKA</small> are set directly on the internal
+manager. It can be extracted with the <code>pk_manager_get_internal</code>
+function.
+</p>
+<dl>
+<dt><a name="index-pk_005fmanager_005fget_005finternal"></a>Function: <em>pk_internal_t*</em> <strong>pk_manager_get_internal</strong><em> (ap_manager_t* <var>man</var>)</em></dt>
+<dd><p>Return the internal submanager. If <var>man</var> has not been created by
+<code>pk_manager_alloc</code> or <code>pkeq_manager_alloc</code>, return <code>NULL</code>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-pk_005fset_005fmax_005fcoeff_005fsize"></a>Function: <em>void</em> <strong>pk_set_max_coeff_size</strong><em> (pk_internal_t* <var>pk</var>, size_t <var>size</var>)</em></dt>
+<dd><p>If <var>size</var> is not 0, try to raise an <code>AP_EXC_OVERFLOW</code>
+exception as soon as the size of an integer exceed <var>size</var>.
+</p>
+<p>Very incomplete implementation. Currently, used only in
+&lsquo;<tt>libpolkag</tt>&rsquo; variant, where the size is the number of limbs as
+returned by the function <code>mpz_size</code> of the GMP library. This
+allows to detect huge numbers.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-pk_005fset_005fapproximate_005fmax_005fcoeff_005fsize"></a>Function: <em>void</em> <strong>pk_set_approximate_max_coeff_size</strong><em> (pk_internal_t* <var>pk</var>, size_t <var>size</var>)</em></dt>
+<dd><p>This is the parameter to the <code>poly_approximate</code>/<code>ap_abstractX_approximate</code> functions.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-pk_005fget_005fmax_005fcoeff_005fsize"></a>Function: <em>size_t</em> <strong>pk_get_max_coeff_size</strong><em> (pk_internal_t* <var>pk</var>)</em></dt>
+<dt><a name="index-pk_005fget_005fapproximate_005fmax_005fcoeff_005fsize"></a>Function: <em>size_t</em> <strong>pk_get_approximate_max_coeff_size</strong><em> (pk_internal_t* <var>pk</var>)</em></dt>
+<dd><p>Reading the previous parameters.
+</p></dd></dl>
+
+<hr>
+<a name="NewPolka-standard-options"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_12.html#Managers-and-Abstract-Domains" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Allocating-NewPolka-managers-and-setting-specific-options" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#NewPolka" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="apron_17.html#PPL" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_19.html#Scalars-_0026-Intervals-_0026-Coefficients" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="apron.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="apron_42.html#Appendices" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="apron_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="NewPolka-standard-options-1"></a>
+<h3 class="subsection">NewPolka standard options</h3>
+
+<p>This section describes the NewPolka options which are selected using
+the standard mechanism offered by APRON (see <a href="apron_13.html#Manager-options">Manager options</a>).
+</p>
+<a name="Modes"></a>
+<h4 class="subsubheading">Modes</h4>
+<p>Most functions of NewPolka has two modes. In the lazy mode the
+canonicalization (computation of the dual representation and
+minimisation of both representations) of the argument polyhedra is
+performed only when the needed representation is not available. The
+resulting polyhedra is in general not in the canonical
+representation. In the strict mode, argument polyhedra are
+canonicalized (if they are not yet in canonical form) and the result
+is (in general) in canonical form.
+</p>
+<p>The strict mode exploits the incremental propery of the Chernikova
+algorithm and maintain in parallel the constraints and the generators
+representations. The lazy mode delays computations as much as
+possible.
+</p>
+<p>Be cautious, in the following table, canonical means minimized
+constraints and generators representation, but nothing more. In
+particular, the function <code>canonicalize</code> performs further
+normalization by normalizing strict constraints (when they exist) and
+ordering constraints and generators.
+</p>
+
+<table>
+<tr><td width="20%">Function</td><td width="6%">algo</td><td width="74%">Comments</td></tr>
+<tr><td width="20%">copy</td><td width="6%"></td><td width="74%">Identical representation</td></tr>
+<tr><td width="20%"></td></tr>
+<tr><td width="20%">free</td></tr>
+<tr><td width="20%"></td></tr>
+<tr><td width="20%">size</td><td width="6%"></td><td width="74%">Return the number of coefficients. <br>
+Their size (when using multi-precision integers) is not taken into
+account.</td></tr>
+<tr><td width="20%"></td></tr>
+<tr><td width="20%">minimize</td><td width="6%"></td><td width="74%">Require canonicalization.
+
+<p>Keep only the smallest representation among the constraints and the
+generators representation.
+</p></td></tr>
+<tr><td width="20%"></td></tr>
+<tr><td width="20%">canonicalize</td><td width="6%"></td><td width="74%"></td></tr>
+<tr><td width="20%"></td></tr>
+<tr><td width="20%">approximate</td><td width="6%"></td><td width="74%">Require constraints. <br>
+algo here refers to the explicit parameter of the
+function. A negative number indicates a possibly smaller result, a
+positive one a possibly greater one. The effects of the function may
+be different for 2 identical polyhedra defined by different systems of
+(non minimal) constraints.<br>
+Equalities are never modified.</td></tr>
+<tr><td width="20%"></td></tr>
+<tr><td width="20%"></td><td width="6%">-1</td><td width="74%">Normalize integer minimal constraints. This results in a smaller
+polyhedra.</td></tr>
+<tr><td width="20%"></td><td width="6%">1</td><td width="74%">Remove constraints with coefficients of size (in bits) greater than
+the approximate_max_coeff_size parameter.</td></tr>
+<tr><td width="20%"></td><td width="6%">2</td><td width="74%">Idem, but preserve interval constraints.</td></tr>
+<tr><td width="20%"></td><td width="6%">3</td><td width="74%">Idem, but preserve octagonal constraints (+/- xi +/- xj &gt;= cst).</td></tr>
+<tr><td width="20%"></td><td width="6%">10</td><td width="74%">Simplify constraints such that the coefficients size (in bits) are
+less or equal than the approximate_max_coeff_size parameter. The
+constant coefficients are recomputed by linear programming and are not
+involved in the reduction process.</td></tr>
+<tr><td width="20%"></td><td width="6%">&ndash;</td><td width="74%">Do nothing</td></tr>
+<tr><td width="20%"></td></tr>
+<tr><td width="20%">fprint</td><td width="6%"></td><td width="74%">Require canonicalization.</td></tr>
+<tr><td width="20%"></td></tr>
+<tr><td width="20%">fprintdiff</td><td width="6%"></td><td width="74%">not implemented</td></tr>
+<tr><td width="20%"></td></tr>
+<tr><td width="20%">fdump</td><td width="6%"></td><td width="74%">Print raw representations of any of the constraints, generators and
+saturation matrices that are available.</td></tr>
+<tr><td width="20%"></td></tr>
+<tr><td width="20%">serialize_raw, deserialize_raw</td><td width="6%"></td><td width="74%">not implemented</td></tr>
+<tr><td width="20%"></td></tr>
+<tr><td width="20%">bottom,top</td><td width="6%"></td><td width="74%">Return canonical form.</td></tr>
+<tr><td width="20%"></td></tr>
+<tr><td width="20%">of_box</td><td width="6%"></td><td width="74%">Return constraints.</td></tr>
+<tr><td width="20%"></td></tr>
+<tr><td width="20%">of_lincons_array</td><td width="6%"></td><td width="74%">Return constraints.</td></tr>
+<tr><td width="20%"></td><td width="6%">&gt;=0</td><td width="74%">Take into account interval-linear constraints, after having minimized the quasi-linear constraints</td></tr>
+<tr><td width="20%"></td><td width="6%">&lt;0</td><td width="74%">Ignore interval-linear constraints</td></tr>
+<tr><td width="20%"></td></tr>
+<tr><td width="20%">dimension</td><td width="6%"></td><td width="74%"></td></tr>
+<tr><td width="20%"></td></tr>
+<tr><td width="20%">is_bottom</td><td width="6%">&lt;0</td><td width="74%">If generators not available, return <code>tbool_top</code></td></tr>
+<tr><td width="20%"></td><td width="6%">&gt;=0</td><td width="74%">If generators not available, canonicalize and return <code>tbool_false</code> or <code>tbool_true</code>.</td></tr>
+<tr><td width="20%"></td></tr>
+<tr><td width="20%">is_top</td><td width="6%">&lt;0</td><td width="74%">If not in canonical form, return <code>tbool_top</code></td></tr>
+<tr><td width="20%"></td><td width="6%">&gt;=0</td><td width="74%">Require canonical form.</td></tr>
+<tr><td width="20%"></td></tr>
+<tr><td width="20%">is_leq</td><td width="6%">&lt;=0</td><td width="74%">Require generators of first argument and constraints of second argument.</td></tr>
+<tr><td width="20%"></td><td width="6%">&gt;0</td><td width="74%">Require canonical form for both arguments.</td></tr>
+<tr><td width="20%"></td></tr>
+<tr><td width="20%">is_eq</td><td width="6%"></td><td width="74%">Require canonical form for both arguments.</td></tr>
+<tr><td width="20%"></td></tr>
+<tr><td width="20%">is_dimension_unconstrained</td><td width="6%"></td><td width="74%">Require canonical form</td></tr>
+<tr><td width="20%"></td></tr>
+<tr><td width="20%">sat_interval, sat_lincons, bound_dimension, bound_linexpr</td><td width="6%">&lt;=0</td><td width="74%">Require generators.</td></tr>
+<tr><td width="20%"></td><td width="6%">&gt;0</td><td width="74%">Require canonical form.</td></tr>
+<tr><td width="20%"></td></tr>
+<tr><td width="20%">to_box</td><td width="6%">&lt;0</td><td width="74%">Require generators.</td></tr>
+<tr><td width="20%"></td><td width="6%">&gt;=0</td><td width="74%">Require canonical form.</td></tr>
+<tr><td width="20%"></td></tr>
+<tr><td width="20%">to_lincons_array,
+to_generator_array</td><td width="6%"></td><td width="74%">Require canonical form.</td></tr>
+<tr><td width="20%"></td></tr>
+<tr><td width="20%">meet, meet_array, meet_lincons_array</td><td width="6%">&lt;0</td><td width="74%">Require constraints. <br>
+Return non-minimized constraints.</td></tr>
+<tr><td width="20%"></td><td width="6%">&gt;=0</td><td width="74%">Require canonical form. <br>
+Return canonical form.</td></tr>
+<tr><td width="20%"></td></tr>
+<tr><td width="20%">join, join_array, add_ray_array</td><td width="6%">&lt;0</td><td width="74%">Require generators. <br>
+Return non-minimized generators.</td></tr>
+<tr><td width="20%"></td><td width="6%">&gt;=0</td><td width="74%">Require canonical form. <br>
+Return canonical form.</td></tr>
+<tr><td width="20%"></td></tr>
+<tr><td width="20%">assign_linexpr</td><td width="6%"></td><td width="74%">1. If the optional argument is NULL,</td></tr>
+<tr><td width="20%"></td><td width="6%">&lt;=0</td><td width="74%">If the expr. is deterministic and invertible, require any representation and return the transformed one. If in canonical form, return canonical form. <br>
+If the expr. is deterministic and non-invertible, require generators and return generators <br>
+If the expr. is non-deterministic, require constraints and return generators.</td></tr>
+<tr><td width="20%"></td><td width="6%">&gt;0</td><td width="74%">Require canonical form, return canonical form. <br>
+If the expr. is deterministic,(and even more, invertible), the
+operation is more efficient.</td></tr>
+<tr><td width="20%"></td></tr>
+<tr><td width="20%"></td><td width="6%"></td><td width="74%">2. If the optional argument is not NULL,
+first the assignement is performed, and then the
+meet function is applied with its corresponding option.</td></tr>
+<tr><td width="20%"></td></tr>
+<tr><td width="20%">substitute_linexpr</td><td width="6%"></td><td width="74%">1. If the optional argument is NULL,</td></tr>
+<tr><td width="20%"></td><td width="6%">&lt;=0</td><td width="74%">If the expr. is deterministic and invertible, require any representation and return the transformed one. If in canonical form, return canonical form. <br>
+If the expr. is deterministic and non-invertible, require constraints and return constraints <br>
+If the expr. is non-deterministic, require constraints and return generators.</td></tr>
+<tr><td width="20%"></td><td width="6%">&gt;0</td><td width="74%">Require canonical form, return canonical form. <br>
+If the expr. is deterministic (and even more, invertible), the
+operation is more efficient.</td></tr>
+<tr><td width="20%"></td></tr>
+<tr><td width="20%"></td><td width="6%"></td><td width="74%">2. If the optional argument is not NULL,
+first the substitution is performed, and then the
+meet function is applied with its corresponding option.</td></tr>
+<tr><td width="20%"></td></tr>
+<tr><td width="20%">assign_linexpr_array</td><td width="6%"></td><td width="74%">1. If the optional argument is NULL,</td></tr>
+<tr><td width="20%"></td><td width="6%">&lt;=0</td><td width="74%">If the expr. are deterministic, require generators and return generators <br>
+Otherwise, require canonical form and return generators.</td></tr>
+<tr><td width="20%"></td><td width="6%">&gt;0</td><td width="74%">Require canonical form, return canonical form.</td></tr>
+<tr><td width="20%"></td></tr>
+<tr><td width="20%"></td><td width="6%"></td><td width="74%">2. If the optional argument is not NULL,
+first the assignement is performed, and then the
+meet function is applied with its corresponding option.</td></tr>
+<tr><td width="20%"></td></tr>
+<tr><td width="20%">substitute_linexpr_array</td><td width="6%"></td><td width="74%">1. If the optional argument is NULL,</td></tr>
+<tr><td width="20%"></td><td width="6%">&lt;=0</td><td width="74%">If the expr. are deterministic, require constraints and return constraints <br>
+Otherwise, require canonical form and return generators.</td></tr>
+<tr><td width="20%"></td><td width="6%">&gt;0</td><td width="74%">Require canonical form, return canonical form.</td></tr>
+<tr><td width="20%"></td></tr>
+<tr><td width="20%"></td><td width="6%"></td><td width="74%">2. If the optional argument is not NULL,
+first the substitution is performed, and then the
+meet function is applied with its corresponding option.</td></tr>
+<tr><td width="20%"></td></tr>
+<tr><td width="20%">forget_array</td><td width="6%">&lt;=0</td><td width="74%">Require generators and return generators.</td></tr>
+<tr><td width="20%"></td><td width="6%">&gt;0</td><td width="74%">Require canonical form and return canonical form.</td></tr>
+<tr><td width="20%"></td></tr>
+<tr><td width="20%">add_dimensions, permute_dimensions</td><td width="6%">&lt;=0</td><td width="74%">Require any representation and return the updated one. <br>
+If in canonical form, return canonical form.</td></tr>
+<tr><td width="20%"></td><td width="6%">&gt;0</td><td width="74%">Require canonical form, return canonical form.</td></tr>
+<tr><td width="20%"></td></tr>
+<tr><td width="20%">remove_dimensions</td><td width="6%">&lt;=0</td><td width="74%">Require generators, return generators.</td></tr>
+<tr><td width="20%"></td><td width="6%">&gt;0</td><td width="74%">Require canonical form, return canonical form.</td></tr>
+<tr><td width="20%"></td></tr>
+<tr><td width="20%">expand</td><td width="6%">&lt;0</td><td width="74%">Require constraints, return constraints.</td></tr>
+<tr><td width="20%"></td><td width="6%">&gt;=0</td><td width="74%">Require canonical form, return canonical form.</td></tr>
+<tr><td width="20%"></td></tr>
+<tr><td width="20%">fold</td><td width="6%">&lt;0</td><td width="74%">Require generators, return generators.</td></tr>
+<tr><td width="20%"></td><td width="6%">&gt;=0</td><td width="74%">Require canonical form, return canonical form.</td></tr>
+<tr><td width="20%"></td></tr>
+<tr><td width="20%">widening</td><td width="6%"></td><td width="74%">Require canonical form.</td></tr>
+<tr><td width="20%"></td></tr>
+<tr><td width="20%">closure</td><td width="6%"></td><td width="74%">1. If pk_manager_alloc() has been given a false Boolean (no strict constraints), same as copy.</td></tr>
+<tr><td width="20%"></td></tr>
+<tr><td width="20%"></td><td width="6%"></td><td width="74%">2. Otherwise,</td></tr>
+<tr><td width="20%"></td><td width="6%">&lt;0</td><td width="74%">Require constraints, return constraints.</td></tr>
+<tr><td width="20%"></td><td width="6%">&gt;=0</td><td width="74%">Require canonical form, return constraints.</td></tr>
+</table>
+
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_12.html#Managers-and-Abstract-Domains" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Allocating-NewPolka-managers-and-setting-specific-options" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#NewPolka" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="apron_17.html#PPL" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_19.html#Scalars-_0026-Intervals-_0026-Coefficients" title="Next chapter"> &gt;&gt; </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated on <i>November 9, 2019</i> using <a href="http://www.nongnu.org/texi2html/"><i>texi2html 5.0</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

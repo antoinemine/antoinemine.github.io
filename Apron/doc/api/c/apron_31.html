@@ -1,0 +1,851 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on November 9, 2019 by texi2html 5.0
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>APRON 0.9.10: Abstract values and operations of level 1 (ap_abstract1.h)</title>
+
+<meta name="description" content="APRON 0.9.10: Abstract values and operations of level 1 (ap_abstract1.h)">
+<meta name="keywords" content="APRON 0.9.10: Abstract values and operations of level 1 (ap_abstract1.h)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html 5.0">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Abstract-values-and-operations-of-level-1"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_23.html#Level-1-of-the-interface" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_30.html#Arrays-of-tree-constraints-of-level-1" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_23.html#Level-1-of-the-interface" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Allocating-abstract-values-of-level-1" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_32.html#Level-0-of-the-interface" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="apron.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="apron_42.html#Appendices" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="apron_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Abstract-values-and-operations-of-level-1-_0028ap_005fabstract1_002eh_0029"></a>
+<h2 class="section">Abstract values and operations of level 1 (&lsquo;<tt>ap_abstract1.h</tt>&rsquo;)</h2>
+
+<dl>
+<dt><a name="index-ap_005fabstract1_005ft"></a>datatype: <strong>ap_abstract1_t</strong></dt>
+<dd><p>Datatype for abstract values at level 1.
+</p>
+<p>For information:
+</p><div class="example">
+<pre class="example">typedef struct ap_abstract1_t {
+  ap_abstract0_t* abstract0;
+  ap_environment_t* env;
+} ap_abstract1_t;
+  /* data structure invariant:
+     ap_abstract0_integer_dimension(man,abstract0)== env-&gt;intdim &amp;&amp;
+     ap_abstract0_real_dimension(man,abstract0)== env-&gt;realdim */
+</pre></div>
+</dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fbox1_005ft"></a>datatype: <strong>ap_box1_t</strong></dt>
+<dd><div class="example">
+<pre class="example">typedef struct ap_box1_t {
+  ap_interval_t** p;
+  ap_environment_t* env;
+} ap_box1_t;
+void ap_box1_fprint(FILE* stream, ap_box1_t* box);
+void ap_box1_clear(ap_box1_t* box);
+</pre></div>
+</dd></dl>
+
+<p>Most operations are offered in 2 versions: <em>functional</em> or
+<em>destructive</em> See section <a href="apron_39.html#Abstract-values-and-operations-of-level-0">Abstract values and operations of level 0 (&lsquo;<tt>ap_abstract0.h</tt>&rsquo;)</a>.
+</p>
+<p>We remind the policy for redimensioning (see section <a href="apron_23.html#Level-1-of-the-interface">Level 1 of the interface</a>):
+</p>
+<ul>
+<li>
+For functions taking one abstract value and one expression (or
+constraint or generator, or array of ...), the environment of the
+expression should be a sub-environment of the environment of the
+abstract value. The environment of the result is the environment of
+the argument abstract value.
+</li><li>
+For functions taking several abstract values, their environments
+should be the same. Otherwise, it is up to the user to move them to a
+common super-environment (see section <a href="apron_25.html#Environments">Environments (&lsquo;<tt>ap_environment.h</tt>&rsquo;)</a>).
+</li></ul>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#Allocating-abstract-values-of-level-1">Allocating abstract values of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Control-of-internal-representation-of-abstract-values-of-level-1">Control of internal representation of abstract values of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Printing-abstract-values-of-level-1">Printing abstract values of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Serialization-of-abstract-values-of-level-1">Serialization of abstract values of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Constructors, Accessors, Tests and Extraction of properties
+</pre></th></tr><tr><td align="left" valign="top"><a href="#Constructors-for-abstract-values-of-level-1">Constructors for abstract values of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Accessors-for-abstract-values-of-level-1">Accessors for abstract values of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Tests-on-abstract-values-of-level-1">Tests on abstract values of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Extraction-of-properties-of-abstract-values-of-level-1">Extraction of properties of abstract values of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Operations
+</pre></th></tr><tr><td align="left" valign="top"><a href="#Meet-and-Join-of-abstract-values-of-level-1">Meet and Join of abstract values of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Assignements-and-Substitutions-of-abstract-values-of-level-1">Assignements and Substitutions of abstract values of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Existential-quantification-of-abstract-values-of-level-1">Existential quantification of abstract values of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Change-of-environments-of-abstract-values-of-level-1">Change of environments of abstract values of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Expansion-and-Folding-of-dimensions-in-abstract-values-of-level-1">Expansion and Folding of dimensions of abstract values of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Widening-of-abstract-values-of-level-1">Widening of abstract values of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Topological-closure-of-abstract-values-of-level-1">Topological closure of abstract values of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+Additional functions
+</pre></th></tr><tr><td align="left" valign="top"><a href="#Additional-functions-on-abstract-values-of-level-1">Additional functions on abstract values of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<a name="Allocating-abstract-values-of-level-1"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_23.html#Level-1-of-the-interface" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Abstract-values-and-operations-of-level-1" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Abstract-values-and-operations-of-level-1" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Control-of-internal-representation-of-abstract-values-of-level-1" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_32.html#Level-0-of-the-interface" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="apron.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="apron_42.html#Appendices" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="apron_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Allocating-abstract-values-of-level-1-1"></a>
+<h3 class="subsection">Allocating abstract values of level 1</h3>
+
+<dl>
+<dt><a name="index-ap_005fabstract1_005fcopy"></a>Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_copy</strong><em> (ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>)</em></dt>
+<dd><p>Return a copy of <var>a</var>, on which destructive update does not
+affect <var>a</var>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fabstract1_005fclear"></a>Function: <em>void</em> <strong>ap_abstract1_clear</strong><em> (ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>)</em></dt>
+<dd><p>Free all the memory used by <var>a</var>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fabstract1_005fsize"></a>Function: <em>size_t</em> <strong>ap_abstract1_size</strong><em> (ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>)</em></dt>
+<dd><p>Return the abstract size of <var>a</var>.
+</p></dd></dl>
+
+<hr>
+<a name="Control-of-internal-representation-of-abstract-values-of-level-1"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_23.html#Level-1-of-the-interface" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Allocating-abstract-values-of-level-1" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Abstract-values-and-operations-of-level-1" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Printing-abstract-values-of-level-1" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_32.html#Level-0-of-the-interface" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="apron.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="apron_42.html#Appendices" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="apron_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Control-of-internal-representation-of-abstract-values-of-level-1-1"></a>
+<h3 class="subsection">Control of internal representation of abstract values of level 1</h3>
+
+<dl>
+<dt><a name="index-ap_005fabstract1_005fminimize"></a>Function: <em>void</em> <strong>ap_abstract1_minimize</strong><em> (ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>)</em></dt>
+<dd><p>Minimize the size of the representation of <var>a</var>.  This may result in
+a later recomputation of internal information.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fabstract1_005fcanonicalize"></a>Function: <em>void</em> <strong>ap_abstract1_canonicalize</strong><em> (ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>)</em></dt>
+<dd><p>Put <var>a</var> in canonical form. (not yet clear definition).
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fabstract1_005fhash"></a>Function: <em>int</em> <strong>ap_abstract1_hash</strong><em> (ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>)</em></dt>
+<dd><p>Return an hash value for <var>a</var>.  Two abstract values in canonical
+from (according to <code>ap_abstract1_canonicalize</code>) and considered as
+equal by the function <code>ap_abstract1_is_eq</code> are given the
+same hash value.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fabstract1_005fapproximate"></a>Function: <em>void</em> <strong>ap_abstract1_approximate</strong><em> (ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>, int <var>algorithm</var>)</em></dt>
+<dd><p>Perform some transformation on <var>a</var>, guided by the field
+algorithm.
+</p>
+<p>The transformation may lose information.  The argument
+<var>algorithm</var> overrides the field algorithm of the structure of
+type <code>ap_funopt_t</code> associated to
+<code>ap_abstract1_approximate</code>.
+</p></dd></dl>
+
+<hr>
+<a name="Printing-abstract-values-of-level-1"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_23.html#Level-1-of-the-interface" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Control-of-internal-representation-of-abstract-values-of-level-1" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Abstract-values-and-operations-of-level-1" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Serialization-of-abstract-values-of-level-1" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_32.html#Level-0-of-the-interface" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="apron.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="apron_42.html#Appendices" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="apron_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Printing-abstract-values-of-level-1-1"></a>
+<h3 class="subsection">Printing abstract values of level 1</h3>
+
+<dl>
+<dt><a name="index-ap_005fabstract1_005ffprint"></a>Function: <em>void</em> <strong>ap_abstract1_fprint</strong><em> (FILE* <var>stream</var>, ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>)</em></dt>
+<dd><p>Print <var>a</var> in a pretty way on the stream.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fabstract1_005ffprintdiff"></a>Function: <em>void</em> <strong>ap_abstract1_fprintdiff</strong><em> (FILE* <var>stream</var>, ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a1</var>, ap_abstract1_t* <var>a2</var>)</em></dt>
+<dd><p>Print the difference between <var>a1</var> (old value) and <var>a2</var> (new
+value). The meaning of difference is library dependent.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fabstract1_005ffdump"></a>Function: <em>void</em> <strong>ap_abstract1_fdump</strong><em> (FILE* <var>stream</var>, ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>)</em></dt>
+<dd><p>Dump the internal representation of <var>a</var> for debugging
+purposes.
+</p></dd></dl>
+
+<hr>
+<a name="Serialization-of-abstract-values-of-level-1"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_23.html#Level-1-of-the-interface" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Printing-abstract-values-of-level-1" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Abstract-values-and-operations-of-level-1" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Constructors-for-abstract-values-of-level-1" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_32.html#Level-0-of-the-interface" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="apron.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="apron_42.html#Appendices" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="apron_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Serialization-of-abstract-values-of-level-1-1"></a>
+<h3 class="subsection">Serialization of abstract values of level 1</h3>
+<dl>
+<dt><a name="index-ap_005fabstract1_005fserialize_005fraw"></a>Function: <em>ap_membuf_t</em> <strong>ap_abstract1_serialize_raw</strong><em> (ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>)</em></dt>
+<dd><p>Allocate a memory buffer (with <code>malloc</code>), output <var>a</var>
+in raw binary format to it and return a pointer on the memory
+buffer and the number of bytes written.  It is the user
+responsability to free the memory afterwards (with <code>free</code>).
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fabstract1_005fdeserialize_005fraw"></a>Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_deserialize_raw</strong><em> (ap_manager_t* <var>man</var>, void* <var>ptr</var>, size_t* <var>size</var>)</em></dt>
+<dd><p>Return the abstract value read in raw binary format from the
+buffer pointed by <var>ptr</var> and store in size the number of bytes
+read.
+</p></dd></dl>
+
+<hr>
+<a name="Constructors-for-abstract-values-of-level-1"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_23.html#Level-1-of-the-interface" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Serialization-of-abstract-values-of-level-1" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Abstract-values-and-operations-of-level-1" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Accessors-for-abstract-values-of-level-1" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_32.html#Level-0-of-the-interface" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="apron.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="apron_42.html#Appendices" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="apron_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Constructors-for-abstract-values-of-level-1-1"></a>
+<h3 class="subsection">Constructors for abstract values of level 1</h3>
+
+<dl>
+<dt><a name="index-ap_005fabstract1_005fbottom"></a>Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_bottom</strong><em> (ap_manager_t* <var>man</var>, ap_environment_t* <var>env</var>)</em></dt>
+<dt><a name="index-ap_005fabstract1_005ftop"></a>Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_top</strong><em> (ap_manager_t* <var>man</var>, ap_environment_t* <var>env</var>)</em></dt>
+<dd><p>Create resp. a bottom (empty) value and a top (universe) value defined
+on the environment <var>env</var>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fabstract1_005fof_005fbox"></a>Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_of_box</strong><em> (ap_manager_t* <var>man</var>, ap_environment_t* <var>env</var>, ap_var_t* <var>tvar</var>, ap_interval_t** <var>tinterval</var>, size_t <var>size</var>)</em></dt>
+<dd><p>Abstract an hypercube defined by the arrays <var>tvar</var> and
+<var>tintnerval</var> of size <var>size</var>.
+</p>
+<p>If no inclusion is specified for a variable in the environment, its
+value is no constrained in the resulting abstract value.
+</p></dd></dl>
+
+<hr>
+<a name="Accessors-for-abstract-values-of-level-1"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_23.html#Level-1-of-the-interface" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Constructors-for-abstract-values-of-level-1" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Abstract-values-and-operations-of-level-1" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Tests-on-abstract-values-of-level-1" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_32.html#Level-0-of-the-interface" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="apron.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="apron_42.html#Appendices" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="apron_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Accessors-for-abstract-values-of-level-1-1"></a>
+<h3 class="subsection">Accessors for abstract values of level 1</h3>
+
+<dl>
+<dt><a name="index-ap_005fabstract1_005fenvironment"></a>Function: <em>ap_dimension_t</em> <strong>ap_abstract1_environment</strong><em> (ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>)</em></dt>
+<dd><p>Get a reference to the environment of <var>a</var>. Do not free it.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fabstract1_005fmanager"></a>Function: <em>ap_manager_t*</em> <strong>ap_abstract1_manager</strong><em> (ap_abstract1_t* <var>a</var>)</em></dt>
+<dd><p>Get a reference to the manager contained in <var>a</var>.
+Do not free it.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fabstract1_005fabstract0"></a>Function: <em>ap_dimension_t</em> <strong>ap_abstract1_abstract0</strong><em> (ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>)</em></dt>
+<dd><p>Get a reference to the underlying abstract value of level 0 in
+<var>a</var>. Do not free it.
+</p></dd></dl>
+
+<hr>
+<a name="Tests-on-abstract-values-of-level-1"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_23.html#Level-1-of-the-interface" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Accessors-for-abstract-values-of-level-1" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Abstract-values-and-operations-of-level-1" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Extraction-of-properties-of-abstract-values-of-level-1" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_32.html#Level-0-of-the-interface" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="apron.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="apron_42.html#Appendices" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="apron_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Tests-on-abstract-values-of-level-1-1"></a>
+<h3 class="subsection">Tests on abstract values of level 1</h3>
+
+<p>In abstract tests,
+</p><ul>
+<li>
+true means that the predicate is certainly true;
+</li><li>
+false means false <em>or</em> don&rsquo;t know (an exception has occurred, or
+the exact computation was considered too expensive to be performed,
+according to the options).
+</li></ul>
+
+<dl>
+<dt><a name="index-ap_005fabstract1_005fis_005fbottom"></a>Function: <em>bool</em> <strong>ap_abstract1_is_bottom</strong><em> (ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>)</em></dt>
+<dt><a name="index-ap_005fabstract1_005fis_005ftop"></a>Function: <em>bool</em> <strong>ap_abstract1_is_top</strong><em> (ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>)</em></dt>
+<dd><p>Emtpiness and universality tests.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fabstract1_005fis_005fleq"></a>Function: <em>bool</em> <strong>ap_abstract1_is_leq</strong><em> (ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a1</var>, ap_abstract1_t* <var>a2</var>)</em></dt>
+<dt><a name="index-ap_005fabstract1_005fis_005feq"></a>Function: <em>bool</em> <strong>ap_abstract1_is_eq</strong><em> (ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a1</var>, ap_abstract1_t* <var>a2</var>)</em></dt>
+<dd><p>Inclusion and equality tests.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fabstract1_005fsat_005finterval"></a>Function: <em>bool</em> <strong>ap_abstract1_sat_interval</strong><em> (ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>, ap_var_t <var>var</var>, ap_interval_t* <var>interval</var>)</em></dt>
+<dd><p>Is the variable <var>var</var> included in the interval <var>interval</var> in the abstract value <var>a</var> ?
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fabstract1_005fsat_005flincons"></a>Function: <em>bool</em> <strong>ap_abstract1_sat_lincons</strong><em> (ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>, ap_lincons1_t* <var>cons</var>)</em></dt>
+<dt><a name="index-ap_005fabstract1_005fsat_005ftcons"></a>Function: <em>bool</em> <strong>ap_abstract1_sat_tcons</strong><em> (ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>, ap_tcons1_t* <var>cons</var>)</em></dt>
+<dd><p>Does the abstract value <var>a</var> satisfy the constraint <var>cons</var> ?
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fabstract1_005fis_005fvariable_005funconstrained"></a>Function: <em>bool</em> <strong>ap_abstract1_is_variable_unconstrained</strong><em> (ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>, ap_var_t <var>var</var>)</em></dt>
+<dd><p>Is the dimension <var>dim</var> unconstrained in the abstract value <var>a</var> ?
+If it is the case, we have <code>forget(man,a,dim) == a</code>.
+</p></dd></dl>
+
+<hr>
+<a name="Extraction-of-properties-of-abstract-values-of-level-1"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_23.html#Level-1-of-the-interface" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Tests-on-abstract-values-of-level-1" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Abstract-values-and-operations-of-level-1" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Meet-and-Join-of-abstract-values-of-level-1" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_32.html#Level-0-of-the-interface" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="apron.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="apron_42.html#Appendices" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="apron_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Extraction-of-properties-of-abstract-values-of-level-1-1"></a>
+<h3 class="subsection">Extraction of properties of abstract values of level 1</h3>
+
+<dl>
+<dt><a name="index-ap_005fabstract1_005fbound_005fvariable"></a>Function: <em>ap_interval_t*</em> <strong>ap_abstract1_bound_variable</strong><em> (ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>, ap_var_t <var>var</var>)</em></dt>
+<dd><p>Return the interval taken by the variable <var>var</var> over the abstract
+value <var>a</var>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fabstract1_005fbound_005flinexpr"></a>Function: <em>ap_interval_t*</em> <strong>ap_abstract1_bound_linexpr</strong><em> (ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>, ap_linexpr1_t* <var>expr</var>)</em></dt>
+<dt><a name="index-ap_005fabstract1_005fbound_005ftexpr"></a>Function: <em>ap_interval_t*</em> <strong>ap_abstract1_bound_texpr</strong><em> (ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>, ap_texpr1_t* <var>expr</var>)</em></dt>
+<dd><p>Return the interval taken by the expression <var>expr</var> over
+the abstract value <var>a</var>.
+</p>
+<p>In the case of truly linear expression, this function allows to solve
+a Linear Programming (LP) problem, but depending on the underlying
+domain the solution may be not optimal.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fabstract1_005fto_005fbox"></a>Function: <em>ap_box1_t</em> <strong>ap_abstract1_to_box</strong><em> (ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>)</em></dt>
+<dd><p>Convert <var>a</var> to an interval/hypercube.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fabstract1_005fto_005flincons_005farray"></a>Function: <em>ap_lincons1_array_t</em> <strong>ap_abstract1_to_lincons_array</strong><em> (ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>)</em></dt>
+<dt><a name="index-ap_005fabstract1_005fto_005ftcons_005farray"></a>Function: <em>ap_tcons1_array_t</em> <strong>ap_abstract1_to_tcons_array</strong><em> (ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>)</em></dt>
+<dd><p>Convert <var>a</var> to a conjunction of linear (resp. tree)
+constraints.
+</p>
+<p>The constraints are normally guaranteed to be without intervals.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fabstract1_005fto_005fgenerator_005farray"></a>Function: <em>ap_generator1_array_t</em> <strong>ap_abstract1_to_generator_array</strong><em> (ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>)</em></dt>
+<dd><p>Convert <var>a</var> to an array of generators.
+</p></dd></dl>
+
+<hr>
+<a name="Meet-and-Join-of-abstract-values-of-level-1"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_23.html#Level-1-of-the-interface" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Extraction-of-properties-of-abstract-values-of-level-1" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Abstract-values-and-operations-of-level-1" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Assignements-and-Substitutions-of-abstract-values-of-level-1" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_32.html#Level-0-of-the-interface" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="apron.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="apron_42.html#Appendices" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="apron_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Meet-and-Join-of-abstract-values-of-level-1-1"></a>
+<h3 class="subsection">Meet and Join of abstract values of level 1</h3>
+
+<dl>
+<dt><a name="index-ap_005fabstract1_005fmeet"></a>Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_meet</strong><em> (ap_manager_t* <var>man</var>, bool <var>destructive</var>, ap_abstract1_t* <var>a1</var>, ap_abstract1_t* <var>a2</var>)</em></dt>
+<dt><a name="index-ap_005fabstract1_005fjoin"></a>Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_join</strong><em> (ap_manager_t* <var>man</var>, bool <var>destructive</var>, ap_abstract1_t* <var>a1</var>, ap_abstract1_t* <var>a2</var>)</em></dt>
+<dd><p>Meet and Join of 2 abstract values
+</p></dd></dl>
+
+
+<dl>
+<dt><a name="index-ap_005fabstract1_005fmeet_005farray"></a>Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_meet_array</strong><em> (ap_manager_t* <var>man</var>, ap_abstract1_t* <var>array</var>, size_t <var>size</var>)</em></dt>
+<dt><a name="index-ap_005fabstract1_005fjoin_005farray"></a>Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_join_array</strong><em> (ap_manager_t* <var>man</var>, ap_abstract1_t* <var>array</var>, size_t <var>size</var>)</em></dt>
+<dd><p>Meet and Join of the array <var>array</var> of abstract values of size
+<var>size</var>.
+</p>
+<p>Raise an <code>AP_EXC_INVALID_ARGUMENT</code> exception if
+<code>size==1</code> (no way to define the environment of the result
+in such a case).
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fabstract1_005fmeet_005flincons_005farray"></a>Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_meet_lincons_array</strong><em> (ap_manager_t* <var>man</var>, bool <var>destructive</var>, ap_abstract1_t* <var>a</var>, ap_lincons1_array_t* <var>array</var>)</em></dt>
+<dt><a name="index-ap_005fabstract1_005fmeet_005ftcons_005farray"></a>Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_meet_tcons_array</strong><em> (ap_manager_t* <var>man</var>, bool <var>destructive</var>, ap_abstract1_t* <var>a</var>, ap_tcons1_array_t* <var>array</var>)</em></dt>
+<dd><p>Meet of the abstract value <var>a</var> with the set of constraints
+<var>array</var>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fabstract1_005fadd_005fray_005farray"></a>Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_add_ray_array</strong><em> (ap_manager_t* <var>man</var>, bool <var>destructive</var>, ap_abstract1_t* <var>a</var>, ap_generator1_array_t* <var>array</var>)</em></dt>
+<dd><p>Generalized time elapse operator.
+</p>
+<p><var>array</var> is supposed to contain only rays or lines, no vertices.
+</p></dd></dl>
+
+<hr>
+<a name="Assignements-and-Substitutions-of-abstract-values-of-level-1"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_23.html#Level-1-of-the-interface" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Meet-and-Join-of-abstract-values-of-level-1" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Abstract-values-and-operations-of-level-1" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Existential-quantification-of-abstract-values-of-level-1" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_32.html#Level-0-of-the-interface" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="apron.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="apron_42.html#Appendices" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="apron_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Assignements-and-Substitutions-of-abstract-values-of-level-1-1"></a>
+<h3 class="subsection">Assignements and Substitutions of abstract values of level 1</h3>
+
+<dl>
+<dt><a name="index-ap_005fabstract1_005fassign_005flinexpr_005farray"></a>Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_assign_linexpr_array</strong><em> (ap_manager_t* <var>man</var>, bool <var>destructive</var>, ap_abstract1_t* <var>org</var>, ap_var_t* <var>tvar</var>, ap_linexpr1_t* <var>texpr</var>, size_t <var>size</var>, ap_abstract1_t* <var>dest</var>)</em></dt>
+<dt><a name="index-ap_005fabstract1_005fsubstitute_005flinexpr_005farray"></a>Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_substitute_linexpr_array</strong><em> (ap_manager_t* <var>man</var>, bool <var>destructive</var>, ap_abstract1_t* <var>org</var>, ap_var_t* <var>tvar</var>, ap_linexpr1_t* <var>texpr</var>, size_t <var>size</var>, ap_abstract1_t* <var>dest</var>)</em></dt>
+<dt><a name="index-ap_005fabstract1_005fassign_005ftexpr_005farray"></a>Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_assign_texpr_array</strong><em> (ap_manager_t* <var>man</var>, bool <var>destructive</var>, ap_abstract1_t* <var>org</var>, ap_var_t* <var>tvar</var>, ap_texpr1_t* <var>texpr</var>, size_t <var>size</var>, ap_abstract1_t* <var>dest</var>)</em></dt>
+<dt><a name="index-ap_005fabstract1_005fsubstitute_005ftexpr_005farray"></a>Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_substitute_texpr_array</strong><em> (ap_manager_t* <var>man</var>, bool <var>destructive</var>, ap_abstract1_t* <var>org</var>, ap_var_t* <var>tvar</var>, ap_texpr1_t* <var>texpr</var>, size_t <var>size</var>, ap_abstract1_t* <var>dest</var>)</em></dt>
+<dd><p>Parallel Assignement and Substitution of several variables by
+expressions in abstract value <var>org</var>.
+</p>
+<p><var>dest</var> is an optional argument. If not NULL, semantically speaking,
+the result of the transformation is intersected with <var>dest</var>. This is
+useful for precise backward transformations in lattices like intervals or
+octagons.
+</p></dd></dl>
+
+<hr>
+<a name="Existential-quantification-of-abstract-values-of-level-1"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_23.html#Level-1-of-the-interface" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Assignements-and-Substitutions-of-abstract-values-of-level-1" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Abstract-values-and-operations-of-level-1" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Change-of-environments-of-abstract-values-of-level-1" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_32.html#Level-0-of-the-interface" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="apron.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="apron_42.html#Appendices" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="apron_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Existential-quantification-of-abstract-values-of-level-1-1"></a>
+<h3 class="subsection">Existential quantification of abstract values of level 1</h3>
+
+<dl>
+<dt><a name="index-ap_005fabstract1_005fforget_005farray"></a>Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_forget_array</strong><em> (ap_manager_t* <var>man</var>, bool <var>destructive</var>, ap_abstract1_t* <var>a</var>, ap_var_t* <var>tvar</var>, size_t <var>size</var>, bool <var>project</var>)</em></dt>
+<dd><p>Forget (<code>project=false</code>) or Project (<code>project=true</code>) the
+array of variables <var>tvar</var> of size <var>size</var> in the abstract
+value <var>a</var>.
+</p></dd></dl>
+
+<hr>
+<a name="Change-of-environments-of-abstract-values-of-level-1"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_23.html#Level-1-of-the-interface" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Existential-quantification-of-abstract-values-of-level-1" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Abstract-values-and-operations-of-level-1" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Expansion-and-Folding-of-dimensions-in-abstract-values-of-level-1" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_32.html#Level-0-of-the-interface" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="apron.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="apron_42.html#Appendices" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="apron_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Change-of-environments-of-abstract-values-of-level-1-1"></a>
+<h3 class="subsection">Change of environments of abstract values of level 1</h3>
+
+<dl>
+<dt><a name="index-ap_005fabstract1_005fchange_005fenvironment"></a>Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_change_environment</strong><em> (ap_manager_t* <var>man</var>, bool <var>destructive</var>, ap_abstract1_t* <var>a</var>, ap_environment_t* <var>nenv</var>, bool <var>project</var>)</em></dt>
+<dd><p>Change the environment of the abstract values.  Variables that are
+removed are first existentially quantified, and variables that are
+introduced are either unconstrained (<code>project==false</code>) or
+initialized to 0 (<code>project==false</code>).
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fabstract1_005fminimize_005fenvironment"></a>Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_minimize_environment</strong><em> (ap_manager_t* <var>man</var>, bool <var>destructive</var>, ap_abstract1_t* <var>a</var>)</em></dt>
+<dd><p>Remove from the environment of the abstract value and from the
+abstract value itself variables that are unconstrained in it.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fabstract1_005frename_005farray"></a>Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_rename_array</strong><em> (ap_manager_t* <var>man</var>, bool <var>destructive</var>, ap_abstract1_t* <var>a</var>, ap_var_t* <var>tvar</var>, ap_var_t* <var>ntvar</var>, size_t <var>size</var>)</em></dt>
+<dd><p>Parallel renaming of the environment of the abstract value. The new
+variables should not interfere with the variables that are not
+renamed.
+</p></dd></dl>
+
+<hr>
+<a name="Expansion-and-Folding-of-dimensions-in-abstract-values-of-level-1"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_23.html#Level-1-of-the-interface" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Change-of-environments-of-abstract-values-of-level-1" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Abstract-values-and-operations-of-level-1" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Widening-of-abstract-values-of-level-1" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_32.html#Level-0-of-the-interface" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="apron.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="apron_42.html#Appendices" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="apron_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Expansion-and-Folding-of-dimensions-of-abstract-values-of-level-1"></a>
+<h3 class="subsection">Expansion and Folding of dimensions of abstract values of level 1</h3>
+
+<p>Formally, expanding <code>z</code> into <code>z</code> and <code>w</code> in
+abstract value (predicate) <code>P</code> is defined by
+<em>expand(P(x,y,z),z,w) = P(x,y,z) and P(x,y,w)</em>.
+</p>
+<p>Conversely, folding <code>z</code> and <code>w</code> into <code>z</code> in
+abstract value (predicate) <code>Q</code> is defined by
+<em>fold(Q(x,y,z,w),z,w) = (exists w: Q(x,y,z,w)) or (exists z:Q(x,y,z,w)[z&lt;-w])</em>.
+</p>
+<dl>
+<dt><a name="index-ap_005fabstract1_005fexpand"></a>Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_expand</strong><em> (ap_manager_t* <var>man</var>, bool <var>destructive</var>, ap_abstract1_t* <var>a</var>, ap_var_t <var>var</var>, ap_var_t* <var>tvar</var>, size_t <var>size</var>)</em></dt>
+<dd><p>Expand the variable <var>var</var> into itself + the <var>size</var> additional
+variables of the array <var>tvar</var>, which are given the same type as
+<var>var</var>.  The additional variables are added to the environment of
+the argument for making the environment of the result, so they should
+not belong to the initial environment.
+</p>
+<p>It results in <code>size+1</code> unrelated variables having same relations
+with other dimensions.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fabstract1_005ffold"></a>Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_fold</strong><em> (ap_manager_t* <var>man</var>, bool <var>destructive</var>, ap_abstract1_t* <var>a</var>, ap_var_t* <var>tvar</var>, size_t <var>size</var>)</em></dt>
+<dd><p>Fold the variables in the array <var>tvar</var> of size <var>size</var>&gt;=1 and
+put the result in the first variable in the array. The other variables
+of the array are then forgot and removed from the environment.
+</p></dd></dl>
+
+<hr>
+<a name="Widening-of-abstract-values-of-level-1"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_23.html#Level-1-of-the-interface" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Expansion-and-Folding-of-dimensions-in-abstract-values-of-level-1" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Abstract-values-and-operations-of-level-1" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Topological-closure-of-abstract-values-of-level-1" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_32.html#Level-0-of-the-interface" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="apron.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="apron_42.html#Appendices" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="apron_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Widening-of-abstract-values-of-level-1-1"></a>
+<h3 class="subsection">Widening of abstract values of level 1</h3>
+
+<dl>
+<dt><a name="index-ap_005fabstract1_005fwidening"></a>Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_widening</strong><em> (ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a1</var>, ap_abstract1_t* <var>a2</var>)</em></dt>
+<dd><p>Widening of <var>a1</var> with <var>a2</var>. <var>a1</var> is supposed to be
+included in <var>a2</var>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fabstract1_005fwidening_005fthreshold"></a>Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_widening_threshold</strong><em> (ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a1</var>, ap_abstract1_t* <var>a2</var>, ap_lincons1_array_t* <var>array</var>)</em></dt>
+<dd><p>Widening with threshold.
+</p>
+<p>Intersect the result of the standard widening with all the
+constraints in <var>array</var> that are satisfied by both <var>a1</var> and
+<var>a2</var>.
+</p></dd></dl>
+
+<hr>
+<a name="Topological-closure-of-abstract-values-of-level-1"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_23.html#Level-1-of-the-interface" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Widening-of-abstract-values-of-level-1" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Abstract-values-and-operations-of-level-1" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Additional-functions-on-abstract-values-of-level-1" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_32.html#Level-0-of-the-interface" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="apron.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="apron_42.html#Appendices" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="apron_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Topological-closure-of-abstract-values-of-level-1-1"></a>
+<h3 class="subsection">Topological closure of abstract values of level 1</h3>
+
+<dl>
+<dt><a name="index-ap_005fabstract1_005fclosure"></a>Function: <em>ap_abstract1_t*</em> <strong>ap_abstract1_closure</strong><em> (ap_manager_t* <var>man</var>, bool <var>destructive</var>, ap_abstract1_t* <var>a</var>)</em></dt>
+<dd><p>Relax strict constraints into non strict constraints.
+</p></dd></dl>
+
+<hr>
+<a name="Additional-functions-on-abstract-values-of-level-1"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_23.html#Level-1-of-the-interface" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Topological-closure-of-abstract-values-of-level-1" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Abstract-values-and-operations-of-level-1" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="apron_32.html#Level-0-of-the-interface" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_32.html#Level-0-of-the-interface" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="apron.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="apron_42.html#Appendices" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="apron_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Additional-functions-on-abstract-values-of-level-1-1"></a>
+<h3 class="subsection">Additional functions on abstract values of level 1</h3>
+
+<dl>
+<dt><a name="index-ap_005fabstract1_005fof_005flincons_005farray"></a>Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_of_lincons_array</strong><em> (ap_manager_t* <var>man</var>, ap_environment_t* <var>env</var>, ap_lincons1_array_t* <var>array</var>)</em></dt>
+<dt><a name="index-ap_005fabstract1_005fof_005ftcons_005farray"></a>Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_of_tcons_array</strong><em> (ap_manager_t* <var>man</var>, ap_environment_t* <var>env</var>, ap_tcons1_array_t* <var>array</var>)</em></dt>
+<dd><p>Abstract a conjunction of constraints. The environment of the array should be
+a subset of the environment <var>env</var>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fabstract1_005fassign_005flinexpr"></a>Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_assign_linexpr</strong><em> (ap_manager_t* <var>man</var>, bool <var>destructive</var>, ap_abstract1_t* <var>org</var>, ap_var_t <var>var</var>, ap_linexpr1_t* <var>expr</var>, ap_abstract1_t* <var>dest</var>)</em></dt>
+<dt><a name="index-ap_005fabstract1_005fsubstitute_005flinexpr"></a>Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_substitute_linexpr</strong><em> (ap_manager_t* <var>man</var>, bool <var>destructive</var>, ap_abstract1_t* <var>org</var>, ap_var_t <var>var</var>, ap_linexpr1_t* <var>expr</var>, ap_abstract1_t* <var>dest</var>)</em></dt>
+<dt><a name="index-ap_005fabstract1_005fassign_005ftexpr"></a>Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_assign_texpr</strong><em> (ap_manager_t* <var>man</var>, bool <var>destructive</var>, ap_abstract1_t* <var>org</var>, ap_var_t <var>var</var>, ap_texpr1_t* <var>expr</var>, ap_abstract1_t* <var>dest</var>)</em></dt>
+<dt><a name="index-ap_005fabstract1_005fsubstitute_005ftexpr"></a>Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_substitute_texpr</strong><em> (ap_manager_t* <var>man</var>, bool <var>destructive</var>, ap_abstract1_t* <var>org</var>, ap_var_t <var>var</var>, ap_texpr1_t* <var>expr</var>, ap_abstract1_t* <var>dest</var>)</em></dt>
+<dd><p>Assignement and Substitution of the dimension <var>dim</var> by the
+expression <var>expr</var> in abstract value <var>org</var>.
+</p>
+<p><var>dest</var> is an optional argument. If not NULL, semantically
+speaking, the result of the transformation is intersected with
+<var>dest</var>. This is useful for precise backward transformations in
+lattices like intervals or octagons.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fabstract1_005funify"></a>Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_unify</strong><em> (ap_manager_t* <var>man</var>, bool <var>destructive</var>, ap_abstract1_t* <var>a1</var>, ap_abstract1_t* <var>a2</var>)</em></dt>
+<dd><p>Unify two abstract values on their common variables, that is,
+embed them on the least common environment and then compute their
+meet. The result is defined on the least common environment.
+</p>
+<p>For instance, the unification of <code>1&lt;=x&lt;=3 and x=y</code> defined on
+<code>{ x, y }</code> and <code>2&lt;=z&lt;=4 and z=y</code> defined on
+<code>{y,z }</code> results in <code>2&lt;=x&lt;=3 and x=y=z</code> defined on
+<code>{x,y,z}</code>.
+</p></dd></dl>
+
+
+<dl>
+<dt><a name="index-ap_005fabstract1_005fquasilinear_005fof_005fintlinear"></a>Function: <em>ap_linexpr1_t</em> <strong>ap_abstract1_quasilinear_of_intlinear</strong><em> (ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>, ap_linexpr1_t* <var>expr</var>)</em></dt>
+<dd><p>Evaluate the interval linear expression <var>expr</var> on the abstract
+value <var>a</var> and approximate it by a quasilinear expression.
+</p>
+<p>This implies calls to <code>ap_abstract0_bound_dimension</code>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fabstract1_005fintlinear_005fof_005ftree"></a>Function: <em>ap_linexpr1_t</em> <strong>ap_abstract1_intlinear_of_tree</strong><em> (ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>, ap_texpr1_t* <var>expr</var>, bool quasilinear)</em></dt>
+<dd><p>Evaluate the tree expression <var>expr</var> on the abstract value <var>a</var>
+and approximate it by an interval linear (resp. quasilinear if
+<var>quasilinear</var> is true) expression.
+</p>
+<p>This implies calls to <code>ap_abstract0_bound_dimension</code>.
+</p></dd></dl>
+
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_23.html#Level-1-of-the-interface" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Topological-closure-of-abstract-values-of-level-1" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Abstract-values-and-operations-of-level-1" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="apron_32.html#Level-0-of-the-interface" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_32.html#Level-0-of-the-interface" title="Next chapter"> &gt;&gt; </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated on <i>November 9, 2019</i> using <a href="http://www.nongnu.org/texi2html/"><i>texi2html 5.0</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

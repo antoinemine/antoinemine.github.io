@@ -1,0 +1,435 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on November 9, 2019 by texi2html 5.0
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>APRON 0.9.10: C Programming Guidelines</title>
+
+<meta name="description" content="APRON 0.9.10: C Programming Guidelines">
+<meta name="keywords" content="APRON 0.9.10: C Programming Guidelines">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html 5.0">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="C-Programming-Guidelines"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_7.html#APRON-Guidelines" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_8.html#Installing-APRON" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_7.html#APRON-Guidelines" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#C-Headers-and-Libraries" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_12.html#Managers-and-Abstract-Domains" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="apron.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="apron_42.html#Appendices" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="apron_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="C-Programming-Guidelines-1"></a>
+<h2 class="section">C Programming Guidelines</h2>
+
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#C-Headers-and-Libraries">C Headers and Libraries</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#C-Naming-conventions">Naming conventions and Allocation/Deallocation schemes</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Allocating-managers-and-setting-options">Allocating managers and setting options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Sequel-of-the-small-example">Sequel of the small example</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Typing-issue-in-C">Typing issue in C</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<a name="C-Headers-and-Libraries"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_7.html#APRON-Guidelines" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#C-Programming-Guidelines" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#C-Programming-Guidelines" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#C-Naming-conventions" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_12.html#Managers-and-Abstract-Domains" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="apron.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="apron_42.html#Appendices" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="apron_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="C-Headers-and-Libraries-1"></a>
+<h3 class="subsection">C Headers and Libraries</h3>
+
+<p>Declarations needed to use an underlying library via APRON are
+collected in the C include files &lsquo;<tt>ap_global0.h</tt>&rsquo; and
+&lsquo;<tt>ap_global1.h</tt>&rsquo;. They respectively refer to the level 0 and the
+level 1 of the interface. One can also refer to single APRON modules
+with their corresponding include files &lsquo;<tt>ap_dimension.h</tt>&rsquo;,
+&lsquo;<tt>ap_lincons0.h</tt>&rsquo;, ... Header files &lsquo;<tt>&lt;stdio.h&gt;</tt>&rsquo;,
+&lsquo;<tt>stdlib.h</tt>&rsquo; and &lsquo;<tt>&lt;stdarg.h&gt;</tt>&rsquo; will be required.
+</p>
+<p>Then, you should also include the header files of the underlying
+libraries you want to use it via APRON (for instance, &lsquo;<tt>box.h</tt>&rsquo;,
+&lsquo;<tt>pk.h</tt>&rsquo;, &lsquo;<tt>ap_ppl.h</tt>&rsquo;).
+</p>
+<p>All programs using APRON must link against the &lsquo;<tt>libapron</tt>&rsquo;,
+&lsquo;<tt>libmpfr</tt>&rsquo; and &lsquo;<tt>libgmp</tt>&rsquo; libraries, and the underlying
+libraries you want to use it via APRON:
+</p><ol>
+<li>
+If some file &lsquo;<tt>test.c</tt>&rsquo; uses the POLKA library via APRON, the
+compilation command should look like &lsquo;<samp>gcc -I$ITV/include
+-I$MPFR/include -I$GMP/include -I$APRON/include -L$MPFR/lib
+-L$GMP/lib -L$APRON/lib -o test test.c -lpolkaMPQ -lapron -lmpfr -lgmp</samp>&rsquo;,
+assuming that the POLKA library is used in
+its &rsquo;MPQ&rsquo; version (internal number representation is GMP rationals) and
+resides in &lsquo;<tt>$APRON/include</tt>&rsquo; and &lsquo;<tt>$APRON/lib</tt>&rsquo; directories.
+
+<p>The &lsquo;<tt>libpolkaMPQ.a</tt>&rsquo; library is of course needed,
+&lsquo;<tt>libapron.a</tt>&rsquo; contains all the code common to all APRON library
+(manipulation of expressions, environments, ...), as well as ITV
+functions (quasi)linearisation facilities of APRON,...), last the
+libraries <code>libmpfr.a</code> and <code>libgmp.a</code> are required both by
+<small>NEWPOLKA</small> and <small>APRON</small> .
+</p></li><li>
+If some file &lsquo;<tt>test.c</tt>&rsquo; uses the PPL library via APRON, the
+compilation command should look like &lsquo;<samp>g++ -I$ITV/include
+-I$MPFR/include -I$GMP/include -I$APRON/include -I$PPL/include
+-L$ITV/lib -L$MPFR/lib -L$GMP/lib -L$APRON/lib -L$PPL/lib -o test
+test.c -la_ppl -lppl -lgmpxx -lapron -lmpfr
+-lgmp</samp>&rsquo;, assuming that PPL resides in $PPL and PPL APRON interface in
+&lsquo;<tt>$APRON/include</tt>&rsquo; and &lsquo;<tt>$APRON/lib</tt>&rsquo; directories.
+
+<p>Notice that the PPL library (&lsquo;<tt>libppl.a</tt>&rsquo;) is a C++ library, you
+need to use &lsquo;<samp>g++</samp>&rsquo; instead of &lsquo;<samp>gcc</samp>&rsquo; for linking. You also
+need the C++ layer on top of GMP (&lsquo;<tt>libgmpxx.a</tt>&rsquo;). The
+&lsquo;<tt>libap_ppl.a</tt>&rsquo; library contains the layer on top of PPL which
+implements the APRON interface.
+</p></li></ol>
+<p>You should look at the specific documentation of the libraries for
+more details.
+</p>
+<hr>
+<a name="C-Naming-conventions"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_7.html#APRON-Guidelines" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#C-Headers-and-Libraries" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#C-Programming-Guidelines" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Allocating-managers-and-setting-options" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_12.html#Managers-and-Abstract-Domains" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="apron.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="apron_42.html#Appendices" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="apron_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Naming-conventions-and-Allocation_002fDeallocation-schemes"></a>
+<h3 class="subsection">Naming conventions and Allocation/Deallocation schemes</h3>
+
+<p>The general rule is that all type and function names defined by the
+library are prefixed with <code>ap_</code>, in order to prevent name
+conflicts with other libraries. Moreover, functions operating on
+objects of type <code>ap_typ_t</code> are usually prefixed with
+<code>ap_typ_op</code>.
+</p>
+<p>Given an object of datatype <code>ap_typ_t*</code>, two kinds of allocation/deallocation pairs of functions may be defined:
+</p>
+<ol>
+<li>
+variable declaration: <code>ap_typ_t obj;</code>
+<ul>
+<li> Initialization:
+<code>void typ_init(ap_typ_t* arg, ...)</code> or <code>ap_typ_t ap_typ_make(...)</code>
+</li><li> Finalization:
+<code>void ap_typ_clear(ap_typ_t* arg)</code>
+</li></ul>
+<p>this pair of functions follows the semantics used in the GMP
+library. The first function initializes the object of type
+<code>ap_typ_t</code> pointed to by <var>arg</var>, and fills it with a valid
+content. The second function deallocates the memory possibly pointed
+to by fields of the object <code>*arg</code>, but do not attempt to
+deallocate the memory pointed by <var>arg</var>.
+</p></li><li>
+variable declaration: <code>ap_typ_t* obj;</code>
+<ul>
+<li> Allocation
+<code>ap_typ_t* ap_typ_alloc(...)</code>
+</li><li> Deallocation
+<code>void ap_typ_free(ap_typ_t* arg)</code>
+</li></ul>
+<p>the first function allocates an object of type <code>typ_t</code> and then
+calls a <code>ap_typ_init</code>-like function on the result; the second
+functions first call a <code>ap_typ_clear</code>-like function and then
+deallocate the memory pointed by <var>arg</var>.
+</p></li></ol>
+
+<hr>
+<a name="Allocating-managers-and-setting-options"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_7.html#APRON-Guidelines" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#C-Naming-conventions" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#C-Programming-Guidelines" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Sequel-of-the-small-example" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_12.html#Managers-and-Abstract-Domains" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="apron.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="apron_42.html#Appendices" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="apron_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Allocating-managers-and-setting-options-1"></a>
+<h3 class="subsection">Allocating managers and setting options</h3>
+
+<p>From the user point of view, the benefit of using the APRON interface
+is to restrict the place where the user is aware of the real library
+in use to the code initializing the manager, as illustrated by the
+following example:
+</p><div class="example">
+<pre class="example">#include &quot;ap_global1.h&quot;
+#include &quot;pk.h&quot;
+
+/* Allocating a Polka manager, for polyhedra with strict constraints */
+manager_t* man = pk_manager_alloc(true);
+/* Setting options offered by the common interface,
+   but with meaning possibly specific to the library */
+manager_set_abort_if_exception(man,EXC_OVERFLOW,true);
+{
+  funopt_t funopt;
+  funopt_init(&amp;funopt);
+  funopt.algorithm = 1; /* default value is 0 */
+  manager_set_funopt(man,fun_widening,&amp;funopt); /* Setting options for widening */
+}
+{
+  funopt_t funopt = manager_get_funopt(man,fun_widening);
+  funopt.timeout = 30;
+  manager_set_funopt(man,fun_widening,&amp;funopt);
+}
+/* Obtaining the internal part of the manager and setting specific options */
+pk_internal_t* pk = manager_get_internal(man);
+pk_set_max_coeff_size(pk,size);
+</pre></div>
+<p>The standard operations can then be used and will have the
+semantics defined in the interface. Notice however that some
+generic functions are not formally generic: <code>abstract_fprint</code>,
+<code>abstract_fdump</code>, <code>abstract_approximate</code>.
+At any point, options may be modified in the same way as during
+the initialization.
+</p>
+<hr>
+<a name="Sequel-of-the-small-example"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_7.html#APRON-Guidelines" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Allocating-managers-and-setting-options" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#C-Programming-Guidelines" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Typing-issue-in-C" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_12.html#Managers-and-Abstract-Domains" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="apron.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="apron_42.html#Appendices" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="apron_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Sequel-of-the-small-example-1"></a>
+<h3 class="subsection">Sequel of the small example</h3>
+<p>An environment can be created as follows:
+</p>
+<div class="smallexample">
+<pre class="smallexample">/* Create an environment with 6 real variables */
+ap_var_t name_of_dim[6] = {
+  &quot;x&quot;,&quot;y&quot;,&quot;z&quot;,&quot;u&quot;,&quot;w&quot;,&quot;v&quot;
+};
+ap_environment_t* env = ap_environment_alloc(NULL,0,name_of_dim,6);
+</pre></div>
+
+<p>Then, we build an array of constraints. At level 1, an array of
+constraints is an abstract datatype, which requires careful
+manipulation w.r.t. memory management.
+</p>
+<div class="smallexample">
+<pre class="smallexample">/* Create an array of constraints of size 2 */
+ap_lincons1_array_t array = ap_lincons1_array_make(env,2);
+
+/* 1.a Creation of an inequality constraint */
+ap_linexpr1_t expr = ap_linexpr1_make(env,AP_LINEXPR_SPARSE,1);
+ap_lincons1_t cons = ap_lincons1_make(AP_CONS_SUP,&amp;expr,NULL);
+    /* Now expr is memory-managed by cons */
+/* 1.b Fill the constraint */
+ap_lincons1_set_list(&amp;cons,
+		     AP_COEFF_S_INT,&quot;x&quot;,
+		     AP_CST_S_FRAC,1,2,
+		     AP_END);
+/* 1.c Put in the array */
+ap_lincons1_array_set(&amp;array,0,&amp;cons);
+    /* Now cons is memory-managed by array */
+
+/* 2.a Creation of an inequality constraint */
+expr = ap_linexpr1_make(env,AP_LINEXPR_SPARSE,2);
+cons = ap_lincons1_make(AP_CONS_SUPEQ,&amp;expr,NULL);
+    /* The old cons is not lost, because it is stored in the array.
+       It would be an error to clear it (same for expr). */
+/* 2.b Fill the constraint */
+ap_lincons1_set_list(&amp;cons,
+		     AP_COEFF_S_INT,1,&quot;x&quot;,
+		     AP_COEFF_S_INT,1,&quot;y&quot;,
+		     AP_COEFF_S_INT,1,&quot;z&quot;,
+		     AP_END);
+/* 2.c Put in the array */
+ap_lincons1_array_set(&amp;array,1,&amp;cons);
+</pre></div>
+
+<p>Last we can build an abstract value.
+</p>
+<div class="smallexample">
+<pre class="smallexample">/* Creation of an abstract value defined by the array of constraints */
+ap_abstract1_t abs = ap_abstract1_of_lincons_array(man,env,&amp;array);
+
+fprintf(stdout,&quot;Abstract value:\n&quot;);
+ap_abstract1_fprint(stdout,man,&amp;abs);
+</pre></div>
+
+<p>We  now deallocate everything:
+</p>
+<div class="smallexample">
+<pre class="smallexample">/* deallocation */
+ap_lincons1_array_clear(&amp;array);
+ap_abstract1_clear(&amp;abs);
+ap_environment_free(env);
+ap_manager_free(man);
+</pre></div>
+
+<hr>
+<a name="Typing-issue-in-C"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_7.html#APRON-Guidelines" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Sequel-of-the-small-example" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#C-Programming-Guidelines" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="apron_10.html#OCaml-Programming-Guidelines" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_12.html#Managers-and-Abstract-Domains" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="apron.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="apron_42.html#Appendices" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="apron_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Typing-issue-in-C-1"></a>
+<h3 class="subsection">Typing issue in C</h3>
+
+<p>The use of several libraries at the same time via the common
+interface and the managers associated to each library raises the
+problem of typing. Look at the following code:
+</p>
+<div class="example">
+<pre class="example">ap_manager_t* manpk = pk_manager_alloc(true); /* manager for Polka */
+ap_manager_t* manoct = oct_manager_alloc();    /* manager for octagon */
+
+ap_abstract0_t* abs1 = ap_abstract_top(manpk,3,3);
+ap_abstract0_t* abs2 = ap_abstract_top(manoct,3,3);
+bool b = ap_abstract0_is_eq(manoct,abs1,abs2);
+  /* Problem: the effective function called (octagon_is_eq) expects
+     abs1 to be an octagon, and not a polyhedron ! */
+
+ap_abstract0_t* abs3 = ap_abstract_top(manoct,3,3);
+abstract0_meet_with(manpk,abs2,abs3);
+  /* Problem: the effective function called (pk_meet_with) expects
+     abs2 and abs3 to be polyhedra, but they are octagons */
+</pre></div>
+
+<p>There is actually no static typing, as <code>abstract0_t*</code>
+and <code>manager_t</code> are abstract types shared by the different
+libraries. Types are thus dynamically checked by the interface.
+Notice that the use of <em>C++</em> and inheritance would not solve
+directly the problem, if functions of the interface are methods of
+the manager; one would have:
+</p>
+<div class="example">
+<pre class="example">ap_manager_t* manpk = pk_manager_alloc(true);
+  /* manager for Polka, effective type pk_manager_t* */
+ap_manager_t* manoct = oct_manager_alloc();
+  /* manager for octagon, effective type oct_manager_t* */
+
+ap_abstract0_t* abs1 = manpk-&gt;abstract_top(3,3);
+  /* effective type: poly_t */
+ap_abstract0_t* abs2 = manoct-&gt;abstract_top(3,3);
+  /* effective type: oct_t */
+bool b = manoct-&gt;abstract0_is_eq(abs1,abs2);
+  /* No static typing possible:
+     manpk-&gt;abstract0_is_eq and manoct-&gt;abstract0_is_eq should have the same
+     signature (otherwise one cannot interchange manpk and manoct in the code),
+     which means that abs1 and abs2 are supposed to be of type abstract0_t* */
+*/
+</pre></div>
+
+<p>Currently, only the OCaml polymorphic type system allows to solve
+elegantly this problem.
+</p>
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_7.html#APRON-Guidelines" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Sequel-of-the-small-example" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#C-Programming-Guidelines" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="apron_10.html#OCaml-Programming-Guidelines" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_12.html#Managers-and-Abstract-Domains" title="Next chapter"> &gt;&gt; </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated on <i>November 9, 2019</i> using <a href="http://www.nongnu.org/texi2html/"><i>texi2html 5.0</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

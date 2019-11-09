@@ -1,0 +1,441 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="Start" href="index.html">
+<link rel="next" href="Scalar.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Introduction" rel="Chapter" href="Introduction.html">
+<link title="Scalar" rel="Chapter" href="Scalar.html">
+<link title="Interval" rel="Chapter" href="Interval.html">
+<link title="Coeff" rel="Chapter" href="Coeff.html">
+<link title="Dim" rel="Chapter" href="Dim.html">
+<link title="Linexpr0" rel="Chapter" href="Linexpr0.html">
+<link title="Lincons0" rel="Chapter" href="Lincons0.html">
+<link title="Generator0" rel="Chapter" href="Generator0.html">
+<link title="Texpr0" rel="Chapter" href="Texpr0.html">
+<link title="Tcons0" rel="Chapter" href="Tcons0.html">
+<link title="Manager" rel="Chapter" href="Manager.html">
+<link title="Abstract0" rel="Chapter" href="Abstract0.html">
+<link title="Var" rel="Chapter" href="Var.html">
+<link title="Environment" rel="Chapter" href="Environment.html">
+<link title="Linexpr1" rel="Chapter" href="Linexpr1.html">
+<link title="Lincons1" rel="Chapter" href="Lincons1.html">
+<link title="Generator1" rel="Chapter" href="Generator1.html">
+<link title="Texpr1" rel="Chapter" href="Texpr1.html">
+<link title="Tcons1" rel="Chapter" href="Tcons1.html">
+<link title="Abstract1" rel="Chapter" href="Abstract1.html">
+<link title="Policy" rel="Chapter" href="Policy.html">
+<link title="Disjunction" rel="Chapter" href="Disjunction.html">
+<link title="Version" rel="Chapter" href="Version.html">
+<link title="Parser" rel="Chapter" href="Parser.html">
+<link title="Box" rel="Chapter" href="Box.html">
+<link title="Oct" rel="Chapter" href="Oct.html">
+<link title="Polka" rel="Chapter" href="Polka.html">
+<link title="Ppl" rel="Chapter" href="Ppl.html">
+<link title="PolkaGrid" rel="Chapter" href="PolkaGrid.html">
+<link title="Mpz" rel="Chapter" href="Mpz.html">
+<link title="Mpq" rel="Chapter" href="Mpq.html">
+<link title="Gmp_random" rel="Chapter" href="Gmp_random.html">
+<link title="Mpf" rel="Chapter" href="Mpf.html">
+<link title="Mpfr" rel="Chapter" href="Mpfr.html">
+<link title="Mpzf" rel="Chapter" href="Mpzf.html">
+<link title="Mpqf" rel="Chapter" href="Mpqf.html">
+<link title="Mpfrf" rel="Chapter" href="Mpfrf.html"><link title="Requirements and installation" rel="Section" href="#2_Requirementsandinstallation">
+<link title="Hints on programming idioms" rel="Section" href="#hints">
+<link title="Compiling and linking client programs against APRON" rel="Section" href="#compilation">
+<link title="Installation" rel="Subsection" href="#3_Installation">
+<link title="Allocating managers" rel="Subsection" href="#3_Allocatingmanagers">
+<link title="Breaking (locally) genericity" rel="Subsection" href="#3_Breakinglocallygenericity">
+<title>Introduction</title>
+</head>
+<body>
+<div class="navbar">&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;<a class="post" href="Scalar.html" title="Scalar">Next</a>
+</div>
+<h1>Module <a href="type_Introduction.html">Introduction</a></h1>
+
+<pre><span id="MODULEIntroduction"><span class="keyword">module</span> Introduction</span>: <code class="code"><span class="keyword">sig</span></code> <a href="Introduction.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
+</div>
+<hr width="100%">
+<p>This package is an OCaml interface for the APRON
+library/interface.  The interface is accessed via the module
+Apron, which is decomposed into 15 submodules, corresponding to C
+modules, and which can be organized in 4 groups</p>
+
+<OL>
+<li><b>Coefficients</b>: scalar numbers, intervals, ...
+</li>
+<li><b>Managers and Abstract Domains</b>
+<ul>
+<li><a href="Manager.html"><code class="code"><span class="constructor">Manager</span></code></a>: managers</li>
+<li><a href="Box.html"><code class="code"><span class="constructor">Box</span></code></a>: interval domain</li>
+<li><a href="Oct.html"><code class="code"><span class="constructor">Oct</span></code></a>: octagon domain</li>
+<li><a href="Polka.html"><code class="code"><span class="constructor">Polka</span></code></a>: convex polyhedra and linear equalities domains</li>
+<li><code class="code"><span class="constructor">T1p</span></code>: Taylor1plus abstract domain</li>
+<li><a href="Ppl.html"><code class="code"><span class="constructor">Ppl</span></code></a>:  PPL convex polyhedra and linear congruences domains</li>
+<li><a href="PolkaGrid.html"><code class="code"><span class="constructor">PolkaGrid</span></code></a>: reduced product of convex polyhedra and PPL linear congruences</li>
+</ul>
+
+</li>
+<li><b>Level 1 of the interface (user-level)</b>: manipulation of generic datatypes (expressions, constraints, ..., and generic abstract domain interface)</li>
+<li><b>Level 0 of the interface (lower-level)</b>: manipulation of generic datatypes (expressions, constraints, ..., and generic abstract domain interface)</li>
+</OL>
+<h3 id="2_Requirementsandinstallation">Requirements and installation</h3><p>(See README of general APRON distribution for more details)</p>
+
+<ul>
+<li>APRON library</li>
+<li>GMP library version 4.2 or up (tested with version 4.2.1 and 4.3.1)</li>
+<li>MPFR library version 2.2 or up (tested with version 2.2.1 and 2.3.1)</li>
+<li>MLGMPIDL to GMP and MPFR libraries</li>
+<li>OCaml 3.09 or up</li>
+<li>Camlidl (tested with 1.05)</li>
+</ul>
+
+<p>For compiling from repository (strongly recommended):</p>
+<ul>
+<li>GNU M4 preprocessor</li>
+<li>GNU sed</li>
+</ul>
+<p>It is important to have the GNU versions !</p>
+<h4 id="3_Installation">Installation</h4><ul>
+<li><b>Library</b>:
+
+Set the file <code class="code">../<span class="constructor">Makefile</span>.config</code> to your own setting.
+
+type 'make', and then 'make install'
+
+The OCaml part of the library is named <code class="code">apron.cma</code> (<code class="code">.cmxa</code>, <code class="code">.a</code>). The C
+part of the library, which is automatically referenced by
+<code class="code">apron.cma/apron.cmxa</code>, is named <code class="code">libapron_caml.a</code>,
+<code class="code">libapron_caml.so</code>, <code class="code">dllapron_caml.so</code> (which is a soft link to the
+previous library) (debug versions: <code class="code">libapron_caml_debug.a</code>,
+<code class="code">libapron_caml_debug.so</code>, <code class="code">dllapron_caml_debug.so</code>)
+
+'make install' installs not only <code class="code">.mli</code>, <code class="code">.cmi</code>, but also <code class="code">.idl</code> files.
+</li>
+<li><b>Documentation</b>:
+
+The documentation is generated with ocamldoc.
+
+'make mlapronidl.pdf'
+
+'make html' (put the HTML files in the html subdirectoy)
+</li>
+<li><b>Miscellaneous</b>:
+
+'make clean' and 'make distclean' have the usual behaviour.
+</li>
+</ul>
+<h3 id="hints">Hints on programming idioms</h3><h4 id="3_Allocatingmanagers">Allocating managers</h4><p>The user might have some difficulties to exploit the genericity of
+the interface at first glance (it was actually my case).</p>
+
+<p>Assume your main analysis function looks like:</p>
+<pre class="codepre"><code class="code"><span class="keyword">let</span> analyze_and_display equations (man : <span class="keywordsign">'</span>a <span class="constructor">Apron</span>.<span class="constructor">Manager</span>.t) : unit =
+  ... </code></pre>
+<p>where <code class="code">equations</code> is the equation system, <code class="code">man</code> the APRON manager,
+and <code class="code"><span class="keywordsign">'</span>a</code> the effective abstract domain/implementation to be used
+in the analysis.</p>
+
+<OL>
+<li>You might want to write code like
+
+<pre class="codepre"><code class="code"><span class="keyword">let</span> manager_alloc option = <span class="keyword">match</span> option <span class="keyword">with</span>
+  <span class="keywordsign">|</span> <span class="keywordsign">`</span><span class="constructor">Box</span> <span class="keywordsign">-&gt;</span> <span class="constructor">Box</span>.manager_alloc ()
+  <span class="keywordsign">|</span> <span class="keywordsign">`</span><span class="constructor">Oct</span> <span class="keywordsign">-&gt;</span> <span class="constructor">Oct</span>.manager_alloc ()
+;;
+<span class="keyword">let</span> main option equations =
+  <span class="keyword">let</span> man = manager_alloc opt <span class="keyword">in</span>
+  analyze_and_display man equations
+;;</code></pre>
+
+but this does not work because <code class="code">manager_alloc</code> cannot be typed
+(the types of <code class="code">(<span class="constructor">Box</span>.manager_alloc&nbsp;())&nbsp;:&nbsp;<span class="constructor">Box</span>.t&nbsp;<span class="constructor">Apron</span>.<span class="constructor">Manager</span>.t</code> and
+<code class="code">(<span class="constructor">Oct</span>.manager_alloc&nbsp;())&nbsp;:&nbsp;<span class="constructor">Oct</span>.t&nbsp;<span class="constructor">Apron</span>.<span class="constructor">Manager</span>.t</code> cannot be
+unified).
+</li>
+<li>Using continuations does not work either:
+
+<pre class="codepre"><code class="code"><span class="keyword">let</span> manager_alloc_and_continue option (continuation:<span class="keywordsign">'</span>a <span class="constructor">Apron</span>.<span class="constructor">Manager</span>.t <span class="keywordsign">-&gt;</span> <span class="keywordsign">'</span>b) =
+  <span class="keyword">match</span> option <span class="keyword">with</span>
+  <span class="keywordsign">|</span> <span class="keywordsign">`</span><span class="constructor">Box</span> <span class="keywordsign">-&gt;</span> continuation (<span class="constructor">Box</span>.manager_alloc ())
+  <span class="keywordsign">|</span> <span class="keywordsign">`</span><span class="constructor">Oct</span> <span class="keywordsign">-&gt;</span> continuation (<span class="constructor">Oct</span>.manager_alloc ())
+;;
+<span class="keyword">let</span> main option equations =
+  manager_alloc_and_continue option
+    (<span class="keyword">fun</span> apron <span class="keywordsign">-&gt;</span> analyze_and_display equations equations apron)
+;;</code></pre>
+
+because the argument <code class="code">continuation</code> is
+monomorphic inside the body of <code class="code">manager_alloc_and_continue</code> (i.e,
+it is not generalized):
+
+<pre class="codepre"><code class="code"><span class="keyword">let</span> manager_alloc_and_continue option (continuation:<span class="keywordsign">'</span>a <span class="constructor">Apron</span>.<span class="constructor">Manager</span>.t <span class="keywordsign">-&gt;</span> <span class="keywordsign">'</span>b) =
+    <span class="keyword">match</span> option <span class="keyword">with</span>
+    <span class="keywordsign">|</span> <span class="keywordsign">`</span><span class="constructor">Box</span> <span class="keywordsign">-&gt;</span> continuation (<span class="constructor">Box</span>.manager_alloc ())
+    <span class="keywordsign">|</span> <span class="keywordsign">`</span><span class="constructor">Oct</span> <span class="keywordsign">-&gt;</span> continuation (<span class="constructor">Oct</span>.manager_alloc ())
+;;                          ^^^^^^^^^^^^^^^^^^^^
+<span class="constructor">Error</span>: <span class="constructor">This</span> expression has <span class="keyword">type</span> <span class="constructor">Oct</span>.t <span class="constructor">Apron</span>.<span class="constructor">Manager</span>.t
+       but an expression was expected <span class="keyword">of</span> <span class="keyword">type</span> <span class="constructor">Box</span>.t <span class="constructor">Apron</span>.<span class="constructor">Manager</span>.t</code></pre>
+You can read detailed explanations about this issue on
+<a href="http://caml.inria.fr/pub/old_caml_site/FAQ/FAQ_EXPERT-eng.html#arguments_polymorphes">OCaml FAQ</a>.
+</li>
+</OL>
+
+<p>I can suggest 3 solutions:</p>
+<OL>
+<li>Following <a href="http://caml.inria.fr/pub/old_caml_site/FAQ/FAQ_EXPERT-eng.html#arguments_polymorphes">OCaml FAQ</a>, you can modify attempt 2 above as follows:
+
+<pre class="codepre"><code class="code"><span class="keyword">let</span> manager_alloc_and_continue option equations =
+  <span class="keyword">match</span> option <span class="keyword">with</span>
+  <span class="keywordsign">|</span> <span class="keywordsign">`</span><span class="constructor">Box</span> <span class="keywordsign">-&gt;</span> analyze_and_display equations (<span class="constructor">Box</span>.manager_alloc ())
+  <span class="keywordsign">|</span> <span class="keywordsign">`</span><span class="constructor">Oct</span> <span class="keywordsign">-&gt;</span> analyze_and_display equations (<span class="constructor">Oct</span>.manager_alloc ())
+;;
+<span class="keyword">let</span> main option equations =
+  manager_alloc_and_continue option equations
+;;</code></pre>
+
+Now this can be type-checked:
+
+<pre class="codepre"><code class="code"><span class="keyword">val</span> manager_alloc_and_continue : [&lt; <span class="keywordsign">`</span><span class="constructor">Box</span> <span class="keywordsign">|</span> <span class="keywordsign">`</span><span class="constructor">Oct</span> ] <span class="keywordsign">-&gt;</span> <span class="keywordsign">'</span>a <span class="keywordsign">-&gt;</span> unit = &lt;<span class="keyword">fun</span>&gt;</code></pre>
+
+This is not very elegant: the call to
+<code class="code">analyze_and_display</code> is hard-coded in
+<code class="code">manager_alloc_and_continue</code>, and one has to pass all its arguments (like <code class="code">equations</code>) to
+<code class="code">manager_alloc_and_continue</code>.
+</li>
+<li>It is possible to not give up with continuations by encapsulating them into a record (resp. an immediate  object), because record fields (resp. methods) may be polymorphic.
+
+<ul>
+<li>Using records:
+
+<pre class="codepre"><code class="code"><span class="keyword">type</span> continuation = {
+  f : <span class="keywordsign">'</span>a. <span class="keywordsign">'</span>a <span class="constructor">Apron</span>.<span class="constructor">Manager</span>.t <span class="keywordsign">-&gt;</span> unit;
+};;
+<span class="keyword">let</span> manager_alloc_and_continue option (continuation:continuation) =
+  <span class="keyword">match</span> option <span class="keyword">with</span>
+  <span class="keywordsign">|</span> <span class="keywordsign">`</span><span class="constructor">Box</span> <span class="keywordsign">-&gt;</span> continuation.f (<span class="constructor">Box</span>.manager_alloc ())
+  <span class="keywordsign">|</span> <span class="keywordsign">`</span><span class="constructor">Oct</span> <span class="keywordsign">-&gt;</span> continuation.f (<span class="constructor">Oct</span>.manager_alloc ())
+;;
+<span class="keyword">let</span> main option equations =
+  manager_alloc_and_continue option
+    {f = <span class="keyword">fun</span> apron <span class="keywordsign">-&gt;</span> analyze_and_display equations apron}
+;;</code></pre>
+
+</li>
+<li>Using immediate objects:
+
+<pre class="codepre"><code class="code"><span class="keyword">type</span> continuation = &lt; f : <span class="keywordsign">'</span>a. <span class="keywordsign">'</span>a <span class="constructor">Apron</span>.<span class="constructor">Manager</span>.t <span class="keywordsign">-&gt;</span> unit &gt;;;
+<span class="keyword">let</span> manager_alloc_and_continue option (continuation:continuation) =
+  <span class="keyword">match</span> option <span class="keyword">with</span>
+  <span class="keywordsign">|</span> <span class="keywordsign">`</span><span class="constructor">Box</span> <span class="keywordsign">-&gt;</span> continuation<span class="keywordsign">#</span>f (<span class="constructor">Box</span>.manager_alloc ())
+  <span class="keywordsign">|</span> <span class="keywordsign">`</span><span class="constructor">Oct</span> <span class="keywordsign">-&gt;</span> continuation<span class="keywordsign">#</span>f (<span class="constructor">Oct</span>.manager_alloc ())
+;;
+<span class="keyword">let</span> main option equations =
+  manager_alloc_and_continue option
+    (<span class="keyword">object</span> <span class="keyword">method</span> f: <span class="keywordsign">'</span>a .<span class="keywordsign">'</span>a <span class="constructor">Apron</span>.<span class="constructor">Manager</span>.t <span class="keywordsign">-&gt;</span> unit =
+       <span class="keyword">fun</span> apron <span class="keywordsign">-&gt;</span> analyze_and_display equations apron
+    <span class="keyword">end</span>)
+;;</code></pre>
+
+Compared to records, using immediate objects requires to repeat polymorphic type annotations. On the other hand, one does not need to define a new type <code class="code">continuation</code>:
+
+<pre class="codepre"><code class="code"><span class="keyword">let</span> manager_alloc_and_continue option (continuation:&lt; f : <span class="keywordsign">'</span>a. <span class="keywordsign">'</span>a <span class="constructor">Apron</span>.<span class="constructor">Manager</span>.t <span class="keywordsign">-&gt;</span> unit &gt;)
+  <span class="keyword">match</span> option <span class="keyword">with</span>
+  <span class="keywordsign">|</span> <span class="keywordsign">`</span><span class="constructor">Box</span> <span class="keywordsign">-&gt;</span> continuation<span class="keywordsign">#</span>f (<span class="constructor">Box</span>.manager_alloc ())
+  <span class="keywordsign">|</span> <span class="keywordsign">`</span><span class="constructor">Oct</span> <span class="keywordsign">-&gt;</span> continuation<span class="keywordsign">#</span>f (<span class="constructor">Oct</span>.manager_alloc ())
+;;
+<span class="keyword">let</span> main option equations =
+  manager_alloc_and_continue option
+    (<span class="keyword">object</span> <span class="keyword">method</span> f: <span class="keywordsign">'</span>a .<span class="keywordsign">'</span>a <span class="constructor">Apron</span>.<span class="constructor">Manager</span>.t <span class="keywordsign">-&gt;</span> unit =
+       <span class="keyword">fun</span> apron <span class="keywordsign">-&gt;</span> analyze_and_display equations apron
+    <span class="keyword">end</span>)
+;;</code></pre>
+</li>
+</ul>
+</li>
+<li>A last possibility is to use the type conversion functions
+provided in <a href="Box.html"><code class="code"><span class="constructor">Box</span></code></a> and <a href="Oct.html"><code class="code"><span class="constructor">Oct</span></code></a> (as well as in the
+other domain modules). One can modify attempt 1 as follows:
+
+<pre class="codepre"><code class="code"><span class="keyword">let</span> manager_alloc option = <span class="keyword">match</span> option <span class="keyword">with</span>
+  <span class="keywordsign">|</span> <span class="keywordsign">`</span><span class="constructor">Box</span> <span class="keywordsign">-&gt;</span> <span class="constructor">Box</span>.manager_of_box (<span class="constructor">Box</span>.manager_alloc ())
+  <span class="keywordsign">|</span> <span class="keywordsign">`</span><span class="constructor">Oct</span> <span class="keywordsign">-&gt;</span> <span class="constructor">Oct</span>.manager_of_oct (<span class="constructor">Oct</span>.manager_alloc ())
+;;
+<span class="keyword">let</span> main option equations =
+  <span class="keyword">let</span> man = manager_alloc opt <span class="keyword">in</span>
+  analyze_and_display man equations
+;;</code></pre>
+
+<pre class="codepre"><code class="code"><span class="keyword">val</span> manager_alloc : [&lt; <span class="keywordsign">`</span><span class="constructor">Box</span> <span class="keywordsign">|</span> <span class="keywordsign">`</span><span class="constructor">Oct</span> ] <span class="keywordsign">-&gt;</span> <span class="keywordsign">'</span>a <span class="constructor">Apron</span>.<span class="constructor">Manager</span>.t = &lt;<span class="keyword">fun</span>&gt;</code></pre>
+
+The purpose of functions <a href="Box.html#VALmanager_of_box"><code class="code"><span class="constructor">Box</span>.manager_of_box</code></a> and <a href="Oct.html#VALmanager_of_oct"><code class="code"><span class="constructor">Oct</span>.manager_of_oct</code></a> is
+to generalize the type of their arguments
+(this is implemented with the <code class="code"><span class="constructor">Obj</span>.magic</code> function... but this is safe).
+
+This is the most simple and flexible way.
+</li>
+</OL>
+<h4 id="3_Breakinglocallygenericity">Breaking (locally) genericity</h4><p>Assume that you are inside the body of the same</p>
+
+<pre class="codepre"><code class="code">analyze_and_display: equations <span class="keywordsign">-&gt;</span> <span class="keywordsign">'</span>a <span class="constructor">Apron</span>.<span class="constructor">Manager</span>.t <span class="keywordsign">-&gt;</span> unit</code></pre>
+<p>function and that you want at some point</p>
+<ul>
+<li>either to modify an option of the manager <code class="code">man</code>, depending on the
+  effective underlying domain
+  (like <a href="Polka.html#VALset_max_coeff_size"><code class="code"><span class="constructor">Polka</span>.set_max_coeff_size</code></a>);</li>
+<li>or similarly to perform a specific operation on an abstract value.</li>
+</ul>
+<p>You can modify the solution 1 above so as to pass a
+<code class="code">modify:&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Apron</span>.<span class="constructor">Manager</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit</code> function to <code class="code">analyze_and_display</code>:</p>
+<pre class="codepre"><code class="code"><span class="keyword">let</span> analyze_and_display equations
+      (man : <span class="keywordsign">'</span>a <span class="constructor">Apron</span>.<span class="constructor">Manager</span>.t)
+      (modify : <span class="keywordsign">'</span>a <span class="constructor">Apron</span>.<span class="constructor">Manager</span>.t <span class="keywordsign">-&gt;</span> unit)
+  =
+  ...
+;;
+<span class="keyword">let</span> manager_alloc_and_continue option equations =
+  <span class="keyword">match</span> option <span class="keyword">with</span>
+  <span class="keywordsign">|</span> <span class="keywordsign">`</span><span class="constructor">Box</span> <span class="keywordsign">-&gt;</span> analyze_and_display equations (<span class="constructor">Box</span>.manager_alloc ()) box_modify
+  <span class="keywordsign">|</span> <span class="keywordsign">`</span><span class="constructor">Oct</span> <span class="keywordsign">-&gt;</span> analyze_and_display equations (<span class="constructor">Oct</span>.manager_alloc ()) oct_modify
+;;
+<span class="keyword">let</span> main option equations =
+  manager_alloc_and_continue option equations
+;;</code></pre>
+<p>The most flexible way however is to use the ``dynamic cast''
+functions <a href="Box.html#VALmanager_to_box"><code class="code"><span class="constructor">Box</span>.manager_to_box</code></a>, <a href="Box.Abstract0.html#VALto_box"><code class="code"><span class="constructor">Box</span>.<span class="constructor">Abstract0</span>.to_box</code></a>,
+<a href="Oct.html#VALmanager_to_oct"><code class="code"><span class="constructor">Oct</span>.manager_to_oct</code></a>, <a href="Oct.Abstract0.html#VALto_oct"><code class="code"><span class="constructor">Oct</span>.<span class="constructor">Abstract0</span>.to_oct</code></a>. These functions
+raise a <code class="code"><span class="constructor">Failure</span></code> exception in case of (dynamic) typing error, but
+this can be avoided by the test functions <a href="Box.html#VALmanager_is_box"><code class="code"><span class="constructor">Box</span>.manager_is_box</code></a>
+and <a href="Oct.html#VALmanager_is_oct"><code class="code"><span class="constructor">Oct</span>.manager_is_oct</code></a></p>
+<h3 id="compilation">Compiling and linking client programs against APRON</h3><p>To make things clearer, we assume an example file
+<code class="code">mlexample.ml</code> which uses both NewPolka (convex
+polyhedra) and Box (intervals) libraries, in their
+versions where rationals are GMP rationals (which is the default).
+We assume that C and OCaml interface and library files are located
+in directory $APRON/lib.</p>
+
+<p>The native-code compilation command looks like</p>
+
+<pre class="codepre"><code class="code"> ocamlopt -I $APRON/lib -o mlexample.opt \
+   bigarray.cmxa gmp.cmxa apron.cmxa boxMPFR.cmxa polkaMPQ.cmxa mlexample.ml</code></pre><p>Comments:</p>
+<OL>
+<li>You need at least the libraries <code class="code">bigarray</code> (standard
+   OCaml distribution), <code class="code">gmp</code>, and <code class="code">apron</code>
+   (standard APRON distribution), plus the one implementing an
+   effective abstract domains: here, <code class="code">boxMPFR</code>, and
+   <code class="code">polkaMPQ</code>.</li>
+<li>The C libraries associated to those OCaml libraries
+   (e.g., <code class="code">gmp_caml</code>, <code class="code">boxMPFR_caml</code>, \ldots)
+   are automatically looked for, as well as the the libraries
+   implementing abstract domains (e.g., <code class="code">polkaMPQ</code>,
+   <code class="code">boxMPFR</code>).
+
+   If other versions of abstract domains library are wanted, you
+   should use the <code class="code">-noautolink</code> option as explained below.</li>
+<li>If in <code class="code"><span class="constructor">Makefile</span>.config</code>, the <code class="code"><span class="constructor">HAS_SHARED</span></code>
+  variable is set to a non-empty value, dynamic versions of those
+  libraires are also available, but makes sure that all the needed
+  libraries are in the dynamic search path indicated by
+  <code class="code">$<span class="constructor">LD_LIBRARY_PATH</span></code>.</li>
+</OL>
+
+<p>If dynamic libraries are available, the byte-code compilation
+process looks like</p>
+
+<pre class="codepre"><code class="code"> ocamlc -I $MLGMPIDL/lib -I $APRON/lib -o mlexample.byte \
+   bigarray.cma gmp.cma apron.cma boxMPFR.cma polkaMPQ.cma mlexample.ml </code></pre><p>Comments:</p>
+<OL>
+<li>The ocamlrun bytecode interpreter will automatically load
+  the dynamic libraries, using environment variables
+  <code class="code">$<span class="constructor">LD_LIBRARY_PATH</span></code> (and possibly
+  <code class="code">$<span class="constructor">CAML_LD_LIBRARY_PATH</span></code>, see OCaml documentation,
+  section on OCaml/C interface).</li>
+<li>You can very easily use the interactive toplevel
+  interpreter: type <code class="code"><span class="keywordsign">'</span>ocaml&nbsp;-<span class="constructor">I</span>&nbsp;$<span class="constructor">MLGMPIDL</span>/lib&nbsp;-<span class="constructor">I</span>&nbsp;$<span class="constructor">APRON</span>/lib'</code>
+  and then enter:
+
+<pre class="codepre"><code class="code">    <span class="keywordsign">#</span>load <span class="string">"bigarray.cma"</span>;;
+    <span class="keywordsign">#</span>load <span class="string">"gmp.cma"</span>;;
+    <span class="keywordsign">#</span>load <span class="string">"apron.cma"</span>;;
+    <span class="keywordsign">#</span>load <span class="string">"polkaMPQ.cma"</span>;;
+    ... </code></pre>
+</li>
+<li>This is also the only way to load and use in the OCaml
+  debugger pretty-printers depending on C code, like
+
+<pre class="codepre"><code class="code">    <span class="keywordsign">#</span>load <span class="string">"bigarray.cma"</span>;;
+    <span class="keywordsign">#</span>load <span class="string">"gmp.cma"</span>;;
+    <span class="keywordsign">#</span>load <span class="string">"apron.cma"</span>;;
+
+    <span class="keywordsign">#</span>installl_printer <span class="constructor">Apron</span>.<span class="constructor">Abstract1</span>.print;; </code></pre>
+</li>
+</OL>
+
+<p>If only static libraries are available, you can:</p>
+<OL>
+<li>Create a custom runtime and use it as follows:
+
+<pre class="codepre"><code class="code">     ocamlc -I $MLGMPIDL/lib -I $APRON/lib -make-runtime -o myrun \
+       bigarray.cma gmp.cma apron.cma boxMPFR.cma polkaMPQ.cma
+
+     ocamlc -I $MLGMPIDL/lib -I $APRON/lib -use-runtime myrun -o \mlexample.byte \
+       bigarray.cma gmp.cma apron.cma box.cma polka.cma mlexample.ml </code></pre>
+  Comments:
+  <OL>
+<li>One first build a custom bytecode interpreter that
+    includes the new native-code needed; </li>
+<li>One then compile the <code class="code">mlexample.ml</code> file, using the
+    generated bytecode interpreter. </li>
+</OL>
+
+</li>
+<li>If you want to use the interactive toplevel interpreter, you
+  have to generate a custom toplevel interpreter using the
+  <code class="code">ocamlmktop</code> command (see OCaml documentation, section on
+  OCaml/C interface):
+
+<pre class="codepre"><code class="code">     ocamlmktop -I $MLGMPIDL/lib -I $APRON/lib -o mytop \
+       bigarray.cma gmp.cma apron.cma boxMPFR.cma polkaMPQ.cma </code></pre>
+</li>
+</OL>
+
+<p>The automatic search for C libraries associated to these
+OCaml libraries can be disabled by the option
+<code class="code">-noautolink</code> supported by both <code class="code">ocamlc</code> and
+<code class="code">ocamlopt</code> commands. For instance, the command for
+native-code compilation can alternatively looks like:</p>
+
+<pre class="codepre"><code class="code">  ocamlopt -I $MLGMPIDL/lib -I $APRON/lib -noautolink -o mlexample.opt \
+    bigarray.cmxa gmp.cmxa apron.cmxa boxMPFR.cmxa polkaMPQ.cmxa mlexample.ml \
+    -cclib "-L$MLGMPIDL/lib -L$APRON/lib \
+	    -lpolkaMPQ_caml_debug -lpolkaMPQ_debug \
+	    -lboxMPFR_caml_debug -lboxMPFR_debug \
+	    -lapron_caml_debug -lapron_debug \
+	    -lgmp_caml -L$MPFR -lmpfr -L$GMP/lib -lgmp \
+	    -L$CAMLIDL/lib/ocaml -lcamlidl \
+	    -lbigarray" </code></pre><p>or more simply, if dynamic libraries are available (because some
+dynamic libraries are automatically referenced by others):</p>
+
+<pre class="codepre"><code class="code">  ocamlopt -I $MLGMPIDL/lib -I $APRON/lib -noautolink -o mlexample.opt \
+    bigarray.cmxa gmp.cmxa apron.cmxa boxMPFR.cmxa polkaMPQ.cmxa mlexample.ml \
+    -cclib "-L$MLGMPIDL/lib -L$APRON/lib \
+	    -lpolkaMPQ_caml_debug \
+	    -lboxMPFR_caml_debug \
+	    -lapron_caml_debug \
+	    -lgmp_caml \
+	    -lbigarray" </code></pre><p>This is mandatory if you want to use non-default versions of
+libraries (here, debug versions).</p>
+
+<p>The option <code class="code">-verbose</code> helps to understand what is happening
+in case of problem.</p>
+
+<p>More details are given in the modules implementing a specific
+abstract domain.</p>
+</body></html>

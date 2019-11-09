@@ -1,0 +1,266 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on November 9, 2019 by texi2html 5.0
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>APRON 0.9.10: General choices</title>
+
+<meta name="description" content="APRON 0.9.10: General choices">
+<meta name="keywords" content="APRON 0.9.10: General choices">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html 5.0">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="General-choices"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_3.html#APRON-Rationale-and-Functionalities" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_3.html#APRON-Rationale-and-Functionalities" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_3.html#APRON-Rationale-and-Functionalities" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="apron_5.html#Functionalities-of-the-interface-at-level-0" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_7.html#APRON-Guidelines" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="apron.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="apron_42.html#Appendices" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="apron_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="General-choices-1"></a>
+<h2 class="section">General choices</h2>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Interface-levels">Interface levels</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">            
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Programming-language">Programming language</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">        
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Compatibility-with-threads">Compatibility with threads</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">  
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Interruptions">Interruptions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">               
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Memory-management">Memory management</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Programming-style">Programming style</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">           
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Number-representation">Number representation</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">       
+</td></tr>
+</table>
+
+<a name="Interface-levels"></a>
+<a name="Interface-levels-1"></a>
+<h4 class="subsubheading">Interface levels</h4>
+
+<p>There are two main goals for the APRON interface: efficiency of the
+implementations, and ease of use for the user. In addition, code
+duplication between libraries should be avoided. As a consequence, two
+levels were identified:
+</p><dl compact="compact">
+<dt><em>Level 0</em></dt>
+<dd><p>Choices are guided by the efficiency and the precision of the operations;
+</p></dd>
+<dt><em>Level 1</em></dt>
+<dd><p>Choices are guided by ease of use, and code factorization.
+</p></dd>
+</dl>
+
+<p>The level 0 is directly connected to the underlying (existing)
+library. It includes all the operations that are specific to an
+abstract domain and whose code cannot be shared. The interface should
+be minimal, <em>unless</em> there is a strong algorithmical advantage to
+include a combination of more basic operations.
+</p>
+<p>The higher levels offers additional functionalities that are shared by
+all the library connected to the level 0. For instance:
+</p>
+<ul>
+<li>
+managing correspondance between numerical dimensions and names
+(characters strings or more generally references);
+</li><li>
+abstraction of non linear expressions in interval linear expressions;
+</li><li>
+automatic call to redimensioning and permutation operations for
+computing
+P(x,y)/\Q(y,z).
+</li></ul>
+
+<p>Combination of abstract domain is possible at the level 0. One can
+implement for instance the cartesian or reduced product of two
+different abstract domains, the decomposition of abstract values into
+a product of values of smaller dimensionality, ...
+</p>
+<a name="Programming-language"></a>
+<a name="Programming-language-1"></a>
+<h4 class="subsubheading">Programming language</h4>
+
+<p>The reference version of the interface is the C version of the interface:
+</p>
+<ul>
+<li>
+C can be easily interfaced with most programming languages;
+</li><li>
+Most of the existing libraries implementing abstract domains for
+numerical variables are programmed in C or C++.
+</li></ul>
+
+<p>An <small>OCAML</small> version is already available. The interface between
+OCaml and C is even generic and any libraries can benefit from it by
+providing the glue for just one function (see XX).
+</p>
+<a name="Compatibility-with-threads"></a>
+<a name="Compatibility-with-threads-1"></a>
+<h4 class="subsubheading">Compatibility with threads</h4>
+
+<p>In order to ensure compatibility with multithreading programming, a
+context is explicitly passed to functions in order to ensure the
+following points:
+</p>
+<ul>
+<li>
+the transmission of data specific to each library (non-standard
+options, workspace, ...);
+</li><li>
+the transmission of standard options (selection of algorithms and their
+precision inside a library);
+</li><li>
+the management of exceptions (implemented as error codes in the C
+interface) (<code>not_implemented</code>, <code>invalid_argument</code>,
+<code>overflow</code>, <code>timeout</code>, <code>out_of_space</code>).
+</li></ul>
+
+<a name="Interruptions"></a>
+<a name="Interruptions-1"></a>
+<h4 class="subsubheading">Interruptions</h4>
+
+<p>Interruptions mechanism is have possible for different cases:
+</p><dl compact="compact">
+<dt><code>timeout</code></dt>
+<dd><p>if the execution time for an operation exceeds some bound;
+</p></dd>
+<dt><code>out_of_space</code></dt>
+<dd><p>if the space consumption for an operation exceeds some bound;
+</p></dd>
+<dt><code>overflow</code></dt>
+<dd><p>if the magnitude or the space usage of manipulated numbers exceeds some bound;
+</p></dd>
+<dt><code>not_implemented</code></dt>
+<dd><p>if the operation is actually not implemented by the underlying library;
+</p></dd>
+<dt><code>invalid_argument</code></dt>
+<dd><p>if the arguments do not follow the requirements of an operation.
+</p></dd>
+</dl>
+
+<blockquote>
+<p>For instance, in a convex polyhedra library, the <code>out_of_space</code>
+exception allows to abort an operation is the result appears to have
+too many constraints and/or generators. If this happens, one can redo
+the operation with another (less precise) algorithm. The
+<code>overflow</code> may be useful when effective overflows are encountered
+with machine integers or when multiprecision rational numbers have too
+large numerators and denominators. The <code>not_implemented</code>
+exception allows for a library to be linked to the interface even if
+it does not provide some operation of the interface.
+</p></blockquote>
+
+<p>When an interruption occurs, the function should still return a
+correct result, in the abstract interpretation sense: it should be a
+correct approximation, usable for next operations in the program. The
+top value is always a correct approximation.
+</p>
+<a name="Memory-management"></a>
+<a name="Memory-management-1"></a>
+<h4 class="subsubheading">Memory management</h4>
+
+<p>Memory is managed differently depending on the programming language. Currently:
+</p>
+<ul>
+<li>
+No automatic garbage collection in the C interface
+</li><li>
+Use of the <small>OCAML</small> runtime garbage collector in the <small>OCAML</small> interface
+</li></ul>
+
+<a name="Programming-style"></a>
+<a name="Programming-style-1"></a>
+<h4 class="subsubheading">Programming style</h4>
+
+<p>Both functional and imperative (i.e., side-effect) signatures are
+supported for operations. This allows to optimize the memory
+allocation and to use whichever version is more convenient for an user
+and the used programming language.
+</p>
+<a name="Number-representation"></a>
+<a name="Number-representation-1"></a>
+<h4 class="subsubheading">Number representation</h4>
+
+<p>Inside a specific library, any number representation may be used
+(floating-point numbers, machine integers, multiprecision
+integers/rationals, ...). Existing libraries often offers the
+possibility to select different representations.
+</p>
+<p>However, in the interface, this representation should be normalized
+and independent of underlying libraries, without being restrictive
+either. As a consequence, the interface offers the choiced between
+</p>
+<ul>
+<li> GMP multiprecision rationals (which implements exact arithmetic);
+</li><li> and machine floating-point numbers (<code>double</code>).
+</li></ul>
+
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_3.html#APRON-Rationale-and-Functionalities" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_3.html#APRON-Rationale-and-Functionalities" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_3.html#APRON-Rationale-and-Functionalities" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="apron_5.html#Functionalities-of-the-interface-at-level-0" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_7.html#APRON-Guidelines" title="Next chapter"> &gt;&gt; </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated on <i>November 9, 2019</i> using <a href="http://www.nongnu.org/texi2html/"><i>texi2html 5.0</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

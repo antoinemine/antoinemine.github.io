@@ -1,0 +1,634 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="Start" href="index.html">
+<link rel="previous" href="Tcons0.html">
+<link rel="next" href="Abstract0.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Introduction" rel="Chapter" href="Introduction.html">
+<link title="Scalar" rel="Chapter" href="Scalar.html">
+<link title="Interval" rel="Chapter" href="Interval.html">
+<link title="Coeff" rel="Chapter" href="Coeff.html">
+<link title="Dim" rel="Chapter" href="Dim.html">
+<link title="Linexpr0" rel="Chapter" href="Linexpr0.html">
+<link title="Lincons0" rel="Chapter" href="Lincons0.html">
+<link title="Generator0" rel="Chapter" href="Generator0.html">
+<link title="Texpr0" rel="Chapter" href="Texpr0.html">
+<link title="Tcons0" rel="Chapter" href="Tcons0.html">
+<link title="Manager" rel="Chapter" href="Manager.html">
+<link title="Abstract0" rel="Chapter" href="Abstract0.html">
+<link title="Var" rel="Chapter" href="Var.html">
+<link title="Environment" rel="Chapter" href="Environment.html">
+<link title="Linexpr1" rel="Chapter" href="Linexpr1.html">
+<link title="Lincons1" rel="Chapter" href="Lincons1.html">
+<link title="Generator1" rel="Chapter" href="Generator1.html">
+<link title="Texpr1" rel="Chapter" href="Texpr1.html">
+<link title="Tcons1" rel="Chapter" href="Tcons1.html">
+<link title="Abstract1" rel="Chapter" href="Abstract1.html">
+<link title="Policy" rel="Chapter" href="Policy.html">
+<link title="Disjunction" rel="Chapter" href="Disjunction.html">
+<link title="Version" rel="Chapter" href="Version.html">
+<link title="Parser" rel="Chapter" href="Parser.html">
+<link title="Box" rel="Chapter" href="Box.html">
+<link title="Oct" rel="Chapter" href="Oct.html">
+<link title="Polka" rel="Chapter" href="Polka.html">
+<link title="Ppl" rel="Chapter" href="Ppl.html">
+<link title="PolkaGrid" rel="Chapter" href="PolkaGrid.html">
+<link title="Mpz" rel="Chapter" href="Mpz.html">
+<link title="Mpq" rel="Chapter" href="Mpq.html">
+<link title="Gmp_random" rel="Chapter" href="Gmp_random.html">
+<link title="Mpf" rel="Chapter" href="Mpf.html">
+<link title="Mpfr" rel="Chapter" href="Mpfr.html">
+<link title="Mpzf" rel="Chapter" href="Mpzf.html">
+<link title="Mpqf" rel="Chapter" href="Mpqf.html">
+<link title="Mpfrf" rel="Chapter" href="Mpfrf.html"><title>Manager</title>
+</head>
+<body>
+<div class="navbar"><a class="pre" href="Tcons0.html" title="Tcons0">Previous</a>
+&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;<a class="post" href="Abstract0.html" title="Abstract0">Next</a>
+</div>
+<h1>Module <a href="type_Manager.html">Manager</a></h1>
+
+<pre><span id="MODULEManager"><span class="keyword">module</span> Manager</span>: <code class="code"><span class="keyword">sig</span></code> <a href="Manager.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><hr width="100%">
+
+<pre><code><span id="TYPEfunid"><span class="keyword">type</span> <code class="type"></code>funid</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_unknown"><span class="constructor">Funid_unknown</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_copy"><span class="constructor">Funid_copy</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_free"><span class="constructor">Funid_free</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_asize"><span class="constructor">Funid_asize</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_minimize"><span class="constructor">Funid_minimize</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_canonicalize"><span class="constructor">Funid_canonicalize</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_hash"><span class="constructor">Funid_hash</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_approximate"><span class="constructor">Funid_approximate</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_fprint"><span class="constructor">Funid_fprint</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_fprintdiff"><span class="constructor">Funid_fprintdiff</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_fdump"><span class="constructor">Funid_fdump</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_serialize_raw"><span class="constructor">Funid_serialize_raw</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_deserialize_raw"><span class="constructor">Funid_deserialize_raw</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_bottom"><span class="constructor">Funid_bottom</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_top"><span class="constructor">Funid_top</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_of_box"><span class="constructor">Funid_of_box</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_dimension"><span class="constructor">Funid_dimension</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_is_bottom"><span class="constructor">Funid_is_bottom</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_is_top"><span class="constructor">Funid_is_top</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_is_leq"><span class="constructor">Funid_is_leq</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_is_eq"><span class="constructor">Funid_is_eq</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_is_dimension_unconstrained"><span class="constructor">Funid_is_dimension_unconstrained</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_sat_interval"><span class="constructor">Funid_sat_interval</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_sat_lincons"><span class="constructor">Funid_sat_lincons</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_sat_tcons"><span class="constructor">Funid_sat_tcons</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_bound_dimension"><span class="constructor">Funid_bound_dimension</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_bound_linexpr"><span class="constructor">Funid_bound_linexpr</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_bound_texpr"><span class="constructor">Funid_bound_texpr</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_to_box"><span class="constructor">Funid_to_box</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_to_lincons_array"><span class="constructor">Funid_to_lincons_array</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_to_tcons_array"><span class="constructor">Funid_to_tcons_array</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_to_generator_array"><span class="constructor">Funid_to_generator_array</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_meet"><span class="constructor">Funid_meet</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_meet_array"><span class="constructor">Funid_meet_array</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_meet_lincons_array"><span class="constructor">Funid_meet_lincons_array</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_meet_tcons_array"><span class="constructor">Funid_meet_tcons_array</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_join"><span class="constructor">Funid_join</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_join_array"><span class="constructor">Funid_join_array</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_add_ray_array"><span class="constructor">Funid_add_ray_array</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_assign_linexpr_array"><span class="constructor">Funid_assign_linexpr_array</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_substitute_linexpr_array"><span class="constructor">Funid_substitute_linexpr_array</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_assign_texpr_array"><span class="constructor">Funid_assign_texpr_array</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_substitute_texpr_array"><span class="constructor">Funid_substitute_texpr_array</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_add_dimensions"><span class="constructor">Funid_add_dimensions</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_remove_dimensions"><span class="constructor">Funid_remove_dimensions</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_permute_dimensions"><span class="constructor">Funid_permute_dimensions</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_forget_array"><span class="constructor">Funid_forget_array</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_expand"><span class="constructor">Funid_expand</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_fold"><span class="constructor">Funid_fold</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_widening"><span class="constructor">Funid_widening</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_closure"><span class="constructor">Funid_closure</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_change_environment"><span class="constructor">Funid_change_environment</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunid.Funid_rename_array"><span class="constructor">Funid_rename_array</span></span></code></td>
+
+</tr></table>
+
+
+
+<pre><code><span id="TYPEfunopt"><span class="keyword">type</span> <code class="type"></code>funopt</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunopt.algorithm">algorithm</span>&nbsp;: <code class="type">int</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunopt.timeout">timeout</span>&nbsp;: <code class="type">int</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunopt.max_object_size">max_object_size</span>&nbsp;: <code class="type">int</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunopt.flag_exact_wanted">flag_exact_wanted</span>&nbsp;: <code class="type">bool</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfunopt.flag_best_wanted">flag_best_wanted</span>&nbsp;: <code class="type">bool</code>;</code></td>
+
+</tr></table>
+}
+
+
+
+<pre><code><span id="TYPEexc"><span class="keyword">type</span> <code class="type"></code>exc</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTexc.Exc_none"><span class="constructor">Exc_none</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTexc.Exc_timeout"><span class="constructor">Exc_timeout</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTexc.Exc_out_of_space"><span class="constructor">Exc_out_of_space</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTexc.Exc_overflow"><span class="constructor">Exc_overflow</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTexc.Exc_invalid_argument"><span class="constructor">Exc_invalid_argument</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTexc.Exc_not_implemented"><span class="constructor">Exc_not_implemented</span></span></code></td>
+
+</tr></table>
+
+
+
+<pre><code><span id="TYPEexclog"><span class="keyword">type</span> <code class="type"></code>exclog</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTexclog.exn">exn</span>&nbsp;: <code class="type"><a href="Manager.html#TYPEexc">exc</a></code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTexclog.funid">funid</span>&nbsp;: <code class="type"><a href="Manager.html#TYPEfunid">funid</a></code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTexclog.msg">msg</span>&nbsp;: <code class="type">string</code>;</code></td>
+
+</tr></table>
+}
+
+
+
+<pre><span id="TYPEt"><span class="keyword">type</span> <code class="type">'a</code> t</span> </pre>
+
+<p>APRON Managers</p>
+<p>The type parameter <code class="code"><span class="keywordsign">'</span>a</code> allows to distinguish managers allocated by different underlying abstract domains.</p>
+<p>Concerning the other types,</p>
+
+<ul>
+<li><code class="code">funid</code> defines identifiers for the generic function working on abstrat values;</li>
+</ul>
+<ul>
+<li><code class="code">funopt</code> defines the options associated to generic functions; </li>
+</ul>
+<ul>
+<li><code class="code">exc</code> defines the different kind of exceptions; </li>
+</ul>
+<ul>
+<li><code class="code">exclog</code> defines the exceptions raised by APRON functions.</li>
+</ul>
+
+<pre><span id="VALget_library"><span class="keyword">val</span> get_library</span> : <code class="type">'a <a href="Manager.html#TYPEt">t</a> -> string</code></pre><div class="info ">
+<div class="info-desc">
+<p>Get the name of the effective library which allocated the manager</p>
+</div>
+</div>
+
+<pre><span id="VALget_version"><span class="keyword">val</span> get_version</span> : <code class="type">'a <a href="Manager.html#TYPEt">t</a> -> string</code></pre><div class="info ">
+<div class="info-desc">
+<p>Get the version of the effective library which allocated the manager</p>
+</div>
+</div>
+
+<pre><span id="VALfunopt_make"><span class="keyword">val</span> funopt_make</span> : <code class="type">unit -> <a href="Manager.html#TYPEfunopt">funopt</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Return the default options for any function (<code class="code">0</code> or <code class="code"><span class="keyword">false</span></code> for al fields)</p>
+</div>
+</div>
+
+<pre><span id="VALget_funopt"><span class="keyword">val</span> get_funopt</span> : <code class="type">'a <a href="Manager.html#TYPEt">t</a> -> <a href="Manager.html#TYPEfunid">funid</a> -> <a href="Manager.html#TYPEfunopt">funopt</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Get the options sets for the function. The result is a copy of the internal structure and may be freely modified. <code class="code">funid</code> should be different from <code class="code"><span class="constructor">Funid_change_environment</span></code> and <code class="code"><span class="constructor">Funid_rename_array</span></code> (no option associated to them).</p>
+</div>
+</div>
+
+<pre><span id="VALset_funopt"><span class="keyword">val</span> set_funopt</span> : <code class="type">'a <a href="Manager.html#TYPEt">t</a> -> <a href="Manager.html#TYPEfunid">funid</a> -> <a href="Manager.html#TYPEfunopt">funopt</a> -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>Set the options for the function. <code class="code">funid</code> should be different from <code class="code"><span class="constructor">Funid_change_environment</span></code> and <code class="code"><span class="constructor">Funid_rename_array</span></code> (no option associated to them).</p>
+</div>
+</div>
+
+<pre><span id="VALget_flag_exact"><span class="keyword">val</span> get_flag_exact</span> : <code class="type">'a <a href="Manager.html#TYPEt">t</a> -> bool</code></pre><div class="info ">
+<div class="info-desc">
+<p>Get the corresponding result flag</p>
+</div>
+</div>
+
+<pre><span id="VALget_flag_best"><span class="keyword">val</span> get_flag_best</span> : <code class="type">'a <a href="Manager.html#TYPEt">t</a> -> bool</code></pre><div class="info ">
+<div class="info-desc">
+<p>Get the corresponding result flag</p>
+</div>
+</div>
+
+<pre><span id="EXCEPTIONError"><span class="keyword">exception</span> Error</span> <span class="keyword">of</span> <code class="type"><a href="Manager.html#TYPEexclog">exclog</a></code></pre>
+<div class="info ">
+<div class="info-desc">
+<p>Exception raised by functions of the interface</p>
+</div>
+</div>
+
+<pre><span id="VALstring_of_funid"><span class="keyword">val</span> string_of_funid</span> : <code class="type"><a href="Manager.html#TYPEfunid">funid</a> -> string</code></pre>
+<pre><span id="VALstring_of_exc"><span class="keyword">val</span> string_of_exc</span> : <code class="type"><a href="Manager.html#TYPEexc">exc</a> -> string</code></pre>
+<pre><span id="VALprint_funid"><span class="keyword">val</span> print_funid</span> : <code class="type">Stdlib.Format.formatter -> <a href="Manager.html#TYPEfunid">funid</a> -> unit</code></pre>
+<pre><span id="VALprint_funopt"><span class="keyword">val</span> print_funopt</span> : <code class="type">Stdlib.Format.formatter -> <a href="Manager.html#TYPEfunopt">funopt</a> -> unit</code></pre>
+<pre><span id="VALprint_exc"><span class="keyword">val</span> print_exc</span> : <code class="type">Stdlib.Format.formatter -> <a href="Manager.html#TYPEexc">exc</a> -> unit</code></pre>
+<pre><span id="VALprint_exclog"><span class="keyword">val</span> print_exclog</span> : <code class="type">Stdlib.Format.formatter -> <a href="Manager.html#TYPEexclog">exclog</a> -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>Printing functions</p>
+</div>
+</div>
+
+<pre><span id="VALset_deserialize"><span class="keyword">val</span> set_deserialize</span> : <code class="type">'a <a href="Manager.html#TYPEt">t</a> -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>Set / get the global manager used for deserialization</p>
+</div>
+</div>
+
+<pre><span id="VALget_deserialize"><span class="keyword">val</span> get_deserialize</span> : <code class="type">unit -> 'a <a href="Manager.html#TYPEt">t</a></code></pre></body></html>

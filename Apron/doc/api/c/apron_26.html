@@ -1,0 +1,479 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on November 9, 2019 by texi2html 5.0
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>APRON 0.9.10: Linear expressions of level 1 (ap_linexpr1.h)</title>
+
+<meta name="description" content="APRON 0.9.10: Linear expressions of level 1 (ap_linexpr1.h)">
+<meta name="keywords" content="APRON 0.9.10: Linear expressions of level 1 (ap_linexpr1.h)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html 5.0">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Linear-expressions-of-level-1"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_23.html#Level-1-of-the-interface" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_25.html#Environments" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_23.html#Level-1-of-the-interface" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Allocating-linear-expressions-of-level-1" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_32.html#Level-0-of-the-interface" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="apron.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="apron_42.html#Appendices" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="apron_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Linear-expressions-of-level-1-_0028ap_005flinexpr1_002eh_0029"></a>
+<h2 class="section">Linear expressions of level 1 (&lsquo;<tt>ap_linexpr1.h</tt>&rsquo;)</h2>
+
+<p>We manipulate here expressions of the form
+</p><blockquote>
+<p><em>a_0.x_0 + ... + a_n.x_n + b</em>
+</p></blockquote>
+<p>where the coefficients <em>a_0, ..., a_n, b</em> are of
+<code>ap_coeff_t</code> type (either scalars or intervals) and the variables
+<em>x_0, ... , x_n</em> are of type <code>ap_var_t</code>.
+</p>
+<p>The semantics of linear expressions is exact, in the sense that the
+arithmetic operations are interpreted in the real (or rational)
+numbers. However, abstract domains are free to overapproximate this
+exact semantics (this may occur when converting rational scalars to
+<code>double</code> type for instance).
+</p>
+<p>A special remark concerns integer variables. Abstract domains are
+assumed to perform the operations involving linear expressions using a
+real/rational semantics, and then possibly to reduce the result using
+the knowledge that integer variables may only take integer
+values.
+</p><blockquote>
+<p>This semantics <em>coincides</em> with the natural integer semantics of
+expressions involving only integer variables <em>only if</em> the
+involved coefficients are all integers.
+</p></blockquote>
+<blockquote>
+<p>A typical counter-example to this is an assignement <em>y := 1/3 x</em> where
+<em>x</em> and <em>y</em> are integer variables. If this assignement is
+applied to the <small>BOX</small> abstract domain value <em>x in [1;1]</em>, it
+may lead to the bottom value, because one will first obtain <em>y in
+[1/3;1/3]</em> by real/rational computations, and this may be reduced to
+the empty interval because <em>y</em> is integer and the interval
+contains no integer values.
+</p></blockquote>
+
+<p>If you need expressions with a less simple semantics (mixing integer,
+real/rational and floating-point semantics with casts), you should use
+tree expressions (see section <a href="apron_29.html#Tree-expressions-of-level-1">Tree expressions of level 1 (&lsquo;<tt>ap_texpr1.h</tt>&rsquo;)</a>).
+</p>
+<dl>
+<dt><a name="index-ap_005flinexpr1_005ft"></a>datatype: <strong>ap_linexpr1_t</strong></dt>
+<dd><p>(Internal) type of interval linear expressions.
+</p>
+<p>Linear expressions of level 1 are created as objects of type
+<code>ap_linexpr1_t</code>, not as pointers of type <code>ap_linexpr1_t*</code>.
+</p>
+<p>For information:
+</p><div class="example">
+<pre class="example">typedef struct ap_linexpr1_t {
+  ap_linexpr0_t* linexpr0;
+  ap_environment_t* env;
+} ap_linexpr1_t;
+</pre></div>
+</dd></dl>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#Allocating-linear-expressions-of-level-1">Allocating linear expressions of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Tests-on-linear-expressions-of-level-1">Tests on linear expressions of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Access-to-linear-expressions-of-level-1">Access to linear expressions of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Change-of-dimensions-and-permutations-of-linear-expressions-of-level-1">Change of dimensions and permutations of linear expressions of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<a name="Allocating-linear-expressions-of-level-1"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_23.html#Level-1-of-the-interface" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Linear-expressions-of-level-1" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Linear-expressions-of-level-1" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Tests-on-linear-expressions-of-level-1" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_32.html#Level-0-of-the-interface" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="apron.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="apron_42.html#Appendices" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="apron_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Allocating-linear-expressions-of-level-1-1"></a>
+<h3 class="subsection">Allocating linear expressions of level 1</h3>
+
+<dl>
+<dt><a name="index-ap_005flinexpr1_005fmake"></a>Function: <em>ap_linexpr1_t</em> <strong>ap_linexpr1_make</strong><em> (ap_environment_t* <var>env</var>, ap_linexpr_discr_t <var>lin_discr</var>, size_t <var>size</var>)</em></dt>
+<dd><p>Build a linear expressions on the environment <var>env</var>, with by
+default coefficients of type SCALAR and DOUBLE.
+</p>
+<p>If <var>lin_discr</var> selects a dense representation, the size of the
+expression is the size of the environment. Otherwise, the initial
+size is given by <var>size</var> and the expression may be resized lazily.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005flinexpr1_005fminimize"></a>Function: <em>void</em> <strong>ap_linexpr1_minimize</strong><em> (ap_linexpr1_t* <var>expr</var>)</em></dt>
+<dd><p>Reduce the coefficients (transform intervals into scalars when
+possible).  In case of sparse representation, also remove zero
+coefficients.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005flinexpr1_005fcopy"></a>Function: <em>ap_linexpr1_t</em> <strong>ap_linexpr1_copy</strong><em> (ap_linexpr1_t* <var>expr</var>)</em></dt>
+<dd><p>Duplication.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005flinexpr1_005fclear"></a>Function: <em>void</em> <strong>ap_linexpr1_clear</strong><em> (ap_linexpr1_t <var>expr</var>)</em></dt>
+<dd><p>Clear the linear expression.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005flinexpr1_005ffprint"></a>Function: <em>void</em> <strong>ap_linexpr1_fprint</strong><em> (FILE* <var>stream</var>, ap_linexpr1_t* <var>expr</var>)</em></dt>
+<dd><p>Print the linear expression on stream <var>stream</var>.
+</p></dd></dl>
+
+<hr>
+<a name="Tests-on-linear-expressions-of-level-1"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_23.html#Level-1-of-the-interface" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Allocating-linear-expressions-of-level-1" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Linear-expressions-of-level-1" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Access-to-linear-expressions-of-level-1" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_32.html#Level-0-of-the-interface" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="apron.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="apron_42.html#Appendices" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="apron_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Tests-on-linear-expressions-of-level-1-1"></a>
+<h3 class="subsection">Tests on linear expressions of level 1</h3>
+
+<dl>
+<dt><a name="index-ap_005flinexpr1_005fis_005finteger"></a>Function: <em>bool</em> <strong>ap_linexpr1_is_integer</strong><em> (ap_linexpr1_t* <var>expr</var>)</em></dt>
+<dd><p>Does the expression depends only on integer variables ?
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005flinexpr1_005fis_005freal"></a>Function: <em>bool</em> <strong>ap_linexpr1_is_real</strong><em> (ap_linexpr1_t* <var>expr</var>)</em></dt>
+<dd><p>Does the expression depends only on real variables ?
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005flinexpr1_005fis_005flinear"></a>Function: <em>bool</em> <strong>ap_linexpr1_is_linear</strong><em> (ap_linexpr1_t* <var>expr</var>)</em></dt>
+<dd><p>Return true iff all involved coefficients are scalars.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005flinexpr1_005fis_005fquasilinear"></a>Function: <em>bool</em> <strong>ap_linexpr1_is_quasilinear</strong><em> (ap_linexpr1_t* <var>expr</var>)</em></dt>
+<dd><p>Return true iff all involved coefficients but the constant are scalars.
+</p></dd></dl>
+
+<hr>
+<a name="Access-to-linear-expressions-of-level-1"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_23.html#Level-1-of-the-interface" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Tests-on-linear-expressions-of-level-1" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Linear-expressions-of-level-1" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Getting-references" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_32.html#Level-0-of-the-interface" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="apron.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="apron_42.html#Appendices" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="apron_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Access-to-linear-expressions-of-level-1-1"></a>
+<h3 class="subsection">Access to linear expressions of level 1</h3>
+
+<dl>
+<dt><a name="index-ap_005flinexpr1_005fenvref"></a>Function: <em>ap_environment_t*</em> <strong>ap_linexpr1_envref</strong><em> (ap_linexpr1_t* <var>expr</var>)</em></dt>
+<dd><p>Get a reference to the underlying environment. Do not free it.
+</p></dd></dl>
+<dl>
+<dt><a name="index-ap_005flinexpr1_005flinexpr0ref"></a>Function: <em>size_t</em> <strong>ap_linexpr1_linexpr0ref</strong><em> (ap_linexpr1_t* <var>expr</var>)</em></dt>
+<dd><p>Get a reference to the underlying linear expression of level 0. Do not
+free it.
+</p></dd></dl>
+
+<hr>
+<a name="Getting-references"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_23.html#Level-1-of-the-interface" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Access-to-linear-expressions-of-level-1" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Access-to-linear-expressions-of-level-1" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Getting-values" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_32.html#Level-0-of-the-interface" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="apron.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="apron_42.html#Appendices" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="apron_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h4 class="subsubsection">Getting references</h4>
+
+<dl>
+<dt><a name="index-ap_005flinexpr1_005fcstref"></a>Function: <em>ap_coefft*</em> <strong>ap_linexpr1_cstref</strong><em> (ap_linexpr1_t* <var>e</var>)</em></dt>
+<dd><p>Get a reference to the constant. Do not free it.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005flinexpr1_005fcoeffref"></a>Function: <em>ap_coefft*</em> <strong>ap_linexpr1_coeffref</strong><em> (ap_linexpr1_t* <var>e</var>, ap_var_t <var>var</var>)</em></dt>
+<dd><p>Get a reference to the coefficient associated to the variable
+<var>var</var> in expression <var>e</var>.
+</p>
+<p>Do not free it. In case of sparse representation, possibly induce the
+addition of a new linear term.
+</p>
+<p>Return NULL if <var>var</var> is unknown in the environment of <var>e</var>.
+</p></dd></dl>
+
+<hr>
+<a name="Getting-values"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_23.html#Level-1-of-the-interface" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Getting-references" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Access-to-linear-expressions-of-level-1" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Assigning-values-with-a-list-of-arguments-1" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_32.html#Level-0-of-the-interface" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="apron.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="apron_42.html#Appendices" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="apron_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h4 class="subsubsection">Getting values</h4>
+
+<dl>
+<dt><a name="index-ap_005flinexpr1_005fget_005fcst"></a>Function: <em>void</em> <strong>ap_linexpr1_get_cst</strong><em> (ap_coefft* <var>coeff</var>, ap_linexpr1_t* <var>e</var>)</em></dt>
+<dd><p>Assign to <var>coeff</var> the constant coefficient of <var>e</var>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005flinexpr1_005fget_005fcoeff"></a>Function: <em>bool</em> <strong>ap_linexpr1_get_coeff</strong><em> (ap_coefft* <var>coeff</var>, ap_linexpr1_t* <var>e</var>, ap_var_t <var>var</var>)</em></dt>
+<dd><p>Assign to <var>coeff</var> the coefficient of variable <var>var</var> in the expression <var>e</var>.
+</p>
+<p>Return true in case <code>ap_linexpr1_coeffref(e,dim)</code> returns NULL.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005flinexpr1_005fForeachLinterm"></a>Macro: <strong>ap_linexpr1_ForeachLinterm</strong><em> (ap_linexpr1_t* <var>e</var>, size_t <var>i</var>, ap_ap_var_t <var>var</var>, ap_coeff_t* <var>coeff</var>)</em></dt>
+<dd><p>Iterator on the coefficients associated to variables.
+</p>
+<p><code>ap_linexpr1_ForeachLinterm(E,I,VAR,COEFF){ body }</code>
+executes the body for each pair (<var>coeff</var>,<var>var</var>) in the
+expression <var>e</var>. <var>coeff</var> is a reference to the coefficient
+associated to variable <var>var</var> in <var>e</var>. <var>i</var> is an
+auxiliary variable used internally by the macro.
+</p></dd></dl>
+
+<hr>
+<a name="Assigning-values-with-a-list-of-arguments-1"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_23.html#Level-1-of-the-interface" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Getting-values" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Access-to-linear-expressions-of-level-1" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Assigning-values" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_32.html#Level-0-of-the-interface" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="apron.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="apron_42.html#Appendices" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="apron_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h4 class="subsubsection">Assigning values with a list of arguments</h4>
+
+<dl>
+<dt><a name="index-ap_005flinexpr1_005fset_005flist"></a>Function: <em>bool</em> <strong>ap_linexpr1_set_list</strong><em> (ap_linexpr1_t* <var>e</var>, ...)</em></dt>
+<dd><p>This function assign the linear expression <var>e</var> from a list of tags
+of type <code>ap_coefftag_t</code>, each followed by a number of arguments
+as specified in the definition of the type <code>ap_coefftag_t</code>
+(see section <a href="apron_34.html#Access-to-linear-expressions-of-level-0">Access to linear expressions of level 0</a>). The list should end
+with the tag <code>AP_COEFF_END</code>. The only difference with level 0 is that variables replace dimensions in the list.
+</p>
+<p>Return <code>true</code> in case <code>ap_linexpr1_coeffref (e,dim)</code>
+returns NULL for one of the variables involved.
+</p>
+<p>Here is a typical example, in the case where <code>ap_var_t</code> is actually <code>char*</code> (the default):
+</p><div class="example">
+<pre class="example">ap_linexpr1_set_list(e,
+		     AP_COEFF_S_INT, 3, &quot;x&quot;,
+		     AP_COEFF_S_FRAC, 3,2, &quot;y&quot;,
+		     AP_COEFF_S_DOUBLE, 4.1, &quot;z&quot;,
+		     AP_CST_I_DOUBLE, -2.4, 3.6,
+		     AP_END); /* Do not forget the last tatg ! */
+</pre></div>
+<p>which transforms an null expression into <code>3 x + 3/2 y + 4.1 z + [-2.4,3.6]</code>
+and is equivalent to:
+</p><div class="example">
+<pre class="example">ap_linexpr1_set_coeff_scalar_int(e, &quot;x&quot;, 3);
+ap_linexpr1_set_coeff_scalar_frac(e, &quot;y&quot;, 3,2);
+ap_linexpr1_set_coeff_scalar_double(e, &quot;z&quot;, 4.1);
+ap_linexpr1_set_cst_interval_double(e, -2.4, 3.6);
+</pre></div>
+</dd></dl>
+
+<hr>
+<a name="Assigning-values"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_23.html#Level-1-of-the-interface" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Assigning-values-with-a-list-of-arguments-1" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Access-to-linear-expressions-of-level-1" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Change-of-dimensions-and-permutations-of-linear-expressions-of-level-1" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_32.html#Level-0-of-the-interface" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="apron.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="apron_42.html#Appendices" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="apron_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h4 class="subsubsection">Assigning values</h4>
+
+<dl>
+<dt><a name="index-ap_005flinexpr1_005fset_005fcst"></a>Function: <em>void</em> <strong>ap_linexpr1_set_cst</strong><em> (ap_linexpr1_t* <var>e</var>, ap_coefft* <var>coeff</var>)</em></dt>
+<dt><a name="index-ap_005flinexpr1_005fset_005fcst_005fscalar"></a>Function: <em>void</em> <strong>ap_linexpr1_set_cst_scalar</strong><em> (ap_linexpr1_t* <var>e</var>, ap_scalar_t* <var>scalar</var>)</em></dt>
+<dt><a name="index-ap_005flinexpr1_005fset_005fcst_005fscalar_005fint"></a>Function: <em>void</em> <strong>ap_linexpr1_set_cst_scalar_int</strong><em> (ap_linexpr1_t* <var>e</var>, int <var>num</var>)</em></dt>
+<dt><a name="index-ap_005flinexpr1_005fset_005fcst_005fscalar_005ffrac"></a>Function: <em>void</em> <strong>ap_linexpr1_set_cst_scalar_frac</strong><em> (ap_linexpr1_t* <var>e</var>, int <var>num</var>, unsigned int <var>den</var>)</em></dt>
+<dt><a name="index-ap_005flinexpr1_005fset_005fcst_005fscalar_005fdouble"></a>Function: <em>void</em> <strong>ap_linexpr1_set_cst_scalar_double</strong><em> (ap_linexpr1_t* <var>e</var>, double <var>num</var>)</em></dt>
+<dt><a name="index-ap_005flinexpr1_005fset_005fcst_005finterval"></a>Function: <em>void</em> <strong>ap_linexpr1_set_cst_interval</strong><em> (ap_linexpr1_t* <var>e</var>, ap_interval_t* <var>itv</var>)</em></dt>
+<dt><a name="index-ap_005flinexpr1_005fset_005fcst_005finterval_005fscalar"></a>Function: <em>void</em> <strong>ap_linexpr1_set_cst_interval_scalar</strong><em> (ap_linexpr1_t* <var>e</var>, ap_scalar_t* <var>inf</var>, ap_scalar_t* <var>sup</var>)</em></dt>
+<dt><a name="index-ap_005flinexpr1_005fset_005fcst_005finterval_005fint"></a>Function: <em>void</em> <strong>ap_linexpr1_set_cst_interval_int</strong><em> (ap_linexpr1_t* <var>e</var>, int <var>inf</var>, int <var>sup</var>)</em></dt>
+<dt><a name="index-ap_005flinexpr1_005fset_005fcst_005finterval_005ffrac"></a>Function: <em>void</em> <strong>ap_linexpr1_set_cst_interval_frac</strong><em> (ap_linexpr1_t* <var>e</var>, int <var>numinf</var>, unsigned int <var>deninf</var>, int <var>numsup</var>, unsigned int <var>densup</var>)</em></dt>
+<dt><a name="index-ap_005flinexpr1_005fset_005fcst_005finterval_005fdouble"></a>Function: <em>void</em> <strong>ap_linexpr1_set_cst_interval_double</strong><em> (ap_linexpr1_t* <var>e</var>, double <var>inf</var>, double <var>sup</var>)</em></dt>
+<dd><p>Set the constant coefficient of expression <var>e</var>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005flinexpr1_005fset_005fcoeff"></a>Function: <em>bool</em> <strong>ap_linexpr1_set_coeff</strong><em> (ap_linexpr1_t* <var>e</var>, ap_var_t <var>var</var>, ap_coefft* <var>coeff</var>)</em></dt>
+<dt><a name="index-ap_005flinexpr1_005fset_005fcoeff_005fscalar"></a>Function: <em>bool</em> <strong>ap_linexpr1_set_coeff_scalar</strong><em> (ap_linexpr1_t* <var>e</var>, ap_var_t <var>var</var>, ap_scalar_t* <var>scalar</var>)</em></dt>
+<dt><a name="index-ap_005flinexpr1_005fset_005fcoeff_005fscalar_005fint"></a>Function: <em>bool</em> <strong>ap_linexpr1_set_coeff_scalar_int</strong><em> (ap_linexpr1_t* <var>e</var>, ap_var_t <var>var</var>, int <var>num</var>)</em></dt>
+<dt><a name="index-ap_005flinexpr1_005fset_005fcoeff_005fscalar_005ffrac"></a>Function: <em>bool</em> <strong>ap_linexpr1_set_coeff_scalar_frac</strong><em> (ap_linexpr1_t* <var>e</var>, ap_var_t <var>var</var>, int <var>num</var>, unsigned int <var>den</var>)</em></dt>
+<dt><a name="index-ap_005flinexpr1_005fset_005fcoeff_005fscalar_005fdouble"></a>Function: <em>bool</em> <strong>ap_linexpr1_set_coeff_scalar_double</strong><em> (ap_linexpr1_t* <var>e</var>, ap_var_t <var>var</var>, double <var>num</var>)</em></dt>
+<dt><a name="index-ap_005flinexpr1_005fset_005fcoeff_005finterval"></a>Function: <em>bool</em> <strong>ap_linexpr1_set_coeff_interval</strong><em> (ap_linexpr1_t* <var>e</var>, ap_var_t <var>var</var>, ap_interval_t* <var>itv</var>)</em></dt>
+<dt><a name="index-ap_005flinexpr1_005fset_005fcoeff_005finterval_005fscalar"></a>Function: <em>bool</em> <strong>ap_linexpr1_set_coeff_interval_scalar</strong><em> (ap_linexpr1_t* <var>e</var>, ap_var_t <var>var</var>, ap_scalar_t* <var>inf</var>, ap_scalar_t* <var>sup</var>)</em></dt>
+<dt><a name="index-ap_005flinexpr1_005fset_005fcoeff_005finterval_005fint"></a>Function: <em>bool</em> <strong>ap_linexpr1_set_coeff_interval_int</strong><em> (ap_linexpr1_t* <var>e</var>, ap_var_t <var>var</var>, int <var>inf</var>, int <var>sup</var>)</em></dt>
+<dt><a name="index-ap_005flinexpr1_005fset_005fcoeff_005finterval_005ffrac"></a>Function: <em>bool</em> <strong>ap_linexpr1_set_coeff_interval_frac</strong><em> (ap_linexpr1_t* <var>e</var>, ap_var_t <var>var</var>,int <var>numinf</var>, unsigned int <var>deninf</var>, int <var>numsup</var>, unsigned int <var>densup</var>)</em></dt>
+<dt><a name="index-ap_005flinexpr1_005fset_005fcoeff_005finterval_005fdouble"></a>Function: <em>void</em> <strong>ap_linexpr1_set_coeff_interval_double</strong><em> (ap_linexpr1_t* <var>e</var>, ap_var_t <var>var</var>, double <var>inf</var>, double <var>sup</var>)</em></dt>
+<dd><p>Set the coefficient of the variable <var>var</var> of expression <var>e</var>.
+</p>
+<p>Return <code>true</code> in case <code>ap_linexpr1_coeffref(e,var)</code> returns NULL.
+</p></dd></dl>
+
+<hr>
+<a name="Change-of-dimensions-and-permutations-of-linear-expressions-of-level-1"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_23.html#Level-1-of-the-interface" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Assigning-values" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Linear-expressions-of-level-1" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="apron_27.html#Linear-constraints-of-level-1" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_32.html#Level-0-of-the-interface" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="apron.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="apron_42.html#Appendices" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="apron_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Change-of-dimensions-and-permutations-of-linear-expressions-of-level-1-1"></a>
+<h3 class="subsection">Change of dimensions and permutations of linear expressions of level 1</h3>
+
+<dl>
+<dt><a name="index-ap_005flinexpr1_005fextend_005fenvironment"></a>Function: <em>bool</em> <strong>ap_linexpr1_extend_environment</strong><em> (ap_linexpr1_t* <var>nexpr</var>, ap_linexpr1_t* <var>expr</var>, ap_environment_t* <var>nenv</var>)</em></dt>
+<dt><a name="index-ap_005flinexpr1_005fextend_005fenvironment_005fwith"></a>Function: <em>bool</em> <strong>ap_linexpr1_extend_environment_with</strong><em> (ap_linexpr1_t* <var>expr</var>, ap_environment_t* <var>nenv</var>)</em></dt>
+<dd><p>Change the current environment of the expression <var>expr</var> with a
+super-environment <var>nenv</var>.  Return <code>true</code> if <var>nenv</var> is not
+a superenvironment.
+</p>
+<p>The first version store the result in the uninitialized <code>*nexpr</code>, the second one updates in-place its argument.
+</p></dd></dl>
+
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_23.html#Level-1-of-the-interface" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Assigning-values" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Linear-expressions-of-level-1" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="apron_27.html#Linear-constraints-of-level-1" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_32.html#Level-0-of-the-interface" title="Next chapter"> &gt;&gt; </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated on <i>November 9, 2019</i> using <a href="http://www.nongnu.org/texi2html/"><i>texi2html 5.0</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

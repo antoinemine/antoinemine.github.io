@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="Start" href="index.html">
+<link rel="previous" href="Parser.html">
+<link rel="next" href="Oct.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Introduction" rel="Chapter" href="Introduction.html">
+<link title="Scalar" rel="Chapter" href="Scalar.html">
+<link title="Interval" rel="Chapter" href="Interval.html">
+<link title="Coeff" rel="Chapter" href="Coeff.html">
+<link title="Dim" rel="Chapter" href="Dim.html">
+<link title="Linexpr0" rel="Chapter" href="Linexpr0.html">
+<link title="Lincons0" rel="Chapter" href="Lincons0.html">
+<link title="Generator0" rel="Chapter" href="Generator0.html">
+<link title="Texpr0" rel="Chapter" href="Texpr0.html">
+<link title="Tcons0" rel="Chapter" href="Tcons0.html">
+<link title="Manager" rel="Chapter" href="Manager.html">
+<link title="Abstract0" rel="Chapter" href="Abstract0.html">
+<link title="Var" rel="Chapter" href="Var.html">
+<link title="Environment" rel="Chapter" href="Environment.html">
+<link title="Linexpr1" rel="Chapter" href="Linexpr1.html">
+<link title="Lincons1" rel="Chapter" href="Lincons1.html">
+<link title="Generator1" rel="Chapter" href="Generator1.html">
+<link title="Texpr1" rel="Chapter" href="Texpr1.html">
+<link title="Tcons1" rel="Chapter" href="Tcons1.html">
+<link title="Abstract1" rel="Chapter" href="Abstract1.html">
+<link title="Policy" rel="Chapter" href="Policy.html">
+<link title="Disjunction" rel="Chapter" href="Disjunction.html">
+<link title="Version" rel="Chapter" href="Version.html">
+<link title="Parser" rel="Chapter" href="Parser.html">
+<link title="Box" rel="Chapter" href="Box.html">
+<link title="Oct" rel="Chapter" href="Oct.html">
+<link title="Polka" rel="Chapter" href="Polka.html">
+<link title="Ppl" rel="Chapter" href="Ppl.html">
+<link title="PolkaGrid" rel="Chapter" href="PolkaGrid.html">
+<link title="Mpz" rel="Chapter" href="Mpz.html">
+<link title="Mpq" rel="Chapter" href="Mpq.html">
+<link title="Gmp_random" rel="Chapter" href="Gmp_random.html">
+<link title="Mpf" rel="Chapter" href="Mpf.html">
+<link title="Mpfr" rel="Chapter" href="Mpfr.html">
+<link title="Mpzf" rel="Chapter" href="Mpzf.html">
+<link title="Mpqf" rel="Chapter" href="Mpqf.html">
+<link title="Mpfrf" rel="Chapter" href="Mpfrf.html"><link title="Type conversions" rel="Section" href="#2_Typeconversions">
+<link title="Compilation information" rel="Section" href="#2_Compilationinformation">
+<link title="Bytecode compilation" rel="Subsection" href="#3_Bytecodecompilation">
+<link title="Native-code compilation" rel="Subsection" href="#3_Nativecodecompilation">
+<link title="Without auto-linking feature" rel="Subsection" href="#3_Withoutautolinkingfeature">
+<title>Box</title>
+</head>
+<body>
+<div class="navbar"><a class="pre" href="Parser.html" title="Parser">Previous</a>
+&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;<a class="post" href="Oct.html" title="Oct">Next</a>
+</div>
+<h1>Module <a href="type_Box.html">Box</a></h1>
+
+<pre><span id="MODULEBox"><span class="keyword">module</span> Box</span>: <code class="code"><span class="keyword">sig</span></code> <a href="Box.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
+<div class="info-desc">
+<p>Intervals abstract domain</p>
+</div>
+</div>
+<hr width="100%">
+
+<pre><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> </pre>
+<div class="info ">
+<div class="info-desc">
+<p>Type of boxes.</p>
+
+<p>Boxes constrains each dimension/variable <code class="code">x_i</code> to belong to an interval
+    <code class="code"><span class="constructor">I_i</span></code>.</p>
+
+<p>Abstract values which are boxes have the type <code class="code">t&nbsp;<span class="constructor">Apron</span>.<span class="constructor">AbstractX</span>.t</code>.</p>
+
+<p>Managers allocated for boxes have the type <code class="code">t&nbsp;<span class="constructor">Apron</span>.manager.t</code>.</p>
+</div>
+</div>
+
+
+<pre><span id="VALmanager_alloc"><span class="keyword">val</span> manager_alloc</span> : <code class="type">unit -> <a href="Box.html#TYPEt">t</a> Apron.Manager.t</code></pre><div class="info ">
+<div class="info-desc">
+<p>Create a Box manager.</p>
+</div>
+</div>
+<h3 id="2_Typeconversions">Type conversions</h3>
+<pre><span id="VALmanager_is_box"><span class="keyword">val</span> manager_is_box</span> : <code class="type">'a Apron.Manager.t -> bool</code></pre><div class="info ">
+<div class="info-desc">
+<p>Return <code class="code"><span class="keyword">true</span></code> iff the argument manager is a box manager</p>
+</div>
+</div>
+
+<pre><span id="VALmanager_of_box"><span class="keyword">val</span> manager_of_box</span> : <code class="type"><a href="Box.html#TYPEt">t</a> Apron.Manager.t -> 'a Apron.Manager.t</code></pre><div class="info ">
+<div class="info-desc">
+<p>Make a box manager generic</p>
+</div>
+</div>
+
+<pre><span id="VALmanager_to_box"><span class="keyword">val</span> manager_to_box</span> : <code class="type">'a Apron.Manager.t -> <a href="Box.html#TYPEt">t</a> Apron.Manager.t</code></pre><div class="info ">
+<div class="info-desc">
+<p>Instanciate the type of a box manager.
+      Raises <code class="code"><span class="constructor">Failure</span></code> if the argument manager is not a box manager</p>
+</div>
+</div>
+
+<pre><span id="MODULEAbstract0"><span class="keyword">module</span> <a href="Box.Abstract0.html">Abstract0</a></span>: <code class="code"><span class="keyword">sig</span></code> <a href="Box.Abstract0.html">..</a> <code class="code"><span class="keyword">end</span></code></pre>
+<pre><span id="MODULEAbstract1"><span class="keyword">module</span> <a href="Box.Abstract1.html">Abstract1</a></span>: <code class="code"><span class="keyword">sig</span></code> <a href="Box.Abstract1.html">..</a> <code class="code"><span class="keyword">end</span></code></pre>
+<pre><span id="MODULEPolicy"><span class="keyword">module</span> <a href="Box.Policy.html">Policy</a></span>: <code class="code"><span class="keyword">sig</span></code> <a href="Box.Policy.html">..</a> <code class="code"><span class="keyword">end</span></code></pre>
+<pre><span id="VALpolicy_manager_alloc"><span class="keyword">val</span> policy_manager_alloc</span> : <code class="type"><a href="Box.html#TYPEt">t</a> Apron.Manager.t -> <a href="Box.html#TYPEt">t</a> Apron.Policy.man</code></pre><h3 id="2_Compilationinformation">Compilation information</h3>
+<p>See <a href="Introduction.html#compilation"><i>Compiling and linking client programs against APRON</i></a> for complete explanations.
+We just show examples with the file <code class="code">mlexample.ml</code>.</p>
+
+<h4 id="3_Bytecodecompilation">Bytecode compilation</h4>
+<pre class="codepre"><code class="code">ocamlc -I $MLGMPIDL_PREFIX/lib -I $APRON_PREFIX/lib -o mlexample.byte \
+  bigarray.cma gmp.cma apron.cma boxMPQ.cma mlexample.ml</code></pre>
+<pre class="codepre"><code class="code">ocamlc -I $MLGMPIDL_PREFIX/lib -I $APRON_PREFIX/lib -make-runtime -o myrun \
+  bigarray.cma gmp.cma apron.cma boxMPQ.cma
+
+ocamlc -I $MLGMPIDL_PREFIX/lib -I $APRON_PREFIX/lib -use-runtime myrun -o mlexample.byte \
+  bigarray.cma gmp.cma apron.cma boxMPQ.cma mlexample.ml </code></pre>
+<h4 id="3_Nativecodecompilation">Native-code compilation</h4>
+<pre class="codepre"><code class="code">ocamlopt -I $MLGMPIDL_PREFIX/lib -I $APRON_PREFIX/lib -o mlexample.opt \
+  bigarray.cmxa gmp.cmxa apron.cmxa boxMPQ.cmxa mlexample.ml </code></pre>
+<h4 id="3_Withoutautolinkingfeature">Without auto-linking feature</h4>
+<pre class="codepre"><code class="code">ocamlopt -I $MLGMPIDL_PREFIX/lib -I $APRON_PREFIX/lib -noautolink -o mlexample.opt \
+  bigarray.cmxa gmp.cmxa apron.cmxa boxMPQ.cmxa mlexample.ml \
+  -cclib "-L$MLGMPIDL_PREFIX/lib -L$APRON_PREFIX/lib \
+	  -lboxMPQ_caml_debug -lboxMPQ_debug \
+	  -lapron_caml_debug -lapron_debug \
+	  -lgmp_caml -L$MPFR_PREFIX/lib -lmpfr -L$GMP/lib_PREFIX/lib -lgmp \
+	  -L$CAMLIDL_PREFIX/lib/ocaml -lcamlidl \
+	  -lbigarray" </code></pre></body></html>

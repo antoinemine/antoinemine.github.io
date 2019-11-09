@@ -1,0 +1,198 @@
+body {
+    background-color: white;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+p {
+    text-align: justify;
+}
+
+#header {
+    margin: 0 auto 0 auto;
+    max-width: 53em;
+    padding-top: 1em;
+    padding-bottom: 2em;
+    border-bottom: 1px solid #bbb;
+}
+
+#header h1 {
+    text-align: center;
+    font-size: 600%;
+    font-weight: normal;
+    letter-spacing: 0.5ex;
+    color: #bbf;
+    margin: 0;
+    padding: 0;
+    font-family: serif;
+}
+
+#header h2 {
+    text-align: center;
+    font-size: 200%;
+    font-weight: normal;
+    letter-spacing: 0.1ex;
+    word-spacing: 0.25ex;
+    color: #66b;
+    margin: 0;
+    padding: 0;
+    font-family: serif;
+}
+
+#header h3 {
+    text-align: center;
+    font-size: 125%;
+    font-weight: normal;
+    font-family: sans-serif;
+    color: #66b;
+    margin: 0;
+    padding: 0;
+    font-family: serif;
+}
+
+#contents {
+    margin: 2em auto 3em auto;
+    max-width: 50em;
+    padding: 0em 5em 5em 5em;
+}
+
+
+#menu {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    font-size: 100%;
+}
+
+#menubar {
+    background-color: #eef;
+}
+
+.menubold {
+    color: #c33;
+    font-weight: bold;
+}
+
+#menu a {
+    text-decoration: none;
+    padding: 0 1em 0 1em;
+    color: #000;
+    background-color: #eee;
+}
+
+#menu a:hover {
+    background-color: #ddd;
+}
+
+
+#contents h1 {
+    font-family: sans-serif;
+    font-size: 150%;
+    color: #66c;
+    margin: 1em 0 1em -0.5em;
+}
+
+a:link img {
+    padding: 0.5em 1em 0.5em 1em;
+}
+
+a:visited {
+    text-decoration: none;
+    border-bottom: 1px solid #f8a;
+}
+
+a:link:hover, a:link:hover img {
+    background-color: #ddf;
+}
+
+
+
+.name {
+    font-weight: bold;
+}
+
+.function {
+}
+
+
+.pkey {
+    font-weight: bold;
+    color: #833;
+    margin-right: 0.25em;
+}
+
+.pauthor {
+    margin-right: 0.25em;
+}
+
+.ptitle {
+    font-weight: bold;
+    color: #335;
+    margin-right: 0.25em;
+}
+
+.pconf {
+    color: #242;
+}
+
+.plink {
+    font-size: 75%;
+    color: #644;
+}
+
+.psee {
+    color: #686;
+}
+
+.pref {
+    font-weight: bold;
+    color: #686;
+}
+
+.pspecial {
+    color: #644;
+}
+
+.fixed {
+    font-family : "courier new",courier,monospace;
+}
+
+.hire {
+    font-size: 120%;
+    background-color: #fffafa;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 10pt 10pt 10pt 10pt;
+    border: 1px solid red;
+}
+
+
+
+.hour {
+    color: #202020;
+}
+
+.speaker {
+    color: #000080;
+}
+
+.talktitle {
+    font-weight: 600;
+    color: #206020;
+    margin: 0em 0em 0em 0em;
+}
+
+.institute {
+    color: #803030;
+}
+
+li {
+    margin-bottom: 0.4em;
+}
+
+img.center {
+    display: block;
+    margin: 0 auto;
+}

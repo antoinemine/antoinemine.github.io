@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="Start" href="index.html">
+<link rel="previous" href="Coeff.html">
+<link rel="next" href="Linexpr0.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Introduction" rel="Chapter" href="Introduction.html">
+<link title="Scalar" rel="Chapter" href="Scalar.html">
+<link title="Interval" rel="Chapter" href="Interval.html">
+<link title="Coeff" rel="Chapter" href="Coeff.html">
+<link title="Dim" rel="Chapter" href="Dim.html">
+<link title="Linexpr0" rel="Chapter" href="Linexpr0.html">
+<link title="Lincons0" rel="Chapter" href="Lincons0.html">
+<link title="Generator0" rel="Chapter" href="Generator0.html">
+<link title="Texpr0" rel="Chapter" href="Texpr0.html">
+<link title="Tcons0" rel="Chapter" href="Tcons0.html">
+<link title="Manager" rel="Chapter" href="Manager.html">
+<link title="Abstract0" rel="Chapter" href="Abstract0.html">
+<link title="Var" rel="Chapter" href="Var.html">
+<link title="Environment" rel="Chapter" href="Environment.html">
+<link title="Linexpr1" rel="Chapter" href="Linexpr1.html">
+<link title="Lincons1" rel="Chapter" href="Lincons1.html">
+<link title="Generator1" rel="Chapter" href="Generator1.html">
+<link title="Texpr1" rel="Chapter" href="Texpr1.html">
+<link title="Tcons1" rel="Chapter" href="Tcons1.html">
+<link title="Abstract1" rel="Chapter" href="Abstract1.html">
+<link title="Policy" rel="Chapter" href="Policy.html">
+<link title="Disjunction" rel="Chapter" href="Disjunction.html">
+<link title="Version" rel="Chapter" href="Version.html">
+<link title="Parser" rel="Chapter" href="Parser.html">
+<link title="Box" rel="Chapter" href="Box.html">
+<link title="Oct" rel="Chapter" href="Oct.html">
+<link title="Polka" rel="Chapter" href="Polka.html">
+<link title="Ppl" rel="Chapter" href="Ppl.html">
+<link title="PolkaGrid" rel="Chapter" href="PolkaGrid.html">
+<link title="Mpz" rel="Chapter" href="Mpz.html">
+<link title="Mpq" rel="Chapter" href="Mpq.html">
+<link title="Gmp_random" rel="Chapter" href="Gmp_random.html">
+<link title="Mpf" rel="Chapter" href="Mpf.html">
+<link title="Mpfr" rel="Chapter" href="Mpfr.html">
+<link title="Mpzf" rel="Chapter" href="Mpzf.html">
+<link title="Mpqf" rel="Chapter" href="Mpqf.html">
+<link title="Mpfrf" rel="Chapter" href="Mpfrf.html"><title>Dim</title>
+</head>
+<body>
+<div class="navbar"><a class="pre" href="Coeff.html" title="Coeff">Previous</a>
+&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;<a class="post" href="Linexpr0.html" title="Linexpr0">Next</a>
+</div>
+<h1>Module <a href="type_Dim.html">Dim</a></h1>
+
+<pre><span id="MODULEDim"><span class="keyword">module</span> Dim</span>: <code class="code"><span class="keyword">sig</span></code> <a href="Dim.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><hr width="100%">
+
+<pre><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> = <code class="type">int</code> </pre>
+
+
+<pre><code><span id="TYPEchange"><span class="keyword">type</span> <code class="type"></code>change</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTchange.dim">dim</span>&nbsp;: <code class="type">int array</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTchange.intdim">intdim</span>&nbsp;: <code class="type">int</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTchange.realdim">realdim</span>&nbsp;: <code class="type">int</code>;</code></td>
+
+</tr></table>
+}
+
+
+
+<pre><code><span id="TYPEchange2"><span class="keyword">type</span> <code class="type"></code>change2</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTchange2.add">add</span>&nbsp;: <code class="type"><a href="Dim.html#TYPEchange">change</a> option</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTchange2.remove">remove</span>&nbsp;: <code class="type"><a href="Dim.html#TYPEchange">change</a> option</code>;</code></td>
+
+</tr></table>
+}
+
+
+
+<pre><span id="TYPEperm"><span class="keyword">type</span> <code class="type"></code>perm</span> = <code class="type">int array</code> </pre>
+
+
+<pre><code><span id="TYPEdimension"><span class="keyword">type</span> <code class="type"></code>dimension</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdimension.intd">intd</span>&nbsp;: <code class="type">int</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTdimension.reald">reald</span>&nbsp;: <code class="type">int</code>;</code></td>
+
+</tr></table>
+}
+
+
+<p>APRON Dimensions and related types</p>
+<ul>
+<li><code class="code">t=int</code> is the type of dimensions.</li>
+<li>The semantics of an object <code class="code">(change:change)</code> is the following one:
+<ul>
+<li><code class="code">change.intdim</code> and <code class="code">change.realdim</code> indicate the number of integer and
+   real dimensions to add or to remove</li>
+<li>In case of the addition of dimensions,
+
+   <code class="code">change.dim[i]=k</code> means: add one dimension at dimension k and shift the
+   already existing dimensions greater than or equal to k one step on the
+   right (or increment them).
+
+   if k is equal to the size of the vector, then it means: add a dimension at
+   the end.
+
+   Repetition are allowed, and means that one inserts more than one dimensions.
+
+   Example:
+   <code class="code">add_dimensions&nbsp;[i0&nbsp;i1&nbsp;r0&nbsp;r1]&nbsp;{&nbsp;dim=[0&nbsp;1&nbsp;2&nbsp;2&nbsp;4];&nbsp;intdim=3;&nbsp;realdim=1&nbsp;}</code>
+   returns <code class="code">0&nbsp;i0&nbsp;0&nbsp;i1&nbsp;0&nbsp;0&nbsp;r0&nbsp;r1&nbsp;0</code>, considered as a vector with 6 integer
+   dimensions and 3 real dimensions.</li>
+<li>In case of the removal of dimensions,
+
+   dimchange.dim<code class="code">i</code>=k means: remove the dimension k and shift the dimensions
+   greater than k one step on the left (or decrement them).
+
+   Repetitions are meaningless (and are not correct specification)
+
+   Example: <code class="code">remove_dimensions&nbsp;[i0&nbsp;i1&nbsp;i2&nbsp;r0&nbsp;r1&nbsp;r2]&nbsp;{&nbsp;dim=[0&nbsp;2&nbsp;4];&nbsp;intdim=2;<br>
+&nbsp;&nbsp;&nbsp;realdim=1&nbsp;}</code> returns <code class="code">i1&nbsp;r0&nbsp;r2</code>, considered as a vector with 1 integer
+   dimensions and 2 real dimensions.
+</li>
+</ul>
+</li>
+<li>The semantics of an object <code class="code">(change2:change2)</code> is the combination of the
+two following transformations:
+<ul>
+<li><code class="code">change2.add</code> indicates an optional addition of dimensions.</li>
+<li><code class="code">change2.remove</code> indicates an optional removal of dimensions.</li>
+</ul>
+</li>
+<li><code class="code">perm</code> defines a permutation.</li>
+<li><code class="code">dimension</code> defines the dimensionality of an abstract value (number of
+integer and real dimensions).
+</li>
+</ul>
+
+<pre><span id="VALchange_add_invert"><span class="keyword">val</span> change_add_invert</span> : <code class="type"><a href="Dim.html#TYPEchange">change</a> -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>Assuming a transformation for add_dimensions, invert it in-place to
+    obtain the inverse transformation using remove_dimensions</p>
+</div>
+</div>
+
+<pre><span id="VALperm_compose"><span class="keyword">val</span> perm_compose</span> : <code class="type"><a href="Dim.html#TYPEperm">perm</a> -> <a href="Dim.html#TYPEperm">perm</a> -> <a href="Dim.html#TYPEperm">perm</a></code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">perm_compose&nbsp;perm1&nbsp;perm2</code> composes the 2 permutations perm1 and perm2
+  (in this order). The sizes of permutations are supposed to be equal.</p>
+</div>
+</div>
+
+<pre><span id="VALperm_invert"><span class="keyword">val</span> perm_invert</span> : <code class="type"><a href="Dim.html#TYPEperm">perm</a> -> <a href="Dim.html#TYPEperm">perm</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Invert a permutation</p>
+</div>
+</div>
+</body></html>

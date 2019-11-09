@@ -1,0 +1,217 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="Start" href="index.html">
+<link rel="previous" href="Var.html">
+<link rel="next" href="Linexpr1.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Introduction" rel="Chapter" href="Introduction.html">
+<link title="Scalar" rel="Chapter" href="Scalar.html">
+<link title="Interval" rel="Chapter" href="Interval.html">
+<link title="Coeff" rel="Chapter" href="Coeff.html">
+<link title="Dim" rel="Chapter" href="Dim.html">
+<link title="Linexpr0" rel="Chapter" href="Linexpr0.html">
+<link title="Lincons0" rel="Chapter" href="Lincons0.html">
+<link title="Generator0" rel="Chapter" href="Generator0.html">
+<link title="Texpr0" rel="Chapter" href="Texpr0.html">
+<link title="Tcons0" rel="Chapter" href="Tcons0.html">
+<link title="Manager" rel="Chapter" href="Manager.html">
+<link title="Abstract0" rel="Chapter" href="Abstract0.html">
+<link title="Var" rel="Chapter" href="Var.html">
+<link title="Environment" rel="Chapter" href="Environment.html">
+<link title="Linexpr1" rel="Chapter" href="Linexpr1.html">
+<link title="Lincons1" rel="Chapter" href="Lincons1.html">
+<link title="Generator1" rel="Chapter" href="Generator1.html">
+<link title="Texpr1" rel="Chapter" href="Texpr1.html">
+<link title="Tcons1" rel="Chapter" href="Tcons1.html">
+<link title="Abstract1" rel="Chapter" href="Abstract1.html">
+<link title="Policy" rel="Chapter" href="Policy.html">
+<link title="Disjunction" rel="Chapter" href="Disjunction.html">
+<link title="Version" rel="Chapter" href="Version.html">
+<link title="Parser" rel="Chapter" href="Parser.html">
+<link title="Box" rel="Chapter" href="Box.html">
+<link title="Oct" rel="Chapter" href="Oct.html">
+<link title="Polka" rel="Chapter" href="Polka.html">
+<link title="Ppl" rel="Chapter" href="Ppl.html">
+<link title="PolkaGrid" rel="Chapter" href="PolkaGrid.html">
+<link title="Mpz" rel="Chapter" href="Mpz.html">
+<link title="Mpq" rel="Chapter" href="Mpq.html">
+<link title="Gmp_random" rel="Chapter" href="Gmp_random.html">
+<link title="Mpf" rel="Chapter" href="Mpf.html">
+<link title="Mpfr" rel="Chapter" href="Mpfr.html">
+<link title="Mpzf" rel="Chapter" href="Mpzf.html">
+<link title="Mpqf" rel="Chapter" href="Mpqf.html">
+<link title="Mpfrf" rel="Chapter" href="Mpfrf.html"><title>Environment</title>
+</head>
+<body>
+<div class="navbar"><a class="pre" href="Var.html" title="Var">Previous</a>
+&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;<a class="post" href="Linexpr1.html" title="Linexpr1">Next</a>
+</div>
+<h1>Module <a href="type_Environment.html">Environment</a></h1>
+
+<pre><span id="MODULEEnvironment"><span class="keyword">module</span> Environment</span>: <code class="code"><span class="keyword">sig</span></code> <a href="Environment.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><hr width="100%">
+
+<pre><code><span id="TYPEtypvar"><span class="keyword">type</span> <code class="type"></code>typvar</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTtypvar.INT"><span class="constructor">INT</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTtypvar.REAL"><span class="constructor">REAL</span></span></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> </pre>
+
+<p>APRON Environments binding dimensions to names</p>
+
+<pre><span id="VALmake"><span class="keyword">val</span> make</span> : <code class="type"><a href="Var.html#TYPEt">Var.t</a> array -> <a href="Var.html#TYPEt">Var.t</a> array -> <a href="Environment.html#TYPEt">t</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Making an environment from a set of integer and real variables. Raise <code class="code"><span class="constructor">Failure</span></code> in case of name conflict.</p>
+</div>
+</div>
+
+<pre><span id="VALadd"><span class="keyword">val</span> add</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -> <a href="Var.html#TYPEt">Var.t</a> array -> <a href="Var.html#TYPEt">Var.t</a> array -> <a href="Environment.html#TYPEt">t</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Adding to an environment a set of integer and real variables. Raise <code class="code"><span class="constructor">Failure</span></code> in case of name conflict.</p>
+</div>
+</div>
+
+<pre><span id="VALremove"><span class="keyword">val</span> remove</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -> <a href="Var.html#TYPEt">Var.t</a> array -> <a href="Environment.html#TYPEt">t</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Remove from an environment a set of variables. Raise <code class="code"><span class="constructor">Failure</span></code> in case of non-existing variables.</p>
+</div>
+</div>
+
+<pre><span id="VALrename"><span class="keyword">val</span> rename</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -> <a href="Var.html#TYPEt">Var.t</a> array -> <a href="Var.html#TYPEt">Var.t</a> array -> <a href="Environment.html#TYPEt">t</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Renaming in an environment a set of variables. Raise <code class="code"><span class="constructor">Failure</span></code> in case of interferences with the variables that are not renamed.</p>
+</div>
+</div>
+
+<pre><span id="VALrename_perm"><span class="keyword">val</span> rename_perm</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -> <a href="Var.html#TYPEt">Var.t</a> array -> <a href="Var.html#TYPEt">Var.t</a> array -> <a href="Environment.html#TYPEt">t</a> * <a href="Dim.html#TYPEperm">Dim.perm</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Similar to previous function, but returns also 
+the permutation on dimensions induced by the renaming.</p>
+</div>
+</div>
+
+<pre><span id="VALlce"><span class="keyword">val</span> lce</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -> <a href="Environment.html#TYPEt">t</a> -> <a href="Environment.html#TYPEt">t</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Compute the least common environment of 2 environment, 
+that is, the environment composed of all the variables 
+of the 2 environments.
+Raise <code class="code"><span class="constructor">Failure</span></code> if the same variable has different types 
+in the 2 environment.</p>
+</div>
+</div>
+
+<pre><span id="VALlce_change"><span class="keyword">val</span> lce_change</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -><br>       <a href="Environment.html#TYPEt">t</a> -> <a href="Environment.html#TYPEt">t</a> * <a href="Dim.html#TYPEchange">Dim.change</a> option * <a href="Dim.html#TYPEchange">Dim.change</a> option</code></pre><div class="info ">
+<div class="info-desc">
+<p>Similar to the previous function, but returns also the transformations 
+required to convert from <code class="code">e1</code> (resp. <code class="code">e2</code>) 
+to the lce. If <code class="code"><span class="constructor">None</span></code> is returned, this means 
+that <code class="code">e1</code> (resp. <code class="code">e2</code>) is identic to the lce.</p>
+</div>
+</div>
+
+<pre><span id="VALdimchange"><span class="keyword">val</span> dimchange</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -> <a href="Environment.html#TYPEt">t</a> -> <a href="Dim.html#TYPEchange">Dim.change</a></code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">dimchange&nbsp;e1&nbsp;e2</code> computes the transformation for 
+converting from an environment <code class="code">e1</code> to a superenvironment 
+<code class="code">e2</code>. Raises <code class="code"><span class="constructor">Failure</span></code> if <code class="code">e2</code> is not a superenvironment.</p>
+</div>
+</div>
+
+<pre><span id="VALdimchange2"><span class="keyword">val</span> dimchange2</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -> <a href="Environment.html#TYPEt">t</a> -> <a href="Dim.html#TYPEchange2">Dim.change2</a></code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">dimchange2&nbsp;e1&nbsp;e2</code> computes the transformation for 
+ converting from an environment <code class="code">e1</code> to a (compatible) environment 
+ <code class="code">e2</code>, by first adding (some) variables of <code class="code">e2</code> and then removing 
+(some) variables of <code class="code">e1</code>. Raises <code class="code"><span class="constructor">Failure</span></code> if the two environments 
+are incompatible.</p>
+</div>
+</div>
+
+<pre><span id="VALequal"><span class="keyword">val</span> equal</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -> <a href="Environment.html#TYPEt">t</a> -> bool</code></pre><div class="info ">
+<div class="info-desc">
+<p>Test equality if two environments</p>
+</div>
+</div>
+
+<pre><span id="VALcompare"><span class="keyword">val</span> compare</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -> <a href="Environment.html#TYPEt">t</a> -> int</code></pre><div class="info ">
+<div class="info-desc">
+<p>Compare two environment. <code class="code">compare&nbsp;env1&nbsp;env2</code> return <code class="code">-2</code> if the environments are not compatible (a variable has different types in the 2 environments), <code class="code">-1</code> if <code class="code">env1</code> is a subset of env2, <code class="code">0</code> if equality,  <code class="code">+1</code> if env1 is a superset of env2, and <code class="code">+2</code> otherwise (the lce exists and is a strict superset of both)</p>
+</div>
+</div>
+
+<pre><span id="VALhash"><span class="keyword">val</span> hash</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -> int</code></pre><div class="info ">
+<div class="info-desc">
+<p>Hashing function for environments</p>
+</div>
+</div>
+
+<pre><span id="VALdimension"><span class="keyword">val</span> dimension</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -> <a href="Dim.html#TYPEdimension">Dim.dimension</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Return the dimension of the environment</p>
+</div>
+</div>
+
+<pre><span id="VALsize"><span class="keyword">val</span> size</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -> int</code></pre><div class="info ">
+<div class="info-desc">
+<p>Return the size of the environment</p>
+</div>
+</div>
+
+<pre><span id="VALmem_var"><span class="keyword">val</span> mem_var</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -> <a href="Var.html#TYPEt">Var.t</a> -> bool</code></pre><div class="info ">
+<div class="info-desc">
+<p>Return true if the variable is present in the environment.</p>
+</div>
+</div>
+
+<pre><span id="VALtyp_of_var"><span class="keyword">val</span> typ_of_var</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -> <a href="Var.html#TYPEt">Var.t</a> -> <a href="Environment.html#TYPEtypvar">typvar</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Return the type of variables in the environment. If the variable does not belong to the environment, raise a <code class="code"><span class="constructor">Failure</span></code> exception.</p>
+</div>
+</div>
+
+<pre><span id="VALvars"><span class="keyword">val</span> vars</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -> <a href="Var.html#TYPEt">Var.t</a> array * <a href="Var.html#TYPEt">Var.t</a> array</code></pre><div class="info ">
+<div class="info-desc">
+<p>Return the (lexicographically ordered) sets of integer and real variables in the environment</p>
+</div>
+</div>
+
+<pre><span id="VALvar_of_dim"><span class="keyword">val</span> var_of_dim</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -> <a href="Dim.html#TYPEt">Dim.t</a> -> <a href="Var.html#TYPEt">Var.t</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Return the variable corresponding to the given dimension in the environment. Raise <code class="code"><span class="constructor">Failure</span></code> is the dimension is out of the range of the environment (greater than or equal to <code class="code">dim&nbsp;env</code>)</p>
+</div>
+</div>
+
+<pre><span id="VALdim_of_var"><span class="keyword">val</span> dim_of_var</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -> <a href="Var.html#TYPEt">Var.t</a> -> <a href="Dim.html#TYPEt">Dim.t</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Return the dimension associated to the given variable in the environment. Raise <code class="code"><span class="constructor">Failure</span></code> if the variable does not belong to the environment.</p>
+</div>
+</div>
+
+<pre><span id="VALprint"><span class="keyword">val</span> print</span> : <code class="type">?first:(unit, Stdlib.Format.formatter, unit) Stdlib.format -><br>       ?sep:(unit, Stdlib.Format.formatter, unit) Stdlib.format -><br>       ?last:(unit, Stdlib.Format.formatter, unit) Stdlib.format -><br>       Stdlib.Format.formatter -> <a href="Environment.html#TYPEt">t</a> -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>Printing</p>
+</div>
+</div>
+</body></html>

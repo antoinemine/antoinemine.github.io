@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="Start" href="index.html">
+<link rel="previous" href="Abstract1.html">
+<link rel="next" href="Disjunction.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Introduction" rel="Chapter" href="Introduction.html">
+<link title="Scalar" rel="Chapter" href="Scalar.html">
+<link title="Interval" rel="Chapter" href="Interval.html">
+<link title="Coeff" rel="Chapter" href="Coeff.html">
+<link title="Dim" rel="Chapter" href="Dim.html">
+<link title="Linexpr0" rel="Chapter" href="Linexpr0.html">
+<link title="Lincons0" rel="Chapter" href="Lincons0.html">
+<link title="Generator0" rel="Chapter" href="Generator0.html">
+<link title="Texpr0" rel="Chapter" href="Texpr0.html">
+<link title="Tcons0" rel="Chapter" href="Tcons0.html">
+<link title="Manager" rel="Chapter" href="Manager.html">
+<link title="Abstract0" rel="Chapter" href="Abstract0.html">
+<link title="Var" rel="Chapter" href="Var.html">
+<link title="Environment" rel="Chapter" href="Environment.html">
+<link title="Linexpr1" rel="Chapter" href="Linexpr1.html">
+<link title="Lincons1" rel="Chapter" href="Lincons1.html">
+<link title="Generator1" rel="Chapter" href="Generator1.html">
+<link title="Texpr1" rel="Chapter" href="Texpr1.html">
+<link title="Tcons1" rel="Chapter" href="Tcons1.html">
+<link title="Abstract1" rel="Chapter" href="Abstract1.html">
+<link title="Policy" rel="Chapter" href="Policy.html">
+<link title="Disjunction" rel="Chapter" href="Disjunction.html">
+<link title="Version" rel="Chapter" href="Version.html">
+<link title="Parser" rel="Chapter" href="Parser.html">
+<link title="Box" rel="Chapter" href="Box.html">
+<link title="Oct" rel="Chapter" href="Oct.html">
+<link title="Polka" rel="Chapter" href="Polka.html">
+<link title="Ppl" rel="Chapter" href="Ppl.html">
+<link title="PolkaGrid" rel="Chapter" href="PolkaGrid.html">
+<link title="Mpz" rel="Chapter" href="Mpz.html">
+<link title="Mpq" rel="Chapter" href="Mpq.html">
+<link title="Gmp_random" rel="Chapter" href="Gmp_random.html">
+<link title="Mpf" rel="Chapter" href="Mpf.html">
+<link title="Mpfr" rel="Chapter" href="Mpfr.html">
+<link title="Mpzf" rel="Chapter" href="Mpzf.html">
+<link title="Mpqf" rel="Chapter" href="Mpqf.html">
+<link title="Mpfrf" rel="Chapter" href="Mpfrf.html"><link title="Policy, level 0" rel="Section" href="#2_Policylevel0">
+<link title="Policy, level 1" rel="Section" href="#2_Policylevel1">
+<title>Policy</title>
+</head>
+<body>
+<div class="navbar"><a class="pre" href="Abstract1.html" title="Abstract1">Previous</a>
+&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;<a class="post" href="Disjunction.html" title="Disjunction">Next</a>
+</div>
+<h1>Module <a href="type_Policy.html">Policy</a></h1>
+
+<pre><span id="MODULEPolicy"><span class="keyword">module</span> Policy</span>: <code class="code"><span class="keyword">sig</span></code> <a href="Policy.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><hr width="100%">
+
+<pre><span id="TYPEman"><span class="keyword">type</span> <code class="type">'a</code> man</span> </pre>
+
+
+<pre><span id="TYPEt"><span class="keyword">type</span> <code class="type">'a</code> t</span> </pre>
+
+
+<pre><span id="VALmanager_get_manager"><span class="keyword">val</span> manager_get_manager</span> : <code class="type">'a <a href="Policy.html#TYPEman">man</a> -> 'a <a href="Manager.html#TYPEt">Manager.t</a></code></pre><div class="info ">
+<div class="info-desc">
+<h3 id="2_Policymanager">Policy manager</h3></div>
+</div>
+
+<pre><span id="VALmanager"><span class="keyword">val</span> manager</span> : <code class="type">'a <a href="Policy.html#TYPEt">t</a> -> 'a <a href="Policy.html#TYPEman">man</a></code></pre><div class="info ">
+<div class="info-desc">
+<h3 id="2_Policygeneral">Policy, general</h3></div>
+</div>
+
+<pre><span id="VALcopy"><span class="keyword">val</span> copy</span> : <code class="type">'a <a href="Policy.html#TYPEman">man</a> -> 'a <a href="Policy.html#TYPEt">t</a> -> 'a <a href="Policy.html#TYPEt">t</a></code></pre>
+<pre><span id="VALfdump"><span class="keyword">val</span> fdump</span> : <code class="type">'a <a href="Policy.html#TYPEman">man</a> -> 'a <a href="Policy.html#TYPEt">t</a> -> unit</code></pre>
+<pre><span id="VALto_string"><span class="keyword">val</span> to_string</span> : <code class="type">'a <a href="Policy.html#TYPEman">man</a> -> 'a <a href="Policy.html#TYPEt">t</a> -> string</code></pre>
+<pre><span id="VALdimension"><span class="keyword">val</span> dimension</span> : <code class="type">'a <a href="Policy.html#TYPEman">man</a> -> 'a <a href="Policy.html#TYPEt">t</a> -> int</code></pre>
+<pre><span id="VALequal"><span class="keyword">val</span> equal</span> : <code class="type">'a <a href="Policy.html#TYPEman">man</a> -> 'a <a href="Policy.html#TYPEt">t</a> -> 'a <a href="Policy.html#TYPEt">t</a> -> bool</code></pre><h3 id="2_Policylevel0">Policy, level 0</h3>
+<pre><span id="MODULEAbstract0"><span class="keyword">module</span> <a href="Policy.Abstract0.html">Abstract0</a></span>: <code class="code"><span class="keyword">sig</span></code> <a href="Policy.Abstract0.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><h3 id="2_Policylevel1">Policy, level 1</h3>
+<pre><span id="MODULEAbstract1"><span class="keyword">module</span> <a href="Policy.Abstract1.html">Abstract1</a></span>: <code class="code"><span class="keyword">sig</span></code> <a href="Policy.Abstract1.html">..</a> <code class="code"><span class="keyword">end</span></code></pre></body></html>

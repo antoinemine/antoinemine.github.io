@@ -1,0 +1,270 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on November 9, 2019 by texi2html 5.0
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>APRON 0.9.10: Generators of level 0 (ap_generator0.h)</title>
+
+<meta name="description" content="APRON 0.9.10: Generators of level 0 (ap_generator0.h)">
+<meta name="keywords" content="APRON 0.9.10: Generators of level 0 (ap_generator0.h)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html 5.0">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Generators-of-level-0"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_32.html#Level-0-of-the-interface" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_35.html#Change-of-dimensions-and-permutations-of-linear-constraints-of-level-0" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_32.html#Level-0-of-the-interface" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Allocating-generators-of-level-0" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_40.html#Functions-for-implementors" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="apron.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="apron_42.html#Appendices" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="apron_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Generators-of-level-0-_0028ap_005fgenerator0_002eh_0029"></a>
+<h2 class="section">Generators of level 0 (&lsquo;<tt>ap_generator0.h</tt>&rsquo;)</h2>
+
+<p>Datatypes and functions are almost isomorphic to datatypes and
+functions for linear constraints.
+</p>
+<dl>
+<dt><a name="index-ap_005fgentyp_005ft"></a>datatype: <strong>ap_gentyp_t</strong></dt>
+<dd><div class="example">
+<pre class="example">typedef enum ap_gentyp_t {
+  AP_GEN_LINE,
+  AP_GEN_RAY,
+  AP_GEN_VERTEX,
+  AP_GEN_LINEMOD,
+  AP_GEN_RAYMOD
+} ap_gentyp_t;
+</pre></div>
+<p>Datatype for type of generators.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fgenerator0_005ft"></a>datatype: <strong>ap_generator0_t</strong></dt>
+<dd><div class="example">
+<pre class="example">typedef struct ap_generator0_t {
+  ap_linexpr0_t* linexpr0; /* underlying expression.  */
+  ap_gentyp_t gentyp;      /* type of generator */
+} ap_generator0_t;
+</pre></div>
+<p>Datatype for generators.
+</p>
+<p>The constant of the expression is ignored, and the expression is
+assumed to be truly linear (without intervals).
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fgenerator0_005farray_005ft"></a>datatype: <strong>ap_generator0_array_t</strong></dt>
+<dd><div class="example">
+<pre class="example">typedef struct ap_generator0_array_t {
+  ap_generator0_t* p;
+  size_t size;
+} ap_generator0_array_t;
+</pre></div>
+<p>Datatype for arrays of generators.
+</p></dd></dl>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#Allocating-generators-of-level-0">Allocating generators of level 0</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Arrays-of-generators-of-level-0">Arrays of generators of level 0</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#Change-of-dimensions-and-permutations-of-generators-of-level-0">Change of dimensions and permutations of generators of level 0</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<a name="Allocating-generators-of-level-0"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_32.html#Level-0-of-the-interface" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Generators-of-level-0" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Generators-of-level-0" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Arrays-of-generators-of-level-0" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_40.html#Functions-for-implementors" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="apron.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="apron_42.html#Appendices" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="apron_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Allocating-generators-of-level-0-1"></a>
+<h3 class="subsection">Allocating generators of level 0</h3>
+
+<dl>
+<dt><a name="index-ap_005fgenerator0_005fmake"></a>Function: <em>ap_generator0_t</em> <strong>ap_generator0_make</strong><em> (ap_gentyp_t <var>gentyp</var>, ap_linexpr0_t* <var>linexpr</var>)</em></dt>
+<dd><p>Create a generator of type <var>gentyp</var> with the expression
+<var>linexpr</var>.
+</p>
+<p>The expression is not duplicated, just pointed to, so it becomes
+managed via the generator.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fgenerator0_005fcopy"></a>Function: <em>ap_generator0_t</em> <strong>ap_generator0_copy</strong><em> (gent ap_generator0_t* <var>gen</var>)</em></dt>
+<dd><p>Duplication
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fgenerator0_005fclear"></a>Function: <em>void</em> <strong>ap_generator0_clear</strong><em> (ap_generator0_t* <var>gen</var>)</em></dt>
+<dd><p>Clear the generator.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fgenerator0_005ffprint"></a>Function: <em>void</em> <strong>ap_generator0_fprint</strong><em> (FILE* <var>stream</var>, gent ap_generator0_t* <var>gen</var>, char** <var>name_of_dim</var>);</em></dt>
+<dd><p>Print the linear generator on stream <var>stream</var>, using the array
+<var>name_of_dim</var> to convert dimensions to variable names. If
+<var>name_of_dim</var> is <code>NULL</code>, the dimensions are named
+<code>x0,x1,...</code>.
+</p></dd></dl>
+
+<hr>
+<a name="Arrays-of-generators-of-level-0"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_32.html#Level-0-of-the-interface" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Allocating-generators-of-level-0" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Generators-of-level-0" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="#Change-of-dimensions-and-permutations-of-generators-of-level-0" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_40.html#Functions-for-implementors" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="apron.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="apron_42.html#Appendices" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="apron_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Arrays-of-generators-of-level-0-1"></a>
+<h3 class="subsection">Arrays of generators of level 0</h3>
+
+<p>Arrays are accessed directly, for example by writing
+<code>array-&gt;p[i]</code> (of type <code>ap_generator0_t</code>),
+<code>array-&gt;p[i].gentyp</code> and <code>array-&gt;p[i].linexpr0</code>.
+</p>
+<p>One can assign a generator to the index <var>index</var> by writing:
+<code>array-&gt;p[index] = ap_generator0_make(gentyp,expr)</code>.
+</p>
+<dl>
+<dt><a name="index-ap_005fgenerator0_005farray_005fmake"></a>Function: <em>ap_generator0_array_t</em> <strong>ap_generator0_array_make</strong><em> (size_t <var>size</var>)</em></dt>
+<dd><p>Allocate an array of size generators.  The generators are
+initialized with NULL pointers for underlying expressions.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fgenerator0_005farray_005fclear"></a>Function: <em>void</em> <strong>ap_generator0_array_clear</strong><em> (ap_generator0_array_t* <var>array</var>)</em></dt>
+<dd><p>Clear the generators of the array, and then the array itself.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fgenerator0_005farray_005ffprint"></a>Function: <em>void</em> <strong>ap_generator0_array_fprint</strong><em> (FILE* <var>stream</var>, gent ap_generator0_array_t* <var>array</var>, char** <var>name_of_dim</var>)</em></dt>
+<dd><p>Print the array on the stream.
+</p></dd></dl>
+
+<hr>
+<a name="Change-of-dimensions-and-permutations-of-generators-of-level-0"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_32.html#Level-0-of-the-interface" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Arrays-of-generators-of-level-0" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Generators-of-level-0" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="apron_37.html#Tree-expressions-of-level-0" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_40.html#Functions-for-implementors" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="apron.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="apron_42.html#Appendices" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="apron_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Change-of-dimensions-and-permutations-of-generators-of-level-0-1"></a>
+<h3 class="subsection">Change of dimensions and permutations of generators of level 0</h3>
+
+<dl>
+<dt><a name="index-ap_005fgenerator0_005fadd_005fdimensions_005fwith"></a>Function: <em>void</em> <strong>ap_generator0_add_dimensions_with</strong><em> (ap_generator0_t* <var>gen</var>, gent ap_dimchange_t* <var>dimchange</var>)</em></dt>
+<dt><a name="index-ap_005fgenerator0_005fadd_005fdimensions"></a>Function: <em>ap_generator0_t</em> <strong>ap_generator0_add_dimensions</strong><em> (gent ap_generator0_t* <var>gen</var>, gent ap_dimchange_t* <var>dimchange</var>)</em></dt>
+<dd><p>These two functions add dimensions to the generator, following
+the semantics of dimchange (see the type definition of <code>ap_dimchange_t</code>).
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fgenerator0_005fpermute_005fdimensions_005fwith"></a>Function: <em>void</em> <strong>ap_generator0_permute_dimensions_with</strong><em> (ap_generator0_t* <var>gen</var>, gent ap_dimperm_t* <var>perm</var>)</em></dt>
+<dt><a name="index-ap_005fgenerator0_005fpermute_005fdimensions"></a>Function: <em>ap_generator0_t</em> <strong>ap_generator0_permute_dimensions</strong><em> (gent ap_generator0_t* <var>gen</var>, gent ap_dimperm_t* <var>perm</var>)</em></dt>
+<dd><p>These two functions apply the given permutation to the dimensions
+of <var>gen</var>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fgenerator0_005farray_005fadd_005fdimensions_005fwith"></a>Function: <em>void</em> <strong>ap_generator0_array_add_dimensions_with</strong><em> (ap_generator0_array_t* <var>gen</var>, gent ap_dimchange_t* <var>dimchange</var>)</em></dt>
+<dt><a name="index-ap_005fgenerator0_005farray_005fadd_005fdimensions"></a>Function: <em>ap_generator0_array_t</em> <strong>ap_generator0_array_add_dimensions</strong><em> (gent ap_generator0_array_t* <var>gen</var>, gent ap_dimchange_t* <var>dimchange</var>)</em></dt>
+<dt><a name="index-ap_005fgenerator0_005farray_005fpermute_005fdimensions_005fwith"></a>Function: <em>void</em> <strong>ap_generator0_array_permute_dimensions_with</strong><em> (ap_generator0_array_t* <var>gen</var>, gent ap_dimperm_t* <var>perm</var>)</em></dt>
+<dt><a name="index-ap_005fgenerator0_005farray_005fpermute_005fdimensions"></a>Function: <em>ap_generator0_array_t</em> <strong>ap_generator0_array_permute_dimensions</strong><em> (gent ap_generator0_array_t* <var>gen</var>, gent ap_dimperm_t* <var>perm</var>)</em></dt>
+<dd><p>Extension to arrays of the corresponding functions on generators.
+</p></dd></dl>
+
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_32.html#Level-0-of-the-interface" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Arrays-of-generators-of-level-0" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Generators-of-level-0" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="apron_37.html#Tree-expressions-of-level-0" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_40.html#Functions-for-implementors" title="Next chapter"> &gt;&gt; </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated on <i>November 9, 2019</i> using <a href="http://www.nongnu.org/texi2html/"><i>texi2html 5.0</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="Start" href="index.html">
+<link rel="previous" href="Version.html">
+<link rel="next" href="Box.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Introduction" rel="Chapter" href="Introduction.html">
+<link title="Scalar" rel="Chapter" href="Scalar.html">
+<link title="Interval" rel="Chapter" href="Interval.html">
+<link title="Coeff" rel="Chapter" href="Coeff.html">
+<link title="Dim" rel="Chapter" href="Dim.html">
+<link title="Linexpr0" rel="Chapter" href="Linexpr0.html">
+<link title="Lincons0" rel="Chapter" href="Lincons0.html">
+<link title="Generator0" rel="Chapter" href="Generator0.html">
+<link title="Texpr0" rel="Chapter" href="Texpr0.html">
+<link title="Tcons0" rel="Chapter" href="Tcons0.html">
+<link title="Manager" rel="Chapter" href="Manager.html">
+<link title="Abstract0" rel="Chapter" href="Abstract0.html">
+<link title="Var" rel="Chapter" href="Var.html">
+<link title="Environment" rel="Chapter" href="Environment.html">
+<link title="Linexpr1" rel="Chapter" href="Linexpr1.html">
+<link title="Lincons1" rel="Chapter" href="Lincons1.html">
+<link title="Generator1" rel="Chapter" href="Generator1.html">
+<link title="Texpr1" rel="Chapter" href="Texpr1.html">
+<link title="Tcons1" rel="Chapter" href="Tcons1.html">
+<link title="Abstract1" rel="Chapter" href="Abstract1.html">
+<link title="Policy" rel="Chapter" href="Policy.html">
+<link title="Disjunction" rel="Chapter" href="Disjunction.html">
+<link title="Version" rel="Chapter" href="Version.html">
+<link title="Parser" rel="Chapter" href="Parser.html">
+<link title="Box" rel="Chapter" href="Box.html">
+<link title="Oct" rel="Chapter" href="Oct.html">
+<link title="Polka" rel="Chapter" href="Polka.html">
+<link title="Ppl" rel="Chapter" href="Ppl.html">
+<link title="PolkaGrid" rel="Chapter" href="PolkaGrid.html">
+<link title="Mpz" rel="Chapter" href="Mpz.html">
+<link title="Mpq" rel="Chapter" href="Mpq.html">
+<link title="Gmp_random" rel="Chapter" href="Gmp_random.html">
+<link title="Mpf" rel="Chapter" href="Mpf.html">
+<link title="Mpfr" rel="Chapter" href="Mpfr.html">
+<link title="Mpzf" rel="Chapter" href="Mpzf.html">
+<link title="Mpqf" rel="Chapter" href="Mpqf.html">
+<link title="Mpfrf" rel="Chapter" href="Mpfrf.html"><link title="Introduction" rel="Section" href="#2_Introduction">
+<link title="Interface" rel="Section" href="#2_Interface">
+<link title="Syntax" rel="Subsection" href="#3_Syntax">
+<link title="Examples" rel="Subsection" href="#3_Examples">
+<link title="Remarks" rel="Subsection" href="#3_Remarks">
+<title>Parser</title>
+</head>
+<body>
+<div class="navbar"><a class="pre" href="Version.html" title="Version">Previous</a>
+&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;<a class="post" href="Box.html" title="Box">Next</a>
+</div>
+<h1>Module <a href="type_Parser.html">Parser</a></h1>
+
+<pre><span id="MODULEParser"><span class="keyword">module</span> Parser</span>: <code class="code"><span class="keyword">sig</span></code> <a href="Parser.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
+<div class="info-desc">
+<p>APRON Parsing of expressions</p>
+</div>
+</div>
+<hr width="100%">
+<h3 id="2_Introduction">Introduction</h3>
+<p>This small module implements the parsing of expressions, constraints and
+  generators. The allowed syntax is simple for linear expressions (no
+  parenthesis) but supports interval expressions. The syntax is more flexible
+  for tree expressions.</p>
+
+<h4 id="3_Syntax">Syntax</h4>
+<p><code class="code">lincons&nbsp;::=&nbsp;linexpr&nbsp;(<span class="string">'&gt;'</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="keywordsign">'</span>&gt;=<span class="keywordsign">'</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="string">'='</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="keywordsign">'</span>!=<span class="keywordsign">'</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="string">'='</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="keywordsign">'</span>&lt;=<span class="keywordsign">'</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="string">'&lt;'</span>)&nbsp;linexpr&nbsp;<span class="keywordsign">|</span><br>
+&nbsp;&nbsp;linexpr&nbsp;=&nbsp;linexpr&nbsp;<span class="keywordsign">'</span>mod'&nbsp;scalar</code></p>
+
+<p><code class="code">gen&nbsp;::=&nbsp;(<span class="keywordsign">'</span><span class="constructor">V</span>:<span class="keywordsign">'</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="keywordsign">'</span><span class="constructor">R</span>:<span class="keywordsign">'</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="keywordsign">'</span><span class="constructor">L</span>:<span class="keywordsign">'</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="keywordsign">'</span><span class="constructor">RM</span>:<span class="keywordsign">'</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="keywordsign">'</span><span class="constructor">LM</span>:<span class="keywordsign">'</span>)&nbsp;linexpr</code></p>
+
+<p><code class="code">linexpr&nbsp;::=&nbsp;linexpr&nbsp;<span class="string">'+'</span>&nbsp;linterm&nbsp;<span class="keywordsign">|</span>&nbsp;linexpr&nbsp;<span class="string">'-'</span>&nbsp;linterm&nbsp;<span class="keywordsign">|</span>&nbsp;linterm</code></p>
+
+<p><code class="code">linterm&nbsp;::=&nbsp;coeff&nbsp;[<span class="string">'*'</span>]&nbsp;identifier&nbsp;<span class="keywordsign">|</span>&nbsp;coeff&nbsp;<span class="keywordsign">|</span>&nbsp;[<span class="string">'-'</span>]&nbsp;identifier</code></p>
+
+<p><code class="code">tcons&nbsp;::=&nbsp;texpr&nbsp;(<span class="string">'&gt;'</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="keywordsign">'</span>&gt;=<span class="keywordsign">'</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="string">'='</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="keywordsign">'</span>!=<span class="keywordsign">'</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="string">'='</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="keywordsign">'</span>&lt;=<span class="keywordsign">'</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="string">'&lt;'</span>)&nbsp;texpr&nbsp;<span class="keywordsign">|</span>&nbsp;texpr&nbsp;=<br>
+&nbsp;&nbsp;texpr&nbsp;<span class="keywordsign">'</span>mod'&nbsp;scalar</code></p>
+
+<p><code class="code">texpr&nbsp;::=&nbsp;coeff&nbsp;<span class="keywordsign">|</span>&nbsp;identifier&nbsp;<span class="keywordsign">|</span>&nbsp;unop&nbsp;texpr&nbsp;<span class="keywordsign">|</span>&nbsp;texpr&nbsp;binop&nbsp;texpr&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="string">'('</span>&nbsp;texpr<br>
+&nbsp;&nbsp;<span class="string">')'</span></code></p>
+
+<p><code class="code">binop&nbsp;::=<br>
+&nbsp;&nbsp;(<span class="string">'+'</span><span class="keywordsign">|</span><span class="string">'-'</span><span class="keywordsign">|</span><span class="string">'*'</span><span class="keywordsign">|</span><span class="string">'/'</span><span class="keywordsign">|</span><span class="string">'%'</span>)[<span class="string">'_'</span>(<span class="string">'i'</span><span class="keywordsign">|</span><span class="string">'f'</span><span class="keywordsign">|</span><span class="string">'d'</span><span class="keywordsign">|</span><span class="string">'l'</span><span class="keywordsign">|</span><span class="string">'q'</span>)][<span class="string">','</span>(<span class="string">'n'</span><span class="keywordsign">|</span><span class="string">'0'</span><span class="keywordsign">|</span><span class="keywordsign">'</span>+oo'<span class="keywordsign">|</span><span class="keywordsign">'</span>-oo')]</code></p>
+
+<p><code class="code">unop&nbsp;::=&nbsp;(<span class="keywordsign">'</span>cast'&nbsp;<span class="keywordsign">|</span><br>
+&nbsp;&nbsp;<span class="keywordsign">'</span>sqrt')[<span class="string">'_'</span>(<span class="string">'i'</span><span class="keywordsign">|</span><span class="string">'f'</span><span class="keywordsign">|</span><span class="string">'d'</span><span class="keywordsign">|</span><span class="string">'l'</span><span class="keywordsign">|</span><span class="string">'q'</span>)][<span class="string">','</span>(<span class="string">'n'</span><span class="keywordsign">|</span><span class="string">'0'</span><span class="keywordsign">|</span><span class="keywordsign">'</span>+oo'<span class="keywordsign">|</span><span class="keywordsign">'</span>-oo')]</code></p>
+
+<p><code class="code">coeff&nbsp;::=&nbsp;scalar&nbsp;<span class="keywordsign">|</span>&nbsp;[<span class="string">'-'</span>]&nbsp;<span class="string">'['</span>scalar&nbsp;<span class="string">';'</span>&nbsp;scalar&nbsp;<span class="string">']'</span></code></p>
+
+<p><code class="code">scalar&nbsp;::=&nbsp;[<span class="string">'-'</span>]&nbsp;(integer&nbsp;<span class="keywordsign">|</span>&nbsp;rational&nbsp;<span class="keywordsign">|</span>&nbsp;floating_point_number)</code></p>
+
+<p>For tree expressions <code class="code">texpr</code>, by default the operations have an exact
+  arithmetic semantics in the real numbers (even if involved variables are of
+  integer). The type qualifiers modify this default semantics. Their meaning is
+  as follows:</p>
+<ul>
+<li><code class="code">i</code> integer semantics </li>
+<li><code class="code">f</code> IEEE754 32 bits floating-point semantics </li>
+<li><code class="code">d</code> IEEE754 64 bits floating-point semantics </li>
+<li><code class="code">l</code> IEEE754 80 bits floating-point semantics </li>
+<li><code class="code">q</code> IEEE754 129 bits floating-point semantics</li>
+</ul>
+<p>By default, the rounding mode is "any" (this applies only in non-real
+  semantics), which allows to emulate all the following rounding modes:</p>
+<ul>
+<li><code class="code">n</code> nearest </li>
+<li><code class="code">0</code> towards zero </li>
+<li><code class="code">+oo</code> towards infinity </li>
+<li><code class="code">-oo</code> towards minus infinity</li>
+<li><code class="code">?</code> any</li>
+</ul>
+<h4 id="3_Examples">Examples</h4>
+<p><code class="code"><span class="keyword">let</span>&nbsp;(linexpr:<span class="constructor">Linexpr1</span>.t)&nbsp;=&nbsp;<span class="constructor">Parser</span>.linexpr1_of_string&nbsp;env&nbsp;<span class="string">"z+0.4x+2y"</span></code></p>
+
+<p><code class="code"><span class="keyword">let</span>&nbsp;(tab:<span class="constructor">Lincons1</span>.earray)&nbsp;=&nbsp;<span class="constructor">Parser</span>.lincons1_of_lstring&nbsp;env<br>
+&nbsp;&nbsp;[<span class="string">"1/2x+2/3y=1"</span>;<span class="string">"[1;2]&lt;=z+2w"</span>;<span class="string">"z+2w&lt;=4"</span>;<span class="string">"0&lt;=u"</span>;<span class="string">"u&lt;=5"</span>]</code></p>
+
+<p><code class="code"><span class="keyword">let</span>&nbsp;(generator:<span class="constructor">Generator1</span>.t)&nbsp;=&nbsp;<span class="constructor">Parser</span>.generator1_of_string&nbsp;env&nbsp;<span class="string">"R:x+2y"</span></code></p>
+
+<p><code class="code"><span class="keyword">let</span>&nbsp;(texpr:<span class="constructor">Texpr1</span>.t)&nbsp;=&nbsp;<span class="constructor">Parser</span>.texpr1_of_string&nbsp;env&nbsp;<span class="string">"a&nbsp;%_i,?&nbsp;b&nbsp;+_f,0&nbsp;c"</span></code></p>
+
+<h4 id="3_Remarks">Remarks</h4>
+<p>There is the possibility to parse directly from a lexing buffer, or from a
+  string (from which one can generate a buffer with the function
+  <code class="code"><span class="constructor">Lexing</span>.from_string</code>.</p>
+
+<p>This module uses the underlying modules <code class="code"><span class="constructor">Apron_lexer</span></code> and <code class="code"><span class="constructor">Apron_parser</span></code>.</p>
+<h3 id="2_Interface">Interface</h3>
+<pre><span id="EXCEPTIONError"><span class="keyword">exception</span> Error</span> <span class="keyword">of</span> <code class="type">string</code></pre>
+<div class="info ">
+<div class="info-desc">
+<p>Raised by conversion functions</p>
+</div>
+</div>
+
+<pre><span id="VALlinexpr1_of_lexbuf"><span class="keyword">val</span> linexpr1_of_lexbuf</span> : <code class="type"><a href="Environment.html#TYPEt">Environment.t</a> -> Stdlib.Lexing.lexbuf -> <a href="Linexpr1.html#TYPEt">Linexpr1.t</a></code></pre>
+<pre><span id="VALlincons1_of_lexbuf"><span class="keyword">val</span> lincons1_of_lexbuf</span> : <code class="type"><a href="Environment.html#TYPEt">Environment.t</a> -> Stdlib.Lexing.lexbuf -> <a href="Lincons1.html#TYPEt">Lincons1.t</a></code></pre>
+<pre><span id="VALgenerator1_of_lexbuf"><span class="keyword">val</span> generator1_of_lexbuf</span> : <code class="type"><a href="Environment.html#TYPEt">Environment.t</a> -> Stdlib.Lexing.lexbuf -> <a href="Generator1.html#TYPEt">Generator1.t</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Conversion from lexing buffers to resp. linear expressions, linear
+    constraints and generators, defined on the given environment.</p>
+</div>
+</div>
+
+<pre><span id="VALtexpr1expr_of_lexbuf"><span class="keyword">val</span> texpr1expr_of_lexbuf</span> : <code class="type">Stdlib.Lexing.lexbuf -> <a href="Texpr1.html#TYPEexpr">Texpr1.expr</a></code></pre>
+<pre><span id="VALtexpr1_of_lexbuf"><span class="keyword">val</span> texpr1_of_lexbuf</span> : <code class="type"><a href="Environment.html#TYPEt">Environment.t</a> -> Stdlib.Lexing.lexbuf -> <a href="Texpr1.html#TYPEt">Texpr1.t</a></code></pre>
+<pre><span id="VALtcons1_of_lexbuf"><span class="keyword">val</span> tcons1_of_lexbuf</span> : <code class="type"><a href="Environment.html#TYPEt">Environment.t</a> -> Stdlib.Lexing.lexbuf -> <a href="Tcons1.html#TYPEt">Tcons1.t</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Conversion from lexing buffers to resp. tree expressions and
+      constraints, defined on the given environment.</p>
+</div>
+</div>
+
+<pre><span id="VALlinexpr1_of_string"><span class="keyword">val</span> linexpr1_of_string</span> : <code class="type"><a href="Environment.html#TYPEt">Environment.t</a> -> string -> <a href="Linexpr1.html#TYPEt">Linexpr1.t</a></code></pre>
+<pre><span id="VALlincons1_of_string"><span class="keyword">val</span> lincons1_of_string</span> : <code class="type"><a href="Environment.html#TYPEt">Environment.t</a> -> string -> <a href="Lincons1.html#TYPEt">Lincons1.t</a></code></pre>
+<pre><span id="VALgenerator1_of_string"><span class="keyword">val</span> generator1_of_string</span> : <code class="type"><a href="Environment.html#TYPEt">Environment.t</a> -> string -> <a href="Generator1.html#TYPEt">Generator1.t</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Conversion from strings to resp. linear expressions, linear
+    constraints and generators, defined on the given environment.</p>
+</div>
+</div>
+
+<pre><span id="VALtexpr1expr_of_string"><span class="keyword">val</span> texpr1expr_of_string</span> : <code class="type">string -> <a href="Texpr1.html#TYPEexpr">Texpr1.expr</a></code></pre>
+<pre><span id="VALtexpr1_of_string"><span class="keyword">val</span> texpr1_of_string</span> : <code class="type"><a href="Environment.html#TYPEt">Environment.t</a> -> string -> <a href="Texpr1.html#TYPEt">Texpr1.t</a></code></pre>
+<pre><span id="VALtcons1_of_string"><span class="keyword">val</span> tcons1_of_string</span> : <code class="type"><a href="Environment.html#TYPEt">Environment.t</a> -> string -> <a href="Tcons1.html#TYPEt">Tcons1.t</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Conversion from lexing buffers to resp. tree expressions and
+      constraints, defined on the given environment.</p>
+</div>
+</div>
+
+<pre><span id="VALlincons1_of_lstring"><span class="keyword">val</span> lincons1_of_lstring</span> : <code class="type"><a href="Environment.html#TYPEt">Environment.t</a> -> string list -> <a href="Lincons1.html#TYPEearray">Lincons1.earray</a></code></pre>
+<pre><span id="VALgenerator1_of_lstring"><span class="keyword">val</span> generator1_of_lstring</span> : <code class="type"><a href="Environment.html#TYPEt">Environment.t</a> -> string list -> <a href="Generator1.html#TYPEearray">Generator1.earray</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Conversion from lists of strings to array of resp. linear
+      constraints and generators, defined on the given environment.</p>
+</div>
+</div>
+
+<pre><span id="VALtcons1_of_lstring"><span class="keyword">val</span> tcons1_of_lstring</span> : <code class="type"><a href="Environment.html#TYPEt">Environment.t</a> -> string list -> <a href="Tcons1.html#TYPEearray">Tcons1.earray</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Conversion from lists of strings to array of tree constraints.</p>
+</div>
+</div>
+
+<pre><span id="VALof_lstring"><span class="keyword">val</span> of_lstring</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> <a href="Environment.html#TYPEt">Environment.t</a> -> string list -> 'a <a href="Abstract1.html#TYPEt">Abstract1.t</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Abstraction of lists of strings representing constraints to abstract
+    values, on the abstract domain defined by the given manager.</p>
+</div>
+</div>
+</body></html>

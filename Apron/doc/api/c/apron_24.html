@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created on November 9, 2019 by texi2html 5.0
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
+-->
+<head>
+<title>APRON 0.9.10: Variables and related operations (ap_var.h)</title>
+
+<meta name="description" content="APRON 0.9.10: Variables and related operations (ap_var.h)">
+<meta name="keywords" content="APRON 0.9.10: Variables and related operations (ap_var.h)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html 5.0">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:pre}
+span.nolinebreak {white-space:pre}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+
+<a name="Variables-and-related-operations"></a>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_23.html#Level-1-of-the-interface" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_23.html#Level-1-of-the-interface" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_23.html#Level-1-of-the-interface" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="apron_25.html#Environments" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_32.html#Level-0-of-the-interface" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="apron.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="apron_42.html#Appendices" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="apron_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Variables-and-related-operations-_0028ap_005fvar_002eh_0029"></a>
+<h2 class="section">Variables and related operations (&lsquo;<tt>ap_var.h</tt>&rsquo;)</h2>
+
+<p>A variable is not necessarily a name, it can be a more complex
+structured datatype, depending on the application. That is the
+motivation to make it a parameter of the interface.
+</p>
+<p>The abstract type <code>ap_var_t</code> is equipped with a total ordering
+function, a hashing function, a copy function, and a free function.
+The parametrization of the interface is performed via a global
+variable pointing to a <code>ap_var_operations_t</code> structure,
+containing the above-mentione doperations on <code>ap_var_t</code> objects.
+This means that this type should be fixed once, and that in a
+multitreaded application all threads should share the same
+<code>ap_var_t</code> type.
+</p>
+<p>By default, <code>ap_var_t</code> is a C string (<code>char*</code>), and the
+global variable <code>ap_var_operations</code> is properly initialized.
+</p>
+<dl>
+<dt><a name="index-ap_005fvar_005ft"></a>datatype: <strong>ap_var_t</strong></dt>
+<dd><div class="example">
+<pre class="example">typedef void* ap_var_t;
+</pre></div>
+<p>Datatype for &ldquo;variables&rdquo;. It is assumed to be of size
+<code>sizeof(void*)</code>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-ap_005fvar_005foperations_005ft"></a>datatype: <strong>ap_var_operations_t</strong></dt>
+<dd><div class="example">
+<pre class="example">typedef struct ap_var_operations_t {
+  int (*compare)(ap_var_t v1, ap_var_t v2); /* Total ordering function */
+  int (*hash)(ap_var_t v);                  /* Hash function */
+  ap_var_t (*copy)(ap_var_t var);           /* Duplication function */
+  void (*free)(ap_var_t var);               /* Deallocation function */
+  char* (*to_string)(ap_var_t var); /* Conversion to a dynamically allocated string,
+				       which should be deallocated with free after use */
+} ap_var_operations_t;
+</pre></div>
+<p>Datatype for defining the operations on &ldquo;variables&rdquo;.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-var_005foperations_005fdefault"></a>Variable: <em>ap_var_operations_t</em> <strong>var_operations_default</strong></dt>
+<dd><p>Default manager, where <code>ap_var_t</code> is assumed to be <code>char*</code>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-var_005foperations"></a>Variable: <em>ap_var_operations_t*</em> <strong>var_operations</strong></dt>
+<dd><p>Global pointer to the manager in use, by default points to <code>ap_var_operations_default</code>.
+</p></dd></dl>
+
+<hr>
+<table class="header" cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="apron_23.html#Level-1-of-the-interface" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_23.html#Level-1-of-the-interface" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_23.html#Level-1-of-the-interface" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="apron_25.html#Environments" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left">[<a href="apron_32.html#Level-0-of-the-interface" title="Next chapter"> &gt;&gt; </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated on <i>November 9, 2019</i> using <a href="http://www.nongnu.org/texi2html/"><i>texi2html 5.0</i></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>
