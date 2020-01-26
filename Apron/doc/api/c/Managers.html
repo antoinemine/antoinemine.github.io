@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.6, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Managers (APRON 0.9.12)</title>
+
+<meta name="description" content="Managers (APRON 0.9.12)">
+<meta name="keywords" content="Managers (APRON 0.9.12)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Managers-and-Abstract-Domains.html#Managers-and-Abstract-Domains" rel="up" title="Managers and Abstract Domains">
+<link href="Box.html#Box" rel="next" title="Box">
+<link href="Managers-and-Abstract-Domains.html#Managers-and-Abstract-Domains" rel="prev" title="Managers and Abstract Domains">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Managers"></span><div class="header">
+<p>
+Next: <a href="Box.html#Box" accesskey="n" rel="next">Box</a>, Previous: <a href="Managers-and-Abstract-Domains.html#Managers-and-Abstract-Domains" accesskey="p" rel="prev">Managers and Abstract Domains</a>, Up: <a href="Managers-and-Abstract-Domains.html#Managers-and-Abstract-Domains" accesskey="u" rel="up">Managers and Abstract Domains</a> &nbsp; </p>
+</div>
+<span id="Managers-_0028ap_005fmanager_002eh_0029"></span><h3 class="section">Managers (<samp>ap_manager.h</samp>)</h3>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#APRON-Global-Datatypes" accesskey="1">APRON Global Datatypes</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Functions-related-to-managers" accesskey="2">Functions related to managers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<span id="APRON-Global-Datatypes"></span><div class="header">
+<p>
+Next: <a href="#Functions-related-to-managers" accesskey="n" rel="next">Functions related to managers</a>, Previous: <a href="#Managers" accesskey="p" rel="prev">Managers</a>, Up: <a href="#Managers" accesskey="u" rel="up">Managers</a> &nbsp; </p>
+</div>
+<span id="Datatypes"></span><h4 class="subsection">Datatypes</h4>
+
+<dl>
+<dt id="index-tbool_005ft">datatype: <strong>tbool_t</strong></dt>
+<dd><div class="example">
+<pre class="example">typedef enum tbool_t {
+  tbool_false=0,
+  tbool_true=1,
+  tbool_top=2,   /* don't know */
+} tbool_t;
+static inline tbool_t tbool_of_bool(bool a);
+static inline tbool_t tbool_or(tbool_t a, tbool_t b);
+static inline tbool_t tbool_and(tbool_t a, tbool_t b);
+</pre></div>
+<p>Booleans with a third unknown value.
+</p></dd></dl>
+
+<dl>
+<dt id="index-ap_005fmembuf_005ft">datatype: <strong>ap_membuf_t</strong></dt>
+<dd><div class="example">
+<pre class="example">typedef struct ap_membuf_t {
+  void* ptr;
+  size_t size;
+} ap_membuf_t;
+</pre></div>
+<p>For serialization.
+</p></dd></dl>
+
+<dl>
+<dt id="index-ap_005fmanager_005ft">datatype: <strong>ap_manager_t</strong></dt>
+<dd><p>APRON managers (opaque type).
+</p></dd></dl>
+
+<dl>
+<dt id="index-ap_005ffunid_005ft">datatype: <strong>ap_funid_t</strong></dt>
+<dd><p>For identifying functions in excpetions, and when reading/setting
+options attached to them.
+</p><div class="example">
+<pre class="example">typedef enum ap_funid_t {
+  AP_FUNID_UNKNOWN,
+  AP_FUNID_COPY,
+  AP_FUNID_FREE,
+  AP_FUNID_ASIZE, /* For avoiding name conflict with AP_FUNID_SIZE */
+  AP_FUNID_MINIMIZE,
+  AP_FUNID_CANONICALIZE,
+  AP_FUNID_HASH,
+  AP_FUNID_APPROXIMATE,
+  AP_FUNID_FPRINT,
+  AP_FUNID_FPRINTDIFF,
+  AP_FUNID_FDUMP,
+  AP_FUNID_SERIALIZE_RAW,
+  AP_FUNID_DESERIALIZE_RAW,
+  AP_FUNID_BOTTOM,
+  AP_FUNID_TOP,
+  AP_FUNID_OF_BOX,
+  AP_FUNID_DIMENSION,
+  AP_FUNID_IS_BOTTOM,
+  AP_FUNID_IS_TOP,
+  AP_FUNID_IS_LEQ,
+  AP_FUNID_IS_EQ,
+  AP_FUNID_IS_DIMENSION_UNCONSTRAINED,
+  AP_FUNID_SAT_INTERVAL,
+  AP_FUNID_SAT_LINCONS,
+  AP_FUNID_SAT_TCONS,
+  AP_FUNID_BOUND_DIMENSION,
+  AP_FUNID_BOUND_LINEXPR,
+  AP_FUNID_BOUND_TEXPR,
+  AP_FUNID_TO_BOX,
+  AP_FUNID_TO_LINCONS_ARRAY,
+  AP_FUNID_TO_TCONS_ARRAY,
+  AP_FUNID_TO_GENERATOR_ARRAY,
+  AP_FUNID_MEET,
+  AP_FUNID_MEET_ARRAY,
+  AP_FUNID_MEET_LINCONS_ARRAY,
+  AP_FUNID_MEET_TCONS_ARRAY,
+  AP_FUNID_JOIN,
+  AP_FUNID_JOIN_ARRAY,
+  AP_FUNID_ADD_RAY_ARRAY,
+  AP_FUNID_ASSIGN_LINEXPR_ARRAY,
+  AP_FUNID_SUBSTITUTE_LINEXPR_ARRAY,
+  AP_FUNID_ASSIGN_TEXPR_ARRAY,
+  AP_FUNID_SUBSTITUTE_TEXPR_ARRAY,
+  AP_FUNID_ADD_DIMENSIONS,
+  AP_FUNID_REMOVE_DIMENSIONS,
+  AP_FUNID_PERMUTE_DIMENSIONS,
+  AP_FUNID_FORGET_ARRAY,
+  AP_FUNID_EXPAND,
+  AP_FUNID_FOLD,
+  AP_FUNID_WIDENING,
+  AP_FUNID_CLOSURE,
+  AP_FUNID_SIZE,
+  AP_FUNID_CHANGE_ENVIRONMENT,
+  AP_FUNID_RENAME_ARRAY,
+  AP_FUNID_SIZE2
+} ap_funid_t;
+
+extern const char* ap_name_of_funid[AP_FUNID_SIZE2];
+/* give the name of a function identifier */
+</pre></div>
+</dd></dl>
+
+<dl>
+<dt id="index-ap_005fexc_005ft">datatype: <strong>ap_exc_t</strong></dt>
+<dt id="index-ap_005fexc_005flog_005ft">datatype: <strong>ap_exc_log_t</strong></dt>
+<dd><p>Exceptions and exception logs (chained in a list, the first one being
+the last one).
+</p><div class="example">
+<pre class="example">typedef enum ap_exc_t {
+  AP_EXC_NONE,           /* no exception detected */
+  AP_EXC_TIMEOUT,        /* timeout detected */
+  AP_EXC_OUT_OF_SPACE,   /* out of space detected */
+  AP_EXC_OVERFLOW,        /* magnitude overflow detected */
+  AP_EXC_INVALID_ARGUMENT, /* invalid arguments */
+  AP_EXC_NOT_IMPLEMENTED, /* not implemented */
+  AP_EXC_SIZE
+} ap_exc_t;
+extern const char* ap_name_of_exception[AP_EXC_SIZE];
+typedef struct ap_exclog_t {
+  ap_exc_t exn;
+  ap_funid_t funid;
+  char* msg;                   /* dynamically allocated */
+  struct ap_exclog_t* tail;
+} ap_exclog_t;
+</pre></div>
+</dd></dl>
+
+<span id="ap_005ffunopt_005ft"></span><dl>
+<dt id="index-ap_005ffunopt_005ft">datatype: <strong>ap_funopt_t</strong></dt>
+<dd><p>Options attached to functions.
+</p><div class="example">
+<pre class="example">typedef struct ap_funopt_t {
+  int algorithm;
+  /* Algorithm selection:
+     - 0 is default algorithm;
+     - MAX_INT is most accurate available;
+     - MIN_INT is most efficient available;
+     - otherwise, no accuracy or speed meaning
+  */
+  size_t timeout; /* unit !? */
+  /* Above the given computation time, the function may abort with the
+     exception flag flag_time_out on.
+  */
+  size_t max_object_size; /* in abstract object size unit. */
+  /* If during the computation, the size of some object reach this limit, the
+     function may abort with the exception flag flag_out_of_space on.
+  */
+  bool flag_exact_wanted;
+  /* return information about exactitude if possible
+  */
+  bool flag_best_wanted;
+  /* return information about best correct approximation if possible
+  */
+} ap_funopt_t;
+</pre></div>
+</dd></dl>
+
+<hr>
+<span id="Functions-related-to-managers"></span><div class="header">
+<p>
+Previous: <a href="#APRON-Global-Datatypes" accesskey="p" rel="prev">APRON Global Datatypes</a>, Up: <a href="#Managers" accesskey="u" rel="up">Managers</a> &nbsp; </p>
+</div>
+<span id="Functions-related-to-managers-1"></span><h4 class="subsection">Functions related to managers</h4>
+
+<dl>
+<dt id="index-ap_005fmanager_005ffree">Function: <em>void</em> <strong>ap_manager_free</strong> <em>(ap_manager_t* <var>man</var>)</em></dt>
+<dd><p>Free a manager (dereference a counter, and possibly deallocate).
+</p></dd></dl>
+
+<dl>
+<dt id="index-char_002a">Function: <em>const</em> <strong>char*</strong> <em>ap_manager_get_library (ap_manager_t* <var>man</var>)</em></dt>
+<dt id="index-char_002a-1">Function: <em>const</em> <strong>char*</strong> <em>ap_manager_get_version (ap_manager_t* <var>man</var>)</em></dt>
+<dd><p>Reading the name and the version of the attached underlying library.
+</p></dd></dl>
+
+<dl>
+<dt id="index-ap_005fmanager_005fget_005fflag_005fexact">Function: <em>bool</em> <strong>ap_manager_get_flag_exact</strong> <em>(ap_manager_t* <var>man</var>)</em></dt>
+<dt id="index-ap_005fmanager_005fget_005fflag_005fbest">Function: <em>bool</em> <strong>ap_manager_get_flag_best</strong> <em>(ap_manager_t* <var>man</var>)</em></dt>
+<dd><p>Return <code>true</code> if the last called APRON function returned an
+exact (resp. a best approximation) result.
+</p></dd></dl>
+
+<span id="Manager-options"></span><span id="Options"></span><h4 class="subheading">Options</h4>
+<p>See <a href="#ap_005ffunopt_005ft">ap_funopt_t</a>.
+</p><dl>
+<dt id="index-ap_005fmanager_005fget_005ffunopt">Function: <em>ap_funopt_t</em> <strong>ap_manager_get_funopt</strong> <em>(ap_manager_t* <var>man</var>, ap_funid_t <var>funid</var>)</em></dt>
+<dd><p>Getting the option attached to the specified function in the
+manager. <var>funid</var> should be less than <code>AP_FUNID_SIZE</code> (no
+option associated to other identifiers). Otherwise, abort with a
+message.
+</p></dd></dl>
+<dl>
+<dt id="index-ap_005fmanager_005fset_005ffunopt">Function: <em>void</em> <strong>ap_manager_set_funopt</strong> <em>(ap_manager_t* <var>man</var>, ap_funid_t <var>funid</var>, ap_funopt_t* <var>fopt</var>)</em></dt>
+<dd><p>Setting the option attached to the specified function in the
+manager. <var>fopt</var> is copied (and not only referenced). <var>funid</var>
+should be less than <code>AP_FUNID_SIZE</code> (no option associated to
+other identifiers). Otherwise, do nothing.
+</p></dd></dl>
+<dl>
+<dt id="index-ap_005ffunopt_005finit">Function: <em>void</em> <strong>ap_funopt_init</strong> <em>(ap_funopt_t* <var>fopt</var>)</em></dt>
+<dd><p>Initialize <var>fopt</var> with default values.
+</p></dd></dl>
+
+<span id="Exceptions"></span><h4 class="subheading">Exceptions</h4>
+
+<dl>
+<dt id="index-ap_005fmanager_005fget_005fabort_005fif_005fexception">Function: <em>bool</em> <strong>ap_manager_get_abort_if_exception</strong> <em>(ap_manager_t* <var>man</var>, ap_exc_t <var>exn</var>)</em></dt>
+<dd><p>Return true if the program abort when the exception <var>exn</var> is
+raised by some function. Otherwise, in such a case, a valid (but
+dummy) value should be returned by the function that raises the exception.
+</p></dd></dl>
+<dl>
+<dt id="index-ap_005fmanager_005fset_005fabort_005fif_005fexception">Function: <em>void</em> <strong>ap_manager_set_abort_if_exception</strong> <em>(ap_manager_t* <var>man</var>, ap_exc_t <var>exn</var>, bool <var>flag</var>)</em></dt>
+<dd><p>Position the above-described option.
+</p></dd></dl>
+
+<dl>
+<dt id="index-ap_005fmanager_005fget_005fexception">Function: <em>ap_exc_t</em> <strong>ap_manager_get_exception</strong> <em>(ap_manager_t* <var>man</var>)</em></dt>
+<dd><p>Get the last exception raised.
+</p></dd></dl>
+<dl>
+<dt id="index-ap_005fmanager_005fget_005fexclog">Function: <em>ap_exclog_t</em> <strong>ap_manager_get_exclog</strong> <em>(ap_manager_t* <var>man</var>)</em></dt>
+<dd><p>Get the full log of exceptions. The first one in the list is the last
+raised one.
+</p></dd></dl>
+
+<hr>
+<div class="header">
+<p>
+Previous: <a href="#APRON-Global-Datatypes" accesskey="p" rel="prev">APRON Global Datatypes</a>, Up: <a href="#Managers" accesskey="u" rel="up">Managers</a> &nbsp; </p>
+</div>
+
+
+
+</body>
+</html>

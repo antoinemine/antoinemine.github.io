@@ -1,0 +1,251 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.6, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Dimensions and related operations (APRON 0.9.12)</title>
+
+<meta name="description" content="Dimensions and related operations (APRON 0.9.12)">
+<meta name="keywords" content="Dimensions and related operations (APRON 0.9.12)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Level-0-of-the-interface.html#Level-0-of-the-interface" rel="up" title="Level 0 of the interface">
+<link href="Linear-expressions-of-level-0.html#Linear-expressions-of-level-0" rel="next" title="Linear expressions of level 0">
+<link href="Level-0-of-the-interface.html#Level-0-of-the-interface" rel="prev" title="Level 0 of the interface">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Dimensions-and-related-operations"></span><div class="header">
+<p>
+Next: <a href="Linear-expressions-of-level-0.html#Linear-expressions-of-level-0" accesskey="n" rel="next">Linear expressions of level 0</a>, Previous: <a href="Level-0-of-the-interface.html#Level-0-of-the-interface" accesskey="p" rel="prev">Level 0 of the interface</a>, Up: <a href="Level-0-of-the-interface.html#Level-0-of-the-interface" accesskey="u" rel="up">Level 0 of the interface</a> &nbsp; </p>
+</div>
+<span id="Dimensions-and-related-operations-_0028ap_005fdimension_002eh_0029"></span><h3 class="section">Dimensions and related operations (<samp>ap_dimension.h</samp>)</h3>
+
+<dl>
+<dt id="index-ap_005fdim_005ft">datatype: <strong>ap_dim_t</strong></dt>
+<dd><div class="example">
+<pre class="example">typedef unsigned int ap_dim_t;
+</pre></div>
+<p>Datatype for dimensions.
+</p></dd></dl>
+
+<dl>
+<dt id="index-AP_005fDIM_005fMAX">Macro: <strong>AP_DIM_MAX</strong></dt>
+<dd><p>Special value used for sparse representations, means: &quot;to be
+ignored&quot;. Also used as a result when an error occurs.
+</p></dd></dl>
+
+<dl>
+<dt id="index-ap_005fdimension_005ft">datatype: <strong>ap_dimension_t</strong></dt>
+<dd><div class="example">
+<pre class="example">typedef struct ap_dimension_t {
+  size_t intdim;  /* Number of integer dimensions */
+  size_t realdim; /* Number of real dimensions */
+} ap_dimension_t;
+</pre></div>
+<p>Datatype for specifying the dimensionality of an abstract value.
+</p></dd></dl>
+
+<dl>
+<dt id="index-ap_005fdimchange_005ft">datatype: <strong>ap_dimchange_t</strong></dt>
+<dd><div class="example">
+<pre class="example">typedef struct ap_dimchange_t {
+  ap_dim_t* dim;  /* Assumed to be an array of size intdim+realdim */
+  size_t intdim ; /* Number of integer dimensions to add/remove */
+  size_t realdim; /* Number of real dimensions to add/remove */
+} ap_dimchange_t;
+</pre></div>
+<p>Datatype for specifying change of dimension.
+</p>
+<p>The semantics is the following:
+</p><dl compact="compact">
+<dt><strong>Addition of dimensions</strong></dt>
+<dd>
+<p><code>dimchange.dim[k]</code> means: add one dimension at dimension k
+and shift the already existing dimensions greater than or equal to
+<code>k</code> one step on the right (or increment them).
+</p>
+<p>if <code>k</code> is equal to the size of the vector, then it means: add
+a dimension at the end.
+</p>
+<p>Repetion are allowed, and means that one inserts more than one dimensions.
+</p>
+<p>Example: <code>linexpr0_add_dimensions([i0 i1 r0 r1], { [0 1 2 2
+4],3,1 })</code> returns <code>[0 i0 0 i1 0 0 r0 r1 0]</code>, considered as
+a vector with 5 integer dimensions and 4 real dimensions.
+</p>
+</dd>
+<dt><strong>Removal of dimensions</strong></dt>
+<dd>
+<p><code>dimchange.dim[k]</code>: remove the dimension <code>k</code> and shift
+the dimensions greater than <code>k</code> one step on the left (or
+decrement them).
+</p>
+<p>Repetitions are meaningless (and are not correct specification).
+</p>
+<p>Example: <code>linexpr0_remove_dimensions([i0 i1 i2 r0 r1 r2], {
+[0 2 4],2,1 })</code> returns <code>[i1 r0 r2]</code>, considered as a vector with 1
+integer dimensions and 2 real dimensions.
+</p></dd>
+</dl>
+</dd></dl>
+
+<dl>
+<dt id="index-ap_005fdimchange2_005ft">datatype: <strong>ap_dimchange2_t</strong></dt>
+<dd><div class="example">
+<pre class="example">typedef struct ap_dimchange_2t {
+  ap_dimchange_t* add;    /* If not NULL, specifies the adding new dimensions */
+  ap_dimchange_t* remove; /* If not NULL, specifies the removal of dimensions */
+} ap_dimchange2_t;
+</pre></div>
+<p>Datatype for specifying a transformation composed of the addition and
+the removal of dimensions. Used by functions
+<code>ap_abstract0_apply_dimchange2</code>,
+<code>ap_environment_dimchange2</code>, and
+<code>ap_abstract1_change_environment.</code>.
+</p></dd></dl>
+
+<dl>
+<dt id="index-ap_005fdimperm_005ft">datatype: <strong>ap_dimperm_t</strong></dt>
+<dd><div class="example">
+<pre class="example">typedef struct ap_dimperm_t {
+  ap_dim_t* dim; /* Array assumed to be of size size */
+  size_t size;
+} ap_dimperm_t;
+</pre></div>
+<p>Datatype for permutations.
+</p>
+<p>Represents the permutation <code>i -&gt; dimperm.p[i]</code> for
+<code>0&lt;=i&lt;dimperm.size</code>.
+</p></dd></dl>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Manipulating-changes-of-dimensions" accesskey="1">Manipulating changes of dimensions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Manipulating-permutations-of-dimensions" accesskey="2">Manipulating permutations of dimensions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<span id="Manipulating-changes-of-dimensions"></span><div class="header">
+<p>
+Next: <a href="#Manipulating-permutations-of-dimensions" accesskey="n" rel="next">Manipulating permutations of dimensions</a>, Previous: <a href="#Dimensions-and-related-operations" accesskey="p" rel="prev">Dimensions and related operations</a>, Up: <a href="#Dimensions-and-related-operations" accesskey="u" rel="up">Dimensions and related operations</a> &nbsp; </p>
+</div>
+<span id="Manipulating-changes-of-dimensions-1"></span><h4 class="subsection">Manipulating changes of dimensions</h4>
+
+<dl>
+<dt id="index-ap_005fdimchange_005finit">Function: <em>void</em> <strong>ap_dimchange_init</strong> <em>(ap_dimchange_t* <var>dimchange</var>, size_t <var>intdim</var>, size_t <var>realdim</var>)</em></dt>
+<dt id="index-ap_005fdimchange_005fclear">Function: <em>void</em> <strong>ap_dimchange_clear</strong> <em>(ap_dimchange_t* <var>dimchange</var>)</em></dt>
+<dd><p>Initialize and clear a dimchange structure.
+</p></dd></dl>
+
+<dl>
+<dt id="index-ap_005fdimchange_005falloc">Function: <em>ap_dimchange_t*</em> <strong>ap_dimchange_alloc</strong> <em>(size_t <var>intdim</var>, size_t <var>realdim</var>)</em></dt>
+<dt id="index-ap_005fdimchange_005ffree">Function: <em>void</em> <strong>ap_dimchange_free</strong> <em>(ap_dimchange_t* <var>dimchange</var>)</em></dt>
+<dd><p>Allocate and free a dimchange structure.
+</p></dd></dl>
+
+<dl>
+<dt id="index-ap_005fdimchange_005ffprint">Function: <em>void</em> <strong>ap_dimchange_fprint</strong> <em>(FILE* <var>stream</var>, ap_dimchange_t* <var>dimchange</var>)</em></dt>
+<dd><p>Print the change of dimension.
+</p></dd></dl>
+
+<dl>
+<dt id="index-ap_005fdimchange_005fadd_005finvert">Function: <em>void</em> <strong>ap_dimchange_add_invert</strong> <em>(ap_dimchange_t*  <var>dimchange</var>)</em></dt>
+<dd><p>Assuming that dimchange is a transformation for the addition of dimensions,
+invert it to obtain the inverse transformation for removing dimensions.
+</p></dd></dl>
+
+<dl>
+<dt id="index-ap_005fdimchange2_005finit">Function: <em>void</em> <strong>ap_dimchange2_init</strong> <em>(ap_dimchange2_t* <var>dimchange2</var>, ap_dimchange_t* <var>add</var>, ap_dimchange_t* <var>remove</var>)</em></dt>
+<dt id="index-ap_005fdimchange2_005fclear">Function: <em>void</em> <strong>ap_dimchange2_clear</strong> <em>(ap_dimchange2_t* <var>dimchange2</var>)</em></dt>
+<dd><p>Initialize (with <var>add</var> and <var>remove</var>) and clear a dimchange2
+structure.
+</p></dd></dl>
+<dl>
+<dt id="index-ap_005fdimchange2_005falloc">Function: <em>ap_dimchange2_t*</em> <strong>ap_dimchange2_alloc</strong> <em>(ap_dimchange_t* <var>add</var>, ap_dimchange_t* <var>remove</var>)</em></dt>
+<dt id="index-ap_005fdimchange2_005ffree">Function: <em>void</em> <strong>ap_dimchange2_free</strong> <em>(ap_dimchange2_t* <var>dimchange2</var>)</em></dt>
+<dd><p>Allocate and free a dimchange2 structure.
+</p></dd></dl>
+<dl>
+<dt id="index-ap_005fdimchange2_005ffprint">Function: <em>void</em> <strong>ap_dimchange2_fprint</strong> <em>(FILE* <var>stream</var>, ap_dimchange2_t* <var>dimchange2</var>)</em></dt>
+<dd><p>Print the change of dimension.
+</p></dd></dl>
+
+
+<hr>
+<span id="Manipulating-permutations-of-dimensions"></span><div class="header">
+<p>
+Previous: <a href="#Manipulating-changes-of-dimensions" accesskey="p" rel="prev">Manipulating changes of dimensions</a>, Up: <a href="#Dimensions-and-related-operations" accesskey="u" rel="up">Dimensions and related operations</a> &nbsp; </p>
+</div>
+<span id="Manipulating-permutations-of-dimensions-1"></span><h4 class="subsection">Manipulating permutations of dimensions</h4>
+
+<dl>
+<dt id="index-ap_005fdimperm_005finit">Function: <em>void</em> <strong>ap_dimperm_init</strong> <em>(ap_dimperm_t* <var>perm</var>, size_t <var>size</var>)</em></dt>
+<dt id="index-ap_005fdimperm_005fclear">Function: <em>void</em> <strong>ap_dimperm_clear</strong> <em>(ap_dimperm_t* <var>perm</var>)</em></dt>
+<dd><p>Initialize and clear a dimperm structure.
+</p></dd></dl>
+
+<dl>
+<dt id="index-ap_005fdimperm_005falloc">Function: <em>ap_dimperm_t*</em> <strong>ap_dimperm_alloc</strong> <em>(size_t <var>size</var>)</em></dt>
+<dt id="index-ap_005fdimperm_005ffree">Function: <em>void</em> <strong>ap_dimperm_free</strong> <em>(ap_dimperm_t* <var>perm</var>)</em></dt>
+<dd><p>Allocate and free a dimperm structure.
+</p></dd></dl>
+
+<dl>
+<dt id="index-ap_005fdimperm_005ffprint">Function: <em>void</em> <strong>ap_dimperm_fprint</strong> <em>(FILE* <var>stream</var>, ap_dimperm_t* <var>perm</var>)</em></dt>
+<dd><p>Print the permutation.
+</p></dd></dl>
+
+<dl>
+<dt id="index-ap_005fdimperm_005fset_005fid">Function: <em>void</em> <strong>ap_dimperm_set_id</strong> <em>(ap_dimperm_t* <var>perm</var>)</em></dt>
+<dd><p>Fill the already allocated <var>perm</var> with the identity permutation.
+</p></dd></dl>
+
+<dl>
+<dt id="index-ap_005fdimperm_005fcompose">Function: <em>void</em> <strong>ap_dimperm_compose</strong> <em>(ap_dimperm_t* <var>perm</var>, ap_dimperm_t* <var>perm1</var>, ap_dimperm_t* <var>perm2</var>)</em></dt>
+<dd><p>Compose the 2 permutations <var>perm1</var> and <var>perm2</var> (in this order)
+and store the result the already allocated perm.
+The sizes of permutations are supposed to be equal.
+At exit, we have <code>perm.dim[i] = perm2.dim[perm1.dim[i]]</code>.
+</p></dd></dl>
+
+<dl>
+<dt id="index-ap_005fdimperm_005finvert">Function: <em>void</em> <strong>ap_dimperm_invert</strong> <em>(ap_dimperm_t* <var>nperm</var>, ap_dimperm_t* <var>perm</var>)</em></dt>
+<dd><p>Invert the permutation <var>perm</var> and store it in the already
+allocated <var>nperm</var>. The sizes of permutations are supposed to
+be equal.
+</p></dd></dl>
+
+<hr>
+<div class="header">
+<p>
+Previous: <a href="#Manipulating-changes-of-dimensions" accesskey="p" rel="prev">Manipulating changes of dimensions</a>, Up: <a href="#Dimensions-and-related-operations" accesskey="u" rel="up">Dimensions and related operations</a> &nbsp; </p>
+</div>
+
+
+
+</body>
+</html>

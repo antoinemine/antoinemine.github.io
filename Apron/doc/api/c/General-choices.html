@@ -1,0 +1,252 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.6, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>General choices (APRON 0.9.12)</title>
+
+<meta name="description" content="General choices (APRON 0.9.12)">
+<meta name="keywords" content="General choices (APRON 0.9.12)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="APRON-Rationale-and-Functionalities.html#APRON-Rationale-and-Functionalities" rel="up" title="APRON Rationale and Functionalities">
+<link href="Functionalities-of-the-interface-at-level-0.html#Functionalities-of-the-interface-at-level-0" rel="next" title="Functionalities of the interface at level 0">
+<link href="APRON-Rationale-and-Functionalities.html#APRON-Rationale-and-Functionalities" rel="prev" title="APRON Rationale and Functionalities">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="General-choices"></span><div class="header">
+<p>
+Next: <a href="Functionalities-of-the-interface-at-level-0.html#Functionalities-of-the-interface-at-level-0" accesskey="n" rel="next">Functionalities of the interface at level 0</a>, Previous: <a href="APRON-Rationale-and-Functionalities.html#APRON-Rationale-and-Functionalities" accesskey="p" rel="prev">APRON Rationale and Functionalities</a>, Up: <a href="APRON-Rationale-and-Functionalities.html#APRON-Rationale-and-Functionalities" accesskey="u" rel="up">APRON Rationale and Functionalities</a> &nbsp; </p>
+</div>
+<span id="General-choices-1"></span><h3 class="section">General choices</h3>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Interface-levels" accesskey="1">Interface levels</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Programming-language" accesskey="2">Programming language</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Compatibility-with-threads" accesskey="3">Compatibility with threads</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Interruptions" accesskey="4">Interruptions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Memory-management" accesskey="5">Memory management</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Programming-style" accesskey="6">Programming style</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Number-representation" accesskey="7">Number representation</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<span id="Interface-levels"></span><div class="header">
+<p>
+Next: <a href="#Programming-language" accesskey="n" rel="next">Programming language</a>, Previous: <a href="#General-choices" accesskey="p" rel="prev">General choices</a>, Up: <a href="#General-choices" accesskey="u" rel="up">General choices</a> &nbsp; </p>
+</div>
+<h4 class="node-heading">Interface levels</h4>
+<span id="Interface-levels-1"></span><h4 class="subsubheading">Interface levels</h4>
+
+<p>There are two main goals for the APRON interface: efficiency of the
+implementations, and ease of use for the user. In addition, code
+duplication between libraries should be avoided. As a consequence, two
+levels were identified:
+</p><dl compact="compact">
+<dt><em>Level 0</em></dt>
+<dd><p>Choices are guided by the efficiency and the precision of the operations;
+</p></dd>
+<dt><em>Level 1</em></dt>
+<dd><p>Choices are guided by ease of use, and code factorization.
+</p></dd>
+</dl>
+
+<p>The level 0 is directly connected to the underlying (existing)
+library. It includes all the operations that are specific to an
+abstract domain and whose code cannot be shared. The interface should
+be minimal, <em>unless</em> there is a strong algorithmical advantage to
+include a combination of more basic operations.
+</p>
+<p>The higher levels offers additional functionalities that are shared by
+all the library connected to the level 0. For instance:
+</p>
+<ul>
+<li> managing correspondance between numerical dimensions and names
+(characters strings or more generally references);
+</li><li> abstraction of non linear expressions in interval linear expressions;
+</li><li> automatic call to redimensioning and permutation operations for
+computing
+P(x,y)/\Q(y,z).
+</li></ul>
+
+<p>Combination of abstract domain is possible at the level 0. One can
+implement for instance the cartesian or reduced product of two
+different abstract domains, the decomposition of abstract values into
+a product of values of smaller dimensionality, ...
+</p>
+<hr>
+<span id="Programming-language"></span><div class="header">
+<p>
+Next: <a href="#Compatibility-with-threads" accesskey="n" rel="next">Compatibility with threads</a>, Previous: <a href="#Interface-levels" accesskey="p" rel="prev">Interface levels</a>, Up: <a href="#General-choices" accesskey="u" rel="up">General choices</a> &nbsp; </p>
+</div>
+<h4 class="node-heading">Programming language</h4>
+<span id="Programming-language-1"></span><h4 class="subsubheading">Programming language</h4>
+
+<p>The reference version of the interface is the C version of the interface:
+</p>
+<ul>
+<li> C can be easily interfaced with most programming languages;
+</li><li> Most of the existing libraries implementing abstract domains for
+numerical variables are programmed in C or C++.
+</li></ul>
+
+<p>An <small>OCAML</small> version is already available. The interface between
+OCaml and C is even generic and any libraries can benefit from it by
+providing the glue for just one function (see XX).
+</p>
+<hr>
+<span id="Compatibility-with-threads"></span><div class="header">
+<p>
+Next: <a href="#Interruptions" accesskey="n" rel="next">Interruptions</a>, Previous: <a href="#Programming-language" accesskey="p" rel="prev">Programming language</a>, Up: <a href="#General-choices" accesskey="u" rel="up">General choices</a> &nbsp; </p>
+</div>
+<h4 class="node-heading">Compatibility with threads</h4>
+<span id="Compatibility-with-threads-1"></span><h4 class="subsubheading">Compatibility with threads</h4>
+
+<p>In order to ensure compatibility with multithreading programming, a
+context is explicitly passed to functions in order to ensure the
+following points:
+</p>
+<ul>
+<li> the transmission of data specific to each library (non-standard
+options, workspace, ...);
+</li><li> the transmission of standard options (selection of algorithms and their
+precision inside a library);
+</li><li> the management of exceptions (implemented as error codes in the C
+interface) (<code>not_implemented</code>, <code>invalid_argument</code>,
+<code>overflow</code>, <code>timeout</code>, <code>out_of_space</code>).
+</li></ul>
+
+<hr>
+<span id="Interruptions"></span><div class="header">
+<p>
+Next: <a href="#Memory-management" accesskey="n" rel="next">Memory management</a>, Previous: <a href="#Compatibility-with-threads" accesskey="p" rel="prev">Compatibility with threads</a>, Up: <a href="#General-choices" accesskey="u" rel="up">General choices</a> &nbsp; </p>
+</div>
+<h4 class="node-heading">Interruptions</h4>
+<span id="Interruptions-1"></span><h4 class="subsubheading">Interruptions</h4>
+
+<p>Interruptions mechanism is have possible for different cases:
+</p><dl compact="compact">
+<dt><code>timeout</code></dt>
+<dd><p>if the execution time for an operation exceeds some bound;
+</p></dd>
+<dt><code>out_of_space</code></dt>
+<dd><p>if the space consumption for an operation exceeds some bound;
+</p></dd>
+<dt><code>overflow</code></dt>
+<dd><p>if the magnitude or the space usage of manipulated numbers exceeds some bound;
+</p></dd>
+<dt><code>not_implemented</code></dt>
+<dd><p>if the operation is actually not implemented by the underlying library;
+</p></dd>
+<dt><code>invalid_argument</code></dt>
+<dd><p>if the arguments do not follow the requirements of an operation.
+</p></dd>
+</dl>
+
+<blockquote>
+<p>For instance, in a convex polyhedra library, the <code>out_of_space</code>
+exception allows to abort an operation is the result appears to have
+too many constraints and/or generators. If this happens, one can redo
+the operation with another (less precise) algorithm. The
+<code>overflow</code> may be useful when effective overflows are encountered
+with machine integers or when multiprecision rational numbers have too
+large numerators and denominators. The <code>not_implemented</code>
+exception allows for a library to be linked to the interface even if
+it does not provide some operation of the interface.
+</p></blockquote>
+
+<p>When an interruption occurs, the function should still return a
+correct result, in the abstract interpretation sense: it should be a
+correct approximation, usable for next operations in the program. The
+top value is always a correct approximation.
+</p>
+<hr>
+<span id="Memory-management"></span><div class="header">
+<p>
+Next: <a href="#Programming-style" accesskey="n" rel="next">Programming style</a>, Previous: <a href="#Interruptions" accesskey="p" rel="prev">Interruptions</a>, Up: <a href="#General-choices" accesskey="u" rel="up">General choices</a> &nbsp; </p>
+</div>
+<h4 class="node-heading">Memory management</h4>
+<span id="Memory-management-1"></span><h4 class="subsubheading">Memory management</h4>
+
+<p>Memory is managed differently depending on the programming language. Currently:
+</p>
+<ul>
+<li> No automatic garbage collection in the C interface
+</li><li> Use of the <small>OCAML</small> runtime garbage collector in the <small>OCAML</small> interface
+</li></ul>
+
+<hr>
+<span id="Programming-style"></span><div class="header">
+<p>
+Next: <a href="#Number-representation" accesskey="n" rel="next">Number representation</a>, Previous: <a href="#Memory-management" accesskey="p" rel="prev">Memory management</a>, Up: <a href="#General-choices" accesskey="u" rel="up">General choices</a> &nbsp; </p>
+</div>
+<h4 class="node-heading">Programming style</h4>
+<span id="Programming-style-1"></span><h4 class="subsubheading">Programming style</h4>
+
+<p>Both functional and imperative (i.e., side-effect) signatures are
+supported for operations. This allows to optimize the memory
+allocation and to use whichever version is more convenient for an user
+and the used programming language.
+</p>
+<hr>
+<span id="Number-representation"></span><div class="header">
+<p>
+Previous: <a href="#Programming-style" accesskey="p" rel="prev">Programming style</a>, Up: <a href="#General-choices" accesskey="u" rel="up">General choices</a> &nbsp; </p>
+</div>
+<h4 class="node-heading">Number representation</h4>
+<span id="Number-representation-1"></span><h4 class="subsubheading">Number representation</h4>
+
+<p>Inside a specific library, any number representation may be used
+(floating-point numbers, machine integers, multiprecision
+integers/rationals, ...). Existing libraries often offers the
+possibility to select different representations.
+</p>
+<p>However, in the interface, this representation should be normalized
+and independent of underlying libraries, without being restrictive
+either. As a consequence, the interface offers the choiced between
+</p>
+<ul>
+<li> GMP multiprecision rationals (which implements exact arithmetic);
+</li><li> and machine floating-point numbers (<code>double</code>).
+</li></ul>
+
+<hr>
+<div class="header">
+<p>
+Previous: <a href="#Programming-style" accesskey="p" rel="prev">Programming style</a>, Up: <a href="#General-choices" accesskey="u" rel="up">General choices</a> &nbsp; </p>
+</div>
+
+
+
+</body>
+</html>

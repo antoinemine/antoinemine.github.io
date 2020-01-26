@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.6, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Coefficients (APRON 0.9.12)</title>
+
+<meta name="description" content="Coefficients (APRON 0.9.12)">
+<meta name="keywords" content="Coefficients (APRON 0.9.12)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Scalars-_0026-Intervals-_0026-Coefficients.html#Scalars-_0026-Intervals-_0026-Coefficients" rel="up" title="Scalars &amp; Intervals &amp; Coefficients">
+<link href="Level-1-of-the-interface.html#Level-1-of-the-interface" rel="next" title="Level 1 of the interface">
+<link href="Intervals.html#Array-of-intervals" rel="prev" title="Array of intervals">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Coefficients"></span><div class="header">
+<p>
+Previous: <a href="Intervals.html#Intervals" accesskey="p" rel="prev">Intervals</a>, Up: <a href="Scalars-_0026-Intervals-_0026-Coefficients.html#Scalars-_0026-Intervals-_0026-Coefficients" accesskey="u" rel="up">Scalars &amp; Intervals &amp; Coefficients</a> &nbsp; </p>
+</div>
+<span id="Coefficients-_0028ap_005fcoeff_002eh_0029"></span><h3 class="section">Coefficients (<samp>ap_coeff.h</samp>)</h3>
+<dl>
+<dt id="index-ap_005fcoeff_005fdiscr_005ft">datatype: <strong>ap_coeff_discr_t</strong></dt>
+<dd><div class="example">
+<pre class="example">typedef enum ap_coeff_discr_t { AP_COEFF_SCALAR, AP_COEFF_INTERVAL }
+ap_coeff_discr_t;
+</pre></div>
+<p>Discriminant indicating the underlying type of a coefficient.
+</p></dd></dl>
+
+<dl>
+<dt id="index-ap_005fcoeff_005ft">datatype: <strong>ap_coeff_t</strong></dt>
+<dd><div class="example">
+<pre class="example">typedef struct ap_coeff_t {
+  ap_coeff_discr_t discr;
+  union {
+    ap_scalar_t* scalar;
+    ap_interval_t* interval;
+  } val;
+} ap_coeff_t;
+</pre></div>
+<p>A coefficient is either a scalar or an interval.
+</p></dd></dl>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Initializing-coefficients" accesskey="1">Initializing coefficients</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Assigning-coefficients" accesskey="2">Assigning coefficients</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Comparing-coefficients" accesskey="3">Comparing coefficients</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Other-operations-on-coefficients" accesskey="4">Other operations on coefficients</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+
+<hr>
+<span id="Initializing-coefficients"></span><div class="header">
+<p>
+Next: <a href="#Assigning-coefficients" accesskey="n" rel="next">Assigning coefficients</a>, Previous: <a href="#Coefficients" accesskey="p" rel="prev">Coefficients</a>, Up: <a href="#Coefficients" accesskey="u" rel="up">Coefficients</a> &nbsp; </p>
+</div>
+<span id="Initializing-coefficients-1"></span><h4 class="subsection">Initializing coefficients</h4>
+
+<dl>
+<dt id="index-ap_005fcoeff_005falloc">Function: <em>void</em> <strong>ap_coeff_alloc</strong> <em>(ap_coeff_discr_t <var>discr</var>)</em></dt>
+<dd><p>Allocate a coefficient, using <var>discr</var> to specify the type of
+coefficient (scalar or interval).
+</p></dd></dl>
+
+<dl>
+<dt id="index-ap_005fcoeff_005ffree">Function: <em>void</em> <strong>ap_coeff_free</strong> <em>(ap_coeff_t* <var>op</var>)</em></dt>
+<dd><p>Deallocate a coefficient.
+</p></dd></dl>
+
+<dl>
+<dt id="index-ap_005fcoeff_005freinit">Function: <em>void</em> <strong>ap_coeff_reinit</strong> <em>(ap_coeff_t* <var>op</var>, ap_coeff_discr_t <var>discr1</var>, ap_scalar_discr_t <var>discr2</var>)</em></dt>
+<dd><p>Changing the type of the coefficient and also the type of the
+underlting scalar(s).
+</p></dd></dl>
+
+<dl>
+<dt id="index-ap_005fcoeff_005freduce">Function: <em>void</em> <strong>ap_coeff_reduce</strong> <em>(ap_coeff_t* <var>op</var>)</em></dt>
+<dd><p>If the coefficient is an interval [a;a], convert it to a scalar. */
+</p></dd></dl>
+
+<dl>
+<dt id="index-ap_005fcoeff_005finit">Function: <em>void</em> <strong>ap_coeff_init</strong> <em>(ap_coeff_t* <var>rop</var>, ap_coeff_discr_t <var>discr</var>)</em></dt>
+<dt id="index-ap_005fcoeff_005finit_005fset">Function: <em>void</em> <strong>ap_coeff_init_set</strong> <em>(ap_coeff_t* <var>rop</var>, ap_coeff_t* <var>op</var>)</em></dt>
+<dt id="index-ap_005fcoeff_005fclear">Function: <em>void</em> <strong>ap_coeff_clear</strong> <em>(ap_coeff_t* <var>rop</var>)</em></dt>
+<dd><p>Initialize, initialize and assign, and clear a scalar \&lsquo;a la GMP (internal use).
+</p></dd></dl>
+
+<hr>
+<span id="Assigning-coefficients"></span><div class="header">
+<p>
+Next: <a href="#Comparing-coefficients" accesskey="n" rel="next">Comparing coefficients</a>, Previous: <a href="#Initializing-coefficients" accesskey="p" rel="prev">Initializing coefficients</a>, Up: <a href="#Coefficients" accesskey="u" rel="up">Coefficients</a> &nbsp; </p>
+</div>
+<span id="Assigning-coefficients-1"></span><h4 class="subsection">Assigning coefficients</h4>
+<dl>
+<dt id="index-ap_005fcoeff_005fset">Function: <em>void</em> <strong>ap_coeff_set</strong> <em>(ap_coeff_t* <var>rop</var>, ap_coeff_t* <var>op</var>)</em></dt>
+<dd><p>Set the value of <var>rop</var> from <var>op</var>.
+</p></dd></dl>
+
+<dl>
+<dt id="index-ap_005fcoeff_005fset_005fscalar">Function: <em>void</em> <strong>ap_coeff_set_scalar</strong> <em>(ap_coeff_t* <var>rop</var>, ap_scalar_t* <var>op</var>)</em></dt>
+<dt id="index-ap_005fcoeff_005fset_005fscalar_005fmpq">Function: <em>void</em> <strong>ap_coeff_set_scalar_mpq</strong> <em>(ap_coeff_t* <var>rop</var>, mpq_t <var>mpq</var>)</em></dt>
+<dt id="index-ap_005fcoeff_005fset_005fscalar_005fint">Function: <em>void</em> <strong>ap_coeff_set_scalar_int</strong> <em>(ap_coeff_t* <var>rop</var>, long int <var>i</var>)</em></dt>
+<dt id="index-ap_005fcoeff_005fset_005fscalar_005ffrac">Function: <em>void</em> <strong>ap_coeff_set_scalar_frac</strong> <em>(ap_coeff_t* <var>rop</var>, long int <var>i</var>, unsigned long int <var>j</var>)</em></dt>
+<dt id="index-ap_005fcoeff_005fset_005fscalar_005fdouble">Function: <em>void</em> <strong>ap_coeff_set_scalar_double</strong> <em>(ap_coeff_t* <var>rop</var>, double <var>k</var>)</em></dt>
+<dd><p>Set the type of <var>rop</var> to scalar, and sets its value as the
+functions <code>ap_scalar_set_XXX</code>.
+</p></dd></dl>
+
+<dl>
+<dt id="index-ap_005fcoeff_005fset_005finterval">Function: <em>void</em> <strong>ap_coeff_set_interval</strong> <em>(ap_coeff_t* <var>rop</var>, ap_interval_t* <var>op</var>)</em></dt>
+<dt id="index-ap_005fcoeff_005fset_005finterval_005fscalar">Function: <em>void</em> <strong>ap_coeff_set_interval_scalar</strong> <em>(ap_coeff_t* <var>rop</var>, ap_scalar_t* <var>inf</var>, ap_scalar_t* <var>sup</var>)</em></dt>
+<dt id="index-ap_005fcoeff_005fset_005finterval_005fmpq">Function: <em>void</em> <strong>ap_coeff_set_interval_mpq</strong> <em>(ap_coeff_t* <var>rop</var>, mpq_t <var>inf</var>, mpq_t <var>sup</var>)</em></dt>
+<dt id="index-ap_005fcoeff_005fset_005finterval_005fint">Function: <em>void</em> <strong>ap_coeff_set_interval_int</strong> <em>(ap_coeff_t* <var>rop</var>, int <var>inf</var>, int <var>sup</var>)</em></dt>
+<dt id="index-ap_005fcoeff_005fset_005finterval_005ffrac">Function: <em>void</em> <strong>ap_coeff_set_interval_frac</strong> <em>(ap_coeff_t* <var>rop</var>, int <var>numinf</var>, int <var>deninf</var>, int <var>numsup</var>, int <var>densup</var>)</em></dt>
+<dt id="index-ap_005fcoeff_005fset_005finterval_005fdouble">Function: <em>void</em> <strong>ap_coeff_set_interval_double</strong> <em>(ap_coeff_t* <var>rop</var>, double <var>inf</var>, double <var>sup</var>)</em></dt>
+<dd><p>Set the type of <var>rop</var> to interval, and sets its value as the
+functions <code>ap_interval_set_XXX</code>.
+</p></dd></dl>
+
+<dl>
+<dt id="index-ap_005fcoeff_005falloc_005fset">Function: <em>ap_coeff_t*</em> <strong>ap_coeff_alloc_set</strong> <em>(ap_coeff_t* <var>op</var>)</em></dt>
+<dt id="index-ap_005fcoeff_005falloc_005fset_005fscalar">Function: <em>ap_coeff_t*</em> <strong>ap_coeff_alloc_set_scalar</strong> <em>(ap_scalar_t* <var>scalar</var>)</em></dt>
+<dt id="index-ap_005fcoeff_005falloc_005fset_005finterval">Function: <em>ap_coeff_t*</em> <strong>ap_coeff_alloc_set_interval</strong> <em>(ap_interval_t* <var>interval</var>)</em></dt>
+<dd><p>Combined allocation and assignement.
+</p></dd></dl>
+
+<hr>
+<span id="Comparing-coefficients"></span><div class="header">
+<p>
+Next: <a href="#Other-operations-on-coefficients" accesskey="n" rel="next">Other operations on coefficients</a>, Previous: <a href="#Assigning-coefficients" accesskey="p" rel="prev">Assigning coefficients</a>, Up: <a href="#Coefficients" accesskey="u" rel="up">Coefficients</a> &nbsp; </p>
+</div>
+<span id="Comparing-coefficients-1"></span><h4 class="subsection">Comparing coefficients</h4>
+
+<dl>
+<dt id="index-ap_005fcoeff_005fcmp">Function: <em>int</em> <strong>ap_coeff_cmp</strong> <em>(ap_coeff_t* <var>op1</var>, ap_coeff_t* <var>op2</var>)</em></dt>
+<dd><p>Non-total comparison.
+</p><ul>
+<li> If <var>op1</var> and <var>op2</var> are scalars, corresponds to <code>ap_scalar_cmp</code>.
+</li><li> If <var>op1</var> and <var>op2</var> are intervals, corresponds to <code>ap_interval_cmp</code>.
+</li><li> otherwise, -3 if the first is a scalar, 3 otherwise
+</li></ul>
+</dd></dl>
+
+<dl>
+<dt id="index-ap_005fcoeff_005fequal">Function: <em>bool</em> <strong>ap_coeff_equal</strong> <em>(ap_coeff_t* <var>op1</var>, ap_coeff_t* <var>op2</var>)</em></dt>
+<dd><p>Equality test.
+</p></dd></dl>
+
+<dl>
+<dt id="index-ap_005fcoeff_005fzero">Function: <em>bool</em> <strong>ap_coeff_zero</strong> <em>(ap_coeff_t* <var>op</var>)</em></dt>
+<dd><p>Return true iff coeff is a zero scalar or an interval with zero
+bounds.
+</p></dd></dl>
+
+
+<hr>
+<span id="Other-operations-on-coefficients"></span><div class="header">
+<p>
+Previous: <a href="#Comparing-coefficients" accesskey="p" rel="prev">Comparing coefficients</a>, Up: <a href="#Coefficients" accesskey="u" rel="up">Coefficients</a> &nbsp; </p>
+</div>
+<span id="Other-operations-on-coefficients-1"></span><h4 class="subsection">Other operations on coefficients</h4>
+
+<dl>
+<dt id="index-ap_005fcoeff_005fneg">Function: <em>void</em> <strong>ap_coeff_neg</strong> <em>(ap_coeff_t* <var>rop</var>, ap_coeff_t* <var>op</var>)</em></dt>
+<dd><p>Negation.
+</p></dd></dl>
+
+<dl>
+<dt id="index-ap_005fcoeff_005fswap">Function: <em>void</em> <strong>ap_coeff_swap</strong> <em>(ap_coeff_t* <var>op1</var>, ap_coeff_t* <var>op2</var>)</em></dt>
+<dd><p>Exchange the values of <var>op1</var> and <var>op2</var>.
+</p></dd></dl>
+
+<dl>
+<dt id="index-ap_005fcoeff_005fhash">Function: <em>int</em> <strong>ap_coeff_hash</strong> <em>(ap_coeff_t* <var>op</var>)</em></dt>
+<dd><p>Return an hash code (for instance for OCaml interface).
+</p></dd></dl>
+
+<dl>
+<dt id="index-ap_005fcoeff_005ffprint">Function: <em>void</em> <strong>ap_coeff_fprint</strong> <em>(FILE* <var>stream</var>, ap_coeff_t* <var>op</var>)</em></dt>
+<dd><p>Print <var>op</var> on the stream <var>stream</var>.
+</p></dd></dl>
+
+<hr>
+<div class="header">
+<p>
+Previous: <a href="#Comparing-coefficients" accesskey="p" rel="prev">Comparing coefficients</a>, Up: <a href="#Coefficients" accesskey="u" rel="up">Coefficients</a> &nbsp; </p>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.6, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Intervals (APRON 0.9.12)</title>
+
+<meta name="description" content="Intervals (APRON 0.9.12)">
+<meta name="keywords" content="Intervals (APRON 0.9.12)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Scalars-_0026-Intervals-_0026-Coefficients.html#Scalars-_0026-Intervals-_0026-Coefficients" rel="up" title="Scalars &amp; Intervals &amp; Coefficients">
+<link href="Coefficients.html#Coefficients" rel="next" title="Coefficients">
+<link href="Scalars.html#Other-operations-on-scalars" rel="prev" title="Other operations on scalars">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Intervals"></span><div class="header">
+<p>
+Next: <a href="Coefficients.html#Coefficients" accesskey="n" rel="next">Coefficients</a>, Previous: <a href="Scalars.html#Scalars" accesskey="p" rel="prev">Scalars</a>, Up: <a href="Scalars-_0026-Intervals-_0026-Coefficients.html#Scalars-_0026-Intervals-_0026-Coefficients" accesskey="u" rel="up">Scalars &amp; Intervals &amp; Coefficients</a> &nbsp; </p>
+</div>
+<span id="Intervals-_0028ap_005finterval_002eh_0029"></span><h3 class="section">Intervals (<samp>ap_interval.h</samp>)</h3>
+
+<dl>
+<dt id="index-ap_005finterval_005ft">datatype: <strong>ap_interval_t</strong></dt>
+<dd><div class="example">
+<pre class="example">typedef struct ap_interval_t {
+  ap_scalar_t* inf;
+  ap_scalar_t* sup;
+} ap_interval_t;
+</pre></div>
+<p>Intervals on scalars.
+</p></dd></dl>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#Initializing-intervals" accesskey="1">Initializing intervals</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Assigning-intervals" accesskey="2">Assigning intervals</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Comparing-intervals" accesskey="3">Comparing intervals</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Other-operations-on-intervals" accesskey="4">Other operations on intervals</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#Array-of-intervals" accesskey="5">Array of intervals</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+
+<hr>
+<span id="Initializing-intervals"></span><div class="header">
+<p>
+Next: <a href="#Assigning-intervals" accesskey="n" rel="next">Assigning intervals</a>, Previous: <a href="#Intervals" accesskey="p" rel="prev">Intervals</a>, Up: <a href="#Intervals" accesskey="u" rel="up">Intervals</a> &nbsp; </p>
+</div>
+<span id="Initializing-intervals-1"></span><h4 class="subsection">Initializing intervals</h4>
+<dl>
+<dt id="index-ap_005finterval_005falloc">Function: <em>void</em> <strong>ap_interval_alloc</strong> <em>()</em></dt>
+<dd><p>Allocate an interval (with scalars of default type DOUBLE, the most
+economical).
+</p></dd></dl>
+
+<dl>
+<dt id="index-ap_005finterval_005ffree">Function: <em>void</em> <strong>ap_interval_free</strong> <em>(ap_interval_t* <var>op</var>)</em></dt>
+<dd><p>Deallocate an interval.
+</p></dd></dl>
+
+<dl>
+<dt id="index-ap_005finterval_005freinit">Function: <em>void</em> <strong>ap_interval_reinit</strong> <em>(ap_interval_t* <var>op</var>, ap_scalar_discr_t <var>discr</var>)</em></dt>
+<dd><p>Change the type of the bounds of the interval (mainly for internal
+use).
+</p></dd></dl>
+
+<hr>
+<span id="Assigning-intervals"></span><div class="header">
+<p>
+Next: <a href="#Comparing-intervals" accesskey="n" rel="next">Comparing intervals</a>, Previous: <a href="#Initializing-intervals" accesskey="p" rel="prev">Initializing intervals</a>, Up: <a href="#Intervals" accesskey="u" rel="up">Intervals</a> &nbsp; </p>
+</div>
+<span id="Assigning-intervals-1"></span><h4 class="subsection">Assigning intervals</h4>
+<dl>
+<dt id="index-ap_005finterval_005fset">Function: <em>void</em> <strong>ap_interval_set</strong> <em>(ap_interval_t* <var>rop</var>, ap_interval_t* <var>op</var>)</em></dt>
+<dd><p>Set the value of <var>rop</var> from <var>op</var>.
+</p></dd></dl>
+
+<dl>
+<dt id="index-ap_005finterval_005fset_005fscalar">Function: <em>void</em> <strong>ap_interval_set_scalar</strong> <em>(ap_interval_t* <var>rop</var>, ap_scalar_t* <var>inf</var>, ap_scalar_t* <var>sup</var>)</em></dt>
+<dd><p>Set the value of <var>rop</var> from the interval [<var>inf</var>,<var>sup</var>].
+</p></dd></dl>
+
+<dl>
+<dt id="index-ap_005finterval_005fset_005fmpq">Function: <em>void</em> <strong>ap_interval_set_mpq</strong> <em>(ap_interval_t* <var>rop</var>, mpq_t <var>inf</var>, mpq_t <var>sup</var>)</em></dt>
+<dt id="index-ap_005finterval_005fset_005fint">Function: <em>void</em> <strong>ap_interval_set_int</strong> <em>(ap_interval_t* <var>rop</var>, int <var>inf</var>, int <var>sup</var>)</em></dt>
+<dt id="index-ap_005finterval_005fset_005ffrac">Function: <em>void</em> <strong>ap_interval_set_frac</strong> <em>(ap_interval_t* <var>rop</var>, int <var>numinf</var>, int <var>deninf</var>, int <var>numsup</var>, int <var>densup</var>)</em></dt>
+<dd><p>Set the value of <var>rop</var> from the interval [<var>inf</var>,<var>sup</var>] or
+[<var>numinf</var>/<var>deninf</var>,<var>numsup</var>/<var>densup</var>]. The scalars are
+of type MPQ.
+</p></dd></dl>
+
+<dl>
+<dt id="index-ap_005finterval_005fset_005fdouble">Function: <em>void</em> <strong>ap_interval_set_double</strong> <em>(ap_interval_t* <var>rop</var>, double <var>inf</var>, double <var>sup</var>)</em></dt>
+<dd><p>Set the value of <var>rop</var> from the interval [<var>inf</var>,<var>sup</var>].
+The scalars are of type DOUBLE.
+</p></dd></dl>
+
+<dl>
+<dt id="index-ap_005finterval_005fset_005ftop">Function: <em>void</em> <strong>ap_interval_set_top</strong> <em>(ap_interval_t* <var>op</var>)</em></dt>
+<dt id="index-ap_005finterval_005fset_005fbottom">Function: <em>void</em> <strong>ap_interval_set_bottom</strong> <em>(ap_interval_t* <var>op</var>)</em></dt>
+<dd><p>Set the value of <var>rop</var> resp. to the top interval [-oo,+oo] or to
+the empty interval [+1,-1].
+</p></dd></dl>
+
+<dl>
+<dt id="index-ap_005finterval_005falloc_005fset">Function: <em>ap_interval_t*</em> <strong>ap_interval_alloc_set</strong> <em>(ap_interval_t* <var>op</var>)</em></dt>
+<dd><p>Combined allocation and assignement.
+</p></dd></dl>
+
+<hr>
+<span id="Comparing-intervals"></span><div class="header">
+<p>
+Next: <a href="#Other-operations-on-intervals" accesskey="n" rel="next">Other operations on intervals</a>, Previous: <a href="#Assigning-intervals" accesskey="p" rel="prev">Assigning intervals</a>, Up: <a href="#Intervals" accesskey="u" rel="up">Intervals</a> &nbsp; </p>
+</div>
+<span id="Comparing-intervals-1"></span><h4 class="subsection">Comparing intervals</h4>
+<dl>
+<dt id="index-ap_005finterval_005fis_005ftop">Function: <em>bool</em> <strong>ap_interval_is_top</strong> <em>(ap_interval_t* <var>op</var>)</em></dt>
+<dt id="index-ap_005finterval_005fis_005fbottom">Function: <em>bool</em> <strong>ap_interval_is_bottom</strong> <em>(ap_interval_t* <var>op</var>)</em></dt>
+<dd><p>Return <code>true</code> if the interval is resp. the universe interval
+([-oo,+oo]) or an empty interval.
+</p></dd></dl>
+
+<dl>
+<dt id="index-ap_005finterval_005fis_005fleq">Function: <em>bool</em> <strong>ap_interval_is_leq</strong> <em>(ap_interval_t* <var>op1</var>, ap_interval_t* <var>op2</var>)</em></dt>
+<dd><p>Inclusion test.
+</p>
+<p>Return true if the interval <var>op1</var> is included in <var>op2</var>.
+</p></dd></dl>
+
+<dl>
+<dt id="index-ap_005finterval_005fequal">Function: <em>bool</em> <strong>ap_interval_equal</strong> <em>(ap_interval_t* <var>op1</var>, ap_interval_t* <var>op2</var>)</em></dt>
+<dd><p>Equality test.
+</p>
+<p>Return true if the interval <var>op1</var> is included in <var>op2</var>.
+</p></dd></dl>
+
+<dl>
+<dt id="index-ap_005finterval_005fcmp">Function: <em>int</em> <strong>ap_interval_cmp</strong> <em>(ap_interval_t* <var>op1</var>, ap_interval_t* <var>op2</var>)</em></dt>
+<dd><p>Non-total comparison.
+</p><dl compact="compact">
+<dt><code>0 equality</code></dt>
+<dt><code>-1 <var>op1</var> included in <var>op2</var></code></dt>
+<dt><code>+1 <var>op2</var> included in <var>op1</var></code></dt>
+<dt><code>-2 <var>op1.inf</var> less than <var>op2.inf</var></code></dt>
+<dt><code>+2 <var>op1.inf</var> greater than <var>op2.inf</var></code></dt>
+</dl>
+</dd></dl>
+
+<hr>
+<span id="Other-operations-on-intervals"></span><div class="header">
+<p>
+Next: <a href="#Array-of-intervals" accesskey="n" rel="next">Array of intervals</a>, Previous: <a href="#Comparing-intervals" accesskey="p" rel="prev">Comparing intervals</a>, Up: <a href="#Intervals" accesskey="u" rel="up">Intervals</a> &nbsp; </p>
+</div>
+<span id="Other-operations-on-intervals-1"></span><h4 class="subsection">Other operations on intervals</h4>
+
+<dl>
+<dt id="index-ap_005finterval_005fneg">Function: <em>void</em> <strong>ap_interval_neg</strong> <em>(ap_interval_t* <var>rop</var>, ap_interval_t* <var>op</var>)</em></dt>
+<dd><p>Negation.
+</p></dd></dl>
+
+<dl>
+<dt id="index-ap_005finterval_005fswap">Function: <em>void</em> <strong>ap_interval_swap</strong> <em>(ap_interval_t* <var>op1</var>, ap_interval_t* <var>op2</var>)</em></dt>
+<dd><p>Exchange the values of <var>op1</var> and <var>op2</var>.
+</p></dd></dl>
+
+<dl>
+<dt id="index-ap_005finterval_005fhash">Function: <em>int</em> <strong>ap_interval_hash</strong> <em>(ap_interval_t* <var>op</var>)</em></dt>
+<dd><p>Return an hash code (for instance for OCaml interface).
+</p></dd></dl>
+
+<dl>
+<dt id="index-ap_005finterval_005ffprint">Function: <em>void</em> <strong>ap_interval_fprint</strong> <em>(FILE* <var>stream</var>, ap_interval_t* <var>op</var>)</em></dt>
+<dd><p>Print <var>op</var> on the stream <var>stream</var>.
+</p></dd></dl>
+
+<hr>
+<span id="Array-of-intervals"></span><div class="header">
+<p>
+Previous: <a href="#Other-operations-on-intervals" accesskey="p" rel="prev">Other operations on intervals</a>, Up: <a href="#Intervals" accesskey="u" rel="up">Intervals</a> &nbsp; </p>
+</div>
+<span id="Array-of-intervals-1"></span><h4 class="subsection">Array of intervals</h4>
+<dl>
+<dt id="index-ap_005finterval_005farray_005falloc">Function: <em>ap_interval_t**</em> <strong>ap_interval_array_alloc</strong> <em>(size_t <var>size</var>)</em></dt>
+<dd><p>Allocate an array of intervals, initialized with [0,0] values.
+</p></dd></dl>
+
+<dl>
+<dt id="index-ap_005finterval_005farray_005ffree">Function: <em>void</em> <strong>ap_interval_array_free</strong> <em>(ap_interval_t** <var>array</var>, size_t <var>size</var>)</em></dt>
+<dd><p>Clearing and deallocating an array of intervals.
+</p></dd></dl>
+
+<hr>
+<div class="header">
+<p>
+Previous: <a href="#Other-operations-on-intervals" accesskey="p" rel="prev">Other operations on intervals</a>, Up: <a href="#Intervals" accesskey="u" rel="up">Intervals</a> &nbsp; </p>
+</div>
+
+
+
+</body>
+</html>

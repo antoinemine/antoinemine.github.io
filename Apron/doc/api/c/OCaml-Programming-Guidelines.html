@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.6, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>OCaml Programming Guidelines (APRON 0.9.12)</title>
+
+<meta name="description" content="OCaml Programming Guidelines (APRON 0.9.12)">
+<meta name="keywords" content="OCaml Programming Guidelines (APRON 0.9.12)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="APRON-Guidelines.html#APRON-Guidelines" rel="up" title="APRON Guidelines">
+<link href="MakingLibrary.html#MakingLibrary" rel="next" title="MakingLibrary">
+<link href="C-Programming-Guidelines.html#Typing-issue-in-C" rel="prev" title="Typing issue in C">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="OCaml-Programming-Guidelines"></span><div class="header">
+<p>
+Next: <a href="MakingLibrary.html#MakingLibrary" accesskey="n" rel="next">MakingLibrary</a>, Previous: <a href="C-Programming-Guidelines.html#C-Programming-Guidelines" accesskey="p" rel="prev">C Programming Guidelines</a>, Up: <a href="APRON-Guidelines.html#APRON-Guidelines" accesskey="u" rel="up">APRON Guidelines</a> &nbsp; </p>
+</div>
+<span id="OCaml-Programming-Guidelines-1"></span><h3 class="section">OCaml Programming Guidelines</h3>
+
+<p>All modules belonging to the APRON interface itself (<code>Scalar</code>,
+<code>Interval</code>, ..., <code>Manager</code>, <code>Linexpr0</code>,
+... <code>Abstract1</code>) are included in a big encapsulating module named
+<code>Apron</code>. In addition, there are modules like <code>Box</code>
+(intervals), <code>Oct</code> (octagons), <code>Polka</code> (linear equalities
+and convex polyhedra) and <code>Ppl</code> (convex polyhedra and linear
+congruences) not included in <code>Apron</code>.
+</p>
+<p>Generic abstract values have the type <code>'a Abstract1.t</code>, generic
+managers the type <code>'a Manager.t</code>. A typical operation like the
+emptiness test has the type <code>val is_bottom : 'a Manager.t -&gt; 'a
+Abstract1.t -&gt; bool</code>.
+</p>
+<p>Octagons of <small>OCTAGON</small> have the type <code>Oct.t
+Apron.Abstract1.t</code>. The corresponding managers have thus the type
+<code>Oct.t Manager.t</code>.
+</p>
+<p>See <a href="../mlapronidl/index.html">OCaml interface</a> for the
+documentation.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="MakingLibrary.html#MakingLibrary" accesskey="n" rel="next">MakingLibrary</a>, Previous: <a href="C-Programming-Guidelines.html#C-Programming-Guidelines" accesskey="p" rel="prev">C Programming Guidelines</a>, Up: <a href="APRON-Guidelines.html#APRON-Guidelines" accesskey="u" rel="up">APRON Guidelines</a> &nbsp; </p>
+</div>
+
+
+
+</body>
+</html>
