@@ -1,35 +1,26 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.6, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.2, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>pkgrid (APRON 0.9.12)</title>
+<title>pkgrid (APRON 0.9.15)</title>
 
-<meta name="description" content="pkgrid (APRON 0.9.12)">
-<meta name="keywords" content="pkgrid (APRON 0.9.12)">
+<meta name="description" content="pkgrid (APRON 0.9.15)">
+<meta name="keywords" content="pkgrid (APRON 0.9.15)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
-<link href="index.html#Top" rel="start" title="Top">
-<link href="Managers-and-Abstract-Domains.html#Managers-and-Abstract-Domains" rel="up" title="Managers and Abstract Domains">
-<link href="Scalars-_0026-Intervals-_0026-Coefficients.html#Scalars-_0026-Intervals-_0026-Coefficients" rel="next" title="Scalars &amp; Intervals &amp; Coefficients">
-<link href="PPL.html#APRON-PPL-standard-options" rel="prev" title="APRON PPL standard options">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Managers-and-Abstract-Domains.html" rel="up" title="Managers and Abstract Domains">
+<link href="PPL.html#PPL" rel="prev" title="PPL">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+span:hover a.copiable-link {visibility: visible}
+strong.def-name {font-family: monospace; font-weight: bold; font-size: larger}
 -->
 </style>
 
@@ -37,77 +28,81 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="pkgrid"></span><div class="header">
+<div class="section-level-extent" id="pkgrid">
+<div class="nav-panel">
 <p>
-Previous: <a href="PPL.html#PPL" accesskey="p" rel="prev">PPL</a>, Up: <a href="Managers-and-Abstract-Domains.html#Managers-and-Abstract-Domains" accesskey="u" rel="up">Managers and Abstract Domains</a> &nbsp; </p>
+Previous: <a href="PPL.html#PPL" accesskey="p" rel="prev">PPL (<samp class="file">ap_ppl.h</samp>): convex polyhedra and linear congruences abstract domains</a>, Up: <a href="Managers-and-Abstract-Domains.html" accesskey="u" rel="up">Managers and Abstract Domains</a> &nbsp; </p>
 </div>
-<span id="pkgrid-_0028ap_005fpkgrid_002eh_0029_003a-reduced-product-of-NewPolka-convex-polyhedra-and-PPL-linear-congruences-abstract-domains"></span><h3 class="section">pkgrid (<samp>ap_pkgrid.h</samp>): reduced product of NewPolka convex polyhedra and PPL linear congruences abstract domains</h3>
+<h3 class="section" id="pkgrid-_0028ap_005fpkgrid_002eh_0029_003a-reduced-product-of-NewPolka-convex-polyhedra-and-PPL-linear-congruences-abstract-domains"><span>pkgrid (<samp class="file">ap_pkgrid.h</samp>): reduced product of NewPolka convex polyhedra and PPL linear congruences abstract domains<a class="copiable-link" href="#pkgrid-_0028ap_005fpkgrid_002eh_0029_003a-reduced-product-of-NewPolka-convex-polyhedra-and-PPL-linear-congruences-abstract-domains"> &para;</a></span></h3>
 
 
 
-<p>The <small>PKGRID</small> library is aimed to be used through the APRON
+<p>The <small class="sc">PKGRID</small> library is aimed to be used through the APRON
 interface. It implements the reduced product of NewPolka convex
 polyhedra and the PPL linear congruences abstract domains and
 implementations. It exploits for this the features offered by the
-module <samp>ap_reducedproduct</samp> contained in the <samp>apron</samp> core
+module <samp class="file">ap_reducedproduct</samp> contained in the <samp class="file">apron</samp> core
 library.
 </p>
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#Use-of-pkgrid" accesskey="1">Use of pkgrid</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Allocating-pkgrid-managers" accesskey="2">Allocating pkgrid managers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
+<ul class="mini-toc">
+<li><a href="#Use-of-pkgrid" accesskey="1">Use of pkgrid</a></li>
+<li><a href="#Allocating-pkgrid-managers" accesskey="2">Allocating pkgrid managers</a></li>
+</ul>
 <hr>
-<span id="Use-of-pkgrid"></span><div class="header">
+<div class="subsection-level-extent" id="Use-of-pkgrid">
+<div class="nav-panel">
 <p>
-Next: <a href="#Allocating-pkgrid-managers" accesskey="n" rel="next">Allocating pkgrid managers</a>, Up: <a href="#pkgrid" accesskey="u" rel="up">pkgrid</a> &nbsp; </p>
+Next: <a href="#Allocating-pkgrid-managers" accesskey="n" rel="next">Allocating pkgrid managers</a>, Up: <a href="#pkgrid" accesskey="u" rel="up">pkgrid (<samp class="file">ap_pkgrid.h</samp>): reduced product of NewPolka convex polyhedra and PPL linear congruences abstract domains</a> &nbsp; </p>
 </div>
-<span id="Use-of-pkgrid-1"></span><h4 class="subsection">Use of pkgrid</h4>
+<h4 class="subsection" id="Use-of-pkgrid-1"><span>Use of pkgrid<a class="copiable-link" href="#Use-of-pkgrid-1"> &para;</a></span></h4>
 
-<p>To use <small>PKGRID</small> in C, add
+<p>To use <small class="sc">PKGRID</small> in C, add
 </p><div class="example">
-<pre class="example">#include &quot;ap_pkgrid.h&quot;
+<pre class="example-preformatted">#include &quot;ap_pkgrid.h&quot;
 </pre></div>
-<p>in your source file(s) and add &lsquo;<samp>-I$(APRON_PREFIX)/include</samp>&rsquo; in the
+<p>in your source file(s) and add &lsquo;<samp class="samp">-I$(APRON_PREFIX)/include</samp>&rsquo; in the
 command line in your Makefile.
 </p>
-<p>You should also link your object files with the <small>PKGRID</small>
+<p>You should also link your object files with the <small class="sc">PKGRID</small>
 library to produce an executable, by adding something like
-&lsquo;<samp>-L$(APRON_PREFIX)/lib -lap_pkgrid</samp>&rsquo; in the command line in
+&lsquo;<samp class="samp">-L$(APRON_PREFIX)/lib -lap_pkgrid</samp>&rsquo; in the command line in
 your Makefile, followed by the flags and libraries needed for the
-NewPolka library (see <a href="NewPolka.html#Use-of-NewPolka">Use of NewPolka</a>) and the PPL library
-(see <a href="PPL.html#Use-of-APRON-PPL">Use of APRON PPL</a>). Be cautious: because of the use of the
-PPL library, you &lsquo;<samp>g++</samp>&rsquo; (C++ compiler) instead of &lsquo;<samp>gcc</samp>&rsquo;
+NewPolka library (see <a class="pxref" href="NewPolka.html#Use-of-NewPolka">Use of NewPolka</a>) and the PPL library
+(see <a class="pxref" href="PPL.html#Use-of-APRON-PPL">Use of APRON PPL</a>). Be cautious: because of the use of the
+PPL library, you &lsquo;<samp class="samp">g++</samp>&rsquo; (C++ compiler) instead of &lsquo;<samp class="samp">gcc</samp>&rsquo;
 (C compiler) for the linking.
 </p>
 <p>Also, the library is available in debug mode
-(&lsquo;<samp>libap_pkgrid_debug.a</samp>&rsquo;, &lsquo;<samp>libap_pkgrid_debug.so</samp>&rsquo;).
+(&lsquo;<samp class="samp">libap_pkgrid_debug.a</samp>&rsquo;, &lsquo;<samp class="samp">libap_pkgrid_debug.so</samp>&rsquo;).
 </p>
 <hr>
-<span id="Allocating-pkgrid-managers"></span><div class="header">
-<p>
-Previous: <a href="#Use-of-pkgrid" accesskey="p" rel="prev">Use of pkgrid</a>, Up: <a href="#pkgrid" accesskey="u" rel="up">pkgrid</a> &nbsp; </p>
 </div>
-<span id="Allocating-pkgrid-managers-1"></span><h4 class="subsection">Allocating pkgrid managers</h4>
+<div class="subsection-level-extent" id="Allocating-pkgrid-managers">
+<div class="nav-panel">
+<p>
+Previous: <a href="#Use-of-pkgrid" accesskey="p" rel="prev">Use of pkgrid</a>, Up: <a href="#pkgrid" accesskey="u" rel="up">pkgrid (<samp class="file">ap_pkgrid.h</samp>): reduced product of NewPolka convex polyhedra and PPL linear congruences abstract domains</a> &nbsp; </p>
+</div>
+<h4 class="subsection" id="Allocating-pkgrid-managers-1"><span>Allocating pkgrid managers<a class="copiable-link" href="#Allocating-pkgrid-managers-1"> &para;</a></span></h4>
 
-<dl>
-<dt id="index-ap_005fpkgrid_005fmanager_005falloc">Function: <em>ap_manager_t*</em> <strong>ap_pkgrid_manager_alloc</strong> <em>(ap_manager_t* <var>manpk</var>, ap_manager_t* <var>manpplgrid</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fpkgrid_005fmanager_005falloc"><span class="category-def">Function: </span><span><code class="def-type">ap_manager_t*</code> <strong class="def-name">ap_pkgrid_manager_alloc</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">manpk</var>, ap_manager_t* <var class="var">manpplgrid</var>)</code><a class="copiable-link" href="#index-ap_005fpkgrid_005fmanager_005falloc"> &para;</a></span></dt>
 <dd><p>Allocate a APRON manager linked to the pkgrid library, using the
-(loose or strict) polka manager <var>manpk</var> and the PPL grid manager
-<var>manpplgrid</var>. If one of the argulment manager is not of the right
-type, returns <code>NULL</code>.
+(loose or strict) polka manager <var class="var">manpk</var> and the PPL grid manager
+<var class="var">manpplgrid</var>. If one of the argulment manager is not of the right
+type, returns <code class="code">NULL</code>.
 </p></dd></dl>
 
 <p>Available standard options are the one offered by the generic
-reduced product module <samp>ap_reducedproduct</samp> contained in the
-<samp>apron</samp> core library (see <a href="Functions-for-implementors.html#Functions-for-implementors">Functions for implementors</a>).
+reduced product module <samp class="file">ap_reducedproduct</samp> contained in the
+<samp class="file">apron</samp> core library (see <a class="pxref" href="Functions-for-implementors.html">Functions for implementors</a>).
 </p>
+</div>
+</div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
-Previous: <a href="#Use-of-pkgrid" accesskey="p" rel="prev">Use of pkgrid</a>, Up: <a href="#pkgrid" accesskey="u" rel="up">pkgrid</a> &nbsp; </p>
+Previous: <a href="PPL.html#PPL" accesskey="p" rel="prev">PPL (<samp class="file">ap_ppl.h</samp>): convex polyhedra and linear congruences abstract domains</a>, Up: <a href="Managers-and-Abstract-Domains.html" accesskey="u" rel="up">Managers and Abstract Domains</a> &nbsp; </p>
 </div>
 
 

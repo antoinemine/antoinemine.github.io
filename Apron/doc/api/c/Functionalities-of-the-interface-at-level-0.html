@@ -1,35 +1,26 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.6, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.2, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Functionalities of the interface at level 0 (APRON 0.9.12)</title>
+<title>Functionalities of the interface at level 0 (APRON 0.9.15)</title>
 
-<meta name="description" content="Functionalities of the interface at level 0 (APRON 0.9.12)">
-<meta name="keywords" content="Functionalities of the interface at level 0 (APRON 0.9.12)">
+<meta name="description" content="Functionalities of the interface at level 0 (APRON 0.9.15)">
+<meta name="keywords" content="Functionalities of the interface at level 0 (APRON 0.9.15)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
-<link href="index.html#Top" rel="start" title="Top">
-<link href="APRON-Rationale-and-Functionalities.html#APRON-Rationale-and-Functionalities" rel="up" title="APRON Rationale and Functionalities">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="APRON-Rationale-and-Functionalities.html" rel="up" title="APRON Rationale and Functionalities">
 <link href="Functionalities-of-the-interface-at-level-1.html#Functionalities-of-the-interface-at-level-1" rel="next" title="Functionalities of the interface at level 1">
-<link href="General-choices.html#Number-representation" rel="prev" title="Number representation">
+<link href="General-choices.html#General-choices" rel="prev" title="General choices">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+ul.mark-bullet {list-style-type: disc}
 -->
 </style>
 
@@ -37,51 +28,21 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Functionalities-of-the-interface-at-level-0"></span><div class="header">
+<div class="section-level-extent" id="Functionalities-of-the-interface-at-level-0">
+<div class="nav-panel">
 <p>
-Next: <a href="Functionalities-of-the-interface-at-level-1.html#Functionalities-of-the-interface-at-level-1" accesskey="n" rel="next">Functionalities of the interface at level 1</a>, Previous: <a href="General-choices.html#General-choices" accesskey="p" rel="prev">General choices</a>, Up: <a href="APRON-Rationale-and-Functionalities.html#APRON-Rationale-and-Functionalities" accesskey="u" rel="up">APRON Rationale and Functionalities</a> &nbsp; </p>
+Next: <a href="Functionalities-of-the-interface-at-level-1.html#Functionalities-of-the-interface-at-level-1" accesskey="n" rel="next">Functionalities of the interface at level 1</a>, Previous: <a href="General-choices.html#General-choices" accesskey="p" rel="prev">General choices</a>, Up: <a href="APRON-Rationale-and-Functionalities.html" accesskey="u" rel="up">APRON Rationale and Functionalities</a> &nbsp; </p>
 </div>
-<span id="Functionalities-of-the-interface-at-level-0-1"></span><h3 class="section">Functionalities of the interface at level 0</h3>
+<h3 class="section" id="Functionalities-of-the-interface-at-level-0-1"><span>Functionalities of the interface at level 0<a class="copiable-link" href="#Functionalities-of-the-interface-at-level-0-1"> &para;</a></span></h3>
 
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#Representation-of-an-abstract-value" accesskey="1">Representation of an abstract value</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Semantics-of-an-abstract-value" accesskey="2">Semantics of an abstract value</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Dimensions" accesskey="3">Dimensions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Other-datatypes" accesskey="4">Other datatypes</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Control-of-internal-representation" accesskey="5">Control of internal representation</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Printing" accesskey="6">Printing</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Serializaton_002fDeserialization" accesskey="7">Serializaton/Deserialization</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Constructors" accesskey="8">Constructors</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Tests" accesskey="9">Tests</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Property-extraction">Property extraction</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Lattice-operations">Lattice operations</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Assignement-and-Substitutions">Assignement and Substitutions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Operations-on-dimensions">Operations on dimensions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Other-operations">Other operations</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
 
 <hr>
-<span id="Representation-of-an-abstract-value"></span><div class="header">
+<a class="node" id="Representation-of-an-abstract-value"></a><div class="nav-panel">
 <p>
 Next: <a href="#Semantics-of-an-abstract-value" accesskey="n" rel="next">Semantics of an abstract value</a>, Previous: <a href="#Functionalities-of-the-interface-at-level-0" accesskey="p" rel="prev">Functionalities of the interface at level 0</a>, Up: <a href="#Functionalities-of-the-interface-at-level-0" accesskey="u" rel="up">Functionalities of the interface at level 0</a> &nbsp; </p>
 </div>
-<h4 class="node-heading">Representation of an abstract value</h4>
-<span id="Representation-of-an-abstract-value-1"></span><h4 class="subsubheading">Representation of an abstract value</h4>
+<h4 class="subsubheading" id="Representation-of-an-abstract-value-1"><span>Representation of an abstract value<a class="copiable-link" href="#Representation-of-an-abstract-value-1"> &para;</a></span></h4>
 
 <p>At the level 0 of the interface, an abstract value is a structure
 </p><pre class="verbatim">struct ap_abstract0_t {
@@ -95,18 +56,17 @@ library. Hence, it indicates the effective type of an abstract value.
 </p>
 <p>The validity of the arguments of the functions called through the
 interface is checked before the call to effective functions. In case
-of problem, an <code>invalid_argument</code> exception is raised.
+of problem, an <code class="code">invalid_argument</code> exception is raised.
 </p>
 <hr>
-<span id="Semantics-of-an-abstract-value"></span><div class="header">
+<a class="node" id="Semantics-of-an-abstract-value"></a><div class="nav-panel">
 <p>
 Next: <a href="#Dimensions" accesskey="n" rel="next">Dimensions</a>, Previous: <a href="#Representation-of-an-abstract-value" accesskey="p" rel="prev">Representation of an abstract value</a>, Up: <a href="#Functionalities-of-the-interface-at-level-0" accesskey="u" rel="up">Functionalities of the interface at level 0</a> &nbsp; </p>
 </div>
-<h4 class="node-heading">Semantics of an abstract value</h4>
-<span id="Semantics-of-an-abstract-value-1"></span><h4 class="subsubheading">Semantics of an abstract value</h4>
+<h4 class="subsubheading" id="Semantics-of-an-abstract-value-1"><span>Semantics of an abstract value<a class="copiable-link" href="#Semantics-of-an-abstract-value-1"> &para;</a></span></h4>
 
 <p>The semantics of an abstract value is a subset
-</p><blockquote>
+</p><blockquote class="quotation">
 <p>X of N^p x R^q
 </p></blockquote>
 
@@ -114,44 +74,42 @@ Next: <a href="#Dimensions" accesskey="n" rel="next">Dimensions</a>, Previous: <
 (p,q).
 </p>
 <hr>
-<span id="Dimensions"></span><div class="header">
+<a class="node" id="Dimensions"></a><div class="nav-panel">
 <p>
 Next: <a href="#Other-datatypes" accesskey="n" rel="next">Other datatypes</a>, Previous: <a href="#Semantics-of-an-abstract-value" accesskey="p" rel="prev">Semantics of an abstract value</a>, Up: <a href="#Functionalities-of-the-interface-at-level-0" accesskey="u" rel="up">Functionalities of the interface at level 0</a> &nbsp; </p>
 </div>
-<h4 class="node-heading">Dimensions</h4>
-<span id="Dimensions-1"></span><h4 class="subsubheading">Dimensions</h4>
+<h4 class="subsubheading" id="Dimensions-1"><span>Dimensions<a class="copiable-link" href="#Dimensions-1"> &para;</a></span></h4>
 <p>Dimensions are numbered from 0 to p+q-1 and are typed either as
 integer or real, depending on their rank w.r.t. the dimensionality of
 the abstract value.
 </p>
-<blockquote>
-<p><b>Note:</b> Taking into account or not the fact that some dimensions are integers
+<blockquote class="quotation">
+<p><b class="b">Note:</b> Taking into account or not the fact that some dimensions are integers
 is left to underlying libraries. Treating them as real is still a
 correct approximation. The behaviour of the libraries in this regard
 may also depend on some options.
 </p></blockquote>
 
 <hr>
-<span id="Other-datatypes"></span><div class="header">
+<a class="node" id="Other-datatypes"></a><div class="nav-panel">
 <p>
 Next: <a href="#Control-of-internal-representation" accesskey="n" rel="next">Control of internal representation</a>, Previous: <a href="#Dimensions" accesskey="p" rel="prev">Dimensions</a>, Up: <a href="#Functionalities-of-the-interface-at-level-0" accesskey="u" rel="up">Functionalities of the interface at level 0</a> &nbsp; </p>
 </div>
-<h4 class="node-heading">Other datatypes</h4>
-<span id="Other-datatypes-1"></span><h4 class="subsubheading">Other datatypes</h4>
+<h4 class="subsubheading" id="Other-datatypes-1"><span>Other datatypes<a class="copiable-link" href="#Other-datatypes-1"> &para;</a></span></h4>
 
 <p>In addition to abstract values, the interface also manipulates the
 following main datatypes:
-</p><dl compact="compact">
-<dt><em>scalar (number)</em></dt>
-<dd><p>Either GMP multiprecision rationals or C <code>double</code>.
+</p><dl class="table">
+<dt><em class="emph">scalar (number)</em></dt>
+<dd><p>Either GMP multiprecision rationals or C <code class="code">double</code>.
 </p></dd>
-<dt><em>interval</em></dt>
-<dd><p>composed of 2 scalar numbers. With rationals, plus (resp minus) infinity is represented by 1/0 (resp -1/0). With <code>double</code>, the IEEE754 is assumed and the corresponding standard representation is used.
+<dt><em class="emph">interval</em></dt>
+<dd><p>composed of 2 scalar numbers. With rationals, plus (resp minus) infinity is represented by 1/0 (resp -1/0). With <code class="code">double</code>, the IEEE754 is assumed and the corresponding standard representation is used.
 </p></dd>
-<dt><em>coefficient</em></dt>
+<dt><em class="emph">coefficient</em></dt>
 <dd><p>which is either a scalar or an interval.
 </p></dd>
-<dt><em>(interval) linear expression</em></dt>
+<dt><em class="emph">(interval) linear expression</em></dt>
 <dd><p>The term linear is used even if the proper term should rather be
 affine.  A linear expression is a linear expression in the common
 sense, using only scalar numbers. A quasi-linear expression is a
@@ -161,17 +119,17 @@ coefficient may be an interval. In order to have a unique datatype for
 these variations, we introduced the notion of coefficient described
 above.
 </p></dd>
-<dt><em>&ldquo;linear&rdquo; constraints</em></dt>
+<dt><em class="emph">&ldquo;linear&rdquo; constraints</em></dt>
 <dd><p>&ldquo;Linear&rdquo; constraints includes proper linear constraints, linear
 constraints in which the expression can be possibly an interval linear
 expression, linear equalities modulo a number, and linear disequalities.
 </p></dd>
-<dt><em>generators</em></dt>
-<dd><p>A generator system for a subset of <em>X\subseteq R^n</em> is a finite
-set of vectors, among which one distinguishes <em>points</em>
-<em>p_0,\ldots,p_m</em> and <em>rays</em> <em>r_0,\ldots,r_n</em>, that
-generates <em>X</em>:
-</p><blockquote>
+<dt><em class="emph">generators</em></dt>
+<dd><p>A generator system for a subset of <em class="math">X\subseteq R^n</em> is a finite
+set of vectors, among which one distinguishes <em class="emph">points</em>
+<em class="math">p_0,\ldots,p_m</em> and <em class="emph">rays</em> <em class="math">r_0,\ldots,r_n</em>, that
+generates <em class="math">X</em>:
+</p><blockquote class="quotation">
 <p>X = { lambda0 p0 +...+ lambdaM pM + mu0 r0 +...+ muN rN | lambda0 +...+ lambdaN = 1 and forall J : muJ &gt;= 0 }
 </p></blockquote>
 <p>The APRON datatype for generators distinguishes points (sum of
@@ -183,35 +141,33 @@ coefficients).
 </dl>
 
 <hr>
-<span id="Control-of-internal-representation"></span><div class="header">
+<a class="node" id="Control-of-internal-representation"></a><div class="nav-panel">
 <p>
 Next: <a href="#Printing" accesskey="n" rel="next">Printing</a>, Previous: <a href="#Other-datatypes" accesskey="p" rel="prev">Other datatypes</a>, Up: <a href="#Functionalities-of-the-interface-at-level-0" accesskey="u" rel="up">Functionalities of the interface at level 0</a> &nbsp; </p>
 </div>
-<h4 class="node-heading">Control of internal representation</h4>
-<span id="Control-of-internal-representation-1"></span><h4 class="subsubheading">Control of internal representation</h4>
+<h4 class="subsubheading" id="Control-of-internal-representation-1"><span>Control of internal representation<a class="copiable-link" href="#Control-of-internal-representation-1"> &para;</a></span></h4>
 
 <p>We identified several notions:
 </p>
-<ul>
-<li> Canonical form
-</li><li> Minimal form (in term of space)
-</li><li> Approximation notion left to the underlying library (taking into
+<ul class="itemize mark-bullet">
+<li>Canonical form
+</li><li>Minimal form (in term of space)
+</li><li>Approximation notion left to the underlying library (taking into
 account integers or not, ...).
 </li></ul>
 
 <hr>
-<span id="Printing"></span><div class="header">
+<a class="node" id="Printing"></a><div class="nav-panel">
 <p>
 Next: <a href="#Serializaton_002fDeserialization" accesskey="n" rel="next">Serializaton/Deserialization</a>, Previous: <a href="#Control-of-internal-representation" accesskey="p" rel="prev">Control of internal representation</a>, Up: <a href="#Functionalities-of-the-interface-at-level-0" accesskey="u" rel="up">Functionalities of the interface at level 0</a> &nbsp; </p>
 </div>
-<h4 class="node-heading">Printing</h4>
-<span id="Printing-1"></span><h4 class="subsubheading">Printing</h4>
+<h4 class="subsubheading" id="Printing-1"><span>Printing<a class="copiable-link" href="#Printing-1"> &para;</a></span></h4>
 
 <p>There are two printing operations:
 </p>
-<ul>
-<li> Printing of an abstract value;
-</li><li> Printing the difference between two abstract values.
+<ul class="itemize mark-bullet">
+<li>Printing of an abstract value;
+</li><li>Printing the difference between two abstract values.
 </li></ul>
 
 <p>The printing format is library dependent. However, the conversion of
@@ -219,12 +175,11 @@ abstract values to constraints (see below) allows a form of
 standardized printing for abstract values.
 </p>
 <hr>
-<span id="Serializaton_002fDeserialization"></span><div class="header">
+<a class="node" id="Serializaton_002fDeserialization"></a><div class="nav-panel">
 <p>
 Next: <a href="#Constructors" accesskey="n" rel="next">Constructors</a>, Previous: <a href="#Printing" accesskey="p" rel="prev">Printing</a>, Up: <a href="#Functionalities-of-the-interface-at-level-0" accesskey="u" rel="up">Functionalities of the interface at level 0</a> &nbsp; </p>
 </div>
-<h4 class="node-heading">Serializaton/Deserialization</h4>
-<span id="Serializaton_002fDeserialization-1"></span><h4 class="subsubheading">Serializaton/Deserialization</h4>
+<h4 class="subsubheading" id="Serializaton_002fDeserialization-1"><span>Serializaton/Deserialization<a class="copiable-link" href="#Serializaton_002fDeserialization-1"> &para;</a></span></h4>
 
 <p>Serialization and deserialization of abstract values to a memory
 buffer is offered. It is entirely managed by the underlying
@@ -234,56 +189,53 @@ different library.
 </p>
 <p>Serialization is done to a memory buffer instead of to a file
 descriptor because this mechanism is more general and is needed for
-interfacing with languages like <small>OCAML</small>.
+interfacing with languages like <small class="sc">OCAML</small>.
 </p>
 <hr>
-<span id="Constructors"></span><div class="header">
+<a class="node" id="Constructors"></a><div class="nav-panel">
 <p>
 Next: <a href="#Tests" accesskey="n" rel="next">Tests</a>, Previous: <a href="#Serializaton_002fDeserialization" accesskey="p" rel="prev">Serializaton/Deserialization</a>, Up: <a href="#Functionalities-of-the-interface-at-level-0" accesskey="u" rel="up">Functionalities of the interface at level 0</a> &nbsp; </p>
 </div>
-<h4 class="node-heading">Constructors</h4>
-<span id="Constructors-1"></span><h4 class="subsubheading">Constructors</h4>
+<h4 class="subsubheading" id="Constructors-1"><span>Constructors<a class="copiable-link" href="#Constructors-1"> &para;</a></span></h4>
 
 <p>Four basic constructors are offered:
 </p>
-<ul>
-<li> bottom (empty) and top (universe) values (with a specified dimensionality);
-</li><li> abstraction of a bounding box;
-</li><li> abstraction of conjunction of linear constraints (in the broad sense).
+<ul class="itemize mark-bullet">
+<li>bottom (empty) and top (universe) values (with a specified dimensionality);
+</li><li>abstraction of a bounding box;
+</li><li>abstraction of conjunction of linear constraints (in the broad sense).
 </li></ul>
 
 <hr>
-<span id="Tests"></span><div class="header">
+<a class="node" id="Tests"></a><div class="nav-panel">
 <p>
 Next: <a href="#Property-extraction" accesskey="n" rel="next">Property extraction</a>, Previous: <a href="#Constructors" accesskey="p" rel="prev">Constructors</a>, Up: <a href="#Functionalities-of-the-interface-at-level-0" accesskey="u" rel="up">Functionalities of the interface at level 0</a> &nbsp; </p>
 </div>
-<h4 class="node-heading">Tests</h4>
-<span id="Tests-1"></span><h4 class="subsubheading">Tests</h4>
+<h4 class="subsubheading" id="Tests-1"><span>Tests<a class="copiable-link" href="#Tests-1"> &para;</a></span></h4>
 
 <p>Predicates are offered for testing
-</p><ul>
-<li> emptiness and universality of an abstract value:
-</li><li> inclusion and equality of two abstract values;
-</li><li> inclusion of a dimension into an interval given an abstract value;
-</li><li> satisfaction of a linear constraint by the abstract value.
+</p><ul class="itemize mark-bullet">
+<li>emptiness and universality of an abstract value:
+</li><li>inclusion and equality of two abstract values;
+</li><li>inclusion of a dimension into an interval given an abstract value;
+</li><li>satisfaction of a linear constraint by the abstract value.
 </li></ul>
 
 <hr>
-<span id="Property-extraction"></span><div class="header">
+<a class="node" id="Property-extraction"></a><div class="nav-panel">
 <p>
 Next: <a href="#Lattice-operations" accesskey="n" rel="next">Lattice operations</a>, Previous: <a href="#Tests" accesskey="p" rel="prev">Tests</a>, Up: <a href="#Functionalities-of-the-interface-at-level-0" accesskey="u" rel="up">Functionalities of the interface at level 0</a> &nbsp; </p>
 </div>
-<h4 class="node-heading">Property extraction</h4>
-<span id="Property-extraction-1"></span><h4 class="subsubheading">Property extraction</h4>
+<h4 class="subsubheading" id="Property-extraction-1"><span>Property extraction<a class="copiable-link" href="#Property-extraction-1"> &para;</a></span></h4>
 
-<p>Some properties may be inferred given an abstract values:
+<p>Some properties may be inferred given an abstract value:
 </p>
-<ul>
-<li> Interval of variation of a dimension in an abstract value;
+<ul class="itemize mark-bullet">
+<li>Interval of variation of a dimension in an abstract value;
 
-</li><li> Interval of variation of a linear expression in an abstract value;
-</li><li> Conversion to a bounding box
-</li><li> Conversion to a set of linear constraints (in the broad sense).
+</li><li>Interval of variation of a linear expression in an abstract value;
+</li><li>Conversion to a bounding box
+</li><li>Conversion to a set of linear constraints (in the broad sense).
 </li></ul>
 
 <p>Notice that the second operation implements linear programming if it
@@ -293,31 +245,29 @@ fourth operation is minimal and cannot be implemented using the second
 one, as the number of linear expression is infinite.
 </p>
 <hr>
-<span id="Lattice-operations"></span><div class="header">
+<a class="node" id="Lattice-operations"></a><div class="nav-panel">
 <p>
 Next: <a href="#Assignement-and-Substitutions" accesskey="n" rel="next">Assignement and Substitutions</a>, Previous: <a href="#Property-extraction" accesskey="p" rel="prev">Property extraction</a>, Up: <a href="#Functionalities-of-the-interface-at-level-0" accesskey="u" rel="up">Functionalities of the interface at level 0</a> &nbsp; </p>
 </div>
-<h4 class="node-heading">Lattice operations</h4>
-<span id="Lattice-operations-1"></span><h4 class="subsubheading">Lattice operations</h4>
+<h4 class="subsubheading" id="Lattice-operations-1"><span>Lattice operations<a class="copiable-link" href="#Lattice-operations-1"> &para;</a></span></h4>
 
-<ul>
-<li> Least upper bound and greatest lower bound of two abstract values, and of arrays of abstract values;
-</li><li> Intersection with one or several linear constraints;
-</li><li> Addition of rays (for instance for implement generalized time elapse
+<ul class="itemize mark-bullet">
+<li>Least upper bound and greatest lower bound of two abstract values, and of arrays of abstract values;
+</li><li>Intersection with one or several linear constraints;
+</li><li>Addition of rays (for instance for implement generalized time elapse
 operator in linear hybrid systems).
 </li></ul>
 
 <hr>
-<span id="Assignement-and-Substitutions"></span><div class="header">
+<a class="node" id="Assignement-and-Substitutions"></a><div class="nav-panel">
 <p>
 Next: <a href="#Operations-on-dimensions" accesskey="n" rel="next">Operations on dimensions</a>, Previous: <a href="#Lattice-operations" accesskey="p" rel="prev">Lattice operations</a>, Up: <a href="#Functionalities-of-the-interface-at-level-0" accesskey="u" rel="up">Functionalities of the interface at level 0</a> &nbsp; </p>
 </div>
-<h4 class="node-heading">Assignement and Substitutions</h4>
-<span id="Assignement-and-Substitutions-1"></span><h4 class="subsubheading">Assignement and Substitutions</h4>
+<h4 class="subsubheading" id="Assignement-and-Substitutions-1"><span>Assignement and Substitutions<a class="copiable-link" href="#Assignement-and-Substitutions-1"> &para;</a></span></h4>
 
-<ul>
-<li> of a dimension by a (interval) linear expression
-</li><li> in parallel of several dimensions by several (interval) linear expressions
+<ul class="itemize mark-bullet">
+<li>of a dimension by a (interval) linear expression
+</li><li>in parallel of several dimensions by several (interval) linear expressions
 </li></ul>
 
 <p>Parallel assignement and substitution ar enot minimal operations, but
@@ -325,21 +275,20 @@ for some abstract domains implementing them directly results in more
 efficient or more precise operations.
 </p>
 <hr>
-<span id="Operations-on-dimensions"></span><div class="header">
+<a class="node" id="Operations-on-dimensions"></a><div class="nav-panel">
 <p>
 Next: <a href="#Other-operations" accesskey="n" rel="next">Other operations</a>, Previous: <a href="#Assignement-and-Substitutions" accesskey="p" rel="prev">Assignement and Substitutions</a>, Up: <a href="#Functionalities-of-the-interface-at-level-0" accesskey="u" rel="up">Functionalities of the interface at level 0</a> &nbsp; </p>
 </div>
-<h4 class="node-heading">Operations on dimensions</h4>
-<span id="Operations-on-dimensions-1"></span><h4 class="subsubheading">Operations on dimensions</h4>
+<h4 class="subsubheading" id="Operations-on-dimensions-1"><span>Operations on dimensions<a class="copiable-link" href="#Operations-on-dimensions-1"> &para;</a></span></h4>
 
-<ul>
-<li> Projection/Elimination of one or several dimensions with constant
+<ul class="itemize mark-bullet">
+<li>Projection/Elimination of one or several dimensions with constant
 dimensionality;
-</li><li> Addition/Removal/Permutation of dimensions with corresponding change
+</li><li>Addition/Removal/Permutation of dimensions with corresponding change
 of dimensionality (with the exception of permutation). These
 operations allows to resize abstract values, and reorganize
 dimensions.
-</li><li> Expansion and folding of dimensions. This is useful for the
+</li><li>Expansion and folding of dimensions. This is useful for the
 abstraction of arrays, where a dimension may represent several
 variables.
 
@@ -347,12 +296,11 @@ variables.
 </li></ul>
 
 <hr>
-<span id="Other-operations"></span><div class="header">
+<a class="node" id="Other-operations"></a><div class="nav-panel">
 <p>
 Previous: <a href="#Operations-on-dimensions" accesskey="p" rel="prev">Operations on dimensions</a>, Up: <a href="#Functionalities-of-the-interface-at-level-0" accesskey="u" rel="up">Functionalities of the interface at level 0</a> &nbsp; </p>
 </div>
-<h4 class="node-heading">Other operations</h4>
-<span id="Other-operations-1"></span><h4 class="subsubheading">Other operations</h4>
+<h4 class="subsubheading" id="Other-operations-1"><span>Other operations<a class="copiable-link" href="#Other-operations-1"> &para;</a></span></h4>
 
 <p>Widening, either simple or with threshold, is offered. A generic
 widening with threshold function is offered in the interface.
@@ -360,10 +308,11 @@ widening with threshold function is offered in the interface.
 <p>Topological closure (i.e., relaxation of strict inequalities) is
 offered.
 </p>
+</div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
-Previous: <a href="#Operations-on-dimensions" accesskey="p" rel="prev">Operations on dimensions</a>, Up: <a href="#Functionalities-of-the-interface-at-level-0" accesskey="u" rel="up">Functionalities of the interface at level 0</a> &nbsp; </p>
+Next: <a href="Functionalities-of-the-interface-at-level-1.html#Functionalities-of-the-interface-at-level-1" accesskey="n" rel="next">Functionalities of the interface at level 1</a>, Previous: <a href="General-choices.html#General-choices" accesskey="p" rel="prev">General choices</a>, Up: <a href="APRON-Rationale-and-Functionalities.html" accesskey="u" rel="up">APRON Rationale and Functionalities</a> &nbsp; </p>
 </div>
 
 

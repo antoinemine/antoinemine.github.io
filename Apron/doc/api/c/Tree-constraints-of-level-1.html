@@ -1,35 +1,27 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.6, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.2, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Tree constraints of level 1 (APRON 0.9.12)</title>
+<title>Tree constraints of level 1 (APRON 0.9.15)</title>
 
-<meta name="description" content="Tree constraints of level 1 (APRON 0.9.12)">
-<meta name="keywords" content="Tree constraints of level 1 (APRON 0.9.12)">
+<meta name="description" content="Tree constraints of level 1 (APRON 0.9.15)">
+<meta name="keywords" content="Tree constraints of level 1 (APRON 0.9.15)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
-<link href="index.html#Top" rel="start" title="Top">
-<link href="Level-1-of-the-interface.html#Level-1-of-the-interface" rel="up" title="Level 1 of the interface">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Level-1-of-the-interface.html" rel="up" title="Level 1 of the interface">
 <link href="Abstract-values-and-operations-of-level-1.html#Abstract-values-and-operations-of-level-1" rel="next" title="Abstract values and operations of level 1">
-<link href="Tree-expressions-of-level-1.html#Operations-on-tree-expressions-of-level-1" rel="prev" title="Operations on tree expressions of level 1">
+<link href="Tree-expressions-of-level-1.html#Tree-expressions-of-level-1" rel="prev" title="Tree expressions of level 1">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+span:hover a.copiable-link {visibility: visible}
+strong.def-name {font-family: monospace; font-weight: bold; font-size: larger}
 -->
 </style>
 
@@ -37,49 +29,47 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Tree-constraints-of-level-1"></span><div class="header">
+<div class="section-level-extent" id="Tree-constraints-of-level-1">
+<div class="nav-panel">
 <p>
-Next: <a href="Abstract-values-and-operations-of-level-1.html#Abstract-values-and-operations-of-level-1" accesskey="n" rel="next">Abstract values and operations of level 1</a>, Previous: <a href="Tree-expressions-of-level-1.html#Tree-expressions-of-level-1" accesskey="p" rel="prev">Tree expressions of level 1</a>, Up: <a href="Level-1-of-the-interface.html#Level-1-of-the-interface" accesskey="u" rel="up">Level 1 of the interface</a> &nbsp; </p>
+Next: <a href="Abstract-values-and-operations-of-level-1.html#Abstract-values-and-operations-of-level-1" accesskey="n" rel="next">Abstract values and operations of level 1 (<samp class="file">ap_abstract1.h</samp>)</a>, Previous: <a href="Tree-expressions-of-level-1.html#Tree-expressions-of-level-1" accesskey="p" rel="prev">Tree expressions of level 1 (<samp class="file">ap_texpr1.h</samp>)</a>, Up: <a href="Level-1-of-the-interface.html" accesskey="u" rel="up">Level 1 of the interface</a> &nbsp; </p>
 </div>
-<span id="Tree-constraints-of-level-1-_0028ap_005ftcons1_002eh_0029"></span><h3 class="section">Tree constraints of level 1 (<samp>ap_tcons1.h</samp>)</h3>
+<h3 class="section" id="Tree-constraints-of-level-1-_0028ap_005ftcons1_002eh_0029"><span>Tree constraints of level 1 (<samp class="file">ap_tcons1.h</samp>)<a class="copiable-link" href="#Tree-constraints-of-level-1-_0028ap_005ftcons1_002eh_0029"> &para;</a></span></h3>
 
 <p>Tree constraints are constraints built on tree expressions.
 </p>
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#Datatypes-for-tree-constraints-of-level-1" accesskey="1">Datatypes for tree constraints of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Constructors_002fDestructors-for-tree-constraints-of-level-1" accesskey="2">Constructors/Destructors for tree constraints of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Operations-on-tree-constraints-of-level-1" accesskey="3">Operations on tree constraints of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Arrays-of-tree-constraints-of-level-1" accesskey="4">Arrays of tree constraints of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
+<ul class="mini-toc">
+<li><a href="#Datatypes-for-tree-constraints-of-level-1" accesskey="1">Datatypes for tree constraints of level 1</a></li>
+<li><a href="#Constructors_002fDestructors-for-tree-constraints-of-level-1" accesskey="2">Constructors/Destructors for tree constraints of level 1</a></li>
+<li><a href="#Operations-on-tree-constraints-of-level-1" accesskey="3">Operations on tree constraints of level 1</a></li>
+<li><a href="#Arrays-of-tree-constraints-of-level-1" accesskey="4">Arrays of tree constraints of level 1</a></li>
+</ul>
 <hr>
-<span id="Datatypes-for-tree-constraints-of-level-1"></span><div class="header">
+<div class="subsection-level-extent" id="Datatypes-for-tree-constraints-of-level-1">
+<div class="nav-panel">
 <p>
-Next: <a href="#Constructors_002fDestructors-for-tree-constraints-of-level-1" accesskey="n" rel="next">Constructors/Destructors for tree constraints of level 1</a>, Previous: <a href="#Tree-constraints-of-level-1" accesskey="p" rel="prev">Tree constraints of level 1</a>, Up: <a href="#Tree-constraints-of-level-1" accesskey="u" rel="up">Tree constraints of level 1</a> &nbsp; </p>
+Next: <a href="#Constructors_002fDestructors-for-tree-constraints-of-level-1" accesskey="n" rel="next">Constructors/Destructors for tree constraints of level 1</a>, Previous: <a href="#Tree-constraints-of-level-1" accesskey="p" rel="prev">Tree constraints of level 1 (<samp class="file">ap_tcons1.h</samp>)</a>, Up: <a href="#Tree-constraints-of-level-1" accesskey="u" rel="up">Tree constraints of level 1 (<samp class="file">ap_tcons1.h</samp>)</a> &nbsp; </p>
 </div>
-<span id="Datatypes-for-tree-constraints-of-level-1-1"></span><h4 class="subsection">Datatypes for tree constraints of level 1</h4>
+<h4 class="subsection" id="Datatypes-for-tree-constraints-of-level-1-1"><span>Datatypes for tree constraints of level 1<a class="copiable-link" href="#Datatypes-for-tree-constraints-of-level-1-1"> &para;</a></span></h4>
 
-<dl>
-<dt id="index-ap_005ftcons1_005ft">datatype: <strong>ap_tcons1_t</strong></dt>
+<dl class="first-deftp def-block">
+<dt class="deftp def-line" id="index-ap_005ftcons1_005ft"><span class="category-def">datatype: </span><span><strong class="def-name">ap_tcons1_t</strong><a class="copiable-link" href="#index-ap_005ftcons1_005ft"> &para;</a></span></dt>
 <dd><p>Datatype for constraints.
 </p>
 <p>For information:
 </p><div class="example">
-<pre class="example">typedef struct ap_tcons1_t {
+<pre class="example-preformatted">typedef struct ap_tcons1_t {
   ap_tcons0_t tcons0;
   ap_environment_t* env;
 } ap_tcons1_t;
 </pre></div>
 </dd></dl>
 
-<dl>
-<dt id="index-ap_005ftcons1_005farray_005ft">datatype: <strong>ap_tcons1_array_t</strong></dt>
+<dl class="first-deftp def-block">
+<dt class="deftp def-line" id="index-ap_005ftcons1_005farray_005ft"><span class="category-def">datatype: </span><span><strong class="def-name">ap_tcons1_array_t</strong><a class="copiable-link" href="#index-ap_005ftcons1_005farray_005ft"> &para;</a></span></dt>
 <dd><div class="example">
-<pre class="example">typedef struct ap_tcons1_array_t {
+<pre class="example-preformatted">typedef struct ap_tcons1_array_t {
   ap_tcons0_array_t tcons0_array;
   ap_environment_t* env;
 } ap_tcons1_array_t;
@@ -87,154 +77,162 @@ Next: <a href="#Constructors_002fDestructors-for-tree-constraints-of-level-1" ac
 <p>Datatype for arrays of constraints.
 </p>
 <p>Arrays at level 1 cannot be accessed directly, for example by writing
-<code>array-&gt;p[i]</code>, but should instead be accessed with functions
-<code>ap_tcons1_array_get</code> and <code>ap_tcons1_array_set</code>.
+<code class="code">array-&gt;p[i]</code>, but should instead be accessed with functions
+<code class="code">ap_tcons1_array_get</code> and <code class="code">ap_tcons1_array_set</code>.
 </p></dd></dl>
 
 <hr>
-<span id="Constructors_002fDestructors-for-tree-constraints-of-level-1"></span><div class="header">
-<p>
-Next: <a href="#Operations-on-tree-constraints-of-level-1" accesskey="n" rel="next">Operations on tree constraints of level 1</a>, Previous: <a href="#Datatypes-for-tree-constraints-of-level-1" accesskey="p" rel="prev">Datatypes for tree constraints of level 1</a>, Up: <a href="#Tree-constraints-of-level-1" accesskey="u" rel="up">Tree constraints of level 1</a> &nbsp; </p>
 </div>
-<span id="Constructors_002fDestructors-for-tree-constraints-of-level-1-1"></span><h4 class="subsection">Constructors/Destructors for tree constraints of level 1</h4>
+<div class="subsection-level-extent" id="Constructors_002fDestructors-for-tree-constraints-of-level-1">
+<div class="nav-panel">
+<p>
+Next: <a href="#Operations-on-tree-constraints-of-level-1" accesskey="n" rel="next">Operations on tree constraints of level 1</a>, Previous: <a href="#Datatypes-for-tree-constraints-of-level-1" accesskey="p" rel="prev">Datatypes for tree constraints of level 1</a>, Up: <a href="#Tree-constraints-of-level-1" accesskey="u" rel="up">Tree constraints of level 1 (<samp class="file">ap_tcons1.h</samp>)</a> &nbsp; </p>
+</div>
+<h4 class="subsection" id="Constructors_002fDestructors-for-tree-constraints-of-level-1-1"><span>Constructors/Destructors for tree constraints of level 1<a class="copiable-link" href="#Constructors_002fDestructors-for-tree-constraints-of-level-1-1"> &para;</a></span></h4>
 
-<dl>
-<dt id="index-ap_005ftcons1_005fmake">Function: <em>ap_tcons1_t</em> <strong>ap_tcons1_make</strong> <em>(ap_constyp_t <var>constyp</var>, ap_texpr1_t*  <var>expr</var>, ap_scalar_t*  <var>scalar</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005ftcons1_005fmake"><span class="category-def">Function: </span><span><code class="def-type">ap_tcons1_t</code> <strong class="def-name">ap_tcons1_make</strong> <code class="def-code-arguments">(ap_constyp_t <var class="var">constyp</var>, ap_texpr1_t*  <var class="var">expr</var>, ap_scalar_t*  <var class="var">scalar</var>)</code><a class="copiable-link" href="#index-ap_005ftcons1_005fmake"> &para;</a></span></dt>
 <dd><p>Create a constraint of given type with the given expression.  The
 expression and the optional coefficient are not duplicated, just
 pointed to.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005ftcons1_005ffrom_005flincons1">Function: <em>ap_tcons1_t</em> <strong>ap_tcons1_from_lincons1</strong> <em>(ap_tcons1_t* <var>cons</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005ftcons1_005ffrom_005flincons1"><span class="category-def">Function: </span><span><code class="def-type">ap_tcons1_t</code> <strong class="def-name">ap_tcons1_from_lincons1</strong> <code class="def-code-arguments">(ap_tcons1_t* <var class="var">cons</var>)</code><a class="copiable-link" href="#index-ap_005ftcons1_005ffrom_005flincons1"> &para;</a></span></dt>
 <dd><p>Create a tree constraint from a linear constraint.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005ftcons1_005fcopy">Function: <em>ap_tcons1_t</em> <strong>ap_tcons1_copy</strong> <em>(ap_tcons1_t* <var>cons</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005ftcons1_005fcopy"><span class="category-def">Function: </span><span><code class="def-type">ap_tcons1_t</code> <strong class="def-name">ap_tcons1_copy</strong> <code class="def-code-arguments">(ap_tcons1_t* <var class="var">cons</var>)</code><a class="copiable-link" href="#index-ap_005ftcons1_005fcopy"> &para;</a></span></dt>
 <dd><p>Duplication.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005ftcons1_005fclear">Function: <em>void</em> <strong>ap_tcons1_clear</strong> <em>(ap_tcons1_t* <var>cons</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005ftcons1_005fclear"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">ap_tcons1_clear</strong> <code class="def-code-arguments">(ap_tcons1_t* <var class="var">cons</var>)</code><a class="copiable-link" href="#index-ap_005ftcons1_005fclear"> &para;</a></span></dt>
 <dd><p>Clear the constraint and set pointers to NULL.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005ftcons1_005ffprint">Function: <em>void</em> <strong>ap_tcons1_fprint</strong> <em>(FILE* <var>stream</var>, ap_tcons1_t* <var>cons</var>)</em></dt>
-<dt id="index-ap_005ftcons1_005fprint">Function: <em>void</em> <strong>ap_tcons1_print</strong> <em>(ap_tcons1_t* <var>cons</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005ftcons1_005ffprint"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">ap_tcons1_fprint</strong> <code class="def-code-arguments">(FILE* <var class="var">stream</var>, ap_tcons1_t* <var class="var">cons</var>)</code><a class="copiable-link" href="#index-ap_005ftcons1_005ffprint"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005ftcons1_005fprint"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">ap_tcons1_print</strong> <code class="def-code-arguments">(ap_tcons1_t* <var class="var">cons</var>)</code><a class="copiable-link" href="#index-ap_005ftcons1_005fprint"> &para;</a></span></dt>
 <dd><p>Printing
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005ftcons1_005fenvref">Function: <em>ap_environment_t*</em> <strong>ap_tcons1_envref</strong> <em>(ap_tcons1_t* <var>cons</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005ftcons1_005fenvref"><span class="category-def">Function: </span><span><code class="def-type">ap_environment_t*</code> <strong class="def-name">ap_tcons1_envref</strong> <code class="def-code-arguments">(ap_tcons1_t* <var class="var">cons</var>)</code><a class="copiable-link" href="#index-ap_005ftcons1_005fenvref"> &para;</a></span></dt>
 <dd><p>Get a reference to the environment. Do not free it.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005ftcons1_005fconstypref">Function: <em>ap_constyp_t*</em> <strong>ap_tcons1_constypref</strong> <em>(ap_tcons1_t* <var>cons</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005ftcons1_005fconstypref"><span class="category-def">Function: </span><span><code class="def-type">ap_constyp_t*</code> <strong class="def-name">ap_tcons1_constypref</strong> <code class="def-code-arguments">(ap_tcons1_t* <var class="var">cons</var>)</code><a class="copiable-link" href="#index-ap_005ftcons1_005fconstypref"> &para;</a></span></dt>
 <dd><p>Get a reference to the type of constraint.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005ftcons1_005fscalarref">Function: <em>ap_scalar_t*</em> <strong>ap_tcons1_scalarref</strong> <em>(ap_tcons1_t* <var>cons</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005ftcons1_005fscalarref"><span class="category-def">Function: </span><span><code class="def-type">ap_scalar_t*</code> <strong class="def-name">ap_tcons1_scalarref</strong> <code class="def-code-arguments">(ap_tcons1_t* <var class="var">cons</var>)</code><a class="copiable-link" href="#index-ap_005ftcons1_005fscalarref"> &para;</a></span></dt>
 <dd><p>Get a reference to the auxiliary coefficient of the constraint.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005ftcons1_005ftexpr1ref">Function: <em>ap_texpr1_t</em> <strong>ap_tcons1_texpr1ref</strong> <em>(ap_tcons1_t* <var>cons</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005ftcons1_005ftexpr1ref"><span class="category-def">Function: </span><span><code class="def-type">ap_texpr1_t</code> <strong class="def-name">ap_tcons1_texpr1ref</strong> <code class="def-code-arguments">(ap_tcons1_t* <var class="var">cons</var>)</code><a class="copiable-link" href="#index-ap_005ftcons1_005ftexpr1ref"> &para;</a></span></dt>
 <dd><p>Get a reference to the underlying expression of the constraint.  Do
 not free it: nothing is duplicated.  Modifying the argument or the
 result is equivalent, except for change of dimensions/environment.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005ftcons1_005ftcons0ref">Function: <em>ap_tcons0_t*</em> <strong>ap_tcons1_tcons0ref</strong> <em>(ap_tcons1_t* <var>cons</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005ftcons1_005ftcons0ref"><span class="category-def">Function: </span><span><code class="def-type">ap_tcons0_t*</code> <strong class="def-name">ap_tcons1_tcons0ref</strong> <code class="def-code-arguments">(ap_tcons1_t* <var class="var">cons</var>)</code><a class="copiable-link" href="#index-ap_005ftcons1_005ftcons0ref"> &para;</a></span></dt>
 <dd><p>Return underlying constraint of level 0.  Do not free it: nothing is
 duplicated.  Modifying the argument or the result is equivalent,
 except for change of dimensions/envionment.
 </p></dd></dl>
 
 <hr>
-<span id="Operations-on-tree-constraints-of-level-1"></span><div class="header">
-<p>
-Next: <a href="#Arrays-of-tree-constraints-of-level-1" accesskey="n" rel="next">Arrays of tree constraints of level 1</a>, Previous: <a href="#Constructors_002fDestructors-for-tree-constraints-of-level-1" accesskey="p" rel="prev">Constructors/Destructors for tree constraints of level 1</a>, Up: <a href="#Tree-constraints-of-level-1" accesskey="u" rel="up">Tree constraints of level 1</a> &nbsp; </p>
 </div>
-<span id="Operations-on-tree-constraints-of-level-1-1"></span><h4 class="subsection">Operations on tree constraints of level 1</h4>
+<div class="subsection-level-extent" id="Operations-on-tree-constraints-of-level-1">
+<div class="nav-panel">
+<p>
+Next: <a href="#Arrays-of-tree-constraints-of-level-1" accesskey="n" rel="next">Arrays of tree constraints of level 1</a>, Previous: <a href="#Constructors_002fDestructors-for-tree-constraints-of-level-1" accesskey="p" rel="prev">Constructors/Destructors for tree constraints of level 1</a>, Up: <a href="#Tree-constraints-of-level-1" accesskey="u" rel="up">Tree constraints of level 1 (<samp class="file">ap_tcons1.h</samp>)</a> &nbsp; </p>
+</div>
+<h4 class="subsection" id="Operations-on-tree-constraints-of-level-1-1"><span>Operations on tree constraints of level 1<a class="copiable-link" href="#Operations-on-tree-constraints-of-level-1-1"> &para;</a></span></h4>
 
-<dl>
-<dt id="index-ap_005ftcons1_005fextend_005fenvironment">Function: <em>bool</em> <strong>ap_tcons1_extend_environment</strong> <em>(ap_tcons1_t* <var>ncons</var>, ap_tcons1_t* <var>cons</var>, ap_environment_t* <var>nenv</var>)</em></dt>
-<dt id="index-ap_005ftcons1_005fextend_005fenvironment_005fwith">Function: <em>bool</em> <strong>ap_tcons1_extend_environment_with</strong> <em>(ap_tcons1_t* <var>cons</var>, ap_environment_t* <var>nenv</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005ftcons1_005fextend_005fenvironment"><span class="category-def">Function: </span><span><code class="def-type">bool</code> <strong class="def-name">ap_tcons1_extend_environment</strong> <code class="def-code-arguments">(ap_tcons1_t* <var class="var">ncons</var>, ap_tcons1_t* <var class="var">cons</var>, ap_environment_t* <var class="var">nenv</var>)</code><a class="copiable-link" href="#index-ap_005ftcons1_005fextend_005fenvironment"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005ftcons1_005fextend_005fenvironment_005fwith"><span class="category-def">Function: </span><span><code class="def-type">bool</code> <strong class="def-name">ap_tcons1_extend_environment_with</strong> <code class="def-code-arguments">(ap_tcons1_t* <var class="var">cons</var>, ap_environment_t* <var class="var">nenv</var>)</code><a class="copiable-link" href="#index-ap_005ftcons1_005fextend_005fenvironment_005fwith"> &para;</a></span></dt>
 <dd><p>Change current environment with a super-environment.  Return
-<code>true</code> if <var>nenv</var> is not a superenvironment of <code>e-&gt;env</code>.
+<code class="code">true</code> if <var class="var">nenv</var> is not a superenvironment of <code class="code">e-&gt;env</code>.
 </p></dd></dl>
 
 <hr>
-<span id="Arrays-of-tree-constraints-of-level-1"></span><div class="header">
-<p>
-Previous: <a href="#Operations-on-tree-constraints-of-level-1" accesskey="p" rel="prev">Operations on tree constraints of level 1</a>, Up: <a href="#Tree-constraints-of-level-1" accesskey="u" rel="up">Tree constraints of level 1</a> &nbsp; </p>
 </div>
-<span id="Arrays-of-tree-constraints-of-level-1-1"></span><h4 class="subsection">Arrays of tree constraints of level 1</h4>
+<div class="subsection-level-extent" id="Arrays-of-tree-constraints-of-level-1">
+<div class="nav-panel">
+<p>
+Previous: <a href="#Operations-on-tree-constraints-of-level-1" accesskey="p" rel="prev">Operations on tree constraints of level 1</a>, Up: <a href="#Tree-constraints-of-level-1" accesskey="u" rel="up">Tree constraints of level 1 (<samp class="file">ap_tcons1.h</samp>)</a> &nbsp; </p>
+</div>
+<h4 class="subsection" id="Arrays-of-tree-constraints-of-level-1-1"><span>Arrays of tree constraints of level 1<a class="copiable-link" href="#Arrays-of-tree-constraints-of-level-1-1"> &para;</a></span></h4>
 
-<dl>
-<dt id="index-ap_005ftcons1_005farray_005fmake">Function: <em>ap_tcons1_array_t</em> <strong>ap_tcons1_array_make</strong> <em>(ap_environment_t* <var>env</var>, size_t <var>size</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005ftcons1_005farray_005fmake"><span class="category-def">Function: </span><span><code class="def-type">ap_tcons1_array_t</code> <strong class="def-name">ap_tcons1_array_make</strong> <code class="def-code-arguments">(ap_environment_t* <var class="var">env</var>, size_t <var class="var">size</var>)</code><a class="copiable-link" href="#index-ap_005ftcons1_005farray_005fmake"> &para;</a></span></dt>
 <dd><p>Allocate an array of size constraints.  The constraints are
-initialized with NULL pointers, so that <code>ap_tcons1_array_free</code>
+initialized with NULL pointers, so that <code class="code">ap_tcons1_array_free</code>
 may be safely called.
 </p></dd></dl>
-<dl>
-<dt id="index-ap_005ftcons1_005farray_005fclear">Function: <em>void</em> <strong>ap_tcons1_array_clear</strong> <em>(ap_tcons1_array_t* <var>array</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005ftcons1_005farray_005fclear"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">ap_tcons1_array_clear</strong> <code class="def-code-arguments">(ap_tcons1_array_t* <var class="var">array</var>)</code><a class="copiable-link" href="#index-ap_005ftcons1_005farray_005fclear"> &para;</a></span></dt>
 <dd><p>Clear the constraints of the array, and then the array itself.
 </p></dd></dl>
-<dl>
-<dt id="index-ap_005ftcons1_005farray_005ffprint">Function: <em>void</em> <strong>ap_tcons1_array_fprint</strong> <em>(FILE* stream, ap_tcons1_array_t* <var>array</var>)</em></dt>
-<dt id="index-ap_005ftcons1_005farray_005fprint">Function: <em>void</em> <strong>ap_tcons1_array_print</strong> <em>(ap_tcons1_array_t* <var>array</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005ftcons1_005farray_005ffprint"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">ap_tcons1_array_fprint</strong> <code class="def-code-arguments">(FILE* stream, ap_tcons1_array_t* <var class="var">array</var>)</code><a class="copiable-link" href="#index-ap_005ftcons1_005farray_005ffprint"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005ftcons1_005farray_005fprint"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">ap_tcons1_array_print</strong> <code class="def-code-arguments">(ap_tcons1_array_t* <var class="var">array</var>)</code><a class="copiable-link" href="#index-ap_005ftcons1_005farray_005fprint"> &para;</a></span></dt>
 <dd><p>Printing.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005ftcons1_005farray_005fsize">Function: <em>size_t</em> <strong>ap_tcons1_array_size</strong> <em>(ap_tcons1_array_t* <var>array</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005ftcons1_005farray_005fsize"><span class="category-def">Function: </span><span><code class="def-type">size_t</code> <strong class="def-name">ap_tcons1_array_size</strong> <code class="def-code-arguments">(ap_tcons1_array_t* <var class="var">array</var>)</code><a class="copiable-link" href="#index-ap_005ftcons1_005farray_005fsize"> &para;</a></span></dt>
 <dd><p>Return the size of the array.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005ftcons1_005farray_005fenvref">Function: <em>ap_environment_t*</em> <strong>ap_tcons1_array_envref</strong> <em>(ap_tcons1_array_t* <var>array</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005ftcons1_005farray_005fenvref"><span class="category-def">Function: </span><span><code class="def-type">ap_environment_t*</code> <strong class="def-name">ap_tcons1_array_envref</strong> <code class="def-code-arguments">(ap_tcons1_array_t* <var class="var">array</var>)</code><a class="copiable-link" href="#index-ap_005ftcons1_005farray_005fenvref"> &para;</a></span></dt>
 <dd><p>Return a reference to the environment of the array. Do not free it.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005ftcons1_005farray_005fclear_005findex">Function: <em>void</em> <strong>ap_tcons1_array_clear_index</strong> <em>(ap_tcons1_array_t* <var>array</var>, size_t <var>index</var>)</em></dt>
-<dd><p>Clear the constraint at index index and set pointers to <code>NULL</code>.
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005ftcons1_005farray_005fclear_005findex"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">ap_tcons1_array_clear_index</strong> <code class="def-code-arguments">(ap_tcons1_array_t* <var class="var">array</var>, size_t <var class="var">index</var>)</code><a class="copiable-link" href="#index-ap_005ftcons1_005farray_005fclear_005findex"> &para;</a></span></dt>
+<dd><p>Clear the constraint at index index and set pointers to <code class="code">NULL</code>.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005ftcons1_005farray_005fget">Function: <em>ap_tcons1_t</em> <strong>ap_tcons1_array_get</strong> <em>(ap_tcons1_array_t* <var>array</var>, size_t <var>index</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005ftcons1_005farray_005fget"><span class="category-def">Function: </span><span><code class="def-type">ap_tcons1_t</code> <strong class="def-name">ap_tcons1_array_get</strong> <code class="def-code-arguments">(ap_tcons1_array_t* <var class="var">array</var>, size_t <var class="var">index</var>)</code><a class="copiable-link" href="#index-ap_005ftcons1_005farray_005fget"> &para;</a></span></dt>
 <dd><p>Return the linear constraint of the given index Nothing is duplicated,
 and the result should never be cleared.  Modifying the argument or the
 result is equivalent, except for change of environments.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005ftcons1_005farray_005fset">Function: <em>bool</em> <strong>ap_tcons1_array_set</strong> <em>(ap_tcons1_array_t* <var>array</var>, size_t <var>index</var>, ap_tcons1_t* <var>cons</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005ftcons1_005farray_005fset"><span class="category-def">Function: </span><span><code class="def-type">bool</code> <strong class="def-name">ap_tcons1_array_set</strong> <code class="def-code-arguments">(ap_tcons1_array_t* <var class="var">array</var>, size_t <var class="var">index</var>, ap_tcons1_t* <var class="var">cons</var>)</code><a class="copiable-link" href="#index-ap_005ftcons1_005farray_005fset"> &para;</a></span></dt>
 <dd><p>Fill the index of the array with the constraint.  Assumes
-<code>ap_environment_is_eq(array-&gt;env,cons-&gt;env)</code>. Nothing is
+<code class="code">ap_environment_is_eq(array-&gt;env,cons-&gt;env)</code>. Nothing is
 duplicated.  The argument should never be cleared (its environment
 is dereferenced).  If a constraint was already stored, it is first
-cleared.  Return <code>true</code> iff problem (index or <code>array-&gt;env!=cons-&gt;env</code>)
+cleared.  Return <code class="code">true</code> iff problem (index or <code class="code">array-&gt;env!=cons-&gt;env</code>)
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005ftcons1_005farray_005fextend_005fenvironment_005fwith">Function: <em>bool</em> <strong>ap_tcons1_array_extend_environment_with</strong> <em>(ap_tcons1_array_t* <var>array</var>, ap_environment_t* <var>nenv</var>)</em></dt>
-<dt id="index-ap_005ftcons1_005farray_005fextend_005fenvironment">Function: <em>bool</em> <strong>ap_tcons1_array_extend_environment</strong> <em>(ap_tcons1_array_t* narray, ap_tcons1_array_t* <var>array</var>, ap_environment_t* <var>nenv</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005ftcons1_005farray_005fextend_005fenvironment_005fwith"><span class="category-def">Function: </span><span><code class="def-type">bool</code> <strong class="def-name">ap_tcons1_array_extend_environment_with</strong> <code class="def-code-arguments">(ap_tcons1_array_t* <var class="var">array</var>, ap_environment_t* <var class="var">nenv</var>)</code><a class="copiable-link" href="#index-ap_005ftcons1_005farray_005fextend_005fenvironment_005fwith"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005ftcons1_005farray_005fextend_005fenvironment"><span class="category-def">Function: </span><span><code class="def-type">bool</code> <strong class="def-name">ap_tcons1_array_extend_environment</strong> <code class="def-code-arguments">(ap_tcons1_array_t* narray, ap_tcons1_array_t* <var class="var">array</var>, ap_environment_t* <var class="var">nenv</var>)</code><a class="copiable-link" href="#index-ap_005ftcons1_005farray_005fextend_005fenvironment"> &para;</a></span></dt>
 <dd><p>Change current environment with a super-environment.  Return
-<code>true</code> if <var>nenv</var> is not a superenvironment of
-<code>array-&gt;env</code>.
+<code class="code">true</code> if <var class="var">nenv</var> is not a superenvironment of
+<code class="code">array-&gt;env</code>.
 </p></dd></dl>
 
+</div>
+</div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
-Previous: <a href="#Operations-on-tree-constraints-of-level-1" accesskey="p" rel="prev">Operations on tree constraints of level 1</a>, Up: <a href="#Tree-constraints-of-level-1" accesskey="u" rel="up">Tree constraints of level 1</a> &nbsp; </p>
+Next: <a href="Abstract-values-and-operations-of-level-1.html#Abstract-values-and-operations-of-level-1" accesskey="n" rel="next">Abstract values and operations of level 1 (<samp class="file">ap_abstract1.h</samp>)</a>, Previous: <a href="Tree-expressions-of-level-1.html#Tree-expressions-of-level-1" accesskey="p" rel="prev">Tree expressions of level 1 (<samp class="file">ap_texpr1.h</samp>)</a>, Up: <a href="Level-1-of-the-interface.html" accesskey="u" rel="up">Level 1 of the interface</a> &nbsp; </p>
 </div>
 
 

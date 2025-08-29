@@ -1,8 +1,8 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" href="style.css" type="text/css">
-<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="Start" href="index.html">
 <link rel="previous" href="Lincons1.html">
@@ -39,6 +39,7 @@
 <link title="Box" rel="Chapter" href="Box.html">
 <link title="Oct" rel="Chapter" href="Oct.html">
 <link title="Polka" rel="Chapter" href="Polka.html">
+<link title="T1p" rel="Chapter" href="T1p.html">
 <link title="Ppl" rel="Chapter" href="Ppl.html">
 <link title="PolkaGrid" rel="Chapter" href="PolkaGrid.html">
 <link title="Mpz" rel="Chapter" href="Mpz.html">
@@ -75,7 +76,7 @@
 <code><span class="keyword">mutable&nbsp;</span><span id="TYPEELTt.env">env</span>&nbsp;: <code class="type"><a href="Environment.html#TYPEt">Environment.t</a></code>;</code></td>
 
 </tr></table>
-}
+<code>}</code>
 
 
 
@@ -94,10 +95,13 @@
 <code><span class="keyword">mutable&nbsp;</span><span id="TYPEELTearray.array_env">array_env</span>&nbsp;: <code class="type"><a href="Environment.html#TYPEt">Environment.t</a></code>;</code></td>
 
 </tr></table>
-}
+<code>}</code>
 
 
 <p>APRON Generators and array of generators of level 1</p>
+<p>NOTE: Generators are not totally ordered.
+As of 0.9.15, they do not implement the polymorphic <code class="code">compare</code> function to avoid confusion.
+As a consequence, the polymorphic <code class="code">=</code>, <code class="code">&lt;=</code>, etc. operators cannot be used.</p>
 
 <pre><span id="TYPEtyp"><span class="keyword">type</span> <code class="type"></code>typ</span> = <code class="type"><a href="Generator0.html#TYPEtyp">Generator0.typ</a></code> = </pre><table class="typetable">
 <tr>
@@ -138,7 +142,7 @@
 
 
 
-<pre><span id="VALmake"><span class="keyword">val</span> make</span> : <code class="type"><a href="Linexpr1.html#TYPEt">Linexpr1.t</a> -> <a href="Generator0.html#TYPEtyp">Generator0.typ</a> -> <a href="Generator1.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALmake"><span class="keyword">val</span> make</span> : <code class="type"><a href="Linexpr1.html#TYPEt">Linexpr1.t</a> -&gt; <a href="Generator0.html#TYPEtyp">Generator0.typ</a> -&gt; <a href="Generator1.html#TYPEt">t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Make a generator. Modifying later the linear expression (<em>not
 advisable</em>) modifies correspondingly the generator and conversely,
@@ -146,38 +150,38 @@ except for changes of environments</p>
 </div>
 </div>
 
-<pre><span id="VALcopy"><span class="keyword">val</span> copy</span> : <code class="type"><a href="Generator1.html#TYPEt">t</a> -> <a href="Generator1.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALcopy"><span class="keyword">val</span> copy</span> : <code class="type"><a href="Generator1.html#TYPEt">t</a> -&gt; <a href="Generator1.html#TYPEt">t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Copy (deep copy)</p>
 </div>
 </div>
 
-<pre><span id="VALprint"><span class="keyword">val</span> print</span> : <code class="type">Stdlib.Format.formatter -> <a href="Generator1.html#TYPEt">t</a> -> unit</code></pre><div class="info ">
+<pre><span id="VALprint"><span class="keyword">val</span> print</span> : <code class="type">Stdlib.Format.formatter -&gt; <a href="Generator1.html#TYPEt">t</a> -&gt; unit</code></pre><div class="info ">
 <div class="info-desc">
 <p>Print the generator</p>
 </div>
 </div>
 
-<pre><span id="VALget_typ"><span class="keyword">val</span> get_typ</span> : <code class="type"><a href="Generator1.html#TYPEt">t</a> -> <a href="Generator0.html#TYPEtyp">Generator0.typ</a></code></pre><div class="info ">
+<pre><span id="VALget_typ"><span class="keyword">val</span> get_typ</span> : <code class="type"><a href="Generator1.html#TYPEt">t</a> -&gt; <a href="Generator0.html#TYPEtyp">Generator0.typ</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Get the generator type</p>
 </div>
 </div>
 
-<pre><span id="VALiter"><span class="keyword">val</span> iter</span> : <code class="type">(<a href="Coeff.html#TYPEt">Coeff.t</a> -> <a href="Var.html#TYPEt">Var.t</a> -> unit) -> <a href="Generator1.html#TYPEt">t</a> -> unit</code></pre><div class="info ">
+<pre><span id="VALiter"><span class="keyword">val</span> iter</span> : <code class="type">(<a href="Coeff.html#TYPEt">Coeff.t</a> -&gt; <a href="Var.html#TYPEt">Var.t</a> -&gt; unit) -&gt; <a href="Generator1.html#TYPEt">t</a> -&gt; unit</code></pre><div class="info ">
 <div class="info-desc">
 <p>Iter the function on the pair coefficient/variable of the underlying linear
 expression</p>
 </div>
 </div>
 
-<pre><span id="VALset_typ"><span class="keyword">val</span> set_typ</span> : <code class="type"><a href="Generator1.html#TYPEt">t</a> -> <a href="Generator0.html#TYPEtyp">Generator0.typ</a> -> unit</code></pre><div class="info ">
+<pre><span id="VALset_typ"><span class="keyword">val</span> set_typ</span> : <code class="type"><a href="Generator1.html#TYPEt">t</a> -&gt; <a href="Generator0.html#TYPEtyp">Generator0.typ</a> -&gt; unit</code></pre><div class="info ">
 <div class="info-desc">
 <p>Set the generator type</p>
 </div>
 </div>
 
-<pre><span id="VALset_list"><span class="keyword">val</span> set_list</span> : <code class="type"><a href="Generator1.html#TYPEt">t</a> -> (<a href="Coeff.html#TYPEt">Coeff.t</a> * <a href="Var.html#TYPEt">Var.t</a>) list -> unit</code></pre><div class="info ">
+<pre><span id="VALset_list"><span class="keyword">val</span> set_list</span> : <code class="type"><a href="Generator1.html#TYPEt">t</a> -&gt; (<a href="Coeff.html#TYPEt">Coeff.t</a> * <a href="Var.html#TYPEt">Var.t</a>) list -&gt; unit</code></pre><div class="info ">
 <div class="info-desc">
 <p>Set simultaneously a number of coefficients.</p>
 
@@ -186,62 +190,62 @@ to variable <code class="code"><span class="string">"x"</span></code> and coeffi
 </div>
 </div>
 
-<pre><span id="VALset_array"><span class="keyword">val</span> set_array</span> : <code class="type"><a href="Generator1.html#TYPEt">t</a> -> (<a href="Coeff.html#TYPEt">Coeff.t</a> * <a href="Var.html#TYPEt">Var.t</a>) array -> unit</code></pre><div class="info ">
+<pre><span id="VALset_array"><span class="keyword">val</span> set_array</span> : <code class="type"><a href="Generator1.html#TYPEt">t</a> -&gt; (<a href="Coeff.html#TYPEt">Coeff.t</a> * <a href="Var.html#TYPEt">Var.t</a>) array -&gt; unit</code></pre><div class="info ">
 <div class="info-desc">
 <p>Set simultaneously a number of coefficients, as <code class="code">set_list</code>.</p>
 </div>
 </div>
 
-<pre><span id="VALget_coeff"><span class="keyword">val</span> get_coeff</span> : <code class="type"><a href="Generator1.html#TYPEt">t</a> -> <a href="Var.html#TYPEt">Var.t</a> -> <a href="Coeff.html#TYPEt">Coeff.t</a></code></pre><div class="info ">
+<pre><span id="VALget_coeff"><span class="keyword">val</span> get_coeff</span> : <code class="type"><a href="Generator1.html#TYPEt">t</a> -&gt; <a href="Var.html#TYPEt">Var.t</a> -&gt; <a href="Coeff.html#TYPEt">Coeff.t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Get the coefficient of the variable in the underlying linear expression</p>
 </div>
 </div>
 
-<pre><span id="VALset_coeff"><span class="keyword">val</span> set_coeff</span> : <code class="type"><a href="Generator1.html#TYPEt">t</a> -> <a href="Var.html#TYPEt">Var.t</a> -> <a href="Coeff.html#TYPEt">Coeff.t</a> -> unit</code></pre><div class="info ">
+<pre><span id="VALset_coeff"><span class="keyword">val</span> set_coeff</span> : <code class="type"><a href="Generator1.html#TYPEt">t</a> -&gt; <a href="Var.html#TYPEt">Var.t</a> -&gt; <a href="Coeff.html#TYPEt">Coeff.t</a> -&gt; unit</code></pre><div class="info ">
 <div class="info-desc">
 <p>Set the coefficient of the variable in the underlying linear expression</p>
 </div>
 </div>
 
-<pre><span id="VALextend_environment"><span class="keyword">val</span> extend_environment</span> : <code class="type"><a href="Generator1.html#TYPEt">t</a> -> <a href="Environment.html#TYPEt">Environment.t</a> -> <a href="Generator1.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALextend_environment"><span class="keyword">val</span> extend_environment</span> : <code class="type"><a href="Generator1.html#TYPEt">t</a> -&gt; <a href="Environment.html#TYPEt">Environment.t</a> -&gt; <a href="Generator1.html#TYPEt">t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Change the environment of the generator for a super-environment. Raise <code class="code"><span class="constructor">Failure</span></code> if it is not the case</p>
 </div>
 </div>
 
-<pre><span id="VALextend_environment_with"><span class="keyword">val</span> extend_environment_with</span> : <code class="type"><a href="Generator1.html#TYPEt">t</a> -> <a href="Environment.html#TYPEt">Environment.t</a> -> unit</code></pre><div class="info ">
+<pre><span id="VALextend_environment_with"><span class="keyword">val</span> extend_environment_with</span> : <code class="type"><a href="Generator1.html#TYPEt">t</a> -&gt; <a href="Environment.html#TYPEt">Environment.t</a> -&gt; unit</code></pre><div class="info ">
 <div class="info-desc">
 <p>Side-effect version of the previous function</p>
 </div>
 </div>
 <h3 id="2_Typeearray">Type earray</h3>
-<pre><span id="VALarray_make"><span class="keyword">val</span> array_make</span> : <code class="type"><a href="Environment.html#TYPEt">Environment.t</a> -> int -> <a href="Generator1.html#TYPEearray">earray</a></code></pre><div class="info ">
+<pre><span id="VALarray_make"><span class="keyword">val</span> array_make</span> : <code class="type"><a href="Environment.html#TYPEt">Environment.t</a> -&gt; int -&gt; <a href="Generator1.html#TYPEearray">earray</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Make an array of generators with the given size and defined on the
 given environment. The elements are initialized with the line 0.</p>
 </div>
 </div>
 
-<pre><span id="VALarray_print"><span class="keyword">val</span> array_print</span> : <code class="type">?first:(unit, Stdlib.Format.formatter, unit) Stdlib.format -><br>       ?sep:(unit, Stdlib.Format.formatter, unit) Stdlib.format -><br>       ?last:(unit, Stdlib.Format.formatter, unit) Stdlib.format -><br>       Stdlib.Format.formatter -> <a href="Generator1.html#TYPEearray">earray</a> -> unit</code></pre><div class="info ">
+<pre><span id="VALarray_print"><span class="keyword">val</span> array_print</span> : <code class="type">?first:(unit, Stdlib.Format.formatter, unit) Stdlib.format -&gt;<br>       ?sep:(unit, Stdlib.Format.formatter, unit) Stdlib.format -&gt;<br>       ?last:(unit, Stdlib.Format.formatter, unit) Stdlib.format -&gt;<br>       Stdlib.Format.formatter -&gt; <a href="Generator1.html#TYPEearray">earray</a> -&gt; unit</code></pre><div class="info ">
 <div class="info-desc">
 <p>Print an array of generators</p>
 </div>
 </div>
 
-<pre><span id="VALarray_length"><span class="keyword">val</span> array_length</span> : <code class="type"><a href="Generator1.html#TYPEearray">earray</a> -> int</code></pre><div class="info ">
+<pre><span id="VALarray_length"><span class="keyword">val</span> array_length</span> : <code class="type"><a href="Generator1.html#TYPEearray">earray</a> -&gt; int</code></pre><div class="info ">
 <div class="info-desc">
 <p>Get the size of the array</p>
 </div>
 </div>
 
-<pre><span id="VALarray_get"><span class="keyword">val</span> array_get</span> : <code class="type"><a href="Generator1.html#TYPEearray">earray</a> -> int -> <a href="Generator1.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALarray_get"><span class="keyword">val</span> array_get</span> : <code class="type"><a href="Generator1.html#TYPEearray">earray</a> -&gt; int -&gt; <a href="Generator1.html#TYPEt">t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Get the element of the given index (which is not a copy)</p>
 </div>
 </div>
 
-<pre><span id="VALarray_set"><span class="keyword">val</span> array_set</span> : <code class="type"><a href="Generator1.html#TYPEearray">earray</a> -> int -> <a href="Generator1.html#TYPEt">t</a> -> unit</code></pre><div class="info ">
+<pre><span id="VALarray_set"><span class="keyword">val</span> array_set</span> : <code class="type"><a href="Generator1.html#TYPEearray">earray</a> -&gt; int -&gt; <a href="Generator1.html#TYPEt">t</a> -&gt; unit</code></pre><div class="info ">
 <div class="info-desc">
 <p>Set the element of the given index (without any copy). The array and the
 generator should be defined on the same environment; otherwise a <code class="code"><span class="constructor">Failure</span></code>
@@ -249,32 +253,32 @@ exception is raised.</p>
 </div>
 </div>
 
-<pre><span id="VALarray_extend_environment"><span class="keyword">val</span> array_extend_environment</span> : <code class="type"><a href="Generator1.html#TYPEearray">earray</a> -> <a href="Environment.html#TYPEt">Environment.t</a> -> <a href="Generator1.html#TYPEearray">earray</a></code></pre><div class="info ">
+<pre><span id="VALarray_extend_environment"><span class="keyword">val</span> array_extend_environment</span> : <code class="type"><a href="Generator1.html#TYPEearray">earray</a> -&gt; <a href="Environment.html#TYPEt">Environment.t</a> -&gt; <a href="Generator1.html#TYPEearray">earray</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Change the environment of the array of generators for a super-environment. Raise <code class="code"><span class="constructor">Failure</span></code> if it is not the case</p>
 </div>
 </div>
 
-<pre><span id="VALarray_extend_environment_with"><span class="keyword">val</span> array_extend_environment_with</span> : <code class="type"><a href="Generator1.html#TYPEearray">earray</a> -> <a href="Environment.html#TYPEt">Environment.t</a> -> unit</code></pre><div class="info ">
+<pre><span id="VALarray_extend_environment_with"><span class="keyword">val</span> array_extend_environment_with</span> : <code class="type"><a href="Generator1.html#TYPEearray">earray</a> -&gt; <a href="Environment.html#TYPEt">Environment.t</a> -&gt; unit</code></pre><div class="info ">
 <div class="info-desc">
 <p>Side-effect version of the previous function</p>
 </div>
 </div>
 
-<pre><span id="VALget_env"><span class="keyword">val</span> get_env</span> : <code class="type"><a href="Generator1.html#TYPEt">t</a> -> <a href="Environment.html#TYPEt">Environment.t</a></code></pre><div class="info ">
+<pre><span id="VALget_env"><span class="keyword">val</span> get_env</span> : <code class="type"><a href="Generator1.html#TYPEt">t</a> -&gt; <a href="Environment.html#TYPEt">Environment.t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Get the environment of the generator</p>
 </div>
 </div>
 
-<pre><span id="VALget_linexpr1"><span class="keyword">val</span> get_linexpr1</span> : <code class="type"><a href="Generator1.html#TYPEt">t</a> -> <a href="Linexpr1.html#TYPEt">Linexpr1.t</a></code></pre><div class="info ">
+<pre><span id="VALget_linexpr1"><span class="keyword">val</span> get_linexpr1</span> : <code class="type"><a href="Generator1.html#TYPEt">t</a> -&gt; <a href="Linexpr1.html#TYPEt">Linexpr1.t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Get the underlying linear expression. Modifying the linear expression (<em>not advisable</em>) modifies correspondingly the generator and
 conversely, except for changes of environments</p>
 </div>
 </div>
 
-<pre><span id="VALget_generator0"><span class="keyword">val</span> get_generator0</span> : <code class="type"><a href="Generator1.html#TYPEt">t</a> -> <a href="Generator0.html#TYPEt">Generator0.t</a></code></pre><div class="info ">
+<pre><span id="VALget_generator0"><span class="keyword">val</span> get_generator0</span> : <code class="type"><a href="Generator1.html#TYPEt">t</a> -&gt; <a href="Generator0.html#TYPEt">Generator0.t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Get the underlying generator of level 0. Modifying the generator
 of level 0 (<em>not advisable</em>) modifies correspondingly the generator

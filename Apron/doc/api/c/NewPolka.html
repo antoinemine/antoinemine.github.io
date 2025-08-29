@@ -1,35 +1,27 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.6, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.2, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>NewPolka (APRON 0.9.12)</title>
+<title>NewPolka (APRON 0.9.15)</title>
 
-<meta name="description" content="NewPolka (APRON 0.9.12)">
-<meta name="keywords" content="NewPolka (APRON 0.9.12)">
+<meta name="description" content="NewPolka (APRON 0.9.15)">
+<meta name="keywords" content="NewPolka (APRON 0.9.15)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
-<link href="index.html#Top" rel="start" title="Top">
-<link href="Managers-and-Abstract-Domains.html#Managers-and-Abstract-Domains" rel="up" title="Managers and Abstract Domains">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Managers-and-Abstract-Domains.html" rel="up" title="Managers and Abstract Domains">
 <link href="PPL.html#PPL" rel="next" title="PPL">
-<link href="Oct.html#Oct" rel="prev" title="Oct">
+<link href="Oct.html" rel="prev" title="Oct">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+span:hover a.copiable-link {visibility: visible}
+strong.def-name {font-family: monospace; font-weight: bold; font-size: larger}
 -->
 </style>
 
@@ -37,165 +29,168 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="NewPolka"></span><div class="header">
+<div class="section-level-extent" id="NewPolka">
+<div class="nav-panel">
 <p>
-Next: <a href="PPL.html#PPL" accesskey="n" rel="next">PPL</a>, Previous: <a href="Oct.html#Oct" accesskey="p" rel="prev">Oct</a>, Up: <a href="Managers-and-Abstract-Domains.html#Managers-and-Abstract-Domains" accesskey="u" rel="up">Managers and Abstract Domains</a> &nbsp; </p>
+Next: <a href="PPL.html#PPL" accesskey="n" rel="next">PPL (<samp class="file">ap_ppl.h</samp>): convex polyhedra and linear congruences abstract domains</a>, Previous: <a href="Oct.html" accesskey="p" rel="prev">Oct: octagon abstract domain</a>, Up: <a href="Managers-and-Abstract-Domains.html" accesskey="u" rel="up">Managers and Abstract Domains</a> &nbsp; </p>
 </div>
-<span id="NewPolka-_0028pk_002eh_0029_003a-convex-polyhedra-and-linear-equalities-abstract-domains"></span><h3 class="section">NewPolka (<samp>pk.h</samp>): convex polyhedra and linear equalities abstract domains</h3>
+<h3 class="section" id="NewPolka-_0028pk_002eh_0029_003a-convex-polyhedra-and-linear-equalities-abstract-domains"><span>NewPolka (<samp class="file">pk.h</samp>): convex polyhedra and linear equalities abstract domains<a class="copiable-link" href="#NewPolka-_0028pk_002eh_0029_003a-convex-polyhedra-and-linear-equalities-abstract-domains"> &para;</a></span></h3>
 
 
 
-<p>The <small>NEWPOLKA</small> convex polyhedra and linear equalities library is
+<p>The <small class="sc">NEWPOLKA</small> convex polyhedra and linear equalities library is
 aimed to be used through the APRON interface. However some specific
-points should be precised.  First, <small>NEWPOLKA</small> can use several
+points should be precised.  First, <small class="sc">NEWPOLKA</small> can use several
 underlying representations for numbers, which lead to several library
 variants. Second, some specific functions are needed, typically to
 allocate managers, and to specify special options.
 </p>
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#Use-of-NewPolka" accesskey="1">Use of NewPolka</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Allocating-NewPolka-managers-and-setting-specific-options" accesskey="2">Allocating NewPolka managers and setting specific options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#NewPolka-standard-options" accesskey="3">NewPolka standard options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
+<ul class="mini-toc">
+<li><a href="#Use-of-NewPolka" accesskey="1">Use of NewPolka</a></li>
+<li><a href="#Allocating-NewPolka-managers-and-setting-specific-options" accesskey="2">Allocating NewPolka managers and setting specific options</a></li>
+<li><a href="#NewPolka-standard-options" accesskey="3">NewPolka standard options</a></li>
+</ul>
 <hr>
-<span id="Use-of-NewPolka"></span><div class="header">
+<div class="subsection-level-extent" id="Use-of-NewPolka">
+<div class="nav-panel">
 <p>
-Next: <a href="#Allocating-NewPolka-managers-and-setting-specific-options" accesskey="n" rel="next">Allocating NewPolka managers and setting specific options</a>, Up: <a href="#NewPolka" accesskey="u" rel="up">NewPolka</a> &nbsp; </p>
+Next: <a href="#Allocating-NewPolka-managers-and-setting-specific-options" accesskey="n" rel="next">Allocating NewPolka managers and setting specific options</a>, Up: <a href="#NewPolka" accesskey="u" rel="up">NewPolka (<samp class="file">pk.h</samp>): convex polyhedra and linear equalities abstract domains</a> &nbsp; </p>
 </div>
-<span id="Use-of-NewPolka-1"></span><h4 class="subsection">Use of NewPolka</h4>
+<h4 class="subsection" id="Use-of-NewPolka-1"><span>Use of NewPolka<a class="copiable-link" href="#Use-of-NewPolka-1"> &para;</a></span></h4>
 
-<p>To use <small>NEWPOLKA</small> in C, add
+<p>To use <small class="sc">NEWPOLKA</small> in C, add
 </p><div class="example">
-<pre class="example">#include &quot;pk.h&quot;
+<pre class="example-preformatted">#include &quot;pk.h&quot;
 #include &quot;pkeq.h&quot;
   /* if you want linear equalities */
 </pre></div>
-<p>in your source file(s) and add &lsquo;<samp>-I$(APRON_PREFIX)/include</samp>&rsquo; in the
+<p>in your source file(s) and add &lsquo;<samp class="samp">-I$(APRON_PREFIX)/include</samp>&rsquo; in the
 command line in your Makefile.
 </p>
-<p>You should also link your object files with the <small>NEWPOLKA</small> library
+<p>You should also link your object files with the <small class="sc">NEWPOLKA</small> library
 to produce an executable, by adding something like
-&lsquo;<samp>-L$(APRON_PREFIX)/lib -lpolkag</samp>&rsquo; in the command line in your
-Makefile (followed by the standard &lsquo;<samp>-lapron -litvmpq -litvdbl
+&lsquo;<samp class="samp">-L$(APRON_PREFIX)/lib -lpolkag</samp>&rsquo; in the command line in your
+Makefile (followed by the standard &lsquo;<samp class="samp">-lapron -litvmpq -litvdbl
 -L$(MPFR_PREFIX)/lib -lmpfr -L$(GMP_PREFIX)/lib -lgmp</samp>&rsquo;).
 </p>
 <p>There are actually several variants of the library:
-</p><dl compact="compact">
-<dt><samp>libpolkai.a</samp></dt>
-<dd><p>The underlying representation for integers is <code>long int</code>. This
+</p><dl class="table">
+<dt><samp class="file">libpolkai.a</samp></dt>
+<dd><p>The underlying representation for integers is <code class="code">long int</code>. This
 may easily cause overflows, especially with many dimensions or
 variables. Overflows are not detected but usually result in infinite
 looping.
-The underlying representation for integers is <code>long long
+The underlying representation for integers is <code class="code">long long
 int</code>. This may (less) easily cause overflows.
 </p></dd>
-<dt><samp>libpolkag.a</samp></dt>
-<dd><p>The underlying representation for integers is <code>mpz_t</code>, the
+<dt><samp class="file">libpolkag.a</samp></dt>
+<dd><p>The underlying representation for integers is <code class="code">mpz_t</code>, the
 multi-precision integers from the GNU GMP library. Overflows are not
 possible any more, but huge numbers may appear.
 </p></dd>
 </dl>
 
-<p>All scalars of type <code>double</code> are converted to scalars of type
-<code>mpq_t</code> inside NewPolka, as NewPolka works internally with exact
+<p>All scalars of type <code class="code">double</code> are converted to scalars of type
+<code class="code">mpq_t</code> inside NewPolka, as NewPolka works internally with exact
 rational arithmetics. So when possible it is better for the user (in
-term of efficiency) to convert already <code>double</code> scalars to
-<code>mpq_t</code> scalars.
+term of efficiency) to convert already <code class="code">double</code> scalars to
+<code class="code">mpq_t</code> scalars.
 </p>
 <p>There is a way to prevent overflow and/or huge numbers, which is to
-position the options <code>max_coeff_size</code> and
-<code>approximate_max_coeff_size</code>, see
-<a href="#Allocating-NewPolka-managers-and-setting-specific-options">Allocating NewPolka managers and setting specific options</a>.
+position the options <code class="code">max_coeff_size</code> and
+<code class="code">approximate_max_coeff_size</code>, see
+<a class="ref" href="#Allocating-NewPolka-managers-and-setting-specific-options">Allocating NewPolka managers and setting specific options</a>.
 </p>
 <p>Also, all library are available in debug mode
-(&lsquo;<samp>libpolkai_debug.a</samp>&rsquo;, ....
+(&lsquo;<samp class="samp">libpolkai_debug.a</samp>&rsquo;, ....
 </p>
 <hr>
-<span id="Allocating-NewPolka-managers-and-setting-specific-options"></span><div class="header">
-<p>
-Next: <a href="#NewPolka-standard-options" accesskey="n" rel="next">NewPolka standard options</a>, Previous: <a href="#Use-of-NewPolka" accesskey="p" rel="prev">Use of NewPolka</a>, Up: <a href="#NewPolka" accesskey="u" rel="up">NewPolka</a> &nbsp; </p>
 </div>
-<span id="Allocating-NewPolka-managers-and-setting-specific-options-1"></span><h4 class="subsection">Allocating NewPolka managers and setting specific options</h4>
+<div class="subsection-level-extent" id="Allocating-NewPolka-managers-and-setting-specific-options">
+<div class="nav-panel">
+<p>
+Next: <a href="#NewPolka-standard-options" accesskey="n" rel="next">NewPolka standard options</a>, Previous: <a href="#Use-of-NewPolka" accesskey="p" rel="prev">Use of NewPolka</a>, Up: <a href="#NewPolka" accesskey="u" rel="up">NewPolka (<samp class="file">pk.h</samp>): convex polyhedra and linear equalities abstract domains</a> &nbsp; </p>
+</div>
+<h4 class="subsection" id="Allocating-NewPolka-managers-and-setting-specific-options-1"><span>Allocating NewPolka managers and setting specific options<a class="copiable-link" href="#Allocating-NewPolka-managers-and-setting-specific-options-1"> &para;</a></span></h4>
 
-<dl>
-<dt id="index-pk_005finternal_005ft">datatype: <strong>pk_internal_t</strong></dt>
+<dl class="first-deftp def-block">
+<dt class="deftp def-line" id="index-pk_005finternal_005ft"><span class="category-def">datatype: </span><span><strong class="def-name">pk_internal_t</strong><a class="copiable-link" href="#index-pk_005finternal_005ft"> &para;</a></span></dt>
 <dd><p>NewPolka type for internal managers (specific to NewPolka, and
 specific to each execution thread in multithreaded programs).
 </p></dd></dl>
 
-<span id="Allocating-managers"></span><h4 class="subheading">Allocating managers</h4>
+<h4 class="subheading" id="Allocating-managers"><span>Allocating managers<a class="copiable-link" href="#Allocating-managers"> &para;</a></span></h4>
 
-<dl>
-<dt id="index-pk_005fmanager_005falloc">Function: <em>ap_manager_t*</em> <strong>pk_manager_alloc</strong> <em>(bool <var>strict</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-pk_005fmanager_005falloc"><span class="category-def">Function: </span><span><code class="def-type">ap_manager_t*</code> <strong class="def-name">pk_manager_alloc</strong> <code class="def-code-arguments">(bool <var class="var">strict</var>)</code><a class="copiable-link" href="#index-pk_005fmanager_005falloc"> &para;</a></span></dt>
 <dd><p>Allocate an APRON manager for convex polyhedra, linked to the NewPolka
 library.
 </p>
-<p>The <var>strict</var> option, when true, enables strict constraints in polyhedra
-(like <code>x&gt;0</code>). Managers in strict mode or in loose mode
+<p>The <var class="var">strict</var> option, when true, enables strict constraints in polyhedra
+(like <code class="code">x&gt;0</code>). Managers in strict mode or in loose mode
 (strict constraints disabled) are not compatible, and so are
 corresponding abstract values.
 </p></dd></dl>
 
-<dl>
-<dt id="index-pkeq_005fmanager_005falloc">Function: <em>ap_manager_t*</em> <strong>pkeq_manager_alloc</strong> <em>()</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-pkeq_005fmanager_005falloc"><span class="category-def">Function: </span><span><code class="def-type">ap_manager_t*</code> <strong class="def-name">pkeq_manager_alloc</strong> <code class="def-code-arguments">()</code><a class="copiable-link" href="#index-pkeq_005fmanager_005falloc"> &para;</a></span></dt>
 <dd><p>Allocate an APRON manager for linear equalities, linked to the NewPolka
 library.
 </p>
 <p>Most options which makes sense for convex polyhedra are meaningless
 for linear equalities. It is better to set the standard options
 associated to functions so that abstract values are in canonical form
-(see <a href="#NewPolka-standard-options">NewPolka standard options</a>). This is the default anyway.
+(see <a class="pxref" href="#NewPolka-standard-options">NewPolka standard options</a>). This is the default anyway.
 </p></dd></dl>
 
-<span id="Setting-options"></span><h4 class="subheading">Setting options</h4>
+<h4 class="subheading" id="Setting-options"><span>Setting options<a class="copiable-link" href="#Setting-options"> &para;</a></span></h4>
 
-<p>Options specific to <small>NEWPOLKA</small> are set directly on the internal
-manager. It can be extracted with the <code>pk_manager_get_internal</code>
+<p>Options specific to <small class="sc">NEWPOLKA</small> are set directly on the internal
+manager. It can be extracted with the <code class="code">pk_manager_get_internal</code>
 function.
 </p>
-<dl>
-<dt id="index-pk_005fmanager_005fget_005finternal">Function: <em>pk_internal_t*</em> <strong>pk_manager_get_internal</strong> <em>(ap_manager_t* <var>man</var>)</em></dt>
-<dd><p>Return the internal submanager. If <var>man</var> has not been created by
-<code>pk_manager_alloc</code> or <code>pkeq_manager_alloc</code>, return <code>NULL</code>.
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-pk_005fmanager_005fget_005finternal"><span class="category-def">Function: </span><span><code class="def-type">pk_internal_t*</code> <strong class="def-name">pk_manager_get_internal</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>)</code><a class="copiable-link" href="#index-pk_005fmanager_005fget_005finternal"> &para;</a></span></dt>
+<dd><p>Return the internal submanager. If <var class="var">man</var> has not been created by
+<code class="code">pk_manager_alloc</code> or <code class="code">pkeq_manager_alloc</code>, return <code class="code">NULL</code>.
 </p></dd></dl>
 
-<dl>
-<dt id="index-pk_005fset_005fmax_005fcoeff_005fsize">Function: <em>void</em> <strong>pk_set_max_coeff_size</strong> <em>(pk_internal_t* <var>pk</var>, size_t <var>size</var>)</em></dt>
-<dd><p>If <var>size</var> is not 0, try to raise an <code>AP_EXC_OVERFLOW</code>
-exception as soon as the size of an integer exceed <var>size</var>.
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-pk_005fset_005fmax_005fcoeff_005fsize"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">pk_set_max_coeff_size</strong> <code class="def-code-arguments">(pk_internal_t* <var class="var">pk</var>, size_t <var class="var">size</var>)</code><a class="copiable-link" href="#index-pk_005fset_005fmax_005fcoeff_005fsize"> &para;</a></span></dt>
+<dd><p>If <var class="var">size</var> is not 0, try to raise an <code class="code">AP_EXC_OVERFLOW</code>
+exception as soon as the size of an integer exceed <var class="var">size</var>.
 </p>
 <p>Very incomplete implementation. Currently, used only in
-<samp>libpolkag</samp> variant, where the size is the number of limbs as
-returned by the function <code>mpz_size</code> of the GMP library. This
+<samp class="file">libpolkag</samp> variant, where the size is the number of limbs as
+returned by the function <code class="code">mpz_size</code> of the GMP library. This
 allows to detect huge numbers.
 </p></dd></dl>
 
-<dl>
-<dt id="index-pk_005fset_005fapproximate_005fmax_005fcoeff_005fsize">Function: <em>void</em> <strong>pk_set_approximate_max_coeff_size</strong> <em>(pk_internal_t* <var>pk</var>, size_t <var>size</var>)</em></dt>
-<dd><p>This is the parameter to the <code>poly_approximate</code>/<code>ap_abstractX_approximate</code> functions.
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-pk_005fset_005fapproximate_005fmax_005fcoeff_005fsize"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">pk_set_approximate_max_coeff_size</strong> <code class="def-code-arguments">(pk_internal_t* <var class="var">pk</var>, size_t <var class="var">size</var>)</code><a class="copiable-link" href="#index-pk_005fset_005fapproximate_005fmax_005fcoeff_005fsize"> &para;</a></span></dt>
+<dd><p>This is the parameter to the <code class="code">poly_approximate</code>/<code class="code">ap_abstractX_approximate</code> functions.
 </p></dd></dl>
 
-<dl>
-<dt id="index-pk_005fget_005fmax_005fcoeff_005fsize">Function: <em>size_t</em> <strong>pk_get_max_coeff_size</strong> <em>(pk_internal_t* <var>pk</var>)</em></dt>
-<dt id="index-pk_005fget_005fapproximate_005fmax_005fcoeff_005fsize">Function: <em>size_t</em> <strong>pk_get_approximate_max_coeff_size</strong> <em>(pk_internal_t* <var>pk</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-pk_005fget_005fmax_005fcoeff_005fsize"><span class="category-def">Function: </span><span><code class="def-type">size_t</code> <strong class="def-name">pk_get_max_coeff_size</strong> <code class="def-code-arguments">(pk_internal_t* <var class="var">pk</var>)</code><a class="copiable-link" href="#index-pk_005fget_005fmax_005fcoeff_005fsize"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-pk_005fget_005fapproximate_005fmax_005fcoeff_005fsize"><span class="category-def">Function: </span><span><code class="def-type">size_t</code> <strong class="def-name">pk_get_approximate_max_coeff_size</strong> <code class="def-code-arguments">(pk_internal_t* <var class="var">pk</var>)</code><a class="copiable-link" href="#index-pk_005fget_005fapproximate_005fmax_005fcoeff_005fsize"> &para;</a></span></dt>
 <dd><p>Reading the previous parameters.
 </p></dd></dl>
 
 <hr>
-<span id="NewPolka-standard-options"></span><div class="header">
-<p>
-Previous: <a href="#Allocating-NewPolka-managers-and-setting-specific-options" accesskey="p" rel="prev">Allocating NewPolka managers and setting specific options</a>, Up: <a href="#NewPolka" accesskey="u" rel="up">NewPolka</a> &nbsp; </p>
 </div>
-<span id="NewPolka-standard-options-1"></span><h4 class="subsection">NewPolka standard options</h4>
+<div class="subsection-level-extent" id="NewPolka-standard-options">
+<div class="nav-panel">
+<p>
+Previous: <a href="#Allocating-NewPolka-managers-and-setting-specific-options" accesskey="p" rel="prev">Allocating NewPolka managers and setting specific options</a>, Up: <a href="#NewPolka" accesskey="u" rel="up">NewPolka (<samp class="file">pk.h</samp>): convex polyhedra and linear equalities abstract domains</a> &nbsp; </p>
+</div>
+<h4 class="subsection" id="NewPolka-standard-options-1"><span>NewPolka standard options<a class="copiable-link" href="#NewPolka-standard-options-1"> &para;</a></span></h4>
 
 <p>This section describes the NewPolka options which are selected using
-the standard mechanism offered by APRON (see <a href="Managers.html#Manager-options">Manager options</a>).
+the standard mechanism offered by APRON (see <a class="pxref" href="Managers.html#Manager-options">Manager options</a>).
 </p>
-<span id="Modes"></span><h4 class="subsubheading">Modes</h4>
+<h4 class="subsubheading" id="Modes"><span>Modes<a class="copiable-link" href="#Modes"> &para;</a></span></h4>
 <p>Most functions of NewPolka has two modes. In the lazy mode the
 canonicalization (computation of the dual representation and
 minimisation of both representations) of the argument polyhedra is
@@ -212,13 +207,13 @@ possible.
 </p>
 <p>Be cautious, in the following table, canonical means minimized
 constraints and generators representation, but nothing more. In
-particular, the function <code>canonicalize</code> performs further
+particular, the function <code class="code">canonicalize</code> performs further
 normalization by normalizing strict constraints (when they exist) and
 ordering constraints and generators.
 </p>
 
-<table>
-<tr><td width="20%">Function</td><td width="6%">algo</td><td width="74%">Comments</td></tr>
+<table class="multitable">
+<tbody><tr><td width="20%">Function</td><td width="6%">algo</td><td width="74%">Comments</td></tr>
 <tr><td width="20%">copy</td><td width="6%"></td><td width="74%">Identical representation</td></tr>
 <tr><td width="20%"></td></tr>
 <tr><td width="20%">free</td></tr>
@@ -274,10 +269,10 @@ saturation matrices that are available.</td></tr>
 <tr><td width="20%"></td></tr>
 <tr><td width="20%">dimension</td><td width="6%"></td><td width="74%"></td></tr>
 <tr><td width="20%"></td></tr>
-<tr><td width="20%">is_bottom</td><td width="6%">&lt;0</td><td width="74%">If generators not available, return <code>tbool_top</code></td></tr>
-<tr><td width="20%"></td><td width="6%">&gt;=0</td><td width="74%">If generators not available, canonicalize and return <code>tbool_false</code> or <code>tbool_true</code>.</td></tr>
+<tr><td width="20%">is_bottom</td><td width="6%">&lt;0</td><td width="74%">If generators not available, return <code class="code">tbool_top</code></td></tr>
+<tr><td width="20%"></td><td width="6%">&gt;=0</td><td width="74%">If generators not available, canonicalize and return <code class="code">tbool_false</code> or <code class="code">tbool_true</code>.</td></tr>
 <tr><td width="20%"></td></tr>
-<tr><td width="20%">is_top</td><td width="6%">&lt;0</td><td width="74%">If not in canonical form, return <code>tbool_top</code></td></tr>
+<tr><td width="20%">is_top</td><td width="6%">&lt;0</td><td width="74%">If not in canonical form, return <code class="code">tbool_top</code></td></tr>
 <tr><td width="20%"></td><td width="6%">&gt;=0</td><td width="74%">Require canonical form.</td></tr>
 <tr><td width="20%"></td></tr>
 <tr><td width="20%">is_leq</td><td width="6%">&lt;=0</td><td width="74%">Require generators of first argument and constraints of second argument.</td></tr>
@@ -371,12 +366,15 @@ If in canonical form, return canonical form.</td></tr>
 <tr><td width="20%"></td><td width="6%"></td><td width="74%">2. Otherwise,</td></tr>
 <tr><td width="20%"></td><td width="6%">&lt;0</td><td width="74%">Require constraints, return constraints.</td></tr>
 <tr><td width="20%"></td><td width="6%">&gt;=0</td><td width="74%">Require canonical form, return constraints.</td></tr>
+</tbody>
 </table>
 
+</div>
+</div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
-Previous: <a href="#Allocating-NewPolka-managers-and-setting-specific-options" accesskey="p" rel="prev">Allocating NewPolka managers and setting specific options</a>, Up: <a href="#NewPolka" accesskey="u" rel="up">NewPolka</a> &nbsp; </p>
+Next: <a href="PPL.html#PPL" accesskey="n" rel="next">PPL (<samp class="file">ap_ppl.h</samp>): convex polyhedra and linear congruences abstract domains</a>, Previous: <a href="Oct.html" accesskey="p" rel="prev">Oct: octagon abstract domain</a>, Up: <a href="Managers-and-Abstract-Domains.html" accesskey="u" rel="up">Managers and Abstract Domains</a> &nbsp; </p>
 </div>
 
 

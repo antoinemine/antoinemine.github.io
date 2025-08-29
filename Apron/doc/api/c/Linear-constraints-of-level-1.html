@@ -1,35 +1,27 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.6, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.2, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Linear constraints of level 1 (APRON 0.9.12)</title>
+<title>Linear constraints of level 1 (APRON 0.9.15)</title>
 
-<meta name="description" content="Linear constraints of level 1 (APRON 0.9.12)">
-<meta name="keywords" content="Linear constraints of level 1 (APRON 0.9.12)">
+<meta name="description" content="Linear constraints of level 1 (APRON 0.9.15)">
+<meta name="keywords" content="Linear constraints of level 1 (APRON 0.9.15)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
-<link href="index.html#Top" rel="start" title="Top">
-<link href="Level-1-of-the-interface.html#Level-1-of-the-interface" rel="up" title="Level 1 of the interface">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Level-1-of-the-interface.html" rel="up" title="Level 1 of the interface">
 <link href="Generators-of-level-1.html#Generators-of-level-1" rel="next" title="Generators of level 1">
-<link href="Linear-expressions-of-level-1.html#Change-of-dimensions-and-permutations-of-linear-expressions-of-level-1" rel="prev" title="Change of dimensions and permutations of linear expressions of level 1">
+<link href="Linear-expressions-of-level-1.html#Linear-expressions-of-level-1" rel="prev" title="Linear expressions of level 1">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+span:hover a.copiable-link {visibility: visible}
+strong.def-name {font-family: monospace; font-weight: bold; font-size: larger}
 -->
 </style>
 
@@ -37,29 +29,30 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Linear-constraints-of-level-1"></span><div class="header">
+<div class="section-level-extent" id="Linear-constraints-of-level-1">
+<div class="nav-panel">
 <p>
-Next: <a href="Generators-of-level-1.html#Generators-of-level-1" accesskey="n" rel="next">Generators of level 1</a>, Previous: <a href="Linear-expressions-of-level-1.html#Linear-expressions-of-level-1" accesskey="p" rel="prev">Linear expressions of level 1</a>, Up: <a href="Level-1-of-the-interface.html#Level-1-of-the-interface" accesskey="u" rel="up">Level 1 of the interface</a> &nbsp; </p>
+Next: <a href="Generators-of-level-1.html#Generators-of-level-1" accesskey="n" rel="next">generators of level 1 (<samp class="file">ap_generator1.h</samp>)</a>, Previous: <a href="Linear-expressions-of-level-1.html#Linear-expressions-of-level-1" accesskey="p" rel="prev">Linear expressions of level 1 (<samp class="file">ap_linexpr1.h</samp>)</a>, Up: <a href="Level-1-of-the-interface.html" accesskey="u" rel="up">Level 1 of the interface</a> &nbsp; </p>
 </div>
-<span id="Linear-constraints-of-level-1-_0028ap_005flincons1_002eh_0029"></span><h3 class="section">Linear constraints of level 1 (<samp>ap_lincons1.h</samp>)</h3>
+<h3 class="section" id="Linear-constraints-of-level-1-_0028ap_005flincons1_002eh_0029"><span>Linear constraints of level 1 (<samp class="file">ap_lincons1.h</samp>)<a class="copiable-link" href="#Linear-constraints-of-level-1-_0028ap_005flincons1_002eh_0029"> &para;</a></span></h3>
 
-<dl>
-<dt id="index-ap_005flincons1_005ft">datatype: <strong>ap_lincons1_t</strong></dt>
+<dl class="first-deftp def-block">
+<dt class="deftp def-line" id="index-ap_005flincons1_005ft"><span class="category-def">datatype: </span><span><strong class="def-name">ap_lincons1_t</strong><a class="copiable-link" href="#index-ap_005flincons1_005ft"> &para;</a></span></dt>
 <dd><p>Datatype for constraints.
 </p>
 <p>For information:
 </p><div class="example">
-<pre class="example">typedef struct ap_lincons1_t {
+<pre class="example-preformatted">typedef struct ap_lincons1_t {
   ap_lincons0_t lincons0;
   ap_environment_t* env;
 } ap_lincons1_t;
 </pre></div>
 
 <p>Constraints are meant to be manipulated freely via their
-components. Creating the constraint <code>[1,2]x + 5/2 y &gt;=0</code> and then
+components. Creating the constraint <code class="code">[1,2]x + 5/2 y &gt;=0</code> and then
 freeing it can be done with
 </p><div class="example">
-<pre class="example">ap_lincons1_t cons = ap_lincons1_make(AP_CONS_SUPEQ,
+<pre class="example-preformatted">ap_lincons1_t cons = ap_lincons1_make(AP_CONS_SUPEQ,
 				      ap_linexpr1_alloc(env,AP_LINEXPR_SPARSE,2),
 				      NULL);
 ap_lincons1_set_list(&amp;cons,
@@ -71,10 +64,10 @@ ap_lincons1_clear(&amp;cons);
 </dd></dl>
 
 
-<dl>
-<dt id="index-ap_005flincons1_005farray_005ft">datatype: <strong>ap_lincons1_array_t</strong></dt>
+<dl class="first-deftp def-block">
+<dt class="deftp def-line" id="index-ap_005flincons1_005farray_005ft"><span class="category-def">datatype: </span><span><strong class="def-name">ap_lincons1_array_t</strong><a class="copiable-link" href="#index-ap_005flincons1_005farray_005ft"> &para;</a></span></dt>
 <dd><div class="example">
-<pre class="example">typedef struct ap_lincons1_array_t {
+<pre class="example-preformatted">typedef struct ap_lincons1_array_t {
   ap_lincons0_array_t lincons0_array;
   ap_environment_t* env;
 } ap_lincons1_array_t;
@@ -82,112 +75,112 @@ ap_lincons1_clear(&amp;cons);
 <p>Datatype for arrays of constraints.
 </p>
 <p>Arrays at level 1 cannot be accessed directly, for example by writing
-<code>array-&gt;p[i]</code>, but should instead be accessed with functions
-<code>ap_lincons1_array_get</code> and <code>ap_lincons1_array_set</code>.
+<code class="code">array-&gt;p[i]</code>, but should instead be accessed with functions
+<code class="code">ap_lincons1_array_get</code> and <code class="code">ap_lincons1_array_set</code>.
 </p></dd></dl>
 
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#Allocating-linear-constraints-of-level-1" accesskey="1">Allocating linear constraints of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Tests-on-linear-constraints-of-level-1" accesskey="2">Tests on linear constraints of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Access-to-linear-constraints-of-level-1" accesskey="3">Access to linear constraints of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Change-of-dimensions-and-permutations-of-linear-constraints-of-level-1" accesskey="4">Change of dimensions and permutations of linear constraints of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Arrays-of-linear-constraints-of-level-1" accesskey="5">Arrays of linear constraints of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
+<ul class="mini-toc">
+<li><a href="#Allocating-linear-constraints-of-level-1" accesskey="1">Allocating linear constraints of level 1</a></li>
+<li><a href="#Tests-on-linear-constraints-of-level-1" accesskey="2">Tests on linear constraints of level 1</a></li>
+<li><a href="#Access-to-linear-constraints-of-level-1" accesskey="3">Access to linear constraints of level 1</a></li>
+<li><a href="#Change-of-dimensions-and-permutations-of-linear-constraints-of-level-1" accesskey="4">Change of dimensions and permutations of linear constraints of level 1</a></li>
+<li><a href="#Arrays-of-linear-constraints-of-level-1" accesskey="5">Arrays of linear constraints of level 1</a></li>
+</ul>
 <hr>
-<span id="Allocating-linear-constraints-of-level-1"></span><div class="header">
+<div class="subsection-level-extent" id="Allocating-linear-constraints-of-level-1">
+<div class="nav-panel">
 <p>
-Next: <a href="#Tests-on-linear-constraints-of-level-1" accesskey="n" rel="next">Tests on linear constraints of level 1</a>, Previous: <a href="#Linear-constraints-of-level-1" accesskey="p" rel="prev">Linear constraints of level 1</a>, Up: <a href="#Linear-constraints-of-level-1" accesskey="u" rel="up">Linear constraints of level 1</a> &nbsp; </p>
+Next: <a href="#Tests-on-linear-constraints-of-level-1" accesskey="n" rel="next">Tests on linear constraints of level 1</a>, Previous: <a href="#Linear-constraints-of-level-1" accesskey="p" rel="prev">Linear constraints of level 1 (<samp class="file">ap_lincons1.h</samp>)</a>, Up: <a href="#Linear-constraints-of-level-1" accesskey="u" rel="up">Linear constraints of level 1 (<samp class="file">ap_lincons1.h</samp>)</a> &nbsp; </p>
 </div>
-<span id="Allocating-linear-constraints-of-level-1-1"></span><h4 class="subsection">Allocating linear constraints of level 1</h4>
+<h4 class="subsection" id="Allocating-linear-constraints-of-level-1-1"><span>Allocating linear constraints of level 1<a class="copiable-link" href="#Allocating-linear-constraints-of-level-1-1"> &para;</a></span></h4>
 
-<dl>
-<dt id="index-ap_005flincons1_005fmake">Function: <em>ap_lincons1_t</em> <strong>ap_lincons1_make</strong> <em>(ap_constyp_t <var>constyp</var>, ap_linexpr1_t* <var>linexpr</var>, ap_scalar_t* mod)</em></dt>
-<dd><p>Create a constraint of type <var>constyp</var> with the expression
-<var>linexpr</var>, and the modulo <var>mod</var> in case of a congruence
-constraint (<code>constyp==AP_CONS_EQMOD</code>).
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005flincons1_005fmake"><span class="category-def">Function: </span><span><code class="def-type">ap_lincons1_t</code> <strong class="def-name">ap_lincons1_make</strong> <code class="def-code-arguments">(ap_constyp_t <var class="var">constyp</var>, ap_linexpr1_t* <var class="var">linexpr</var>, ap_scalar_t* mod)</code><a class="copiable-link" href="#index-ap_005flincons1_005fmake"> &para;</a></span></dt>
+<dd><p>Create a constraint of type <var class="var">constyp</var> with the expression
+<var class="var">linexpr</var>, and the modulo <var class="var">mod</var> in case of a congruence
+constraint (<code class="code">constyp==AP_CONS_EQMOD</code>).
 </p>
 <p>The expression is not duplicated, just pointed to, so it becomes
 managed via the constraint.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005flincons1_005fmake_005funsat">Function: <em>ap_lincons1_t</em> <strong>ap_lincons1_make_unsat</strong> <em>(ap_environment_t* <var>env</var>)</em></dt>
-<dd><p>Create the constraint <code>-1&gt;=0</code>.
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005flincons1_005fmake_005funsat"><span class="category-def">Function: </span><span><code class="def-type">ap_lincons1_t</code> <strong class="def-name">ap_lincons1_make_unsat</strong> <code class="def-code-arguments">(ap_environment_t* <var class="var">env</var>)</code><a class="copiable-link" href="#index-ap_005flincons1_005fmake_005funsat"> &para;</a></span></dt>
+<dd><p>Create the constraint <code class="code">-1&gt;=0</code>.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005flincons1_005fcopy">Function: <em>ap_lincons1_t</em> <strong>ap_lincons1_copy</strong> <em>(ap_lincons1_t* <var>cons</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005flincons1_005fcopy"><span class="category-def">Function: </span><span><code class="def-type">ap_lincons1_t</code> <strong class="def-name">ap_lincons1_copy</strong> <code class="def-code-arguments">(ap_lincons1_t* <var class="var">cons</var>)</code><a class="copiable-link" href="#index-ap_005flincons1_005fcopy"> &para;</a></span></dt>
 <dd><p>Duplication
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005flincons1_005fclear">Function: <em>void</em> <strong>ap_lincons1_clear</strong> <em>(ap_lincons1_t* <var>cons</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005flincons1_005fclear"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">ap_lincons1_clear</strong> <code class="def-code-arguments">(ap_lincons1_t* <var class="var">cons</var>)</code><a class="copiable-link" href="#index-ap_005flincons1_005fclear"> &para;</a></span></dt>
 <dd><p>Clear the constraint and set pointers to NULL.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005flincons1_005ffprint">Function: <em>void</em> <strong>ap_lincons1_fprint</strong> <em>(FILE* <var>stream</var>, ap_lincons1_t* <var>cons</var>);</em></dt>
-<dd><p>Print the linear constraint on stream <var>stream</var>.
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005flincons1_005ffprint"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">ap_lincons1_fprint</strong> <code class="def-code-arguments">(FILE* <var class="var">stream</var>, ap_lincons1_t* <var class="var">cons</var>);</code><a class="copiable-link" href="#index-ap_005flincons1_005ffprint"> &para;</a></span></dt>
+<dd><p>Print the linear constraint on stream <var class="var">stream</var>.
 </p></dd></dl>
 
 <hr>
-<span id="Tests-on-linear-constraints-of-level-1"></span><div class="header">
-<p>
-Next: <a href="#Access-to-linear-constraints-of-level-1" accesskey="n" rel="next">Access to linear constraints of level 1</a>, Previous: <a href="#Allocating-linear-constraints-of-level-1" accesskey="p" rel="prev">Allocating linear constraints of level 1</a>, Up: <a href="#Linear-constraints-of-level-1" accesskey="u" rel="up">Linear constraints of level 1</a> &nbsp; </p>
 </div>
-<span id="Tests-on-linear-constraints-of-level-1-1"></span><h4 class="subsection">Tests on linear constraints of level 1</h4>
+<div class="subsection-level-extent" id="Tests-on-linear-constraints-of-level-1">
+<div class="nav-panel">
+<p>
+Next: <a href="#Access-to-linear-constraints-of-level-1" accesskey="n" rel="next">Access to linear constraints of level 1</a>, Previous: <a href="#Allocating-linear-constraints-of-level-1" accesskey="p" rel="prev">Allocating linear constraints of level 1</a>, Up: <a href="#Linear-constraints-of-level-1" accesskey="u" rel="up">Linear constraints of level 1 (<samp class="file">ap_lincons1.h</samp>)</a> &nbsp; </p>
+</div>
+<h4 class="subsection" id="Tests-on-linear-constraints-of-level-1-1"><span>Tests on linear constraints of level 1<a class="copiable-link" href="#Tests-on-linear-constraints-of-level-1-1"> &para;</a></span></h4>
 
-<dl>
-<dt id="index-ap_005flincons1_005fis_005funsat">Function: <em>bool</em> <strong>ap_lincons1_is_unsat</strong> <em>(ap_lincons1_t* <var>cons</var>)</em></dt>
-<dd><p>Return <code>true</code> if the constraint is not satisfiable (<code>b&gt;=0</code>
-or <code>[a,b]&gt;=0</code> with b negative).
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005flincons1_005fis_005funsat"><span class="category-def">Function: </span><span><code class="def-type">bool</code> <strong class="def-name">ap_lincons1_is_unsat</strong> <code class="def-code-arguments">(ap_lincons1_t* <var class="var">cons</var>)</code><a class="copiable-link" href="#index-ap_005flincons1_005fis_005funsat"> &para;</a></span></dt>
+<dd><p>Return <code class="code">true</code> if the constraint is not satisfiable (<code class="code">b&gt;=0</code>
+or <code class="code">[a,b]&gt;=0</code> with b negative).
 </p></dd></dl>
 
 <hr>
-<span id="Access-to-linear-constraints-of-level-1"></span><div class="header">
-<p>
-Next: <a href="#Change-of-dimensions-and-permutations-of-linear-constraints-of-level-1" accesskey="n" rel="next">Change of dimensions and permutations of linear constraints of level 1</a>, Previous: <a href="#Tests-on-linear-constraints-of-level-1" accesskey="p" rel="prev">Tests on linear constraints of level 1</a>, Up: <a href="#Linear-constraints-of-level-1" accesskey="u" rel="up">Linear constraints of level 1</a> &nbsp; </p>
 </div>
-<span id="Access-to-linear-constraints-of-level-1-1"></span><h4 class="subsection">Access to linear constraints of level 1</h4>
+<div class="subsection-level-extent" id="Access-to-linear-constraints-of-level-1">
+<div class="nav-panel">
+<p>
+Next: <a href="#Change-of-dimensions-and-permutations-of-linear-constraints-of-level-1" accesskey="n" rel="next">Change of dimensions and permutations of linear constraints of level 1</a>, Previous: <a href="#Tests-on-linear-constraints-of-level-1" accesskey="p" rel="prev">Tests on linear constraints of level 1</a>, Up: <a href="#Linear-constraints-of-level-1" accesskey="u" rel="up">Linear constraints of level 1 (<samp class="file">ap_lincons1.h</samp>)</a> &nbsp; </p>
+</div>
+<h4 class="subsection" id="Access-to-linear-constraints-of-level-1-1"><span>Access to linear constraints of level 1<a class="copiable-link" href="#Access-to-linear-constraints-of-level-1-1"> &para;</a></span></h4>
 
-<dl>
-<dt id="index-ap_005flincons1_005fenvref">Function: <em>ap_environment_t*</em> <strong>ap_lincons1_envref</strong> <em>(ap_lincons1_t* <var>cons</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005flincons1_005fenvref"><span class="category-def">Function: </span><span><code class="def-type">ap_environment_t*</code> <strong class="def-name">ap_lincons1_envref</strong> <code class="def-code-arguments">(ap_lincons1_t* <var class="var">cons</var>)</code><a class="copiable-link" href="#index-ap_005flincons1_005fenvref"> &para;</a></span></dt>
 <dd><p>Get a reference to the environment. Do not free it.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005flincons1_005fconstypref">Function: <em>ap_constyp_t*</em> <strong>ap_lincons1_constypref</strong> <em>(ap_lincons1_t* <var>cons</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005flincons1_005fconstypref"><span class="category-def">Function: </span><span><code class="def-type">ap_constyp_t*</code> <strong class="def-name">ap_lincons1_constypref</strong> <code class="def-code-arguments">(ap_lincons1_t* <var class="var">cons</var>)</code><a class="copiable-link" href="#index-ap_005flincons1_005fconstypref"> &para;</a></span></dt>
 <dd><p>Get a reference to the type of constraint. You may use the reference
 to modify the constraint type.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005flincons1_005flinexpr1ref">Function: <em>ap_linexpr1_t</em> <strong>ap_lincons1_linexpr1ref</strong> <em>(ap_lincons1_t* <var>cons</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005flincons1_005flinexpr1ref"><span class="category-def">Function: </span><span><code class="def-type">ap_linexpr1_t</code> <strong class="def-name">ap_lincons1_linexpr1ref</strong> <code class="def-code-arguments">(ap_lincons1_t* <var class="var">cons</var>)</code><a class="copiable-link" href="#index-ap_005flincons1_005flinexpr1ref"> &para;</a></span></dt>
 <dd><p>Get a reference to the underlying expression of the constraint.  Do
 not free it: nothing is duplicated.  Modifying the argument or the
 result is equivalent, except for change of dimensions/environment.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005flincons1_005fget_005fcst">Function: <em>void</em> <strong>ap_lincons1_get_cst</strong> <em>(ap_coeff_t* <var>coeff</var>, ap_lincons1_t* <var>cons</var>)</em></dt>
-<dt id="index-ap_005flincons1_005fset_005fcst">Function: <em>void</em> <strong>ap_lincons1_set_cst</strong> <em>(ap_lincons1_t* <var>cons</var>, ap_coeff_t* cst)</em></dt>
-<dt id="index-ap_005flincons1_005fget_005fcoeff">Function: <em>bool</em> <strong>ap_lincons1_get_coeff</strong> <em>(ap_coeff_t* <var>coeff</var>, ap_lincons1_t* cons, ap_var_t <var>var</var>)</em></dt>
-<dt id="index-ap_005flincons1_005fset_005fcoeff">Function: <em>bool</em> <strong>ap_lincons1_set_coeff</strong> <em>(ap_lincons1_t* <var>cons</var>, ap_var_t <var>var</var>, ap_coeff_t* <var>coeff</var>)</em></dt>
-<dt id="index-ap_005flincons1_005fset_005flist">Function: <em>bool</em> <strong>ap_lincons1_set_list</strong> <em>(ap_lincons1_t* <var>cons</var>, ...)</em></dt>
-<dt id="index-ap_005flincons1_005fcstref">Function: <em>ap_coeff_t*</em> <strong>ap_lincons1_cstref</strong> <em>(ap_lincons1_t* <var>cons</var>)</em></dt>
-<dt id="index-ap_005flincons1_005fcoeffref">Function: <em>ap_coeff_t*</em> <strong>ap_lincons1_coeffref</strong> <em>(ap_lincons1_t* <var>cons</var>, ap_var_t <var>var</var>)</em></dt>
-<dd><p>Identical to corresponding <code>ap_linexpr1_XXX</code> functions
-(see <a href="Linear-expressions-of-level-1.html#Access-to-linear-expressions-of-level-1">Access to linear expressions of level 1</a>).
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005flincons1_005fget_005fcst"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">ap_lincons1_get_cst</strong> <code class="def-code-arguments">(ap_coeff_t* <var class="var">coeff</var>, ap_lincons1_t* <var class="var">cons</var>)</code><a class="copiable-link" href="#index-ap_005flincons1_005fget_005fcst"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005flincons1_005fset_005fcst"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">ap_lincons1_set_cst</strong> <code class="def-code-arguments">(ap_lincons1_t* <var class="var">cons</var>, ap_coeff_t* cst)</code><a class="copiable-link" href="#index-ap_005flincons1_005fset_005fcst"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005flincons1_005fget_005fcoeff"><span class="category-def">Function: </span><span><code class="def-type">bool</code> <strong class="def-name">ap_lincons1_get_coeff</strong> <code class="def-code-arguments">(ap_coeff_t* <var class="var">coeff</var>, ap_lincons1_t* cons, ap_var_t <var class="var">var</var>)</code><a class="copiable-link" href="#index-ap_005flincons1_005fget_005fcoeff"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005flincons1_005fset_005fcoeff"><span class="category-def">Function: </span><span><code class="def-type">bool</code> <strong class="def-name">ap_lincons1_set_coeff</strong> <code class="def-code-arguments">(ap_lincons1_t* <var class="var">cons</var>, ap_var_t <var class="var">var</var>, ap_coeff_t* <var class="var">coeff</var>)</code><a class="copiable-link" href="#index-ap_005flincons1_005fset_005fcoeff"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005flincons1_005fset_005flist"><span class="category-def">Function: </span><span><code class="def-type">bool</code> <strong class="def-name">ap_lincons1_set_list</strong> <code class="def-code-arguments">(ap_lincons1_t* <var class="var">cons</var>, ...)</code><a class="copiable-link" href="#index-ap_005flincons1_005fset_005flist"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005flincons1_005fcstref"><span class="category-def">Function: </span><span><code class="def-type">ap_coeff_t*</code> <strong class="def-name">ap_lincons1_cstref</strong> <code class="def-code-arguments">(ap_lincons1_t* <var class="var">cons</var>)</code><a class="copiable-link" href="#index-ap_005flincons1_005fcstref"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005flincons1_005fcoeffref"><span class="category-def">Function: </span><span><code class="def-type">ap_coeff_t*</code> <strong class="def-name">ap_lincons1_coeffref</strong> <code class="def-code-arguments">(ap_lincons1_t* <var class="var">cons</var>, ap_var_t <var class="var">var</var>)</code><a class="copiable-link" href="#index-ap_005flincons1_005fcoeffref"> &para;</a></span></dt>
+<dd><p>Identical to corresponding <code class="code">ap_linexpr1_XXX</code> functions
+(see <a class="pxref" href="Linear-expressions-of-level-1.html#Access-to-linear-expressions-of-level-1">Access to linear expressions of level 1</a>).
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005flincons1_005flincons0ref">Function: <em>ap_lincons0_t*</em> <strong>ap_lincons1_lincons0ref</strong> <em>(ap_lincons1_t* <var>cons</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005flincons1_005flincons0ref"><span class="category-def">Function: </span><span><code class="def-type">ap_lincons0_t*</code> <strong class="def-name">ap_lincons1_lincons0ref</strong> <code class="def-code-arguments">(ap_lincons1_t* <var class="var">cons</var>)</code><a class="copiable-link" href="#index-ap_005flincons1_005flincons0ref"> &para;</a></span></dt>
 <dd><p>Return underlying constraint of level 0.
 Do not free it: nothing is duplicated.
 Modifying the argument or the result is equivalent, except for
@@ -195,86 +188,92 @@ change of dimensions/envionment.
 </p></dd></dl>
 
 <hr>
-<span id="Change-of-dimensions-and-permutations-of-linear-constraints-of-level-1"></span><div class="header">
-<p>
-Next: <a href="#Arrays-of-linear-constraints-of-level-1" accesskey="n" rel="next">Arrays of linear constraints of level 1</a>, Previous: <a href="#Access-to-linear-constraints-of-level-1" accesskey="p" rel="prev">Access to linear constraints of level 1</a>, Up: <a href="#Linear-constraints-of-level-1" accesskey="u" rel="up">Linear constraints of level 1</a> &nbsp; </p>
 </div>
-<span id="Change-of-dimensions-and-permutations-of-linear-constraints-of-level-1-1"></span><h4 class="subsection">Change of dimensions and permutations of linear constraints of level 1</h4>
+<div class="subsection-level-extent" id="Change-of-dimensions-and-permutations-of-linear-constraints-of-level-1">
+<div class="nav-panel">
+<p>
+Next: <a href="#Arrays-of-linear-constraints-of-level-1" accesskey="n" rel="next">Arrays of linear constraints of level 1</a>, Previous: <a href="#Access-to-linear-constraints-of-level-1" accesskey="p" rel="prev">Access to linear constraints of level 1</a>, Up: <a href="#Linear-constraints-of-level-1" accesskey="u" rel="up">Linear constraints of level 1 (<samp class="file">ap_lincons1.h</samp>)</a> &nbsp; </p>
+</div>
+<h4 class="subsection" id="Change-of-dimensions-and-permutations-of-linear-constraints-of-level-1-1"><span>Change of dimensions and permutations of linear constraints of level 1<a class="copiable-link" href="#Change-of-dimensions-and-permutations-of-linear-constraints-of-level-1-1"> &para;</a></span></h4>
 
-<dl>
-<dt id="index-ap_005flincons1_005fextend_005fenvironment">Function: <em>bool</em> <strong>ap_lincons1_extend_environment</strong> <em>(ap_lincons1_t* <var>ncons</var>, ap_lincons1_t* <var>cons</var>, ap_environment_t* <var>nenv</var>)</em></dt>
-<dt id="index-ap_005flincons1_005fextend_005fenvironment_005fwith">Function: <em>bool</em> <strong>ap_lincons1_extend_environment_with</strong> <em>(ap_lincons1_t* <var>cons</var>, ap_environment_t* <var>nenv</var>)</em></dt>
-<dd><p>Identical to corresponding <code>ap_linexpr1_XXX</code> functions (see <a href="Linear-expressions-of-level-1.html#Change-of-dimensions-and-permutations-of-linear-expressions-of-level-1">Change of dimensions and permutations of linear expressions of level 1</a>).
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005flincons1_005fextend_005fenvironment"><span class="category-def">Function: </span><span><code class="def-type">bool</code> <strong class="def-name">ap_lincons1_extend_environment</strong> <code class="def-code-arguments">(ap_lincons1_t* <var class="var">ncons</var>, ap_lincons1_t* <var class="var">cons</var>, ap_environment_t* <var class="var">nenv</var>)</code><a class="copiable-link" href="#index-ap_005flincons1_005fextend_005fenvironment"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005flincons1_005fextend_005fenvironment_005fwith"><span class="category-def">Function: </span><span><code class="def-type">bool</code> <strong class="def-name">ap_lincons1_extend_environment_with</strong> <code class="def-code-arguments">(ap_lincons1_t* <var class="var">cons</var>, ap_environment_t* <var class="var">nenv</var>)</code><a class="copiable-link" href="#index-ap_005flincons1_005fextend_005fenvironment_005fwith"> &para;</a></span></dt>
+<dd><p>Identical to corresponding <code class="code">ap_linexpr1_XXX</code> functions (see <a class="pxref" href="Linear-expressions-of-level-1.html#Change-of-dimensions-and-permutations-of-linear-expressions-of-level-1">Change of dimensions and permutations of linear expressions of level 1</a>).
 </p></dd></dl>
 
 <hr>
-<span id="Arrays-of-linear-constraints-of-level-1"></span><div class="header">
-<p>
-Previous: <a href="#Change-of-dimensions-and-permutations-of-linear-constraints-of-level-1" accesskey="p" rel="prev">Change of dimensions and permutations of linear constraints of level 1</a>, Up: <a href="#Linear-constraints-of-level-1" accesskey="u" rel="up">Linear constraints of level 1</a> &nbsp; </p>
 </div>
-<span id="Arrays-of-linear-constraints-of-level-1-1"></span><h4 class="subsection">Arrays of linear constraints of level 1</h4>
+<div class="subsection-level-extent" id="Arrays-of-linear-constraints-of-level-1">
+<div class="nav-panel">
+<p>
+Previous: <a href="#Change-of-dimensions-and-permutations-of-linear-constraints-of-level-1" accesskey="p" rel="prev">Change of dimensions and permutations of linear constraints of level 1</a>, Up: <a href="#Linear-constraints-of-level-1" accesskey="u" rel="up">Linear constraints of level 1 (<samp class="file">ap_lincons1.h</samp>)</a> &nbsp; </p>
+</div>
+<h4 class="subsection" id="Arrays-of-linear-constraints-of-level-1-1"><span>Arrays of linear constraints of level 1<a class="copiable-link" href="#Arrays-of-linear-constraints-of-level-1-1"> &para;</a></span></h4>
 
-<dl>
-<dt id="index-ap_005flincons1_005farray_005fmake">Function: <em>ap_lincons1_array_t</em> <strong>ap_lincons1_array_make</strong> <em>(ap_environment_t* <var>env</var>, size_t <var>size</var>)</em></dt>
-<dd><p>Allocate an array of constraints of size <var>size</var>, defined on the
-environment <var>env</var>.
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005flincons1_005farray_005fmake"><span class="category-def">Function: </span><span><code class="def-type">ap_lincons1_array_t</code> <strong class="def-name">ap_lincons1_array_make</strong> <code class="def-code-arguments">(ap_environment_t* <var class="var">env</var>, size_t <var class="var">size</var>)</code><a class="copiable-link" href="#index-ap_005flincons1_005farray_005fmake"> &para;</a></span></dt>
+<dd><p>Allocate an array of constraints of size <var class="var">size</var>, defined on the
+environment <var class="var">env</var>.
 </p>
 <p>The constraints are initialized with NULL pointers for underlying
 expressions.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005flincons1_005farray_005fclear">Function: <em>void</em> <strong>ap_lincons1_array_clear</strong> <em>(ap_lincons1_array_t* <var>array</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005flincons1_005farray_005fclear"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">ap_lincons1_array_clear</strong> <code class="def-code-arguments">(ap_lincons1_array_t* <var class="var">array</var>)</code><a class="copiable-link" href="#index-ap_005flincons1_005farray_005fclear"> &para;</a></span></dt>
 <dd><p>Clear the constraints of the array, and then the array itself.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005flincons1_005farray_005ffprint">Function: <em>void</em> <strong>ap_lincons1_array_fprint</strong> <em>(FILE* <var>stream</var>, ap_lincons1_array_t* <var>array</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005flincons1_005farray_005ffprint"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">ap_lincons1_array_fprint</strong> <code class="def-code-arguments">(FILE* <var class="var">stream</var>, ap_lincons1_array_t* <var class="var">array</var>)</code><a class="copiable-link" href="#index-ap_005flincons1_005farray_005ffprint"> &para;</a></span></dt>
 <dd><p>Print the array on the stream.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005flincons1_005farray_005fsize">Function: <em>size_t</em> <strong>ap_lincons1_array_size</strong> <em>(ap_lincons1_array_t* <var>array</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005flincons1_005farray_005fsize"><span class="category-def">Function: </span><span><code class="def-type">size_t</code> <strong class="def-name">ap_lincons1_array_size</strong> <code class="def-code-arguments">(ap_lincons1_array_t* <var class="var">array</var>)</code><a class="copiable-link" href="#index-ap_005flincons1_005farray_005fsize"> &para;</a></span></dt>
 <dd><p>Return the size of the array.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005flincons1_005farray_005fenvref">Function: <em>ap_environment_t*</em> <strong>ap_lincons1_array_envref</strong> <em>(ap_lincons1_array_t* <var>array</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005flincons1_005farray_005fenvref"><span class="category-def">Function: </span><span><code class="def-type">ap_environment_t*</code> <strong class="def-name">ap_lincons1_array_envref</strong> <code class="def-code-arguments">(ap_lincons1_array_t* <var class="var">array</var>)</code><a class="copiable-link" href="#index-ap_005flincons1_005farray_005fenvref"> &para;</a></span></dt>
 <dd><p>Get a reference to the environment. Do not free it.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005flincons1_005farray_005fget">Function: <em>ap_lincons1_t</em> <strong>ap_lincons1_array_get</strong> <em>(ap_lincons1_array_t* <var>array</var>, size_t <var>index</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005flincons1_005farray_005fget"><span class="category-def">Function: </span><span><code class="def-type">ap_lincons1_t</code> <strong class="def-name">ap_lincons1_array_get</strong> <code class="def-code-arguments">(ap_lincons1_array_t* <var class="var">array</var>, size_t <var class="var">index</var>)</code><a class="copiable-link" href="#index-ap_005flincons1_005farray_005fget"> &para;</a></span></dt>
 <dd><p>Return the linear constraint of the given index. Nothing is duplicated,
 and the result should never be cleared.  Modifying the argument or the
 result is equivalent, except for change of environments
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005flincons1_005farray_005fset">Function: <em>bool</em> <strong>ap_lincons1_array_set</strong> <em>(ap_lincons1_array_t* <var>array</var>, size_t <var>index</var>, ap_lincons1_t* <var>cons</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005flincons1_005farray_005fset"><span class="category-def">Function: </span><span><code class="def-type">bool</code> <strong class="def-name">ap_lincons1_array_set</strong> <code class="def-code-arguments">(ap_lincons1_array_t* <var class="var">array</var>, size_t <var class="var">index</var>, ap_lincons1_t* <var class="var">cons</var>)</code><a class="copiable-link" href="#index-ap_005flincons1_005farray_005fset"> &para;</a></span></dt>
 <dd><p>Fill the index of the array with the constraint.  Assumes
-<code>ap_environment_is_eq(array-&gt;env,cons-&gt;env)</code>. Nothing is
+<code class="code">ap_environment_is_eq(array-&gt;env,cons-&gt;env)</code>. Nothing is
 duplicated.  The argument should never be cleared (its environment is
 dereferenced).  If a constraint was already stored, it is first
 cleared.  Return true iff problem (index or
-<code>array-&gt;env!=cons-&gt;env</code>)
+<code class="code">array-&gt;env!=cons-&gt;env</code>)
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005flincons1_005farray_005fclear_005findex">Function: <em>void</em> <strong>ap_lincons1_array_clear_index</strong> <em>(ap_lincons1_array_t* <var>array</var>, size_t <var>index</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005flincons1_005farray_005fclear_005findex"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">ap_lincons1_array_clear_index</strong> <code class="def-code-arguments">(ap_lincons1_array_t* <var class="var">array</var>, size_t <var class="var">index</var>)</code><a class="copiable-link" href="#index-ap_005flincons1_005farray_005fclear_005findex"> &para;</a></span></dt>
 <dd><p>Clear the constraint at index index.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005flincons1_005farray_005fextend_005fenvironment_005fwith">Function: <em>bool</em> <strong>ap_lincons1_array_extend_environment_with</strong> <em>(ap_lincons1_array_t* <var>array</var>, ap_environment_t* <var>nenv</var>)</em></dt>
-<dt id="index-ap_005flincons1_005farray_005fextend_005fenvironment">Function: <em>bool</em> <strong>ap_lincons1_array_extend_environment</strong> <em>(ap_lincons1_array_t* narray, ap_lincons1_array_t* <var>array</var>, ap_environment_t* <var>nenv</var>)</em></dt>
-<dd><p>Identical to corresponding <code>ap_linexpr1_XXX</code> functions (see <a href="Linear-expressions-of-level-1.html#Change-of-dimensions-and-permutations-of-linear-expressions-of-level-1">Change of dimensions and permutations of linear expressions of level 1</a>).
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005flincons1_005farray_005fextend_005fenvironment_005fwith"><span class="category-def">Function: </span><span><code class="def-type">bool</code> <strong class="def-name">ap_lincons1_array_extend_environment_with</strong> <code class="def-code-arguments">(ap_lincons1_array_t* <var class="var">array</var>, ap_environment_t* <var class="var">nenv</var>)</code><a class="copiable-link" href="#index-ap_005flincons1_005farray_005fextend_005fenvironment_005fwith"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005flincons1_005farray_005fextend_005fenvironment"><span class="category-def">Function: </span><span><code class="def-type">bool</code> <strong class="def-name">ap_lincons1_array_extend_environment</strong> <code class="def-code-arguments">(ap_lincons1_array_t* narray, ap_lincons1_array_t* <var class="var">array</var>, ap_environment_t* <var class="var">nenv</var>)</code><a class="copiable-link" href="#index-ap_005flincons1_005farray_005fextend_005fenvironment"> &para;</a></span></dt>
+<dd><p>Identical to corresponding <code class="code">ap_linexpr1_XXX</code> functions (see <a class="pxref" href="Linear-expressions-of-level-1.html#Change-of-dimensions-and-permutations-of-linear-expressions-of-level-1">Change of dimensions and permutations of linear expressions of level 1</a>).
 </p></dd></dl>
 
+</div>
+</div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
-Previous: <a href="#Change-of-dimensions-and-permutations-of-linear-constraints-of-level-1" accesskey="p" rel="prev">Change of dimensions and permutations of linear constraints of level 1</a>, Up: <a href="#Linear-constraints-of-level-1" accesskey="u" rel="up">Linear constraints of level 1</a> &nbsp; </p>
+Next: <a href="Generators-of-level-1.html#Generators-of-level-1" accesskey="n" rel="next">generators of level 1 (<samp class="file">ap_generator1.h</samp>)</a>, Previous: <a href="Linear-expressions-of-level-1.html#Linear-expressions-of-level-1" accesskey="p" rel="prev">Linear expressions of level 1 (<samp class="file">ap_linexpr1.h</samp>)</a>, Up: <a href="Level-1-of-the-interface.html" accesskey="u" rel="up">Level 1 of the interface</a> &nbsp; </p>
 </div>
 
 

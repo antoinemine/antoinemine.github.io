@@ -1,8 +1,8 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" href="style.css" type="text/css">
-<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="Start" href="index.html">
 <link rel="previous" href="Mpf.html">
@@ -39,6 +39,7 @@
 <link title="Box" rel="Chapter" href="Box.html">
 <link title="Oct" rel="Chapter" href="Oct.html">
 <link title="Polka" rel="Chapter" href="Polka.html">
+<link title="T1p" rel="Chapter" href="T1p.html">
 <link title="Ppl" rel="Chapter" href="Ppl.html">
 <link title="PolkaGrid" rel="Chapter" href="PolkaGrid.html">
 <link title="Mpz" rel="Chapter" href="Mpz.html">
@@ -59,7 +60,6 @@
 <link title="Basic Arithmetic Functions" rel="Section" href="#2_BasicArithmeticFunctions">
 <link title="Comparison Functions" rel="Section" href="#2_ComparisonFunctions">
 <link title="Special Functions" rel="Section" href="#2_SpecialFunctions">
-<link title="Formatted Output Functions" rel="Section" href="#2_FormattedOutputFunctions">
 <link title="Miscellaneous Float Functions" rel="Section" href="#2_MiscellaneousFloatFunctions">
 <title>Mpfr</title>
 </head>
@@ -156,47 +156,47 @@
 
 <p>These functions are as efficient as their C counterpart: they do not imply additional memory allocation.</p>
 <h3 id="2_Prettyprinting">Pretty printing</h3>
-<pre><span id="VALprint"><span class="keyword">val</span> print</span> : <code class="type">Stdlib.Format.formatter -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> unit</code></pre>
-<pre><span id="VALprint_round"><span class="keyword">val</span> print_round</span> : <code class="type">Stdlib.Format.formatter -> <a href="Mpfr.html#TYPEround">round</a> -> unit</code></pre>
-<pre><span id="VALstring_of_round"><span class="keyword">val</span> string_of_round</span> : <code class="type"><a href="Mpfr.html#TYPEround">round</a> -> string</code></pre><h3 id="2_RoundingModes">Rounding Modes</h3><p><a href="http://www.mpfr.org/mpfr-current/mpfr.html#Rounding-Related-Functions">C documentation</a></p>
+<pre><span id="VALprint"><span class="keyword">val</span> print</span> : <code class="type">Stdlib.Format.formatter -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; unit</code></pre>
+<pre><span id="VALprint_round"><span class="keyword">val</span> print_round</span> : <code class="type">Stdlib.Format.formatter -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; unit</code></pre>
+<pre><span id="VALstring_of_round"><span class="keyword">val</span> string_of_round</span> : <code class="type"><a href="Mpfr.html#TYPEround">round</a> -&gt; string</code></pre><h3 id="2_RoundingModes">Rounding Modes</h3><p><a href="http://www.mpfr.org/mpfr-current/mpfr.html#Rounding-Related-Functions">C documentation</a></p>
 
-<pre><span id="VALset_default_rounding_mode"><span class="keyword">val</span> set_default_rounding_mode</span> : <code class="type"><a href="Mpfr.html#TYPEround">round</a> -> unit</code></pre>
-<pre><span id="VALget_default_rounding_mode"><span class="keyword">val</span> get_default_rounding_mode</span> : <code class="type">unit -> <a href="Mpfr.html#TYPEround">round</a></code></pre>
-<pre><span id="VALround_prec"><span class="keyword">val</span> round_prec</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int -> int</code></pre><h3 id="2_Exceptions">Exceptions</h3><p><a href="http://www.mpfr.org/mpfr-current/mpfr.html#Exception-Related-Functions">C documentation</a></p>
+<pre><span id="VALset_default_rounding_mode"><span class="keyword">val</span> set_default_rounding_mode</span> : <code class="type"><a href="Mpfr.html#TYPEround">round</a> -&gt; unit</code></pre>
+<pre><span id="VALget_default_rounding_mode"><span class="keyword">val</span> get_default_rounding_mode</span> : <code class="type">unit -&gt; <a href="Mpfr.html#TYPEround">round</a></code></pre>
+<pre><span id="VALround_prec"><span class="keyword">val</span> round_prec</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int -&gt; int</code></pre><h3 id="2_Exceptions">Exceptions</h3><p><a href="http://www.mpfr.org/mpfr-current/mpfr.html#Exception-Related-Functions">C documentation</a></p>
 
-<pre><span id="VALget_emin"><span class="keyword">val</span> get_emin</span> : <code class="type">unit -> int</code></pre>
-<pre><span id="VALget_emax"><span class="keyword">val</span> get_emax</span> : <code class="type">unit -> int</code></pre>
-<pre><span id="VALset_emin"><span class="keyword">val</span> set_emin</span> : <code class="type">int -> unit</code></pre>
-<pre><span id="VALset_emax"><span class="keyword">val</span> set_emax</span> : <code class="type">int -> unit</code></pre>
-<pre><span id="VALcheck_range"><span class="keyword">val</span> check_range</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> int -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALsubnormalize"><span class="keyword">val</span> subnormalize</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -> int -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALclear_underflow"><span class="keyword">val</span> clear_underflow</span> : <code class="type">unit -> unit</code></pre>
-<pre><span id="VALclear_overflow"><span class="keyword">val</span> clear_overflow</span> : <code class="type">unit -> unit</code></pre>
-<pre><span id="VALclear_nanflag"><span class="keyword">val</span> clear_nanflag</span> : <code class="type">unit -> unit</code></pre>
-<pre><span id="VALclear_inexflag"><span class="keyword">val</span> clear_inexflag</span> : <code class="type">unit -> unit</code></pre>
-<pre><span id="VALclear_flags"><span class="keyword">val</span> clear_flags</span> : <code class="type">unit -> unit</code></pre>
-<pre><span id="VALunderflow_p"><span class="keyword">val</span> underflow_p</span> : <code class="type">unit -> bool</code></pre>
-<pre><span id="VALoverflow_p"><span class="keyword">val</span> overflow_p</span> : <code class="type">unit -> bool</code></pre>
-<pre><span id="VALnanflag_p"><span class="keyword">val</span> nanflag_p</span> : <code class="type">unit -> bool</code></pre>
-<pre><span id="VALinexflag_p"><span class="keyword">val</span> inexflag_p</span> : <code class="type">unit -> bool</code></pre><h3 id="2_InitializationFunctions">Initialization Functions</h3><p><a href="http://www.mpfr.org/mpfr-current/mpfr.html#Initialization-Functions">C documentation</a></p>
+<pre><span id="VALget_emin"><span class="keyword">val</span> get_emin</span> : <code class="type">unit -&gt; int</code></pre>
+<pre><span id="VALget_emax"><span class="keyword">val</span> get_emax</span> : <code class="type">unit -&gt; int</code></pre>
+<pre><span id="VALset_emin"><span class="keyword">val</span> set_emin</span> : <code class="type">int -&gt; unit</code></pre>
+<pre><span id="VALset_emax"><span class="keyword">val</span> set_emax</span> : <code class="type">int -&gt; unit</code></pre>
+<pre><span id="VALcheck_range"><span class="keyword">val</span> check_range</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; int -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALsubnormalize"><span class="keyword">val</span> subnormalize</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; int -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALclear_underflow"><span class="keyword">val</span> clear_underflow</span> : <code class="type">unit -&gt; unit</code></pre>
+<pre><span id="VALclear_overflow"><span class="keyword">val</span> clear_overflow</span> : <code class="type">unit -&gt; unit</code></pre>
+<pre><span id="VALclear_nanflag"><span class="keyword">val</span> clear_nanflag</span> : <code class="type">unit -&gt; unit</code></pre>
+<pre><span id="VALclear_inexflag"><span class="keyword">val</span> clear_inexflag</span> : <code class="type">unit -&gt; unit</code></pre>
+<pre><span id="VALclear_flags"><span class="keyword">val</span> clear_flags</span> : <code class="type">unit -&gt; unit</code></pre>
+<pre><span id="VALunderflow_p"><span class="keyword">val</span> underflow_p</span> : <code class="type">unit -&gt; bool</code></pre>
+<pre><span id="VALoverflow_p"><span class="keyword">val</span> overflow_p</span> : <code class="type">unit -&gt; bool</code></pre>
+<pre><span id="VALnanflag_p"><span class="keyword">val</span> nanflag_p</span> : <code class="type">unit -&gt; bool</code></pre>
+<pre><span id="VALinexflag_p"><span class="keyword">val</span> inexflag_p</span> : <code class="type">unit -&gt; bool</code></pre><h3 id="2_InitializationFunctions">Initialization Functions</h3><p><a href="http://www.mpfr.org/mpfr-current/mpfr.html#Initialization-Functions">C documentation</a></p>
 
-<pre><span id="VALset_default_prec"><span class="keyword">val</span> set_default_prec</span> : <code class="type">int -> unit</code></pre>
-<pre><span id="VALget_default_prec"><span class="keyword">val</span> get_default_prec</span> : <code class="type">unit -> int</code></pre>
-<pre><span id="VALinit"><span class="keyword">val</span> init</span> : <code class="type">unit -> 'a <a href="Mpfr.html#TYPEtt">tt</a></code></pre>
-<pre><span id="VALinit2"><span class="keyword">val</span> init2</span> : <code class="type">int -> 'a <a href="Mpfr.html#TYPEtt">tt</a></code></pre>
-<pre><span id="VALget_prec"><span class="keyword">val</span> get_prec</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -> int</code></pre>
-<pre><span id="VALset_prec"><span class="keyword">val</span> set_prec</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> int -> unit</code></pre>
-<pre><span id="VALset_prec_raw"><span class="keyword">val</span> set_prec_raw</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> int -> unit</code></pre><h3 id="2_AssignmentFunctions">Assignment Functions</h3><p><a href="http://www.mpfr.org/mpfr-current/mpfr.html#Assignment-Functions">C documentation</a></p>
+<pre><span id="VALset_default_prec"><span class="keyword">val</span> set_default_prec</span> : <code class="type">int -&gt; unit</code></pre>
+<pre><span id="VALget_default_prec"><span class="keyword">val</span> get_default_prec</span> : <code class="type">unit -&gt; int</code></pre>
+<pre><span id="VALinit"><span class="keyword">val</span> init</span> : <code class="type">unit -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a></code></pre>
+<pre><span id="VALinit2"><span class="keyword">val</span> init2</span> : <code class="type">int -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a></code></pre>
+<pre><span id="VALget_prec"><span class="keyword">val</span> get_prec</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; int</code></pre>
+<pre><span id="VALset_prec"><span class="keyword">val</span> set_prec</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; int -&gt; unit</code></pre>
+<pre><span id="VALset_prec_raw"><span class="keyword">val</span> set_prec_raw</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; int -&gt; unit</code></pre><h3 id="2_AssignmentFunctions">Assignment Functions</h3><p><a href="http://www.mpfr.org/mpfr-current/mpfr.html#Assignment-Functions">C documentation</a></p>
 
-<pre><span id="VALset"><span class="keyword">val</span> set</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALset_si"><span class="keyword">val</span> set_si</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> int -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALset_d"><span class="keyword">val</span> set_d</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> float -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALset_z"><span class="keyword">val</span> set_z</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpz.html#TYPEtt">Mpz.tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALset_q"><span class="keyword">val</span> set_q</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpq.html#TYPEtt">Mpq.tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VAL_set_str"><span class="keyword">val</span> _set_str</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> string -> int -> <a href="Mpfr.html#TYPEround">round</a> -> unit</code></pre>
-<pre><span id="VALset_str"><span class="keyword">val</span> set_str</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> string -> base:int -> <a href="Mpfr.html#TYPEround">round</a> -> unit</code></pre>
-<pre><span id="VAL_strtofr"><span class="keyword">val</span> _strtofr</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> string -> int -> <a href="Mpfr.html#TYPEround">round</a> -> int * int</code></pre>
-<pre><span id="VALstrtofr"><span class="keyword">val</span> strtofr</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> string -> base:int -> <a href="Mpfr.html#TYPEround">round</a> -> int * int</code></pre><div class="info ">
+<pre><span id="VALset"><span class="keyword">val</span> set</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALset_si"><span class="keyword">val</span> set_si</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; int -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALset_d"><span class="keyword">val</span> set_d</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; float -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALset_z"><span class="keyword">val</span> set_z</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpz.html#TYPEtt">Mpz.tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALset_q"><span class="keyword">val</span> set_q</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpq.html#TYPEtt">Mpq.tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VAL_set_str"><span class="keyword">val</span> _set_str</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; string -&gt; int -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; unit</code></pre>
+<pre><span id="VALset_str"><span class="keyword">val</span> set_str</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; string -&gt; base:int -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; unit</code></pre>
+<pre><span id="VAL_strtofr"><span class="keyword">val</span> _strtofr</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; string -&gt; int -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int * int</code></pre>
+<pre><span id="VALstrtofr"><span class="keyword">val</span> strtofr</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; string -&gt; base:int -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int * int</code></pre><div class="info ">
 <div class="info-desc">
 <p>As MPFR's strtofr, but returns a pair <code class="code">(r,i)</code> where <code class="code">r</code> is the usual
       ternary result, and <code class="code">i</code> is the index in the string of the first not-read
@@ -205,144 +205,157 @@
 </div>
 </div>
 
-<pre><span id="VALset_f"><span class="keyword">val</span> set_f</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpf.html#TYPEtt">Mpf.tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALset_si_2exp"><span class="keyword">val</span> set_si_2exp</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> int -> int -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALset_inf"><span class="keyword">val</span> set_inf</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> int -> unit</code></pre>
-<pre><span id="VALset_nan"><span class="keyword">val</span> set_nan</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> unit</code></pre>
-<pre><span id="VALswap"><span class="keyword">val</span> swap</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> <a href="Mpfr.html#TYPEt">t</a> -> unit</code></pre><h3 id="2_CombinedInitializationandAssignmentFunctions">Combined Initialization and Assignment Functions</h3><p><a href="http://www.mpfr.org/mpfr-current/mpfr.html#Combined-Initialization-and-Assignment-Functions">C documentation</a></p>
+<pre><span id="VALset_f"><span class="keyword">val</span> set_f</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpf.html#TYPEtt">Mpf.tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALset_si_2exp"><span class="keyword">val</span> set_si_2exp</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; int -&gt; int -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALset_inf"><span class="keyword">val</span> set_inf</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; int -&gt; unit</code></pre>
+<pre><span id="VALset_nan"><span class="keyword">val</span> set_nan</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; unit</code></pre>
+<pre><span id="VALswap"><span class="keyword">val</span> swap</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; <a href="Mpfr.html#TYPEt">t</a> -&gt; unit</code></pre><h3 id="2_CombinedInitializationandAssignmentFunctions">Combined Initialization and Assignment Functions</h3><p><a href="http://www.mpfr.org/mpfr-current/mpfr.html#Combined-Initialization-and-Assignment-Functions">C documentation</a></p>
 
-<pre><span id="VALinit_set"><span class="keyword">val</span> init_set</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int * 'b <a href="Mpfr.html#TYPEtt">tt</a></code></pre>
-<pre><span id="VALinit_set_si"><span class="keyword">val</span> init_set_si</span> : <code class="type">int -> <a href="Mpfr.html#TYPEround">round</a> -> int * 'a <a href="Mpfr.html#TYPEtt">tt</a></code></pre>
-<pre><span id="VALinit_set_d"><span class="keyword">val</span> init_set_d</span> : <code class="type">float -> <a href="Mpfr.html#TYPEround">round</a> -> int * 'a <a href="Mpfr.html#TYPEtt">tt</a></code></pre>
-<pre><span id="VALinit_set_f"><span class="keyword">val</span> init_set_f</span> : <code class="type">'a <a href="Mpf.html#TYPEtt">Mpf.tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int * 'b <a href="Mpfr.html#TYPEtt">tt</a></code></pre>
-<pre><span id="VALinit_set_z"><span class="keyword">val</span> init_set_z</span> : <code class="type">'a <a href="Mpz.html#TYPEtt">Mpz.tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int * 'b <a href="Mpfr.html#TYPEtt">tt</a></code></pre>
-<pre><span id="VALinit_set_q"><span class="keyword">val</span> init_set_q</span> : <code class="type">'a <a href="Mpq.html#TYPEtt">Mpq.tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int * 'b <a href="Mpfr.html#TYPEtt">tt</a></code></pre>
-<pre><span id="VAL_init_set_str"><span class="keyword">val</span> _init_set_str</span> : <code class="type">string -> int -> <a href="Mpfr.html#TYPEround">round</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a></code></pre>
-<pre><span id="VALinit_set_str"><span class="keyword">val</span> init_set_str</span> : <code class="type">string -> base:int -> <a href="Mpfr.html#TYPEround">round</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a></code></pre><h3 id="2_ConversionFunctions">Conversion Functions</h3><p><a href="http://www.mpfr.org/mpfr-current/mpfr.html#Conversion-Functions">C documentation</a></p>
+<pre><span id="VALinit_set"><span class="keyword">val</span> init_set</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int * 'b <a href="Mpfr.html#TYPEtt">tt</a></code></pre>
+<pre><span id="VALinit_set_si"><span class="keyword">val</span> init_set_si</span> : <code class="type">int -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int * 'a <a href="Mpfr.html#TYPEtt">tt</a></code></pre>
+<pre><span id="VALinit_set_d"><span class="keyword">val</span> init_set_d</span> : <code class="type">float -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int * 'a <a href="Mpfr.html#TYPEtt">tt</a></code></pre>
+<pre><span id="VALinit_set_f"><span class="keyword">val</span> init_set_f</span> : <code class="type">'a <a href="Mpf.html#TYPEtt">Mpf.tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int * 'b <a href="Mpfr.html#TYPEtt">tt</a></code></pre>
+<pre><span id="VALinit_set_z"><span class="keyword">val</span> init_set_z</span> : <code class="type">'a <a href="Mpz.html#TYPEtt">Mpz.tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int * 'b <a href="Mpfr.html#TYPEtt">tt</a></code></pre>
+<pre><span id="VALinit_set_q"><span class="keyword">val</span> init_set_q</span> : <code class="type">'a <a href="Mpq.html#TYPEtt">Mpq.tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int * 'b <a href="Mpfr.html#TYPEtt">tt</a></code></pre>
+<pre><span id="VAL_init_set_str"><span class="keyword">val</span> _init_set_str</span> : <code class="type">string -&gt; int -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a></code></pre>
+<pre><span id="VALinit_set_str"><span class="keyword">val</span> init_set_str</span> : <code class="type">string -&gt; base:int -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a></code></pre><h3 id="2_ConversionFunctions">Conversion Functions</h3><p><a href="http://www.mpfr.org/mpfr-current/mpfr.html#Conversion-Functions">C documentation</a></p>
 
-<pre><span id="VALget_d"><span class="keyword">val</span> get_d</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> float</code></pre>
-<pre><span id="VALget_d1"><span class="keyword">val</span> get_d1</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -> float</code></pre>
-<pre><span id="VALget_z_exp"><span class="keyword">val</span> get_z_exp</span> : <code class="type"><a href="Mpz.html#TYPEt">Mpz.t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> int</code></pre>
-<pre><span id="VALget_z"><span class="keyword">val</span> get_z</span> : <code class="type"><a href="Mpz.html#TYPEt">Mpz.t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> unit</code></pre>
-<pre><span id="VAL_get_str"><span class="keyword">val</span> _get_str</span> : <code class="type">int -> int -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> string * int</code></pre>
-<pre><span id="VALget_str"><span class="keyword">val</span> get_str</span> : <code class="type">base:int -> digits:int -> <a href="Mpfr.html#TYPEt">t</a> -> <a href="Mpfr.html#TYPEround">round</a> -> string * int</code></pre><h3 id="2_UserConversions">User Conversions</h3><p>These functionss are additions to or renaming of functions offered by the C library.</p>
+<pre><span id="VALget_d"><span class="keyword">val</span> get_d</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; float</code></pre>
+<pre><span id="VALget_d1"><span class="keyword">val</span> get_d1</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; float</code></pre>
+<pre><span id="VALget_z_exp"><span class="keyword">val</span> get_z_exp</span> : <code class="type"><a href="Mpz.html#TYPEt">Mpz.t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; int</code></pre>
+<pre><span id="VALget_z"><span class="keyword">val</span> get_z</span> : <code class="type"><a href="Mpz.html#TYPEt">Mpz.t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; unit</code></pre>
+<pre><span id="VAL_get_str"><span class="keyword">val</span> _get_str</span> : <code class="type">int -&gt; int -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; string * int</code></pre>
+<pre><span id="VALget_str"><span class="keyword">val</span> get_str</span> : <code class="type">base:int -&gt; digits:int -&gt; <a href="Mpfr.html#TYPEt">t</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; string * int</code></pre><h3 id="2_UserConversions">User Conversions</h3><p>These functionss are additions to or renaming of functions offered by the C library.</p>
 
-<pre><span id="VALto_string"><span class="keyword">val</span> to_string</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -> string</code></pre>
-<pre><span id="VALto_float"><span class="keyword">val</span> to_float</span> : <code class="type">?round:<a href="Mpfr.html#TYPEround">round</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> float</code></pre>
-<pre><span id="VALto_mpq"><span class="keyword">val</span> to_mpq</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -> 'b <a href="Mpq.html#TYPEtt">Mpq.tt</a></code></pre>
-<pre><span id="VALof_string"><span class="keyword">val</span> of_string</span> : <code class="type">string -> <a href="Mpfr.html#TYPEround">round</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a></code></pre>
-<pre><span id="VALof_float"><span class="keyword">val</span> of_float</span> : <code class="type">float -> <a href="Mpfr.html#TYPEround">round</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a></code></pre>
-<pre><span id="VALof_int"><span class="keyword">val</span> of_int</span> : <code class="type">int -> <a href="Mpfr.html#TYPEround">round</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a></code></pre>
-<pre><span id="VALof_frac"><span class="keyword">val</span> of_frac</span> : <code class="type">int -> int -> <a href="Mpfr.html#TYPEround">round</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a></code></pre>
-<pre><span id="VALof_mpz"><span class="keyword">val</span> of_mpz</span> : <code class="type">'a <a href="Mpz.html#TYPEtt">Mpz.tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> 'b <a href="Mpfr.html#TYPEtt">tt</a></code></pre>
-<pre><span id="VALof_mpz2"><span class="keyword">val</span> of_mpz2</span> : <code class="type">'a <a href="Mpz.html#TYPEtt">Mpz.tt</a> -> 'b <a href="Mpz.html#TYPEtt">Mpz.tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> 'c <a href="Mpfr.html#TYPEtt">tt</a></code></pre>
-<pre><span id="VALof_mpq"><span class="keyword">val</span> of_mpq</span> : <code class="type">'a <a href="Mpq.html#TYPEtt">Mpq.tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> 'b <a href="Mpfr.html#TYPEtt">tt</a></code></pre><h3 id="2_BasicArithmeticFunctions">Basic Arithmetic Functions</h3><p><a href="http://www.mpfr.org/mpfr-current/mpfr.html#Basic-Arithmetic-Functions">C documentation</a></p>
+<pre><span id="VALto_string"><span class="keyword">val</span> to_string</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; string</code></pre>
+<pre><span id="VALto_float"><span class="keyword">val</span> to_float</span> : <code class="type">?round:<a href="Mpfr.html#TYPEround">round</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; float</code></pre>
+<pre><span id="VALto_mpq"><span class="keyword">val</span> to_mpq</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; 'b <a href="Mpq.html#TYPEtt">Mpq.tt</a></code></pre>
+<pre><span id="VALof_string"><span class="keyword">val</span> of_string</span> : <code class="type">string -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a></code></pre>
+<pre><span id="VALof_float"><span class="keyword">val</span> of_float</span> : <code class="type">float -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a></code></pre>
+<pre><span id="VALof_int"><span class="keyword">val</span> of_int</span> : <code class="type">int -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a></code></pre>
+<pre><span id="VALof_frac"><span class="keyword">val</span> of_frac</span> : <code class="type">int -&gt; int -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a></code></pre>
+<pre><span id="VALof_mpz"><span class="keyword">val</span> of_mpz</span> : <code class="type">'a <a href="Mpz.html#TYPEtt">Mpz.tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; 'b <a href="Mpfr.html#TYPEtt">tt</a></code></pre>
+<pre><span id="VALof_mpz2"><span class="keyword">val</span> of_mpz2</span> : <code class="type">'a <a href="Mpz.html#TYPEtt">Mpz.tt</a> -&gt; 'b <a href="Mpz.html#TYPEtt">Mpz.tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; 'c <a href="Mpfr.html#TYPEtt">tt</a></code></pre>
+<pre><span id="VALof_mpq"><span class="keyword">val</span> of_mpq</span> : <code class="type">'a <a href="Mpq.html#TYPEtt">Mpq.tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; 'b <a href="Mpfr.html#TYPEtt">tt</a></code></pre><h3 id="2_BasicArithmeticFunctions">Basic Arithmetic Functions</h3><p><a href="http://www.mpfr.org/mpfr-current/mpfr.html#Basic-Arithmetic-Functions">C documentation</a></p>
 
-<pre><span id="VALadd"><span class="keyword">val</span> add</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> 'b <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALadd_ui"><span class="keyword">val</span> add_ui</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> int -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALadd_z"><span class="keyword">val</span> add_z</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> 'a <a href="Mpz.html#TYPEtt">Mpz.tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALadd_q"><span class="keyword">val</span> add_q</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> 'a <a href="Mpq.html#TYPEtt">Mpq.tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALsub"><span class="keyword">val</span> sub</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> 'b <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALui_sub"><span class="keyword">val</span> ui_sub</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> int -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALsub_ui"><span class="keyword">val</span> sub_ui</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> int -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALsub_z"><span class="keyword">val</span> sub_z</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> 'a <a href="Mpz.html#TYPEtt">Mpz.tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALsub_q"><span class="keyword">val</span> sub_q</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> 'a <a href="Mpq.html#TYPEtt">Mpq.tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALmul"><span class="keyword">val</span> mul</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> 'b <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALmul_ui"><span class="keyword">val</span> mul_ui</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> int -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALmul_si"><span class="keyword">val</span> mul_si</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> int -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALmul_d"><span class="keyword">val</span> mul_d</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> float -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALmul_z"><span class="keyword">val</span> mul_z</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> 'a <a href="Mpz.html#TYPEtt">Mpz.tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALmul_q"><span class="keyword">val</span> mul_q</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> 'a <a href="Mpq.html#TYPEtt">Mpq.tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALmul_2ui"><span class="keyword">val</span> mul_2ui</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> int -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALmul_2si"><span class="keyword">val</span> mul_2si</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> int -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALmul_2exp"><span class="keyword">val</span> mul_2exp</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> int -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALsqr"><span class="keyword">val</span> sqr</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALdiv"><span class="keyword">val</span> div</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> 'b <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALui_div"><span class="keyword">val</span> ui_div</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> int -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALdiv_ui"><span class="keyword">val</span> div_ui</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> int -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALdiv_z"><span class="keyword">val</span> div_z</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> 'a <a href="Mpz.html#TYPEtt">Mpz.tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALdiv_q"><span class="keyword">val</span> div_q</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> 'a <a href="Mpq.html#TYPEtt">Mpq.tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALdiv_2ui"><span class="keyword">val</span> div_2ui</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> int -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALdiv_2si"><span class="keyword">val</span> div_2si</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> int -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALdiv_2exp"><span class="keyword">val</span> div_2exp</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> <a href="Mpfr.html#TYPEt">t</a> -> int -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALsqrt"><span class="keyword">val</span> sqrt</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALsqrt_ui"><span class="keyword">val</span> sqrt_ui</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> int -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALrec_sqrt"><span class="keyword">val</span> rec_sqrt</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALpow_ui"><span class="keyword">val</span> pow_ui</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> int -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALpow_si"><span class="keyword">val</span> pow_si</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> int -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALui_pow_ui"><span class="keyword">val</span> ui_pow_ui</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> int -> int -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALui_pow"><span class="keyword">val</span> ui_pow</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> int -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALpow"><span class="keyword">val</span> pow</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> 'b <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALneg"><span class="keyword">val</span> neg</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALabs"><span class="keyword">val</span> abs</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALcbrt"><span class="keyword">val</span> cbrt</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALroot"><span class="keyword">val</span> root</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> int -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre><h3 id="2_ComparisonFunctions">Comparison Functions</h3><p><a href="http://www.mpfr.org/mpfr-current/mpfr.html#Comparison-Functions">C documentation</a></p>
+<pre><span id="VALadd"><span class="keyword">val</span> add</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; 'b <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALadd_ui"><span class="keyword">val</span> add_ui</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; int -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALadd_z"><span class="keyword">val</span> add_z</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; 'a <a href="Mpz.html#TYPEtt">Mpz.tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALadd_q"><span class="keyword">val</span> add_q</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; 'a <a href="Mpq.html#TYPEtt">Mpq.tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALsub"><span class="keyword">val</span> sub</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; 'b <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALui_sub"><span class="keyword">val</span> ui_sub</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; int -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALsub_ui"><span class="keyword">val</span> sub_ui</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; int -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALsub_z"><span class="keyword">val</span> sub_z</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; 'a <a href="Mpz.html#TYPEtt">Mpz.tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALsub_q"><span class="keyword">val</span> sub_q</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; 'a <a href="Mpq.html#TYPEtt">Mpq.tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALmul"><span class="keyword">val</span> mul</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; 'b <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALmul_ui"><span class="keyword">val</span> mul_ui</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; int -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALmul_si"><span class="keyword">val</span> mul_si</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; int -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALmul_d"><span class="keyword">val</span> mul_d</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; float -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALmul_z"><span class="keyword">val</span> mul_z</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; 'a <a href="Mpz.html#TYPEtt">Mpz.tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALmul_q"><span class="keyword">val</span> mul_q</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; 'a <a href="Mpq.html#TYPEtt">Mpq.tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALmul_2ui"><span class="keyword">val</span> mul_2ui</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; int -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALmul_2si"><span class="keyword">val</span> mul_2si</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; int -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALmul_2exp"><span class="keyword">val</span> mul_2exp</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; int -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALsqr"><span class="keyword">val</span> sqr</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALdiv"><span class="keyword">val</span> div</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; 'b <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALui_div"><span class="keyword">val</span> ui_div</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; int -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALdiv_ui"><span class="keyword">val</span> div_ui</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; int -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALdiv_z"><span class="keyword">val</span> div_z</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; 'a <a href="Mpz.html#TYPEtt">Mpz.tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALdiv_q"><span class="keyword">val</span> div_q</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; 'a <a href="Mpq.html#TYPEtt">Mpq.tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALdiv_2ui"><span class="keyword">val</span> div_2ui</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; int -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALdiv_2si"><span class="keyword">val</span> div_2si</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; int -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALdiv_2exp"><span class="keyword">val</span> div_2exp</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; <a href="Mpfr.html#TYPEt">t</a> -&gt; int -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALsqrt"><span class="keyword">val</span> sqrt</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALsqrt_ui"><span class="keyword">val</span> sqrt_ui</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; int -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALrec_sqrt"><span class="keyword">val</span> rec_sqrt</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALpow_ui"><span class="keyword">val</span> pow_ui</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; int -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALpow_si"><span class="keyword">val</span> pow_si</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; int -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALui_pow_ui"><span class="keyword">val</span> ui_pow_ui</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; int -&gt; int -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALui_pow"><span class="keyword">val</span> ui_pow</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; int -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALpow"><span class="keyword">val</span> pow</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; 'b <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALneg"><span class="keyword">val</span> neg</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALabs"><span class="keyword">val</span> abs</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALcbrt"><span class="keyword">val</span> cbrt</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALrootn_ui"><span class="keyword">val</span> rootn_ui</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; int -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre><div class="info ">
+<div class="info-deprecated">
+<span class="warning">Deprecated. </span>Please use `Mpfr.rootn_ui' instead!</div>
+</div>
 
-<pre><span id="VALcmp"><span class="keyword">val</span> cmp</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -> 'b <a href="Mpfr.html#TYPEtt">tt</a> -> int</code></pre>
-<pre><span id="VALcmp_si"><span class="keyword">val</span> cmp_si</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -> int -> int</code></pre>
-<pre><span id="VALcmp_si_2exp"><span class="keyword">val</span> cmp_si_2exp</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -> int -> int -> int</code></pre>
-<pre><span id="VALsgn"><span class="keyword">val</span> sgn</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -> int</code></pre>
-<pre><span id="VALsignbit"><span class="keyword">val</span> signbit</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -> int</code></pre>
-<pre><span id="VAL_equal"><span class="keyword">val</span> _equal</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -> 'b <a href="Mpfr.html#TYPEtt">tt</a> -> int -> bool</code></pre>
-<pre><span id="VALequal"><span class="keyword">val</span> equal</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -> 'b <a href="Mpfr.html#TYPEtt">tt</a> -> bits:int -> bool</code></pre>
-<pre><span id="VALnan_p"><span class="keyword">val</span> nan_p</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -> bool</code></pre>
-<pre><span id="VALinf_p"><span class="keyword">val</span> inf_p</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -> bool</code></pre>
-<pre><span id="VALnumber_p"><span class="keyword">val</span> number_p</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -> bool</code></pre>
-<pre><span id="VALzero_p"><span class="keyword">val</span> zero_p</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -> bool</code></pre>
-<pre><span id="VALreldiff"><span class="keyword">val</span> reldiff</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> 'b <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> unit</code></pre><h3 id="2_SpecialFunctions">Special Functions</h3><p><a href="http://www.mpfr.org/mpfr-current/mpfr.html#Special-Functions">C documentation</a></p>
+<pre><span id="VALroot"><span class="keyword">val</span> root</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; int -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre><h3 id="2_ComparisonFunctions">Comparison Functions</h3><p><a href="http://www.mpfr.org/mpfr-current/mpfr.html#Comparison-Functions">C documentation</a></p>
 
-<pre><span id="VALlog"><span class="keyword">val</span> log</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALlog2"><span class="keyword">val</span> log2</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALlog10"><span class="keyword">val</span> log10</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALexp"><span class="keyword">val</span> exp</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALexp2"><span class="keyword">val</span> exp2</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALexp10"><span class="keyword">val</span> exp10</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALcos"><span class="keyword">val</span> cos</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -> 'b <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALsin"><span class="keyword">val</span> sin</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -> 'b <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALtan"><span class="keyword">val</span> tan</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -> 'b <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALsec"><span class="keyword">val</span> sec</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -> 'b <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALcsc"><span class="keyword">val</span> csc</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -> 'b <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALcot"><span class="keyword">val</span> cot</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -> 'b <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALsin_cos"><span class="keyword">val</span> sin_cos</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -> 'b <a href="Mpfr.html#TYPEtt">tt</a> -> 'c <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALacos"><span class="keyword">val</span> acos</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALasin"><span class="keyword">val</span> asin</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALatan"><span class="keyword">val</span> atan</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALatan2"><span class="keyword">val</span> atan2</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> 'b <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALcosh"><span class="keyword">val</span> cosh</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -> 'b <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALsinh"><span class="keyword">val</span> sinh</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -> 'b <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALtanh"><span class="keyword">val</span> tanh</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -> 'b <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALsech"><span class="keyword">val</span> sech</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -> 'b <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALcsch"><span class="keyword">val</span> csch</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -> 'b <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALcoth"><span class="keyword">val</span> coth</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -> 'b <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALacosh"><span class="keyword">val</span> acosh</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALasinh"><span class="keyword">val</span> asinh</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALatanh"><span class="keyword">val</span> atanh</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALfac_ui"><span class="keyword">val</span> fac_ui</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> int -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALlog1p"><span class="keyword">val</span> log1p</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALexpm1"><span class="keyword">val</span> expm1</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALeint"><span class="keyword">val</span> eint</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALgamma"><span class="keyword">val</span> gamma</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALlngamma"><span class="keyword">val</span> lngamma</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALlgamma"><span class="keyword">val</span> lgamma</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int * int</code></pre>
-<pre><span id="VALzeta"><span class="keyword">val</span> zeta</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALerf"><span class="keyword">val</span> erf</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALerfc"><span class="keyword">val</span> erfc</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALj0"><span class="keyword">val</span> j0</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALj1"><span class="keyword">val</span> j1</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALjn"><span class="keyword">val</span> jn</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> int -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALy0"><span class="keyword">val</span> y0</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALy1"><span class="keyword">val</span> y1</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALyn"><span class="keyword">val</span> yn</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> int -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALfma"><span class="keyword">val</span> fma</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> 'b <a href="Mpfr.html#TYPEtt">tt</a> -> 'c <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALfms"><span class="keyword">val</span> fms</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> 'b <a href="Mpfr.html#TYPEtt">tt</a> -> 'c <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALagm"><span class="keyword">val</span> agm</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> 'b <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALhypot"><span class="keyword">val</span> hypot</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> 'b <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALconst_log2"><span class="keyword">val</span> const_log2</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALconst_pi"><span class="keyword">val</span> const_pi</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALconst_euler"><span class="keyword">val</span> const_euler</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALconst_catalan"><span class="keyword">val</span> const_catalan</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre><h3 id="2_FormattedOutputFunctions">Formatted Output Functions</h3>
-<pre><span id="VAL_sprintf"><span class="keyword">val</span> _sprintf</span> : <code class="type">string -> string -> <a href="Mpfr.html#TYPEround">round</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> int</code></pre>
-<pre><span id="VALsprintf"><span class="keyword">val</span> sprintf</span> : <code class="type">buf:string -> template:string -> <a href="Mpfr.html#TYPEround">round</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> int</code></pre><div class="info ">
+<pre><span id="VALcmp"><span class="keyword">val</span> cmp</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; 'b <a href="Mpfr.html#TYPEtt">tt</a> -&gt; int</code></pre>
+<pre><span id="VALcmp_si"><span class="keyword">val</span> cmp_si</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; int -&gt; int</code></pre>
+<pre><span id="VALcmp_si_2exp"><span class="keyword">val</span> cmp_si_2exp</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; int -&gt; int -&gt; int</code></pre>
+<pre><span id="VALsgn"><span class="keyword">val</span> sgn</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; int</code></pre>
+<pre><span id="VALsignbit"><span class="keyword">val</span> signbit</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; int</code></pre>
+<pre><span id="VAL_equal"><span class="keyword">val</span> _equal</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; 'b <a href="Mpfr.html#TYPEtt">tt</a> -&gt; int -&gt; bool</code></pre>
+<pre><span id="VALequal"><span class="keyword">val</span> equal</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; 'b <a href="Mpfr.html#TYPEtt">tt</a> -&gt; bits:int -&gt; bool</code></pre>
+<pre><span id="VALnan_p"><span class="keyword">val</span> nan_p</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; bool</code></pre>
+<pre><span id="VALinf_p"><span class="keyword">val</span> inf_p</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; bool</code></pre>
+<pre><span id="VALnumber_p"><span class="keyword">val</span> number_p</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; bool</code></pre>
+<pre><span id="VALzero_p"><span class="keyword">val</span> zero_p</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; bool</code></pre>
+<pre><span id="VALreldiff"><span class="keyword">val</span> reldiff</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; 'b <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; unit</code></pre><h3 id="2_SpecialFunctions">Special Functions</h3><p><a href="http://www.mpfr.org/mpfr-current/mpfr.html#Special-Functions">C documentation</a></p>
+
+<pre><span id="VALlog"><span class="keyword">val</span> log</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALlog2"><span class="keyword">val</span> log2</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALlog10"><span class="keyword">val</span> log10</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALexp"><span class="keyword">val</span> exp</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALexp2"><span class="keyword">val</span> exp2</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALexp10"><span class="keyword">val</span> exp10</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALcos"><span class="keyword">val</span> cos</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; 'b <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALsin"><span class="keyword">val</span> sin</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; 'b <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALtan"><span class="keyword">val</span> tan</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; 'b <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALsec"><span class="keyword">val</span> sec</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; 'b <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALcsc"><span class="keyword">val</span> csc</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; 'b <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALcot"><span class="keyword">val</span> cot</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; 'b <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALsin_cos"><span class="keyword">val</span> sin_cos</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; 'b <a href="Mpfr.html#TYPEtt">tt</a> -&gt; 'c <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALacos"><span class="keyword">val</span> acos</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALasin"><span class="keyword">val</span> asin</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALatan"><span class="keyword">val</span> atan</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALatan2"><span class="keyword">val</span> atan2</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; 'b <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALcosh"><span class="keyword">val</span> cosh</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; 'b <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALsinh"><span class="keyword">val</span> sinh</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; 'b <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALtanh"><span class="keyword">val</span> tanh</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; 'b <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALsech"><span class="keyword">val</span> sech</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; 'b <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALcsch"><span class="keyword">val</span> csch</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; 'b <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALcoth"><span class="keyword">val</span> coth</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; 'b <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALacosh"><span class="keyword">val</span> acosh</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALasinh"><span class="keyword">val</span> asinh</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALatanh"><span class="keyword">val</span> atanh</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALfac_ui"><span class="keyword">val</span> fac_ui</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; int -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALlog1p"><span class="keyword">val</span> log1p</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALexpm1"><span class="keyword">val</span> expm1</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALeint"><span class="keyword">val</span> eint</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALgamma"><span class="keyword">val</span> gamma</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALlngamma"><span class="keyword">val</span> lngamma</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALlgamma"><span class="keyword">val</span> lgamma</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int * int</code></pre>
+<pre><span id="VALzeta"><span class="keyword">val</span> zeta</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALerf"><span class="keyword">val</span> erf</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALerfc"><span class="keyword">val</span> erfc</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALj0"><span class="keyword">val</span> j0</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALj1"><span class="keyword">val</span> j1</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALjn"><span class="keyword">val</span> jn</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; int -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALy0"><span class="keyword">val</span> y0</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALy1"><span class="keyword">val</span> y1</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALyn"><span class="keyword">val</span> yn</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; int -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALfma"><span class="keyword">val</span> fma</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; 'b <a href="Mpfr.html#TYPEtt">tt</a> -&gt; 'c <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALfms"><span class="keyword">val</span> fms</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; 'b <a href="Mpfr.html#TYPEtt">tt</a> -&gt; 'c <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALagm"><span class="keyword">val</span> agm</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; 'b <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALhypot"><span class="keyword">val</span> hypot</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; 'b <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALconst_log2"><span class="keyword">val</span> const_log2</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALconst_pi"><span class="keyword">val</span> const_pi</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALconst_euler"><span class="keyword">val</span> const_euler</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALconst_catalan"><span class="keyword">val</span> const_catalan</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre><div class="info ">
+<div class="info-deprecated">
+<span class="warning">Deprecated. </span>Breaks safe strings assumption</div>
+</div>
+
+<pre><span id="VAL_sprintf"><span class="keyword">val</span> _sprintf</span> : <code class="type">string -&gt; string -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; int</code></pre><div class="info ">
+<div class="info-deprecated">
+<span class="warning">Deprecated. </span>Breaks safe strings assumption</div>
+</div>
+
+<pre><span id="VALsprintf"><span class="keyword">val</span> sprintf</span> : <code class="type">buf:string -&gt; template:string -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; int</code></pre><div class="info ">
 <div class="info-desc">
 <p>Call sprintf with the given format string and arguments. The format string must
       contain exactly one conversion specification, which must be of <code class="code">mpfr_t</code> type and
@@ -352,20 +365,20 @@
 </div>
 <h3 id="2_MiscellaneousFloatFunctions">Miscellaneous Float Functions</h3><p><a href="http://www.mpfr.org/mpfr-current/mpfr.html#Rounding-Related-Functions">C documentation</a></p>
 
-<pre><span id="VALrint"><span class="keyword">val</span> rint</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALceil"><span class="keyword">val</span> ceil</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> int</code></pre>
-<pre><span id="VALfloor"><span class="keyword">val</span> floor</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> int</code></pre>
-<pre><span id="VALround"><span class="keyword">val</span> round</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> int</code></pre>
-<pre><span id="VALtrunc"><span class="keyword">val</span> trunc</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> int</code></pre>
-<pre><span id="VALfrac"><span class="keyword">val</span> frac</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALmodf"><span class="keyword">val</span> modf</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> <a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALfmod"><span class="keyword">val</span> fmod</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> 'b <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALremainder"><span class="keyword">val</span> remainder</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> 'b <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALinteger_p"><span class="keyword">val</span> integer_p</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -> bool</code></pre>
-<pre><span id="VALnexttoward"><span class="keyword">val</span> nexttoward</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> unit</code></pre>
-<pre><span id="VALnextabove"><span class="keyword">val</span> nextabove</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> unit</code></pre>
-<pre><span id="VALnextbelow"><span class="keyword">val</span> nextbelow</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> unit</code></pre>
-<pre><span id="VALmin"><span class="keyword">val</span> min</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> 'b <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALmax"><span class="keyword">val</span> max</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> 'a <a href="Mpfr.html#TYPEtt">tt</a> -> 'b <a href="Mpfr.html#TYPEtt">tt</a> -> <a href="Mpfr.html#TYPEround">round</a> -> int</code></pre>
-<pre><span id="VALget_exp"><span class="keyword">val</span> get_exp</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -> int</code></pre>
-<pre><span id="VALset_exp"><span class="keyword">val</span> set_exp</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -> int -> int</code></pre></body></html>
+<pre><span id="VALrint"><span class="keyword">val</span> rint</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALceil"><span class="keyword">val</span> ceil</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; int</code></pre>
+<pre><span id="VALfloor"><span class="keyword">val</span> floor</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; int</code></pre>
+<pre><span id="VALround"><span class="keyword">val</span> round</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; int</code></pre>
+<pre><span id="VALtrunc"><span class="keyword">val</span> trunc</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; int</code></pre>
+<pre><span id="VALfrac"><span class="keyword">val</span> frac</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALmodf"><span class="keyword">val</span> modf</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; <a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALfmod"><span class="keyword">val</span> fmod</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; 'b <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALremainder"><span class="keyword">val</span> remainder</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; 'b <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALinteger_p"><span class="keyword">val</span> integer_p</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; bool</code></pre>
+<pre><span id="VALnexttoward"><span class="keyword">val</span> nexttoward</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; unit</code></pre>
+<pre><span id="VALnextabove"><span class="keyword">val</span> nextabove</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; unit</code></pre>
+<pre><span id="VALnextbelow"><span class="keyword">val</span> nextbelow</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; unit</code></pre>
+<pre><span id="VALmin"><span class="keyword">val</span> min</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; 'b <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALmax"><span class="keyword">val</span> max</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; 'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; 'b <a href="Mpfr.html#TYPEtt">tt</a> -&gt; <a href="Mpfr.html#TYPEround">round</a> -&gt; int</code></pre>
+<pre><span id="VALget_exp"><span class="keyword">val</span> get_exp</span> : <code class="type">'a <a href="Mpfr.html#TYPEtt">tt</a> -&gt; int</code></pre>
+<pre><span id="VALset_exp"><span class="keyword">val</span> set_exp</span> : <code class="type"><a href="Mpfr.html#TYPEt">t</a> -&gt; int -&gt; int</code></pre></body></html>

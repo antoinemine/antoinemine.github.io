@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="Start" href="index.html">
+<link rel="previous" href="Polka.html">
+<link rel="next" href="Ppl.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Introduction" rel="Chapter" href="Introduction.html">
+<link title="Scalar" rel="Chapter" href="Scalar.html">
+<link title="Interval" rel="Chapter" href="Interval.html">
+<link title="Coeff" rel="Chapter" href="Coeff.html">
+<link title="Dim" rel="Chapter" href="Dim.html">
+<link title="Linexpr0" rel="Chapter" href="Linexpr0.html">
+<link title="Lincons0" rel="Chapter" href="Lincons0.html">
+<link title="Generator0" rel="Chapter" href="Generator0.html">
+<link title="Texpr0" rel="Chapter" href="Texpr0.html">
+<link title="Tcons0" rel="Chapter" href="Tcons0.html">
+<link title="Manager" rel="Chapter" href="Manager.html">
+<link title="Abstract0" rel="Chapter" href="Abstract0.html">
+<link title="Var" rel="Chapter" href="Var.html">
+<link title="Environment" rel="Chapter" href="Environment.html">
+<link title="Linexpr1" rel="Chapter" href="Linexpr1.html">
+<link title="Lincons1" rel="Chapter" href="Lincons1.html">
+<link title="Generator1" rel="Chapter" href="Generator1.html">
+<link title="Texpr1" rel="Chapter" href="Texpr1.html">
+<link title="Tcons1" rel="Chapter" href="Tcons1.html">
+<link title="Abstract1" rel="Chapter" href="Abstract1.html">
+<link title="Policy" rel="Chapter" href="Policy.html">
+<link title="Disjunction" rel="Chapter" href="Disjunction.html">
+<link title="Version" rel="Chapter" href="Version.html">
+<link title="Parser" rel="Chapter" href="Parser.html">
+<link title="Box" rel="Chapter" href="Box.html">
+<link title="Oct" rel="Chapter" href="Oct.html">
+<link title="Polka" rel="Chapter" href="Polka.html">
+<link title="T1p" rel="Chapter" href="T1p.html">
+<link title="Ppl" rel="Chapter" href="Ppl.html">
+<link title="PolkaGrid" rel="Chapter" href="PolkaGrid.html">
+<link title="Mpz" rel="Chapter" href="Mpz.html">
+<link title="Mpq" rel="Chapter" href="Mpq.html">
+<link title="Gmp_random" rel="Chapter" href="Gmp_random.html">
+<link title="Mpf" rel="Chapter" href="Mpf.html">
+<link title="Mpfr" rel="Chapter" href="Mpfr.html">
+<link title="Mpzf" rel="Chapter" href="Mpzf.html">
+<link title="Mpqf" rel="Chapter" href="Mpqf.html">
+<link title="Mpfrf" rel="Chapter" href="Mpfrf.html"><link title="Compilation information" rel="Section" href="#2_Compilationinformation">
+<link title="Bytecode compilation" rel="Subsection" href="#3_Bytecodecompilation">
+<link title="Native-code compilation" rel="Subsection" href="#3_Nativecodecompilation">
+<title>T1p</title>
+</head>
+<body>
+<div class="navbar"><a class="pre" href="Polka.html" title="Polka">Previous</a>
+&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;<a class="post" href="Ppl.html" title="Ppl">Next</a>
+</div>
+<h1>Module <a href="type_T1p.html">T1p</a></h1>
+
+<pre><span id="MODULET1p"><span class="keyword">module</span> T1p</span>: <code class="code"><span class="keyword">sig</span></code> <a href="T1p.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
+<div class="info-desc">
+<p>Taylor1+ abstract domain (beta version)</p>
+</div>
+</div>
+<hr width="100%">
+
+<pre><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> </pre>
+<div class="info ">
+<div class="info-desc">
+<p>Type of Taylor1+ forms.</p>
+
+<p>Each dimension/variable <code class="code">x_i</code> has the affine form: alpha_0 + Sum(alpha_i*eps_i), where eps_i are the noise symbols, and alpha_i their associated coefficients.</p>
+
+<p>Abstract values which are Taylor1+ forms (affine forms) have the type <code class="code">t&nbsp;<span class="constructor">Apron</span>.<span class="constructor">AbstractX</span>.t</code>.</p>
+
+<p>Managers allocated for Taylor1+ abstract values have the type <code class="code">t&nbsp;<span class="constructor">Apron</span>.manager.t</code>.</p>
+</div>
+</div>
+
+
+<pre><span id="VALmanager_alloc"><span class="keyword">val</span> manager_alloc</span> : <code class="type">unit -&gt; <a href="T1p.html#TYPEt">t</a> Apron.Manager.t</code></pre><div class="info ">
+<div class="info-desc">
+<p>Create a Taylor1+ manager.</p>
+</div>
+</div>
+<h3 id="2_Compilationinformation">Compilation information</h3>
+<h4 id="3_Bytecodecompilation">Bytecode compilation</h4><p>To compile to bytecode, you should first generate a custom
+interpreter with a command which should look like:</p>
+
+<p><code class="code">ocamlc&nbsp;-<span class="constructor">I</span>&nbsp;$<span class="constructor">APRON_PREFIX</span>/lib&nbsp;-make-runtime&nbsp;-o&nbsp;myrun&nbsp;bigarray.cma&nbsp;gmp.cma&nbsp;apron.cma&nbsp;t1p.cma</code></p>
+
+<p>and then you compile and link your example <code class="code"><span class="constructor">X</span>.ml</code> with</p>
+
+<p><code class="code">ocamlc&nbsp;-<span class="constructor">I</span>&nbsp;$<span class="constructor">APRON_PREFIX</span>/lib&nbsp;-c&nbsp;<span class="constructor">X</span>.ml</code> and</p>
+
+<p><code class="code">ocamlc&nbsp;-<span class="constructor">I</span>&nbsp;$<span class="constructor">APRON_PREFIX</span>/lib&nbsp;-use-runtime&nbsp;myrun&nbsp;-o&nbsp;<span class="constructor">X</span>&nbsp;bigarray.cma&nbsp;gmp.cma&nbsp;apron.cma&nbsp;t1p.cma&nbsp;<span class="constructor">X</span>.cmo</code></p>
+
+<p><b>Comments:</b> The C libraries related to <code class="code">gmp.cma</code> and <code class="code">apron.cma</code> are
+automatically looked for (thanks to the auto-linking feature provided by
+<code class="code">ocamlc</code>). For <code class="code">t1p.cma</code>, the library <code class="code">libt1p.a</code>, identic to <code class="code">libt1pMPQ.a</code>, is
+selected by default. The <code class="code">-noautolink</code> option should be used to select a differetn version. See the C documentation of <code class="code">t1p</code> library for details.</p>
+
+<p>With the <code class="code">-noautolink</code> option, the generation of the custom
+runtime executable should be done with</p>
+
+<p><code class="code">ocamlc&nbsp;-<span class="constructor">I</span>&nbsp;$<span class="constructor">APRON_PREFIX</span>/lib&nbsp;-noautolink&nbsp;-make-runtime&nbsp;-o&nbsp;myrun&nbsp;bigarray.cma&nbsp;gmp.cma&nbsp;apron.cma&nbsp;t1p.cma&nbsp;-ccopt&nbsp;<span class="string">"-L$GMP_PREFIX/lib&nbsp;..."</span>&nbsp;-cclib&nbsp;<span class="string">"-lt1p_caml&nbsp;-lt1pMPQ&nbsp;-lapron_caml&nbsp;-lapron&nbsp;-lgmp_caml&nbsp;-lmpfr&nbsp;-lgmp&nbsp;-lbigarray&nbsp;-lcamlidl"</span></code></p>
+
+<h4 id="3_Nativecodecompilation">Native-code compilation</h4><p>You compile and link with</p>
+
+<p><code class="code">ocamlopt&nbsp;-<span class="constructor">I</span>&nbsp;$<span class="constructor">APRON_PREFIX</span>/lib&nbsp;-c&nbsp;<span class="constructor">X</span>.ml</code> and</p>
+
+<p><code class="code">ocamlopt&nbsp;-<span class="constructor">I</span>&nbsp;$<span class="constructor">APRON_PREFIX</span>/lib&nbsp;-o&nbsp;<span class="constructor">X</span>&nbsp;bigarray.cmxa&nbsp;gmp.cmxa&nbsp;apron.cmxa&nbsp;t1p.cmxa&nbsp;<span class="constructor">X</span>.cmx</code></p>
+
+<p><b>Comments:</b> Same as for bytecode compilation. With the
+<code class="code">-noautolink</code> option, the linking command becomes</p>
+
+<p><code class="code">ocamlopt&nbsp;-<span class="constructor">I</span>&nbsp;$<span class="constructor">APRON_PREFIX</span>/lib&nbsp;-o&nbsp;<span class="constructor">X</span>&nbsp;bigarray.cmxa&nbsp;gmp.cmxa&nbsp;apron.cmxa&nbsp;t1p.cmxa&nbsp;-ccopt&nbsp;<span class="string">"-L$GMP_PREFIX/lib&nbsp;..."</span>&nbsp;-cclib&nbsp;<span class="string">"-lt1p_caml&nbsp;-lt1pMPQ&nbsp;-lapron_caml&nbsp;-lapron&nbsp;-lgmp_caml&nbsp;-lmpfr&nbsp;-lgmp&nbsp;-lbigarray&nbsp;-lcamlidl"</span>&nbsp;<span class="constructor">X</span>.cmx</code></p>
+</body></html>

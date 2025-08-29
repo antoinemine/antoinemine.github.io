@@ -1,35 +1,27 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.6, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.2, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>C Programming Guidelines (APRON 0.9.12)</title>
+<title>C Programming Guidelines (APRON 0.9.15)</title>
 
-<meta name="description" content="C Programming Guidelines (APRON 0.9.12)">
-<meta name="keywords" content="C Programming Guidelines (APRON 0.9.12)">
+<meta name="description" content="C Programming Guidelines (APRON 0.9.15)">
+<meta name="keywords" content="C Programming Guidelines (APRON 0.9.15)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
-<link href="index.html#Top" rel="start" title="Top">
-<link href="APRON-Guidelines.html#APRON-Guidelines" rel="up" title="APRON Guidelines">
-<link href="OCaml-Programming-Guidelines.html#OCaml-Programming-Guidelines" rel="next" title="OCaml Programming Guidelines">
-<link href="Installing-APRON.html#Installing-APRON" rel="prev" title="Installing APRON">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="APRON-Guidelines.html" rel="up" title="APRON Guidelines">
+<link href="OCaml-Programming-Guidelines.html" rel="next" title="OCaml Programming Guidelines">
+<link href="Installing-APRON.html" rel="prev" title="Installing APRON">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+span:hover a.copiable-link {visibility: visible}
+ul.mark-bullet {list-style-type: disc}
 -->
 </style>
 
@@ -37,135 +29,151 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="C-Programming-Guidelines"></span><div class="header">
+<div class="section-level-extent" id="C-Programming-Guidelines">
+<div class="nav-panel">
 <p>
-Next: <a href="OCaml-Programming-Guidelines.html#OCaml-Programming-Guidelines" accesskey="n" rel="next">OCaml Programming Guidelines</a>, Previous: <a href="Installing-APRON.html#Installing-APRON" accesskey="p" rel="prev">Installing APRON</a>, Up: <a href="APRON-Guidelines.html#APRON-Guidelines" accesskey="u" rel="up">APRON Guidelines</a> &nbsp; </p>
+Next: <a href="OCaml-Programming-Guidelines.html" accesskey="n" rel="next">OCaml Programming Guidelines</a>, Previous: <a href="Installing-APRON.html" accesskey="p" rel="prev">Installing APRON</a>, Up: <a href="APRON-Guidelines.html" accesskey="u" rel="up">APRON Guidelines</a> &nbsp; </p>
 </div>
-<span id="C-Programming-Guidelines-1"></span><h3 class="section">C Programming Guidelines</h3>
+<h3 class="section" id="C-Programming-Guidelines-1"><span>C Programming Guidelines<a class="copiable-link" href="#C-Programming-Guidelines-1"> &para;</a></span></h3>
 
 
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#C-Headers-and-Libraries" accesskey="1">C Headers and Libraries</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#C-Naming-conventions" accesskey="2">C Naming conventions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Allocating-managers-and-setting-options" accesskey="3">Allocating managers and setting options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Sequel-of-the-small-example" accesskey="4">Sequel of the small example</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Typing-issue-in-C" accesskey="5">Typing issue in C</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
+<ul class="mini-toc">
+<li><a href="#C-Headers-and-Libraries" accesskey="1">C Headers and Libraries</a></li>
+<li><a href="#C-Naming-conventions" accesskey="2">Naming conventions and Allocation/Deallocation schemes</a></li>
+<li><a href="#Allocating-managers-and-setting-options" accesskey="3">Allocating managers and setting options</a></li>
+<li><a href="#Sequel-of-the-small-example" accesskey="4">Sequel of the small example</a></li>
+<li><a href="#Typing-issue-in-C" accesskey="5">Typing issue in C</a></li>
+</ul>
 <hr>
-<span id="C-Headers-and-Libraries"></span><div class="header">
+<div class="subsection-level-extent" id="C-Headers-and-Libraries">
+<div class="nav-panel">
 <p>
-Next: <a href="#C-Naming-conventions" accesskey="n" rel="next">C Naming conventions</a>, Previous: <a href="#C-Programming-Guidelines" accesskey="p" rel="prev">C Programming Guidelines</a>, Up: <a href="#C-Programming-Guidelines" accesskey="u" rel="up">C Programming Guidelines</a> &nbsp; </p>
+Next: <a href="#C-Naming-conventions" accesskey="n" rel="next">Naming conventions and Allocation/Deallocation schemes</a>, Previous: <a href="#C-Programming-Guidelines" accesskey="p" rel="prev">C Programming Guidelines</a>, Up: <a href="#C-Programming-Guidelines" accesskey="u" rel="up">C Programming Guidelines</a> &nbsp; </p>
 </div>
-<span id="C-Headers-and-Libraries-1"></span><h4 class="subsection">C Headers and Libraries</h4>
+<h4 class="subsection" id="C-Headers-and-Libraries-1"><span>C Headers and Libraries<a class="copiable-link" href="#C-Headers-and-Libraries-1"> &para;</a></span></h4>
 
 <p>Declarations needed to use an underlying library via APRON are
-collected in the C include files <samp>ap_global0.h</samp> and
-<samp>ap_global1.h</samp>. They respectively refer to the level 0 and the
+collected in the C include files <samp class="file">ap_global0.h</samp> and
+<samp class="file">ap_global1.h</samp>. They respectively refer to the level 0 and the
 level 1 of the interface. One can also refer to single APRON modules
-with their corresponding include files <samp>ap_dimension.h</samp>,
-<samp>ap_lincons0.h</samp>, ... Header files <samp>&lt;stdio.h&gt;</samp>,
-<samp>stdlib.h</samp> and <samp>&lt;stdarg.h&gt;</samp> will be required.
+with their corresponding include files <samp class="file">ap_dimension.h</samp>,
+<samp class="file">ap_lincons0.h</samp>, ... Header files <samp class="file">&lt;stdio.h&gt;</samp>,
+<samp class="file">stdlib.h</samp> and <samp class="file">&lt;stdarg.h&gt;</samp> will be required.
 </p>
 <p>Then, you should also include the header files of the underlying
-libraries you want to use it via APRON (for instance, <samp>box.h</samp>,
-<samp>pk.h</samp>, <samp>ap_ppl.h</samp>).
+libraries you want to use via APRON (for instance, <samp class="file">box.h</samp>,
+<samp class="file">pk.h</samp>, <samp class="file">ap_ppl.h</samp>).
 </p>
-<p>All programs using APRON must link against the <samp>libapron</samp>,
-<samp>libmpfr</samp> and <samp>libgmp</samp> libraries, and the underlying
-libraries you want to use it via APRON:
-</p><ol>
-<li> If some file <samp>test.c</samp> uses the POLKA library via APRON, the
-compilation command should look like &lsquo;<samp>gcc -I$ITV/include
+<p>All programs using APRON must link against the <samp class="file">libapron</samp>,
+<samp class="file">libmpfr</samp> and <samp class="file">libgmp</samp> libraries, and the underlying
+libraries you want to use via APRON:
+</p><ol class="enumerate">
+<li> If some file <samp class="file">test.c</samp> uses the POLKA library via APRON, the
+compilation command should look like &lsquo;<samp class="samp">gcc -I$ITV/include
 -I$MPFR/include -I$GMP/include -I$APRON/include -L$MPFR/lib
 -L$GMP/lib -L$APRON/lib -o test test.c -lpolkaMPQ -lapron -lmpfr -lgmp</samp>&rsquo;,
 assuming that the POLKA library is used in
 its &rsquo;MPQ&rsquo; version (internal number representation is GMP rationals) and
-resides in <samp>$APRON/include</samp> and <samp>$APRON/lib</samp> directories.
+resides in <samp class="file">$APRON/include</samp> and <samp class="file">$APRON/lib</samp> directories.
 
-<p>The <samp>libpolkaMPQ.a</samp> library is of course needed,
-<samp>libapron.a</samp> contains all the code common to all APRON library
+<p>The <samp class="file">libpolkaMPQ.a</samp> library is of course needed,
+<samp class="file">libapron.a</samp> contains all the code common to all APRON library
 (manipulation of expressions, environments, ...), as well as ITV
 functions (quasi)linearisation facilities of APRON,...), last the
-libraries <code>libmpfr.a</code> and <code>libgmp.a</code> are required both by
-<small>NEWPOLKA</small> and <small>APRON</small> .
-</p></li><li> If some file <samp>test.c</samp> uses the PPL library via APRON, the
-compilation command should look like &lsquo;<samp>g++ -I$ITV/include
+libraries <code class="code">libmpfr.a</code> and <code class="code">libgmp.a</code> are required both by
+<small class="sc">NEWPOLKA</small> and <small class="sc">APRON</small> .
+</p></li><li> If some file <samp class="file">test.c</samp> uses the PPL library via APRON, the
+compilation command should look like &lsquo;<samp class="samp">g++ -I$ITV/include
 -I$MPFR/include -I$GMP/include -I$APRON/include -I$PPL/include
 -L$ITV/lib -L$MPFR/lib -L$GMP/lib -L$APRON/lib -L$PPL/lib -o test
 test.c -la_ppl -lppl -lgmpxx -lapron -lmpfr
 -lgmp</samp>&rsquo;, assuming that PPL resides in $PPL and PPL APRON interface in
-<samp>$APRON/include</samp> and <samp>$APRON/lib</samp> directories.
+<samp class="file">$APRON/include</samp> and <samp class="file">$APRON/lib</samp> directories.
 
-<p>Notice that the PPL library (<samp>libppl.a</samp>) is a C++ library, you
-need to use &lsquo;<samp>g++</samp>&rsquo; instead of &lsquo;<samp>gcc</samp>&rsquo; for linking. You also
-need the C++ layer on top of GMP (<samp>libgmpxx.a</samp>). The
-<samp>libap_ppl.a</samp> library contains the layer on top of PPL which
+<p>Notice that the PPL library (<samp class="file">libppl.a</samp>) is a C++ library, you
+need to use &lsquo;<samp class="samp">g++</samp>&rsquo; instead of &lsquo;<samp class="samp">gcc</samp>&rsquo; for linking. You also
+need the C++ layer on top of GMP (<samp class="file">libgmpxx.a</samp>). The
+<samp class="file">libap_ppl.a</samp> library contains the layer on top of PPL which
 implements the APRON interface.
+</p>
+</li><li> If a C file <samp class="file">test.c</samp> uses the PPLite library via APRON,
+the compilation command should look like &lsquo;<samp class="samp">g++ -I$ITV/include
+-I$MPFR/include -I$GMP/include -I$APRON/include -I$PPLITE/include
+-I$FLINT/include -L$ITV/lib -L$MPFR/lib -L$GMP/lib -L$APRON/lib
+-L$PPLITE/lib -L$FLINT/lib -o test test.c
+-lap_pplite -lpplite -lflint -lgmpxx -lapron -lmpfr -lgmp</samp>&rsquo;,
+assuming that PPLite resides in $PPLITE and PPLite APRON interface in
+<samp class="file">$APRON/include</samp> and <samp class="file">$APRON/lib</samp> directories.
+
+<p>Notice that the PPLite library (<samp class="file">libpplite.a</samp>) is a C++ library,
+you need to use &lsquo;<samp class="samp">g++</samp>&rsquo; instead of &lsquo;<samp class="samp">gcc</samp>&rsquo; for linking.
+You also need the C++ layer on top of GMP (<samp class="file">libgmpxx.a</samp>).
+The <samp class="file">libap_pplite.a</samp> library contains the layer on top of PPLite
+which implements the APRON interface.
 </p></li></ol>
 <p>You should look at the specific documentation of the libraries for
 more details.
 </p>
 <hr>
-<span id="C-Naming-conventions"></span><div class="header">
+</div>
+<div class="subsection-level-extent" id="C-Naming-conventions">
+<div class="nav-panel">
 <p>
 Next: <a href="#Allocating-managers-and-setting-options" accesskey="n" rel="next">Allocating managers and setting options</a>, Previous: <a href="#C-Headers-and-Libraries" accesskey="p" rel="prev">C Headers and Libraries</a>, Up: <a href="#C-Programming-Guidelines" accesskey="u" rel="up">C Programming Guidelines</a> &nbsp; </p>
 </div>
-<span id="Naming-conventions-and-Allocation_002fDeallocation-schemes"></span><h4 class="subsection">Naming conventions and Allocation/Deallocation schemes</h4>
+<h4 class="subsection" id="Naming-conventions-and-Allocation_002fDeallocation-schemes"><span>Naming conventions and Allocation/Deallocation schemes<a class="copiable-link" href="#Naming-conventions-and-Allocation_002fDeallocation-schemes"> &para;</a></span></h4>
 
 <p>The general rule is that all type and function names defined by the
-library are prefixed with <code>ap_</code>, in order to prevent name
+library are prefixed with <code class="code">ap_</code>, in order to prevent name
 conflicts with other libraries. Moreover, functions operating on
-objects of type <code>ap_typ_t</code> are usually prefixed with
-<code>ap_typ_op</code>.
+objects of type <code class="code">ap_typ_t</code> are usually prefixed with
+<code class="code">ap_typ_op</code>.
 </p>
-<p>Given an object of datatype <code>ap_typ_t*</code>, two kinds of allocation/deallocation pairs of functions may be defined:
+<p>Given an object of datatype <code class="code">ap_typ_t*</code>, two kinds of allocation/deallocation pairs of functions may be defined:
 </p>
-<ol>
-<li> variable declaration: <code>ap_typ_t obj;</code>
-<ul>
-<li> Initialization:
-<code>void typ_init(ap_typ_t* arg, ...)</code> or <code>ap_typ_t ap_typ_make(...)</code>
-</li><li> Finalization:
-<code>void ap_typ_clear(ap_typ_t* arg)</code>
+<ol class="enumerate">
+<li> variable declaration: <code class="code">ap_typ_t obj;</code>
+<ul class="itemize mark-bullet">
+<li>Initialization:
+<code class="code">void typ_init(ap_typ_t* arg, ...)</code> or <code class="code">ap_typ_t ap_typ_make(...)</code>
+</li><li>Finalization:
+<code class="code">void ap_typ_clear(ap_typ_t* arg)</code>
 </li></ul>
 <p>this pair of functions follows the semantics used in the GMP
 library. The first function initializes the object of type
-<code>ap_typ_t</code> pointed to by <var>arg</var>, and fills it with a valid
+<code class="code">ap_typ_t</code> pointed to by <var class="var">arg</var>, and fills it with a valid
 content. The second function deallocates the memory possibly pointed
-to by fields of the object <code>*arg</code>, but do not attempt to
-deallocate the memory pointed by <var>arg</var>.
-</p></li><li> variable declaration: <code>ap_typ_t* obj;</code>
-<ul>
-<li> Allocation
-<code>ap_typ_t* ap_typ_alloc(...)</code>
-</li><li> Deallocation
-<code>void ap_typ_free(ap_typ_t* arg)</code>
+to by fields of the object <code class="code">*arg</code>, but do not attempt to
+deallocate the memory pointed by <var class="var">arg</var>.
+</p></li><li> variable declaration: <code class="code">ap_typ_t* obj;</code>
+<ul class="itemize mark-bullet">
+<li>Allocation
+<code class="code">ap_typ_t* ap_typ_alloc(...)</code>
+</li><li>Deallocation
+<code class="code">void ap_typ_free(ap_typ_t* arg)</code>
 </li></ul>
-<p>the first function allocates an object of type <code>typ_t</code> and then
-calls a <code>ap_typ_init</code>-like function on the result; the second
-functions first call a <code>ap_typ_clear</code>-like function and then
-deallocate the memory pointed by <var>arg</var>.
+<p>the first function allocates an object of type <code class="code">typ_t</code> and then
+calls a <code class="code">ap_typ_init</code>-like function on the result; the second
+functions first call a <code class="code">ap_typ_clear</code>-like function and then
+deallocate the memory pointed by <var class="var">arg</var>.
 </p></li></ol>
 
 <hr>
-<span id="Allocating-managers-and-setting-options"></span><div class="header">
-<p>
-Next: <a href="#Sequel-of-the-small-example" accesskey="n" rel="next">Sequel of the small example</a>, Previous: <a href="#C-Naming-conventions" accesskey="p" rel="prev">C Naming conventions</a>, Up: <a href="#C-Programming-Guidelines" accesskey="u" rel="up">C Programming Guidelines</a> &nbsp; </p>
 </div>
-<span id="Allocating-managers-and-setting-options-1"></span><h4 class="subsection">Allocating managers and setting options</h4>
+<div class="subsection-level-extent" id="Allocating-managers-and-setting-options">
+<div class="nav-panel">
+<p>
+Next: <a href="#Sequel-of-the-small-example" accesskey="n" rel="next">Sequel of the small example</a>, Previous: <a href="#C-Naming-conventions" accesskey="p" rel="prev">Naming conventions and Allocation/Deallocation schemes</a>, Up: <a href="#C-Programming-Guidelines" accesskey="u" rel="up">C Programming Guidelines</a> &nbsp; </p>
+</div>
+<h4 class="subsection" id="Allocating-managers-and-setting-options-1"><span>Allocating managers and setting options<a class="copiable-link" href="#Allocating-managers-and-setting-options-1"> &para;</a></span></h4>
 
 <p>From the user point of view, the benefit of using the APRON interface
 is to restrict the place where the user is aware of the real library
 in use to the code initializing the manager, as illustrated by the
 following example:
 </p><div class="example">
-<pre class="example">#include &quot;ap_global1.h&quot;
+<pre class="example-preformatted">#include &quot;ap_global1.h&quot;
 #include &quot;pk.h&quot;
 
 /* Allocating a Polka manager, for polyhedra with strict constraints */
@@ -190,21 +198,23 @@ pk_set_max_coeff_size(pk,size);
 </pre></div>
 <p>The standard operations can then be used and will have the
 semantics defined in the interface. Notice however that some
-generic functions are not formally generic: <code>abstract_fprint</code>,
-<code>abstract_fdump</code>, <code>abstract_approximate</code>.
+generic functions are not formally generic: <code class="code">abstract_fprint</code>,
+<code class="code">abstract_fdump</code>, <code class="code">abstract_approximate</code>.
 At any point, options may be modified in the same way as during
 the initialization.
 </p>
 <hr>
-<span id="Sequel-of-the-small-example"></span><div class="header">
+</div>
+<div class="subsection-level-extent" id="Sequel-of-the-small-example">
+<div class="nav-panel">
 <p>
 Next: <a href="#Typing-issue-in-C" accesskey="n" rel="next">Typing issue in C</a>, Previous: <a href="#Allocating-managers-and-setting-options" accesskey="p" rel="prev">Allocating managers and setting options</a>, Up: <a href="#C-Programming-Guidelines" accesskey="u" rel="up">C Programming Guidelines</a> &nbsp; </p>
 </div>
-<span id="Sequel-of-the-small-example-1"></span><h4 class="subsection">Sequel of the small example</h4>
+<h4 class="subsection" id="Sequel-of-the-small-example-1"><span>Sequel of the small example<a class="copiable-link" href="#Sequel-of-the-small-example-1"> &para;</a></span></h4>
 <p>An environment can be created as follows:
 </p>
-<div class="example">
-<pre class="example">/* Create an environment with 6 real variables */
+<div class="example smallexample">
+<pre class="example-preformatted">/* Create an environment with 6 real variables */
 ap_var_t name_of_dim[6] = {
   &quot;x&quot;,&quot;y&quot;,&quot;z&quot;,&quot;u&quot;,&quot;w&quot;,&quot;v&quot;
 };
@@ -215,8 +225,8 @@ ap_environment_t* env = ap_environment_alloc(NULL,0,name_of_dim,6);
 constraints is an abstract datatype, which requires careful
 manipulation w.r.t. memory management.
 </p>
-<div class="example">
-<pre class="example">/* Create an array of constraints of size 2 */
+<div class="example smallexample">
+<pre class="example-preformatted">/* Create an array of constraints of size 2 */
 ap_lincons1_array_t array = ap_lincons1_array_make(env,2);
 
 /* 1.a Creation of an inequality constraint */
@@ -249,8 +259,8 @@ ap_lincons1_array_set(&amp;array,1,&amp;cons);
 
 <p>Last we can build an abstract value.
 </p>
-<div class="example">
-<pre class="example">/* Creation of an abstract value defined by the array of constraints */
+<div class="example smallexample">
+<pre class="example-preformatted">/* Creation of an abstract value defined by the array of constraints */
 ap_abstract1_t abs = ap_abstract1_of_lincons_array(man,env,&amp;array);
 
 fprintf(stdout,&quot;Abstract value:\n&quot;);
@@ -259,8 +269,8 @@ ap_abstract1_fprint(stdout,man,&amp;abs);
 
 <p>We  now deallocate everything:
 </p>
-<div class="example">
-<pre class="example">/* deallocation */
+<div class="example smallexample">
+<pre class="example-preformatted">/* deallocation */
 ap_lincons1_array_clear(&amp;array);
 ap_abstract1_clear(&amp;abs);
 ap_environment_free(env);
@@ -268,18 +278,20 @@ ap_manager_free(man);
 </pre></div>
 
 <hr>
-<span id="Typing-issue-in-C"></span><div class="header">
+</div>
+<div class="subsection-level-extent" id="Typing-issue-in-C">
+<div class="nav-panel">
 <p>
 Previous: <a href="#Sequel-of-the-small-example" accesskey="p" rel="prev">Sequel of the small example</a>, Up: <a href="#C-Programming-Guidelines" accesskey="u" rel="up">C Programming Guidelines</a> &nbsp; </p>
 </div>
-<span id="Typing-issue-in-C-1"></span><h4 class="subsection">Typing issue in C</h4>
+<h4 class="subsection" id="Typing-issue-in-C-1"><span>Typing issue in C<a class="copiable-link" href="#Typing-issue-in-C-1"> &para;</a></span></h4>
 
 <p>The use of several libraries at the same time via the common
 interface and the managers associated to each library raises the
 problem of typing. Look at the following code:
 </p>
 <div class="example">
-<pre class="example">ap_manager_t* manpk = pk_manager_alloc(true); /* manager for Polka */
+<pre class="example-preformatted">ap_manager_t* manpk = pk_manager_alloc(true); /* manager for Polka */
 ap_manager_t* manoct = oct_manager_alloc();    /* manager for octagon */
 
 ap_abstract0_t* abs1 = ap_abstract_top(manpk,3,3);
@@ -294,15 +306,15 @@ abstract0_meet_with(manpk,abs2,abs3);
      abs2 and abs3 to be polyhedra, but they are octagons */
 </pre></div>
 
-<p>There is actually no static typing, as <code>abstract0_t*</code>
-and <code>manager_t</code> are abstract types shared by the different
+<p>There is actually no static typing, as <code class="code">abstract0_t*</code>
+and <code class="code">manager_t</code> are abstract types shared by the different
 libraries. Types are thus dynamically checked by the interface.
-Notice that the use of <em>C++</em> and inheritance would not solve
+Notice that the use of <em class="emph">C++</em> and inheritance would not solve
 directly the problem, if functions of the interface are methods of
 the manager; one would have:
 </p>
 <div class="example">
-<pre class="example">ap_manager_t* manpk = pk_manager_alloc(true);
+<pre class="example-preformatted">ap_manager_t* manpk = pk_manager_alloc(true);
   /* manager for Polka, effective type pk_manager_t* */
 ap_manager_t* manoct = oct_manager_alloc();
   /* manager for octagon, effective type oct_manager_t* */
@@ -322,10 +334,12 @@ bool b = manoct-&gt;abstract0_is_eq(abs1,abs2);
 <p>Currently, only the OCaml polymorphic type system allows to solve
 elegantly this problem.
 </p>
+</div>
+</div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
-Previous: <a href="#Sequel-of-the-small-example" accesskey="p" rel="prev">Sequel of the small example</a>, Up: <a href="#C-Programming-Guidelines" accesskey="u" rel="up">C Programming Guidelines</a> &nbsp; </p>
+Next: <a href="OCaml-Programming-Guidelines.html" accesskey="n" rel="next">OCaml Programming Guidelines</a>, Previous: <a href="Installing-APRON.html" accesskey="p" rel="prev">Installing APRON</a>, Up: <a href="APRON-Guidelines.html" accesskey="u" rel="up">APRON Guidelines</a> &nbsp; </p>
 </div>
 
 

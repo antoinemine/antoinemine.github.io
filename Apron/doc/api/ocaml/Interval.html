@@ -1,8 +1,8 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" href="style.css" type="text/css">
-<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="Start" href="index.html">
 <link rel="previous" href="Scalar.html">
@@ -39,6 +39,7 @@
 <link title="Box" rel="Chapter" href="Box.html">
 <link title="Oct" rel="Chapter" href="Oct.html">
 <link title="Polka" rel="Chapter" href="Polka.html">
+<link title="T1p" rel="Chapter" href="T1p.html">
 <link title="Ppl" rel="Chapter" href="Ppl.html">
 <link title="PolkaGrid" rel="Chapter" href="PolkaGrid.html">
 <link title="Mpz" rel="Chapter" href="Mpz.html">
@@ -74,29 +75,29 @@
 <code><span class="keyword">mutable&nbsp;</span><span id="TYPEELTt.sup">sup</span>&nbsp;: <code class="type"><a href="Scalar.html#TYPEt">Scalar.t</a></code>;</code></td>
 
 </tr></table>
-}
+<code>}</code>
 
 
 <p>APRON Intervals on scalars</p>
 
-<pre><span id="VALof_scalar"><span class="keyword">val</span> of_scalar</span> : <code class="type"><a href="Scalar.html#TYPEt">Scalar.t</a> -> <a href="Scalar.html#TYPEt">Scalar.t</a> -> <a href="Interval.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALof_scalar"><span class="keyword">val</span> of_scalar</span> : <code class="type"><a href="Scalar.html#TYPEt">Scalar.t</a> -&gt; <a href="Scalar.html#TYPEt">Scalar.t</a> -&gt; <a href="Interval.html#TYPEt">t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Build an interval from a lower and an upper bound</p>
 </div>
 </div>
 
-<pre><span id="VALof_infsup"><span class="keyword">val</span> of_infsup</span> : <code class="type"><a href="Scalar.html#TYPEt">Scalar.t</a> -> <a href="Scalar.html#TYPEt">Scalar.t</a> -> <a href="Interval.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALof_infsup"><span class="keyword">val</span> of_infsup</span> : <code class="type"><a href="Scalar.html#TYPEt">Scalar.t</a> -&gt; <a href="Scalar.html#TYPEt">Scalar.t</a> -&gt; <a href="Interval.html#TYPEt">t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>depreciated</p>
 </div>
 </div>
 
-<pre><span id="VALof_mpq"><span class="keyword">val</span> of_mpq</span> : <code class="type"><a href="Mpq.html#TYPEt">Mpq.t</a> -> <a href="Mpq.html#TYPEt">Mpq.t</a> -> <a href="Interval.html#TYPEt">t</a></code></pre>
-<pre><span id="VALof_mpqf"><span class="keyword">val</span> of_mpqf</span> : <code class="type"><a href="Mpqf.html#TYPEt">Mpqf.t</a> -> <a href="Mpqf.html#TYPEt">Mpqf.t</a> -> <a href="Interval.html#TYPEt">t</a></code></pre>
-<pre><span id="VALof_int"><span class="keyword">val</span> of_int</span> : <code class="type">int -> int -> <a href="Interval.html#TYPEt">t</a></code></pre>
-<pre><span id="VALof_frac"><span class="keyword">val</span> of_frac</span> : <code class="type">int -> int -> int -> int -> <a href="Interval.html#TYPEt">t</a></code></pre>
-<pre><span id="VALof_float"><span class="keyword">val</span> of_float</span> : <code class="type">float -> float -> <a href="Interval.html#TYPEt">t</a></code></pre>
-<pre><span id="VALof_mpfr"><span class="keyword">val</span> of_mpfr</span> : <code class="type"><a href="Mpfr.html#TYPEt">Mpfr.t</a> -> <a href="Mpfr.html#TYPEt">Mpfr.t</a> -> <a href="Interval.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALof_mpq"><span class="keyword">val</span> of_mpq</span> : <code class="type"><a href="Mpq.html#TYPEt">Mpq.t</a> -&gt; <a href="Mpq.html#TYPEt">Mpq.t</a> -&gt; <a href="Interval.html#TYPEt">t</a></code></pre>
+<pre><span id="VALof_mpqf"><span class="keyword">val</span> of_mpqf</span> : <code class="type"><a href="Mpqf.html#TYPEt">Mpqf.t</a> -&gt; <a href="Mpqf.html#TYPEt">Mpqf.t</a> -&gt; <a href="Interval.html#TYPEt">t</a></code></pre>
+<pre><span id="VALof_int"><span class="keyword">val</span> of_int</span> : <code class="type">int -&gt; int -&gt; <a href="Interval.html#TYPEt">t</a></code></pre>
+<pre><span id="VALof_frac"><span class="keyword">val</span> of_frac</span> : <code class="type">int -&gt; int -&gt; int -&gt; int -&gt; <a href="Interval.html#TYPEt">t</a></code></pre>
+<pre><span id="VALof_float"><span class="keyword">val</span> of_float</span> : <code class="type">float -&gt; float -&gt; <a href="Interval.html#TYPEt">t</a></code></pre>
+<pre><span id="VALof_mpfr"><span class="keyword">val</span> of_mpfr</span> : <code class="type"><a href="Mpfr.html#TYPEt">Mpfr.t</a> -&gt; <a href="Mpfr.html#TYPEt">Mpfr.t</a> -&gt; <a href="Interval.html#TYPEt">t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Create an interval from resp. two</p>
 <ul>
@@ -110,25 +111,25 @@
 </div>
 </div>
 
-<pre><span id="VALis_top"><span class="keyword">val</span> is_top</span> : <code class="type"><a href="Interval.html#TYPEt">t</a> -> bool</code></pre><div class="info ">
+<pre><span id="VALis_top"><span class="keyword">val</span> is_top</span> : <code class="type"><a href="Interval.html#TYPEt">t</a> -&gt; bool</code></pre><div class="info ">
 <div class="info-desc">
 <p>Does the interval represent the universe (<code class="code">[-oo,+oo]</code>) ?</p>
 </div>
 </div>
 
-<pre><span id="VALis_bottom"><span class="keyword">val</span> is_bottom</span> : <code class="type"><a href="Interval.html#TYPEt">t</a> -> bool</code></pre><div class="info ">
+<pre><span id="VALis_bottom"><span class="keyword">val</span> is_bottom</span> : <code class="type"><a href="Interval.html#TYPEt">t</a> -&gt; bool</code></pre><div class="info ">
 <div class="info-desc">
 <p>Does the interval contain no value (<code class="code">[a,b]</code> with a&gt;b) ?</p>
 </div>
 </div>
 
-<pre><span id="VALis_leq"><span class="keyword">val</span> is_leq</span> : <code class="type"><a href="Interval.html#TYPEt">t</a> -> <a href="Interval.html#TYPEt">t</a> -> bool</code></pre><div class="info ">
+<pre><span id="VALis_leq"><span class="keyword">val</span> is_leq</span> : <code class="type"><a href="Interval.html#TYPEt">t</a> -&gt; <a href="Interval.html#TYPEt">t</a> -&gt; bool</code></pre><div class="info ">
 <div class="info-desc">
 <p>Inclusion test. <code class="code">is_leq&nbsp;x&nbsp;y</code> returns <code class="code"><span class="keyword">true</span></code> if <code class="code">x</code> is included in <code class="code">y</code></p>
 </div>
 </div>
 
-<pre><span id="VALcmp"><span class="keyword">val</span> cmp</span> : <code class="type"><a href="Interval.html#TYPEt">t</a> -> <a href="Interval.html#TYPEt">t</a> -> int</code></pre><div class="info ">
+<pre><span id="VALcmp"><span class="keyword">val</span> cmp</span> : <code class="type"><a href="Interval.html#TYPEt">t</a> -&gt; <a href="Interval.html#TYPEt">t</a> -&gt; int</code></pre><div class="info ">
 <div class="info-desc">
 <p>Non Total Comparison:
 0: equality
@@ -139,25 +140,25 @@
 </div>
 </div>
 
-<pre><span id="VALequal"><span class="keyword">val</span> equal</span> : <code class="type"><a href="Interval.html#TYPEt">t</a> -> <a href="Interval.html#TYPEt">t</a> -> bool</code></pre><div class="info ">
+<pre><span id="VALequal"><span class="keyword">val</span> equal</span> : <code class="type"><a href="Interval.html#TYPEt">t</a> -&gt; <a href="Interval.html#TYPEt">t</a> -&gt; bool</code></pre><div class="info ">
 <div class="info-desc">
 <p>Equality test</p>
 </div>
 </div>
 
-<pre><span id="VALis_zero"><span class="keyword">val</span> is_zero</span> : <code class="type"><a href="Interval.html#TYPEt">t</a> -> bool</code></pre><div class="info ">
+<pre><span id="VALis_zero"><span class="keyword">val</span> is_zero</span> : <code class="type"><a href="Interval.html#TYPEt">t</a> -&gt; bool</code></pre><div class="info ">
 <div class="info-desc">
 <p>Is the interval equal to <code class="code">0,0</code> ?</p>
 </div>
 </div>
 
-<pre><span id="VALequal_int"><span class="keyword">val</span> equal_int</span> : <code class="type"><a href="Interval.html#TYPEt">t</a> -> int -> bool</code></pre><div class="info ">
+<pre><span id="VALequal_int"><span class="keyword">val</span> equal_int</span> : <code class="type"><a href="Interval.html#TYPEt">t</a> -&gt; int -&gt; bool</code></pre><div class="info ">
 <div class="info-desc">
 <p>Is the interval equal to <code class="code">i,i</code> ?</p>
 </div>
 </div>
 
-<pre><span id="VALneg"><span class="keyword">val</span> neg</span> : <code class="type"><a href="Interval.html#TYPEt">t</a> -> <a href="Interval.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALneg"><span class="keyword">val</span> neg</span> : <code class="type"><a href="Interval.html#TYPEt">t</a> -&gt; <a href="Interval.html#TYPEt">t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Negation</p>
 </div>
@@ -170,20 +171,20 @@
 </div>
 </div>
 
-<pre><span id="VALset_infsup"><span class="keyword">val</span> set_infsup</span> : <code class="type"><a href="Interval.html#TYPEt">t</a> -> <a href="Scalar.html#TYPEt">Scalar.t</a> -> <a href="Scalar.html#TYPEt">Scalar.t</a> -> unit</code></pre><div class="info ">
+<pre><span id="VALset_infsup"><span class="keyword">val</span> set_infsup</span> : <code class="type"><a href="Interval.html#TYPEt">t</a> -&gt; <a href="Scalar.html#TYPEt">Scalar.t</a> -&gt; <a href="Scalar.html#TYPEt">Scalar.t</a> -&gt; unit</code></pre><div class="info ">
 <div class="info-desc">
 <p>Fill the interval with the given lower and upper bouunds</p>
 </div>
 </div>
 
-<pre><span id="VALset_top"><span class="keyword">val</span> set_top</span> : <code class="type"><a href="Interval.html#TYPEt">t</a> -> unit</code></pre>
-<pre><span id="VALset_bottom"><span class="keyword">val</span> set_bottom</span> : <code class="type"><a href="Interval.html#TYPEt">t</a> -> unit</code></pre><div class="info ">
+<pre><span id="VALset_top"><span class="keyword">val</span> set_top</span> : <code class="type"><a href="Interval.html#TYPEt">t</a> -&gt; unit</code></pre>
+<pre><span id="VALset_bottom"><span class="keyword">val</span> set_bottom</span> : <code class="type"><a href="Interval.html#TYPEt">t</a> -&gt; unit</code></pre><div class="info ">
 <div class="info-desc">
 <p>Fill the interval with top (resp. bottom) value</p>
 </div>
 </div>
 
-<pre><span id="VALprint"><span class="keyword">val</span> print</span> : <code class="type">Stdlib.Format.formatter -> <a href="Interval.html#TYPEt">t</a> -> unit</code></pre><div class="info ">
+<pre><span id="VALprint"><span class="keyword">val</span> print</span> : <code class="type">Stdlib.Format.formatter -&gt; <a href="Interval.html#TYPEt">t</a> -&gt; unit</code></pre><div class="info ">
 <div class="info-desc">
 <p>Print an interval, under the format <code class="code">[inf,sup]</code></p>
 </div>

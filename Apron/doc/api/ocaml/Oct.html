@@ -1,8 +1,8 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" href="style.css" type="text/css">
-<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="Start" href="index.html">
 <link rel="previous" href="Box.html">
@@ -39,6 +39,7 @@
 <link title="Box" rel="Chapter" href="Box.html">
 <link title="Oct" rel="Chapter" href="Oct.html">
 <link title="Polka" rel="Chapter" href="Polka.html">
+<link title="T1p" rel="Chapter" href="T1p.html">
 <link title="Ppl" rel="Chapter" href="Ppl.html">
 <link title="PolkaGrid" rel="Chapter" href="PolkaGrid.html">
 <link title="Mpz" rel="Chapter" href="Mpz.html">
@@ -83,43 +84,43 @@
 </div>
 
 
-<pre><span id="VALmanager_alloc"><span class="keyword">val</span> manager_alloc</span> : <code class="type">unit -> <a href="Oct.html#TYPEt">t</a> Apron.Manager.t</code></pre><div class="info ">
+<pre><span id="VALmanager_alloc"><span class="keyword">val</span> manager_alloc</span> : <code class="type">unit -&gt; <a href="Oct.html#TYPEt">t</a> Apron.Manager.t</code></pre><div class="info ">
 <div class="info-desc">
 <p>Allocate a new manager to manipulate octagons.</p>
 </div>
 </div>
 
-<pre><span id="VALmanager_get_internal"><span class="keyword">val</span> manager_get_internal</span> : <code class="type"><a href="Oct.html#TYPEt">t</a> Apron.Manager.t -> <a href="Oct.html#TYPEinternal">internal</a></code></pre><div class="info ">
+<pre><span id="VALmanager_get_internal"><span class="keyword">val</span> manager_get_internal</span> : <code class="type"><a href="Oct.html#TYPEt">t</a> Apron.Manager.t -&gt; <a href="Oct.html#TYPEinternal">internal</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>No internal parameters for now...</p>
 </div>
 </div>
 
-<pre><span id="VALof_generator_array"><span class="keyword">val</span> of_generator_array</span> : <code class="type"><a href="Oct.html#TYPEt">t</a> Apron.Manager.t -><br>       int -> int -> Apron.Generator0.t array -> <a href="Oct.html#TYPEt">t</a> Apron.Abstract0.t</code></pre><div class="info ">
+<pre><span id="VALof_generator_array"><span class="keyword">val</span> of_generator_array</span> : <code class="type"><a href="Oct.html#TYPEt">t</a> Apron.Manager.t -&gt;<br>       int -&gt; int -&gt; Apron.Generator0.t array -&gt; <a href="Oct.html#TYPEt">t</a> Apron.Abstract0.t</code></pre><div class="info ">
 <div class="info-desc">
 <p>Approximate a set of generators to an abstract value, with best precision.</p>
 </div>
 </div>
 
-<pre><span id="VALwidening_thresholds"><span class="keyword">val</span> widening_thresholds</span> : <code class="type"><a href="Oct.html#TYPEt">t</a> Apron.Manager.t -><br>       <a href="Oct.html#TYPEt">t</a> Apron.Abstract0.t -><br>       <a href="Oct.html#TYPEt">t</a> Apron.Abstract0.t -> Apron.Scalar.t array -> <a href="Oct.html#TYPEt">t</a> Apron.Abstract0.t</code></pre><div class="info ">
+<pre><span id="VALwidening_thresholds"><span class="keyword">val</span> widening_thresholds</span> : <code class="type"><a href="Oct.html#TYPEt">t</a> Apron.Manager.t -&gt;<br>       <a href="Oct.html#TYPEt">t</a> Apron.Abstract0.t -&gt;<br>       <a href="Oct.html#TYPEt">t</a> Apron.Abstract0.t -&gt; Apron.Scalar.t array -&gt; <a href="Oct.html#TYPEt">t</a> Apron.Abstract0.t</code></pre><div class="info ">
 <div class="info-desc">
 <p>Widening with scalar thresholds.</p>
 </div>
 </div>
 
-<pre><span id="VALnarrowing"><span class="keyword">val</span> narrowing</span> : <code class="type"><a href="Oct.html#TYPEt">t</a> Apron.Manager.t -><br>       <a href="Oct.html#TYPEt">t</a> Apron.Abstract0.t -> <a href="Oct.html#TYPEt">t</a> Apron.Abstract0.t -> <a href="Oct.html#TYPEt">t</a> Apron.Abstract0.t</code></pre><div class="info ">
+<pre><span id="VALnarrowing"><span class="keyword">val</span> narrowing</span> : <code class="type"><a href="Oct.html#TYPEt">t</a> Apron.Manager.t -&gt;<br>       <a href="Oct.html#TYPEt">t</a> Apron.Abstract0.t -&gt; <a href="Oct.html#TYPEt">t</a> Apron.Abstract0.t -&gt; <a href="Oct.html#TYPEt">t</a> Apron.Abstract0.t</code></pre><div class="info ">
 <div class="info-desc">
 <p>Standard narrowing.</p>
 </div>
 </div>
 
-<pre><span id="VALadd_epsilon"><span class="keyword">val</span> add_epsilon</span> : <code class="type"><a href="Oct.html#TYPEt">t</a> Apron.Manager.t -><br>       <a href="Oct.html#TYPEt">t</a> Apron.Abstract0.t -> Apron.Scalar.t -> <a href="Oct.html#TYPEt">t</a> Apron.Abstract0.t</code></pre><div class="info ">
+<pre><span id="VALadd_epsilon"><span class="keyword">val</span> add_epsilon</span> : <code class="type"><a href="Oct.html#TYPEt">t</a> Apron.Manager.t -&gt;<br>       <a href="Oct.html#TYPEt">t</a> Apron.Abstract0.t -&gt; Apron.Scalar.t -&gt; <a href="Oct.html#TYPEt">t</a> Apron.Abstract0.t</code></pre><div class="info ">
 <div class="info-desc">
 <p>Perturbation.</p>
 </div>
 </div>
 
-<pre><span id="VALadd_epsilon_bin"><span class="keyword">val</span> add_epsilon_bin</span> : <code class="type"><a href="Oct.html#TYPEt">t</a> Apron.Manager.t -><br>       <a href="Oct.html#TYPEt">t</a> Apron.Abstract0.t -><br>       <a href="Oct.html#TYPEt">t</a> Apron.Abstract0.t -> Apron.Scalar.t -> <a href="Oct.html#TYPEt">t</a> Apron.Abstract0.t</code></pre><div class="info ">
+<pre><span id="VALadd_epsilon_bin"><span class="keyword">val</span> add_epsilon_bin</span> : <code class="type"><a href="Oct.html#TYPEt">t</a> Apron.Manager.t -&gt;<br>       <a href="Oct.html#TYPEt">t</a> Apron.Abstract0.t -&gt;<br>       <a href="Oct.html#TYPEt">t</a> Apron.Abstract0.t -&gt; Apron.Scalar.t -&gt; <a href="Oct.html#TYPEt">t</a> Apron.Abstract0.t</code></pre><div class="info ">
 <div class="info-desc">
 <p>Perturbation.</p>
 </div>
@@ -131,19 +132,19 @@
 </div>
 </div>
 <h3 id="2_Typeconversions">Type conversions</h3>
-<pre><span id="VALmanager_is_oct"><span class="keyword">val</span> manager_is_oct</span> : <code class="type">'a Apron.Manager.t -> bool</code></pre><div class="info ">
+<pre><span id="VALmanager_is_oct"><span class="keyword">val</span> manager_is_oct</span> : <code class="type">'a Apron.Manager.t -&gt; bool</code></pre><div class="info ">
 <div class="info-desc">
 <p>Return <code class="code"><span class="keyword">true</span></code> iff the argument manager is an octagon manager</p>
 </div>
 </div>
 
-<pre><span id="VALmanager_of_oct"><span class="keyword">val</span> manager_of_oct</span> : <code class="type"><a href="Oct.html#TYPEt">t</a> Apron.Manager.t -> 'a Apron.Manager.t</code></pre><div class="info ">
+<pre><span id="VALmanager_of_oct"><span class="keyword">val</span> manager_of_oct</span> : <code class="type"><a href="Oct.html#TYPEt">t</a> Apron.Manager.t -&gt; 'a Apron.Manager.t</code></pre><div class="info ">
 <div class="info-desc">
 <p>Make an octagon manager generic</p>
 </div>
 </div>
 
-<pre><span id="VALmanager_to_oct"><span class="keyword">val</span> manager_to_oct</span> : <code class="type">'a Apron.Manager.t -> <a href="Oct.html#TYPEt">t</a> Apron.Manager.t</code></pre><div class="info ">
+<pre><span id="VALmanager_to_oct"><span class="keyword">val</span> manager_to_oct</span> : <code class="type">'a Apron.Manager.t -&gt; <a href="Oct.html#TYPEt">t</a> Apron.Manager.t</code></pre><div class="info ">
 <div class="info-desc">
 <p>Instanciate the type of an octagon manager.
       Raises <code class="code"><span class="constructor">Failure</span></code> if the argument manager is not an octagon manager</p>

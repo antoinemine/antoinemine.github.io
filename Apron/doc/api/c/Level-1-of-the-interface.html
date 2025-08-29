@@ -1,35 +1,26 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.6, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.2, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Level 1 of the interface (APRON 0.9.12)</title>
+<title>Level 1 of the interface (APRON 0.9.15)</title>
 
-<meta name="description" content="Level 1 of the interface (APRON 0.9.12)">
-<meta name="keywords" content="Level 1 of the interface (APRON 0.9.12)">
+<meta name="description" content="Level 1 of the interface (APRON 0.9.15)">
+<meta name="keywords" content="Level 1 of the interface (APRON 0.9.15)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
-<link href="index.html#Top" rel="start" title="Top">
-<link href="index.html#Top" rel="up" title="Top">
-<link href="Variables-and-related-operations.html#Variables-and-related-operations" rel="next" title="Variables and related operations">
-<link href="Coefficients.html#Other-operations-on-coefficients" rel="prev" title="Other operations on coefficients">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="index.html" rel="up" title="Top">
+<link href="Level-0-of-the-interface.html" rel="next" title="Level 0 of the interface">
+<link href="Scalars-_0026-Intervals-_0026-Coefficients.html" rel="prev" title="Scalars &amp; Intervals &amp; Coefficients">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+ul.mark-bullet {list-style-type: disc}
 -->
 </style>
 
@@ -37,61 +28,55 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Level-1-of-the-interface"></span><div class="header">
+<div class="chapter-level-extent" id="Level-1-of-the-interface">
+<div class="nav-panel">
 <p>
-Next: <a href="Level-0-of-the-interface.html#Level-0-of-the-interface" accesskey="n" rel="next">Level 0 of the interface</a>, Previous: <a href="Scalars-_0026-Intervals-_0026-Coefficients.html#Scalars-_0026-Intervals-_0026-Coefficients" accesskey="p" rel="prev">Scalars &amp; Intervals &amp; Coefficients</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="Level-0-of-the-interface.html" accesskey="n" rel="next">Level 0 of the interface</a>, Previous: <a href="Scalars-_0026-Intervals-_0026-Coefficients.html" accesskey="p" rel="prev">Scalars &amp; Intervals &amp; coefficients</a>, Up: <a href="index.html" accesskey="u" rel="up">APRON</a> &nbsp; </p>
 </div>
-<span id="Level-1-of-the-interface-1"></span><h2 class="chapter">Level 1 of the interface</h2>
+<h2 class="chapter" id="Level-1-of-the-interface-1"><span>Level 1 of the interface<a class="copiable-link" href="#Level-1-of-the-interface-1"> &para;</a></span></h2>
 
-<p>This interface of level 1 is defined in <samp>ap_global1.h</samp>.
+<p>This interface of level 1 is defined in <samp class="file">ap_global1.h</samp>.
 </p>
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="Variables-and-related-operations.html#Variables-and-related-operations" accesskey="1">Variables and related operations</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Environments.html#Environments" accesskey="2">Environments</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Linear-expressions-of-level-1.html#Linear-expressions-of-level-1" accesskey="3">Linear expressions of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Linear-constraints-of-level-1.html#Linear-constraints-of-level-1" accesskey="4">Linear constraints of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Generators-of-level-1.html#Generators-of-level-1" accesskey="5">Generators of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Tree-expressions-of-level-1.html#Tree-expressions-of-level-1" accesskey="6">Tree expressions of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Tree-constraints-of-level-1.html#Tree-constraints-of-level-1" accesskey="7">Tree constraints of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Abstract-values-and-operations-of-level-1.html#Abstract-values-and-operations-of-level-1" accesskey="8">Abstract values and operations of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
 <p>The main functions brought by level 1 are
 </p>
-<ul>
-<li> to convert variables to dimensions, thanks to the addition of
+<ul class="itemize mark-bullet">
+<li>to convert variables to dimensions, thanks to the addition of
 environments to objects;
-</li><li> to redimension (abstract values), expressions, constraints and
+</li><li>to redimension (abstract values), expressions, constraints and
 generators defined on different environments.
 </li></ul>
 
 <p>The policy for redimensioning is the following one:
 </p>
-<ul>
-<li> For functions taking one abstract value and one expression (or
+<ul class="itemize mark-bullet">
+<li>For functions taking one abstract value and one expression (or
 constraint or generator, or array of ...), the environment of the
 expression should be a sub-environment of the environment of the
 abstract value. The environment of the result is the environment of
 the argument abstract value.
-</li><li> For functions taking several abstract values, their environments
+</li><li>For functions taking several abstract values, their environments
 should be the same. Otherwise, it is up to the user to move them
-to a common super-environment (see <a href="Environments.html#Environments">Environments</a> and
-<a href="Abstract-values-and-operations-of-level-1.html#Change-of-environments-of-abstract-values-of-level-1">Change of environments of abstract values of level 1</a>).
+to a common super-environment (see <a class="ref" href="Environments.html">Environments (<samp class="file">ap_environment.h</samp>)</a> and
+<a class="ref" href="Abstract-values-and-operations-of-level-1.html#Change-of-environments-of-abstract-values-of-level-1">Change of environments of abstract values of level 1</a>).
 </li></ul>
 
 
+<ul class="mini-toc">
+<li><a href="Variables-and-related-operations.html" accesskey="1">Variables and related operations (<samp class="file">ap_var.h</samp>)</a></li>
+<li><a href="Environments.html" accesskey="2">Environments (<samp class="file">ap_environment.h</samp>)</a></li>
+<li><a href="Linear-expressions-of-level-1.html#Linear-expressions-of-level-1" accesskey="3">Linear expressions of level 1 (<samp class="file">ap_linexpr1.h</samp>)</a></li>
+<li><a href="Linear-constraints-of-level-1.html#Linear-constraints-of-level-1" accesskey="4">Linear constraints of level 1 (<samp class="file">ap_lincons1.h</samp>)</a></li>
+<li><a href="Generators-of-level-1.html#Generators-of-level-1" accesskey="5">generators of level 1 (<samp class="file">ap_generator1.h</samp>)</a></li>
+<li><a href="Tree-expressions-of-level-1.html#Tree-expressions-of-level-1" accesskey="6">Tree expressions of level 1 (<samp class="file">ap_texpr1.h</samp>)</a></li>
+<li><a href="Tree-constraints-of-level-1.html#Tree-constraints-of-level-1" accesskey="7">Tree constraints of level 1 (<samp class="file">ap_tcons1.h</samp>)</a></li>
+<li><a href="Abstract-values-and-operations-of-level-1.html#Abstract-values-and-operations-of-level-1" accesskey="8">Abstract values and operations of level 1 (<samp class="file">ap_abstract1.h</samp>)</a></li>
+</ul>
+</div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
-Next: <a href="Level-0-of-the-interface.html#Level-0-of-the-interface" accesskey="n" rel="next">Level 0 of the interface</a>, Previous: <a href="Scalars-_0026-Intervals-_0026-Coefficients.html#Scalars-_0026-Intervals-_0026-Coefficients" accesskey="p" rel="prev">Scalars &amp; Intervals &amp; Coefficients</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="Level-0-of-the-interface.html" accesskey="n" rel="next">Level 0 of the interface</a>, Previous: <a href="Scalars-_0026-Intervals-_0026-Coefficients.html" accesskey="p" rel="prev">Scalars &amp; Intervals &amp; coefficients</a>, Up: <a href="index.html" accesskey="u" rel="up">APRON</a> &nbsp; </p>
 </div>
 
 

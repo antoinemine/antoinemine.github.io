@@ -1,35 +1,25 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.6, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.2, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Functions for implementors (APRON 0.9.12)</title>
+<title>Functions for implementors (APRON 0.9.15)</title>
 
-<meta name="description" content="Functions for implementors (APRON 0.9.12)">
-<meta name="keywords" content="Functions for implementors (APRON 0.9.12)">
+<meta name="description" content="Functions for implementors (APRON 0.9.15)">
+<meta name="keywords" content="Functions for implementors (APRON 0.9.15)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
-<link href="index.html#Top" rel="start" title="Top">
-<link href="index.html#Top" rel="up" title="Top">
-<link href="Examples.html#Examples" rel="next" title="Examples">
-<link href="Abstract-values-and-operations-of-level-0.html#Additional-functions-on-abstract-values-of-level-0" rel="prev" title="Additional functions on abstract values of level 0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="index.html" rel="up" title="Top">
+<link href="Examples.html" rel="next" title="Examples">
+<link href="Level-0-of-the-interface.html" rel="prev" title="Level 0 of the interface">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
 -->
 </style>
 
@@ -37,15 +27,16 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Functions-for-implementors"></span><div class="header">
+<div class="chapter-level-extent" id="Functions-for-implementors">
+<div class="nav-panel">
 <p>
-Next: <a href="Examples.html#Examples" accesskey="n" rel="next">Examples</a>, Previous: <a href="Level-0-of-the-interface.html#Level-0-of-the-interface" accesskey="p" rel="prev">Level 0 of the interface</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="Examples.html" accesskey="n" rel="next">Examples</a>, Previous: <a href="Level-0-of-the-interface.html" accesskey="p" rel="prev">Level 0 of the interface</a>, Up: <a href="index.html" accesskey="u" rel="up">APRON</a> &nbsp; </p>
 </div>
-<span id="Functions-for-implementors-1"></span><h2 class="chapter">Functions for implementors</h2>
+<h2 class="chapter" id="Functions-for-implementors-1"><span>Functions for implementors<a class="copiable-link" href="#Functions-for-implementors-1"> &para;</a></span></h2>
 
 <p>The signatures and documentation of these functions are
-provided by the files <samp>ap_generic.h</samp>,
-<samp>ap_linearize.h</samp> and <samp>ap_reducedproduct.h</samp>.
+provided by the files <samp class="file">ap_generic.h</samp>,
+<samp class="file">ap_linearize.h</samp> and <samp class="file">ap_reducedproduct.h</samp>.
 </p>
 <p>These functions are dedicated to implementors of underlying
 libraries. They offer generic default implementations for some of
@@ -59,12 +50,13 @@ the virtual table to such a generic implementation.
 </p>
 <p>They manipulated &quot;unboxed&quot; abstract values, which are native to
 the underlying library: they are not yet boxed with the manager in
-the type <code>ap_abstract0_t</code>.
+the type <code class="code">ap_abstract0_t</code>.
 </p>
+</div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
-Next: <a href="Examples.html#Examples" accesskey="n" rel="next">Examples</a>, Previous: <a href="Level-0-of-the-interface.html#Level-0-of-the-interface" accesskey="p" rel="prev">Level 0 of the interface</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="Examples.html" accesskey="n" rel="next">Examples</a>, Previous: <a href="Level-0-of-the-interface.html" accesskey="p" rel="prev">Level 0 of the interface</a>, Up: <a href="index.html" accesskey="u" rel="up">APRON</a> &nbsp; </p>
 </div>
 
 

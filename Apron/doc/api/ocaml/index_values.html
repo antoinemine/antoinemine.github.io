@@ -1,7 +1,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="style.css" type="text/css">
-<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="Start" href="index.html">
 <link title="Index of types" rel=Appendix href="index_types.html">
@@ -35,6 +35,7 @@
 <link title="Box" rel="Chapter" href="Box.html">
 <link title="Oct" rel="Chapter" href="Oct.html">
 <link title="Polka" rel="Chapter" href="Polka.html">
+<link title="T1p" rel="Chapter" href="T1p.html">
 <link title="Ppl" rel="Chapter" href="Ppl.html">
 <link title="PolkaGrid" rel="Chapter" href="PolkaGrid.html">
 <link title="Mpz" rel="Chapter" href="Mpz.html">
@@ -115,7 +116,9 @@
 <tr><td><a href="Mpz.html#VAL_set_str">_set_str</a> [<a href="Mpz.html">Mpz</a>]</td>
 <td></td></tr>
 <tr><td><a href="Mpfr.html#VAL_sprintf">_sprintf</a> [<a href="Mpfr.html">Mpfr</a>]</td>
-<td></td></tr>
+<td><div class="info">
+<span class="deprecated"></span></div>
+</td></tr>
 <tr><td><a href="Mpz.html#VAL_sqrtrem">_sqrtrem</a> [<a href="Mpz.html">Mpz</a>]</td>
 <td></td></tr>
 <tr><td><a href="Mpfr.html#VAL_strtofr">_strtofr</a> [<a href="Mpfr.html">Mpfr</a>]</td>
@@ -639,6 +642,18 @@ given environment.</p>
 <td></td></tr>
 <tr><td><a href="Mpz.html#VALcmp">cmp</a> [<a href="Mpz.html">Mpz</a>]</td>
 <td></td></tr>
+<tr><td><a href="Environment.html#VALcmp">cmp</a> [<a href="Environment.html">Environment</a>]</td>
+<td><div class="info">
+<p>Compare two environment.</p>
+
+</div>
+</td></tr>
+<tr><td><a href="Linexpr0.html#VALcmp">cmp</a> [<a href="Linexpr0.html">Linexpr0</a>]</td>
+<td><div class="info">
+<p>Comparison with lexicographic ordering using <code class="code"><span class="constructor">Coeff</span>.cmp</code>, terminating by constant.</p>
+
+</div>
+</td></tr>
 <tr><td><a href="Coeff.html#VALcmp">cmp</a> [<a href="Coeff.html">Coeff</a>]</td>
 <td><div class="info">
 <p>Non Total Comparison: If the 2 coefficients are both scalars, corresp. to Scalar.cmp, If the 2 coefficients are both intervals, corresp. to Interval.cmp, otherwise, -3 if the first is a scalar, 3 otherwise</p>
@@ -698,21 +713,9 @@ given environment.</p>
 <td></td></tr>
 <tr><td><a href="Mpz.html#VALcom">com</a> [<a href="Mpz.html">Mpz</a>]</td>
 <td></td></tr>
-<tr><td><a href="Environment.html#VALcompare">compare</a> [<a href="Environment.html">Environment</a>]</td>
-<td><div class="info">
-<p>Compare two environment.</p>
-
-</div>
-</td></tr>
 <tr><td><a href="Var.html#VALcompare">compare</a> [<a href="Var.html">Var</a>]</td>
 <td><div class="info">
-<p>Comparison function</p>
-
-</div>
-</td></tr>
-<tr><td><a href="Linexpr0.html#VALcompare">compare</a> [<a href="Linexpr0.html">Linexpr0</a>]</td>
-<td><div class="info">
-<p>Comparison with lexicographic ordering using Coeff.cmp, terminating by constant</p>
+<p>Comparison function.</p>
 
 </div>
 </td></tr>
@@ -731,7 +734,9 @@ given environment.</p>
 <tr><td><a href="Mpz.html#VALcongruent_ui_p">congruent_ui_p</a> [<a href="Mpz.html">Mpz</a>]</td>
 <td></td></tr>
 <tr><td><a href="Mpfr.html#VALconst_catalan">const_catalan</a> [<a href="Mpfr.html">Mpfr</a>]</td>
-<td></td></tr>
+<td><div class="info">
+<span class="deprecated"></span></div>
+</td></tr>
 <tr><td><a href="Mpfr.html#VALconst_euler">const_euler</a> [<a href="Mpfr.html">Mpfr</a>]</td>
 <td></td></tr>
 <tr><td><a href="Mpfr.html#VALconst_log2">const_log2</a> [<a href="Mpfr.html">Mpfr</a>]</td>
@@ -933,7 +938,19 @@ converting from an environment <code class="code">e1</code> to a superenvironmen
 <td></td></tr>
 <tr><td><a href="Environment.html#VALequal">equal</a> [<a href="Environment.html">Environment</a>]</td>
 <td><div class="info">
-<p>Test equality if two environments</p>
+<p>Test the equality of two environments</p>
+
+</div>
+</td></tr>
+<tr><td><a href="Texpr0.html#VALequal">equal</a> [<a href="Texpr0.html">Texpr0</a>]</td>
+<td><div class="info">
+<p>Equality test</p>
+
+</div>
+</td></tr>
+<tr><td><a href="Linexpr0.html#VALequal">equal</a> [<a href="Linexpr0.html">Linexpr0</a>]</td>
+<td><div class="info">
+<p>Equality comparison</p>
 
 </div>
 </td></tr>
@@ -1486,6 +1503,12 @@ and put the result in the first dimension of the array.</p>
 </td></tr>
 <tr><td><a href="Abstract0.html#VALhash">hash</a> [<a href="Abstract0.html">Abstract0</a>]</td>
 <td></td></tr>
+<tr><td><a href="Texpr0.html#VALhash">hash</a> [<a href="Texpr0.html">Texpr0</a>]</td>
+<td><div class="info">
+<p>Hashing function</p>
+
+</div>
+</td></tr>
 <tr><td><a href="Linexpr0.html#VALhash">hash</a> [<a href="Linexpr0.html">Linexpr0</a>]</td>
 <td><div class="info">
 <p>Hashing function</p>
@@ -2028,6 +2051,12 @@ default.</p>
 <tr><td><a href="PolkaGrid.html#VALmanager_alloc">manager_alloc</a> [<a href="PolkaGrid.html">PolkaGrid</a>]</td>
 <td><div class="info">
 <p>Create a PolkaGrid manager from a (loose or strict) polka manager, and a PPL grid manager</p>
+
+</div>
+</td></tr>
+<tr><td><a href="T1p.html#VALmanager_alloc">manager_alloc</a> [<a href="T1p.html">T1p</a>]</td>
+<td><div class="info">
+<p>Create a Taylor1+ manager.</p>
 
 </div>
 </td></tr>
@@ -3133,6 +3162,10 @@ the permutation on dimensions induced by the renaming.</p>
 <td></td></tr>
 <tr><td><a href="Mpz.html#VALroot">root</a> [<a href="Mpz.html">Mpz</a>]</td>
 <td></td></tr>
+<tr><td><a href="Mpfr.html#VALrootn_ui">rootn_ui</a> [<a href="Mpfr.html">Mpfr</a>]</td>
+<td><div class="info">
+<span class="deprecated"></span></div>
+</td></tr>
 <tr><td><a href="Mpfr.html#VALround">round</a> [<a href="Mpfr.html">Mpfr</a>]</td>
 <td></td></tr>
 <tr><td><a href="Mpfr.html#VALround_prec">round_prec</a> [<a href="Mpfr.html">Mpfr</a>]</td>
@@ -3166,7 +3199,7 @@ the permutation on dimensions induced by the renaming.</p>
 <td></td></tr>
 <tr><td><a href="Abstract1.html#VALsat_interval">sat_interval</a> [<a href="Abstract1.html">Abstract1</a>]</td>
 <td><div class="info">
-<p>Does the abstract value satisfy the constraint <code class="code">dim&nbsp;<span class="keyword">in</span>&nbsp;interval</code> ?</p>
+<p>Does the abstract value satisfy the constraint <code class="code">dim</code> in <code class="code">interval</code>?</p>
 
 </div>
 </td></tr>
@@ -3331,11 +3364,7 @@ the permutation on dimensions induced by the renaming.</p>
 </div>
 </td></tr>
 <tr><td><a href="Abstract0.html#VALset_gc">set_gc</a> [<a href="Abstract0.html">Abstract0</a>]</td>
-<td><div class="info">
-<p>TO BE DOCUMENTED</p>
-
-</div>
-</td></tr>
+<td></td></tr>
 <tr><td><a href="Mpfr.html#VALset_inf">set_inf</a> [<a href="Mpfr.html">Mpfr</a>]</td>
 <td></td></tr>
 <tr><td><a href="Interval.html#VALset_infsup">set_infsup</a> [<a href="Interval.html">Interval</a>]</td>
@@ -3752,13 +3781,13 @@ or a positive value.</p>
 </td></tr>
 <tr><td><a href="Abstract1.html#VALto_box">to_box</a> [<a href="Abstract1.html">Abstract1</a>]</td>
 <td><div class="info">
-<p>Convert the abstract value to an hypercube</p>
+<p>Convert the abstract value to an hypercube .</p>
 
 </div>
 </td></tr>
 <tr><td><a href="Abstract0.html#VALto_box">to_box</a> [<a href="Abstract0.html">Abstract0</a>]</td>
 <td><div class="info">
-<p>Convert the abstract value to an hypercube</p>
+<p>Convert the abstract value to an hypercube.</p>
 
 </div>
 </td></tr>
@@ -4012,6 +4041,8 @@ or a positive value.</p>
 <tr><td><a href="Texpr1.html#VALunop">unop</a> [<a href="Texpr1.html">Texpr1</a>]</td>
 <td></td></tr>
 <tr><td><a href="Texpr0.html#VALunop">unop</a> [<a href="Texpr0.html">Texpr0</a>]</td>
+<td></td></tr>
+<tr><td><a href="Gmp_random.Mpfr.html#VALurandom">urandom</a> [<a href="Gmp_random.Mpfr.html">Gmp_random.Mpfr</a>]</td>
 <td></td></tr>
 <tr><td><a href="Gmp_random.Mpfr.html#VALurandomb">urandomb</a> [<a href="Gmp_random.Mpfr.html">Gmp_random.Mpfr</a>]</td>
 <td></td></tr>

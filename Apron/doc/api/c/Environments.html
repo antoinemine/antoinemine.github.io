@@ -1,35 +1,28 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.6, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.2, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Environments (APRON 0.9.12)</title>
+<title>Environments (APRON 0.9.15)</title>
 
-<meta name="description" content="Environments (APRON 0.9.12)">
-<meta name="keywords" content="Environments (APRON 0.9.12)">
+<meta name="description" content="Environments (APRON 0.9.15)">
+<meta name="keywords" content="Environments (APRON 0.9.15)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
-<link href="index.html#Top" rel="start" title="Top">
-<link href="Level-1-of-the-interface.html#Level-1-of-the-interface" rel="up" title="Level 1 of the interface">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Level-1-of-the-interface.html" rel="up" title="Level 1 of the interface">
 <link href="Linear-expressions-of-level-1.html#Linear-expressions-of-level-1" rel="next" title="Linear expressions of level 1">
-<link href="Variables-and-related-operations.html#Variables-and-related-operations" rel="prev" title="Variables and related operations">
+<link href="Variables-and-related-operations.html" rel="prev" title="Variables and related operations">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+span:hover a.copiable-link {visibility: visible}
+strong.def-name {font-family: monospace; font-weight: bold; font-size: larger}
+ul.mark-bullet {list-style-type: disc}
 -->
 </style>
 
@@ -37,21 +30,22 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Environments"></span><div class="header">
+<div class="section-level-extent" id="Environments">
+<div class="nav-panel">
 <p>
-Next: <a href="Linear-expressions-of-level-1.html#Linear-expressions-of-level-1" accesskey="n" rel="next">Linear expressions of level 1</a>, Previous: <a href="Variables-and-related-operations.html#Variables-and-related-operations" accesskey="p" rel="prev">Variables and related operations</a>, Up: <a href="Level-1-of-the-interface.html#Level-1-of-the-interface" accesskey="u" rel="up">Level 1 of the interface</a> &nbsp; </p>
+Next: <a href="Linear-expressions-of-level-1.html#Linear-expressions-of-level-1" accesskey="n" rel="next">Linear expressions of level 1 (<samp class="file">ap_linexpr1.h</samp>)</a>, Previous: <a href="Variables-and-related-operations.html" accesskey="p" rel="prev">Variables and related operations (<samp class="file">ap_var.h</samp>)</a>, Up: <a href="Level-1-of-the-interface.html" accesskey="u" rel="up">Level 1 of the interface</a> &nbsp; </p>
 </div>
-<span id="Environments-_0028ap_005fenvironment_002eh_0029"></span><h3 class="section">Environments (<samp>ap_environment.h</samp>)</h3>
+<h3 class="section" id="Environments-_0028ap_005fenvironment_002eh_0029"><span>Environments (<samp class="file">ap_environment.h</samp>)<a class="copiable-link" href="#Environments-_0028ap_005fenvironment_002eh_0029"> &para;</a></span></h3>
 
 <p>Environments bind variables (of level 1) to dimensions (of level 0).
 </p>
-<dl>
-<dt id="index-ap_005fenvironment_005ft">datatype: <strong>ap_environment_t</strong></dt>
+<dl class="first-deftp def-block">
+<dt class="deftp def-line" id="index-ap_005fenvironment_005ft"><span class="category-def">datatype: </span><span><strong class="def-name">ap_environment_t</strong><a class="copiable-link" href="#index-ap_005fenvironment_005ft"> &para;</a></span></dt>
 <dd><p>Internal datatype for environments.
 </p>
 <p>For information, the definition is:
 </p><div class="example">
-<pre class="example">typedef struct ap_environment_t {
+<pre class="example-preformatted">typedef struct ap_environment_t {
   ap_var_t* var_of_dim;
   /*
     Array of size intdim+realdim, indexed by dimensions.
@@ -70,163 +64,164 @@ Next: <a href="Linear-expressions-of-level-1.html#Linear-expressions-of-level-1"
 </pre></div>
 </dd></dl>
 
-<dl>
-<dt id="index-ap_005fenvironment_005ffree">Function: <em>void</em> <strong>ap_environment_free</strong> <em>(ap_environment_t* <var>env</var>)</em></dt>
-<dt id="index-ap_005fenvironment_005fcopy">Function: <em>ap_environment_t*</em> <strong>ap_environment_copy</strong> <em>(ap_environment_t* <var>env</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fenvironment_005ffree"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">ap_environment_free</strong> <code class="def-code-arguments">(ap_environment_t* <var class="var">env</var>)</code><a class="copiable-link" href="#index-ap_005fenvironment_005ffree"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005fenvironment_005fcopy"><span class="category-def">Function: </span><span><code class="def-type">ap_environment_t*</code> <strong class="def-name">ap_environment_copy</strong> <code class="def-code-arguments">(ap_environment_t* <var class="var">env</var>)</code><a class="copiable-link" href="#index-ap_005fenvironment_005fcopy"> &para;</a></span></dt>
 <dd><p>Respectively free and duplicate an environment.
 </p>
-<p>(<code>copy</code> is cheap, as environments are managed with reference
+<p>(<code class="code">copy</code> is cheap, as environments are managed with reference
 counters).
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005fenvironment_005ffdump">Function: <em>void</em> <strong>ap_environment_fdump</strong> <em>(FILE* <var>stream</var>, ap_environment_t* <var>env</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fenvironment_005ffdump"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">ap_environment_fdump</strong> <code class="def-code-arguments">(FILE* <var class="var">stream</var>, ap_environment_t* <var class="var">env</var>)</code><a class="copiable-link" href="#index-ap_005fenvironment_005ffdump"> &para;</a></span></dt>
 <dd><p>Print an environment under the form:
 </p><div class="example">
-<pre class="example">  environment: dim = (..,..), count = ..
+<pre class="example-preformatted">  environment: dim = (..,..), count = ..
   0: name0
   1: name1
   ...
 </pre></div>
 </dd></dl>
 
-<dl>
-<dt id="index-ap_005fenvironment_005falloc_005fempty">Function: <em>ap_environment_t*</em> <strong>ap_environment_alloc_empty</strong> <em>()</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fenvironment_005falloc_005fempty"><span class="category-def">Function: </span><span><code class="def-type">ap_environment_t*</code> <strong class="def-name">ap_environment_alloc_empty</strong> <code class="def-code-arguments">()</code><a class="copiable-link" href="#index-ap_005fenvironment_005falloc_005fempty"> &para;</a></span></dt>
 <dd><p>Build an empty environment.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005fenvironment_005falloc">Function: <em>ap_environment_t*</em> <strong>ap_environment_alloc</strong> <em>(ap_var_t* <var>var_of_intdim</var>, size_t <var>intdim</var>, ap_var_t* <var>var_of_realdim</var>, size_t <var>realdim</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fenvironment_005falloc"><span class="category-def">Function: </span><span><code class="def-type">ap_environment_t*</code> <strong class="def-name">ap_environment_alloc</strong> <code class="def-code-arguments">(ap_var_t* <var class="var">var_of_intdim</var>, size_t <var class="var">intdim</var>, ap_var_t* <var class="var">var_of_realdim</var>, size_t <var class="var">realdim</var>)</code><a class="copiable-link" href="#index-ap_005fenvironment_005falloc"> &para;</a></span></dt>
 <dd><p>Build an environment from an array of integer and an array of real variables.
 </p>
-<p><var>var_of_intdim</var> is an array of variables of size <var>intdim</var>,
-<var>var_of_realdim</var> is an array of variables of size
-<var>realdim</var>. Pointers to arrays may be <code>NULL</code> if their size is
+<p><var class="var">var_of_intdim</var> is an array of variables of size <var class="var">intdim</var>,
+<var class="var">var_of_realdim</var> is an array of variables of size
+<var class="var">realdim</var>. Pointers to arrays may be <code class="code">NULL</code> if their size is
 0.
 </p>
 <p>Variables are duplicated in the result, so it is the responsability of
 the user to free the variables he provides.
 </p>
-<p>If some variables are duplicated, return <code>NULL</code>.
+<p>If some variables are duplicated, return <code class="code">NULL</code>.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005fenvironment_005fadd">Function: <em>ap_environment_t*</em> <strong>ap_environment_add</strong> <em>(ap_environment_t* <var>env</var>, ap_var_t* <var>var_of_intdim</var>, size_t <var>intdim</var>, ap_var_t* <var>var_of_realdim</var>, size_t <var>realdim</var>)</em></dt>
-<dt id="index-ap_005fenvironment_005fremove">Function: <em>ap_environment_t*</em> <strong>ap_environment_remove</strong> <em>(ap_environment_t* <var>env</var>, ap_var_t* <var>tvar</var>, size_t <var>size</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fenvironment_005fadd"><span class="category-def">Function: </span><span><code class="def-type">ap_environment_t*</code> <strong class="def-name">ap_environment_add</strong> <code class="def-code-arguments">(ap_environment_t* <var class="var">env</var>, ap_var_t* <var class="var">var_of_intdim</var>, size_t <var class="var">intdim</var>, ap_var_t* <var class="var">var_of_realdim</var>, size_t <var class="var">realdim</var>)</code><a class="copiable-link" href="#index-ap_005fenvironment_005fadd"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005fenvironment_005fremove"><span class="category-def">Function: </span><span><code class="def-type">ap_environment_t*</code> <strong class="def-name">ap_environment_remove</strong> <code class="def-code-arguments">(ap_environment_t* <var class="var">env</var>, ap_var_t* <var class="var">tvar</var>, size_t <var class="var">size</var>)</code><a class="copiable-link" href="#index-ap_005fenvironment_005fremove"> &para;</a></span></dt>
 <dd><p>Resp. add or remove new variables to an existing environment, with
 a functional semantics. Same conventions as for
-<code>ap_environment_alloc</code> function apply. If the result is
+<code class="code">ap_environment_alloc</code> function apply. If the result is
 non-sense (or in case of attempt to remove an unknwon variable),
-return <code>NULL</code>.
+return <code class="code">NULL</code>.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005fenvironment_005fdim_005fof_005fvar">Function: <em>ap_dim_t</em> <strong>ap_environment_dim_of_var</strong> <em>(ap_environment_t* <var>env</var>, ap_var_t <var>var</var>)</em></dt>
-<dd><p>Convert a variable in its corresponding dimension in the environment <var>env</var>. If <var>var</var> is unknown in <var>env</var>, return <code>AP_DIM_MAX</code>.
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fenvironment_005fdim_005fof_005fvar"><span class="category-def">Function: </span><span><code class="def-type">ap_dim_t</code> <strong class="def-name">ap_environment_dim_of_var</strong> <code class="def-code-arguments">(ap_environment_t* <var class="var">env</var>, ap_var_t <var class="var">var</var>)</code><a class="copiable-link" href="#index-ap_005fenvironment_005fdim_005fof_005fvar"> &para;</a></span></dt>
+<dd><p>Convert a variable in its corresponding dimension in the environment <var class="var">env</var>. If <var class="var">var</var> is unknown in <var class="var">env</var>, return <code class="code">AP_DIM_MAX</code>.
 </p></dd></dl>
-<dl>
-<dt id="index-ap_005fenvironment_005fvar_005fof_005fdim">Function: <em>ap_dim_t</em> <strong>ap_environment_var_of_dim</strong> <em>(ap_environment_t* <var>env</var>, ap_dim_t <var>dim</var>)</em></dt>
-<dd><p>Return the variable associated to the dimension <var>dim</var> in the environment <var>env</var>. There is no bound check here.
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fenvironment_005fvar_005fof_005fdim"><span class="category-def">Function: </span><span><code class="def-type">ap_dim_t</code> <strong class="def-name">ap_environment_var_of_dim</strong> <code class="def-code-arguments">(ap_environment_t* <var class="var">env</var>, ap_dim_t <var class="var">dim</var>)</code><a class="copiable-link" href="#index-ap_005fenvironment_005fvar_005fof_005fdim"> &para;</a></span></dt>
+<dd><p>Return the variable associated to the dimension <var class="var">dim</var> in the environment <var class="var">env</var>. There is no bound check here.
 </p></dd></dl>
 
 <p>The remaining functions are much less useful for normal user.
 </p>
-<dl>
-<dt id="index-ap_005fenvironment_005fis_005feq">Function: <em>bool</em> <strong>ap_environment_is_eq</strong> <em>(ap_environment_t* <var>env1</var>, ap_environment_t* <var>env2</var>)</em></dt>
-<dt id="index-ap_005fenvironment_005fis_005fleq">Function: <em>bool</em> <strong>ap_environment_is_leq</strong> <em>(ap_environment_t* <var>env1</var>, ap_environment_t* <var>env2</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fenvironment_005fis_005feq"><span class="category-def">Function: </span><span><code class="def-type">bool</code> <strong class="def-name">ap_environment_is_eq</strong> <code class="def-code-arguments">(ap_environment_t* <var class="var">env1</var>, ap_environment_t* <var class="var">env2</var>)</code><a class="copiable-link" href="#index-ap_005fenvironment_005fis_005feq"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005fenvironment_005fis_005fleq"><span class="category-def">Function: </span><span><code class="def-type">bool</code> <strong class="def-name">ap_environment_is_leq</strong> <code class="def-code-arguments">(ap_environment_t* <var class="var">env1</var>, ap_environment_t* <var class="var">env2</var>)</code><a class="copiable-link" href="#index-ap_005fenvironment_005fis_005fleq"> &para;</a></span></dt>
 <dd><p>Resp. test the equality and the inclusion of two environments.
 </p></dd></dl>
-<dl>
-<dt id="index-ap_005fenvironment_005fcompare">Function: <em>int</em> <strong>ap_environment_compare</strong> <em>(ap_environment_t* <var>env1</var>, ap_environment_t* <var>env2</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fenvironment_005fcompare"><span class="category-def">Function: </span><span><code class="def-type">int</code> <strong class="def-name">ap_environment_compare</strong> <code class="def-code-arguments">(ap_environment_t* <var class="var">env1</var>, ap_environment_t* <var class="var">env2</var>)</code><a class="copiable-link" href="#index-ap_005fenvironment_005fcompare"> &para;</a></span></dt>
 <dd><p>Return:
-</p><dl compact="compact">
-<dt><code>-2</code></dt>
+</p><dl class="table">
+<dt><code class="code">-2</code></dt>
 <dd><p>if the environments are not compatible (a variable has a different
 type in the 2 environments);
 </p></dd>
-<dt><code>-1</code></dt>
-<dd><p>if <var>env1</var> is a subset of (included in) <var>env2</var>;
+<dt><code class="code">-1</code></dt>
+<dd><p>if <var class="var">env1</var> is a subset of (included in) <var class="var">env2</var>;
 </p></dd>
-<dt><code>0</code></dt>
+<dt><code class="code">0</code></dt>
 <dd><p>if they are equal;
 </p></dd>
-<dt><code>+1</code></dt>
-<dd><p>if <var>env1</var> is a superset of <var>env2</var>;
+<dt><code class="code">+1</code></dt>
+<dd><p>if <var class="var">env1</var> is a superset of <var class="var">env2</var>;
 </p></dd>
-<dt><code>+2</code></dt>
+<dt><code class="code">+2</code></dt>
 <dd><p>otherwise: the least common environment exists and is a strict
 superset of both environments.
 </p></dd>
 </dl>
 </dd></dl>
-<dl>
-<dt id="index-ap_005fenvironment_005fhash">Function: <em>int</em> <strong>ap_environment_hash</strong> <em>(ap_environment_t* <var>env</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fenvironment_005fhash"><span class="category-def">Function: </span><span><code class="def-type">int</code> <strong class="def-name">ap_environment_hash</strong> <code class="def-code-arguments">(ap_environment_t* <var class="var">env</var>)</code><a class="copiable-link" href="#index-ap_005fenvironment_005fhash"> &para;</a></span></dt>
 <dd><p>Return an hash code for an environment.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005fenvironment_005fdimchange">Function: <em>ap_dimchange_t*</em> <strong>ap_environment_dimchange</strong> <em>(ap_environment_t* <var>env1</var>, ap_environment_t* <var>env</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fenvironment_005fdimchange"><span class="category-def">Function: </span><span><code class="def-type">ap_dimchange_t*</code> <strong class="def-name">ap_environment_dimchange</strong> <code class="def-code-arguments">(ap_environment_t* <var class="var">env1</var>, ap_environment_t* <var class="var">env</var>)</code><a class="copiable-link" href="#index-ap_005fenvironment_005fdimchange"> &para;</a></span></dt>
 <dd><p>Compute the transformation for converting from an environment
-<var>env1</var> to a superenvironment <var>env</var>.  Return NULL if <var>env</var>
+<var class="var">env1</var> to a superenvironment <var class="var">env</var>.  Return NULL if <var class="var">env</var>
 is not a superenvironment.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005fenvironment_005fdimchange2">Function: <em>ap_dimchange2_t*</em> <strong>ap_environment_dimchange2</strong> <em>(ap_environment_t* <var>env1</var>, ap_environment_t* <var>env2</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fenvironment_005fdimchange2"><span class="category-def">Function: </span><span><code class="def-type">ap_dimchange2_t*</code> <strong class="def-name">ap_environment_dimchange2</strong> <code class="def-code-arguments">(ap_environment_t* <var class="var">env1</var>, ap_environment_t* <var class="var">env2</var>)</code><a class="copiable-link" href="#index-ap_005fenvironment_005fdimchange2"> &para;</a></span></dt>
 <dd><p>Compute the transformation for switching from an environment
-<var>env1</var> to an <var>env2</var>, by first adding (some) variables of
-<var>env2</var>, and then removing (some) variables of <var>env1</var>.  Return
-NULL if <var>env1</var> and <var>env2</var> ar enot compatible environments.
+<var class="var">env1</var> to an <var class="var">env2</var>, by first adding (some) variables of
+<var class="var">env2</var>, and then removing (some) variables of <var class="var">env1</var>.  Return
+NULL if <var class="var">env1</var> and <var class="var">env2</var> ar enot compatible environments.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005fenvironment_005flce">Function: <em>ap_environment_t*</em> <strong>ap_environment_lce</strong> <em>(ap_environment_t* <var>env1</var>, ap_environment_t* <var>env2</var>, ap_dimchange_t** <var>dimchange1</var>, ap_dimchange_t** <var>dimchange2</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fenvironment_005flce"><span class="category-def">Function: </span><span><code class="def-type">ap_environment_t*</code> <strong class="def-name">ap_environment_lce</strong> <code class="def-code-arguments">(ap_environment_t* <var class="var">env1</var>, ap_environment_t* <var class="var">env2</var>, ap_dimchange_t** <var class="var">dimchange1</var>, ap_dimchange_t** <var class="var">dimchange2</var>)</code><a class="copiable-link" href="#index-ap_005fenvironment_005flce"> &para;</a></span></dt>
 <dd><p>Least common environment to two enviroenments.
-</p><ul>
-<li> Assume <code>ap_environment_is_eq(env1,env2)==false</code>
-</li><li> If environments are not compatible (a variable has different types in
+</p><ul class="itemize mark-bullet">
+<li>Assume <code class="code">ap_environment_is_eq(env1,env2)==false</code>
+</li><li>If environments are not compatible (a variable has different types in
 the 2 environments), return NULL
-</li><li> Compute also in <var>dimchange1</var> and <var>dimchange2</var> the conversion transformations to the lce.
-</li><li> If no dimensions to add to <var>env1</var>, this implies that <var>env</var> is
-actually <var>env1</var>. In this case,
-<code>*dimchange1==NULL</code>. Otherwise, the function allocates the
-<code>*dimchange1</code> with <code>ap_dimchange_alloc</code>.
+</li><li>Compute also in <var class="var">dimchange1</var> and <var class="var">dimchange2</var> the conversion transformations to the lce.
+</li><li>If no dimensions to add to <var class="var">env1</var>, this implies that <var class="var">env</var> is
+actually <var class="var">env1</var>. In this case,
+<code class="code">*dimchange1==NULL</code>. Otherwise, the function allocates the
+<code class="code">*dimchange1</code> with <code class="code">ap_dimchange_alloc</code>.
 </li></ul>
 </dd></dl>
 
-<dl>
-<dt id="index-ap_005fenvironment_005flce_005farray">Function: <em>ap_environment_t*</em> <strong>ap_environment_lce_array</strong> <em>(ap_environment_t** <var>tenv</var>, size_t <var>size</var>, ap_dimchange_t*** <var>ptdimchange</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fenvironment_005flce_005farray"><span class="category-def">Function: </span><span><code class="def-type">ap_environment_t*</code> <strong class="def-name">ap_environment_lce_array</strong> <code class="def-code-arguments">(ap_environment_t** <var class="var">tenv</var>, size_t <var class="var">size</var>, ap_dimchange_t*** <var class="var">ptdimchange</var>)</code><a class="copiable-link" href="#index-ap_005fenvironment_005flce_005farray"> &para;</a></span></dt>
 <dd><p>Least common environment to an array of environments.
-</p><ul>
-<li> Assume the size <var>size</var> of the array <var>tenv</var> is at least one;
-</li><li> If all input environments are the same, <code>*ptdimchange==NULL</code>.
-Otherwise, compute in <code>*ptdimchange</code> the conversion permutations
-</li><li> If no dimensions to add to <code>tenv[i]</code>, this implies that the
-result is actually <code>tenv[i]</code>. In this case,
-<code>(*ptdimchange)[i]==NULL</code>. Otherwise, the function allocates the
-<code>(*ptdimchange)[i]</code> with <code>ap_dimchange_alloc</code>.
+</p><ul class="itemize mark-bullet">
+<li>Assume the size <var class="var">size</var> of the array <var class="var">tenv</var> is at least one;
+</li><li>If all input environments are the same, <code class="code">*ptdimchange==NULL</code>.
+Otherwise, compute in <code class="code">*ptdimchange</code> the conversion permutations
+</li><li>If no dimensions to add to <code class="code">tenv[i]</code>, this implies that the
+result is actually <code class="code">tenv[i]</code>. In this case,
+<code class="code">(*ptdimchange)[i]==NULL</code>. Otherwise, the function allocates the
+<code class="code">(*ptdimchange)[i]</code> with <code class="code">ap_dimchange_alloc</code>.
 </li></ul>
 </dd></dl>
 
-<dl>
-<dt id="index-ap_005fenvironment_005frename">Function: <em>ap_environment_t*</em> <strong>ap_environment_rename</strong> <em>(ap_environment_t* <var>env</var>, ap_var_t* <var>tvar1</var>, ap_var_t* <var>tvar2</var>, size_t <var>size</var>, ap_dimperm_t* <var>perm</var>)</em></dt>
-<dd><p>Rename the variables in the environment.  <var>size</var> is the common
-size of arrays <var>tvar1</var> and <var>tvar2</var>, and <var>perm</var> is a
-result-parameter pointing to an <em>existing but not initialized</em>
-object of type <code>ap_dimperm_t</code>.
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fenvironment_005frename"><span class="category-def">Function: </span><span><code class="def-type">ap_environment_t*</code> <strong class="def-name">ap_environment_rename</strong> <code class="def-code-arguments">(ap_environment_t* <var class="var">env</var>, ap_var_t* <var class="var">tvar1</var>, ap_var_t* <var class="var">tvar2</var>, size_t <var class="var">size</var>, ap_dimperm_t* <var class="var">perm</var>)</code><a class="copiable-link" href="#index-ap_005fenvironment_005frename"> &para;</a></span></dt>
+<dd><p>Rename the variables in the environment.  <var class="var">size</var> is the common
+size of arrays <var class="var">tvar1</var> and <var class="var">tvar2</var>, and <var class="var">perm</var> is a
+result-parameter pointing to an <em class="emph">existing but not initialized</em>
+object of type <code class="code">ap_dimperm_t</code>.
 </p>
-<p>The function applies the variable substitution <code>tvar1[i]-&gt;tvar2[i]</code>
+<p>The function applies the variable substitution <code class="code">tvar1[i]-&gt;tvar2[i]</code>
 to the environment, and returns the resulting environment and the
-allocated transformation permutation in <code>*perm</code>.
+allocated transformation permutation in <code class="code">*perm</code>.
 </p>
-<p>If the parameters are not valid, return <code>NULL</code> with
-<code>perm-&gt;dim==NULL</code>.
+<p>If the parameters are not valid, return <code class="code">NULL</code> with
+<code class="code">perm-&gt;dim==NULL</code>.
 </p></dd></dl>
 
+</div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
-Next: <a href="Linear-expressions-of-level-1.html#Linear-expressions-of-level-1" accesskey="n" rel="next">Linear expressions of level 1</a>, Previous: <a href="Variables-and-related-operations.html#Variables-and-related-operations" accesskey="p" rel="prev">Variables and related operations</a>, Up: <a href="Level-1-of-the-interface.html#Level-1-of-the-interface" accesskey="u" rel="up">Level 1 of the interface</a> &nbsp; </p>
+Next: <a href="Linear-expressions-of-level-1.html#Linear-expressions-of-level-1" accesskey="n" rel="next">Linear expressions of level 1 (<samp class="file">ap_linexpr1.h</samp>)</a>, Previous: <a href="Variables-and-related-operations.html" accesskey="p" rel="prev">Variables and related operations (<samp class="file">ap_var.h</samp>)</a>, Up: <a href="Level-1-of-the-interface.html" accesskey="u" rel="up">Level 1 of the interface</a> &nbsp; </p>
 </div>
 
 

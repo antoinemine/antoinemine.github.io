@@ -1,11 +1,11 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" href="style.css" type="text/css">
-<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="Start" href="index.html">
-<link rel="previous" href="Polka.html">
+<link rel="previous" href="T1p.html">
 <link rel="next" href="PolkaGrid.html">
 <link rel="Up" href="index.html">
 <link title="Index of types" rel=Appendix href="index_types.html">
@@ -39,6 +39,7 @@
 <link title="Box" rel="Chapter" href="Box.html">
 <link title="Oct" rel="Chapter" href="Oct.html">
 <link title="Polka" rel="Chapter" href="Polka.html">
+<link title="T1p" rel="Chapter" href="T1p.html">
 <link title="Ppl" rel="Chapter" href="Ppl.html">
 <link title="PolkaGrid" rel="Chapter" href="PolkaGrid.html">
 <link title="Mpz" rel="Chapter" href="Mpz.html">
@@ -55,7 +56,7 @@
 <title>Ppl</title>
 </head>
 <body>
-<div class="navbar"><a class="pre" href="Polka.html" title="Polka">Previous</a>
+<div class="navbar"><a class="pre" href="T1p.html" title="T1p">Previous</a>
 &nbsp;<a class="up" href="index.html" title="Index">Up</a>
 &nbsp;<a class="post" href="PolkaGrid.html" title="PolkaGrid">Next</a>
 </div>
@@ -114,50 +115,50 @@
 </div>
 
 
-<pre><span id="VALmanager_alloc_loose"><span class="keyword">val</span> manager_alloc_loose</span> : <code class="type">unit -> <a href="Ppl.html#TYPEloose">loose</a> <a href="Ppl.html#TYPEt">t</a> Apron.Manager.t</code></pre><div class="info ">
+<pre><span id="VALmanager_alloc_loose"><span class="keyword">val</span> manager_alloc_loose</span> : <code class="type">unit -&gt; <a href="Ppl.html#TYPEloose">loose</a> <a href="Ppl.html#TYPEt">t</a> Apron.Manager.t</code></pre><div class="info ">
 <div class="info-desc">
 <p>Allocate a PPL manager for loose convex polyhedra.</p>
 </div>
 </div>
 
-<pre><span id="VALmanager_alloc_strict"><span class="keyword">val</span> manager_alloc_strict</span> : <code class="type">unit -> <a href="Ppl.html#TYPEstrict">strict</a> <a href="Ppl.html#TYPEt">t</a> Apron.Manager.t</code></pre><div class="info ">
+<pre><span id="VALmanager_alloc_strict"><span class="keyword">val</span> manager_alloc_strict</span> : <code class="type">unit -&gt; <a href="Ppl.html#TYPEstrict">strict</a> <a href="Ppl.html#TYPEt">t</a> Apron.Manager.t</code></pre><div class="info ">
 <div class="info-desc">
 <p>Allocate a PPL manager for strict convex polyhedra.</p>
 </div>
 </div>
 
-<pre><span id="VALmanager_alloc_grid"><span class="keyword">val</span> manager_alloc_grid</span> : <code class="type">unit -> <a href="Ppl.html#TYPEgrid">grid</a> <a href="Ppl.html#TYPEt">t</a> Apron.Manager.t</code></pre><div class="info ">
+<pre><span id="VALmanager_alloc_grid"><span class="keyword">val</span> manager_alloc_grid</span> : <code class="type">unit -&gt; <a href="Ppl.html#TYPEgrid">grid</a> <a href="Ppl.html#TYPEt">t</a> Apron.Manager.t</code></pre><div class="info ">
 <div class="info-desc">
 <p>Allocate a new manager for linear congruences (grids)</p>
 </div>
 </div>
 
-<pre><span id="VALmanager_is_ppl"><span class="keyword">val</span> manager_is_ppl</span> : <code class="type">'a Apron.Manager.t -> bool</code></pre><div class="info ">
+<pre><span id="VALmanager_is_ppl"><span class="keyword">val</span> manager_is_ppl</span> : <code class="type">'a Apron.Manager.t -&gt; bool</code></pre><div class="info ">
 <div class="info-desc">
 <h3 id="2_Typeconversions">Type conversions</h3></div>
 </div>
 
-<pre><span id="VALmanager_is_ppl_loose"><span class="keyword">val</span> manager_is_ppl_loose</span> : <code class="type">'a Apron.Manager.t -> bool</code></pre>
-<pre><span id="VALmanager_is_ppl_strict"><span class="keyword">val</span> manager_is_ppl_strict</span> : <code class="type">'a Apron.Manager.t -> bool</code></pre>
-<pre><span id="VALmanager_is_ppl_grid"><span class="keyword">val</span> manager_is_ppl_grid</span> : <code class="type">'a Apron.Manager.t -> bool</code></pre><div class="info ">
+<pre><span id="VALmanager_is_ppl_loose"><span class="keyword">val</span> manager_is_ppl_loose</span> : <code class="type">'a Apron.Manager.t -&gt; bool</code></pre>
+<pre><span id="VALmanager_is_ppl_strict"><span class="keyword">val</span> manager_is_ppl_strict</span> : <code class="type">'a Apron.Manager.t -&gt; bool</code></pre>
+<pre><span id="VALmanager_is_ppl_grid"><span class="keyword">val</span> manager_is_ppl_grid</span> : <code class="type">'a Apron.Manager.t -&gt; bool</code></pre><div class="info ">
 <div class="info-desc">
 <p>Return <code class="code"><span class="keyword">true</span></code> iff the argument manager is a ppl manager</p>
 </div>
 </div>
 
-<pre><span id="VALmanager_of_ppl"><span class="keyword">val</span> manager_of_ppl</span> : <code class="type">'a <a href="Ppl.html#TYPEt">t</a> Apron.Manager.t -> 'b Apron.Manager.t</code></pre>
-<pre><span id="VALmanager_of_ppl_loose"><span class="keyword">val</span> manager_of_ppl_loose</span> : <code class="type"><a href="Ppl.html#TYPEloose">loose</a> <a href="Ppl.html#TYPEt">t</a> Apron.Manager.t -> 'a Apron.Manager.t</code></pre>
-<pre><span id="VALmanager_of_ppl_strict"><span class="keyword">val</span> manager_of_ppl_strict</span> : <code class="type"><a href="Ppl.html#TYPEstrict">strict</a> <a href="Ppl.html#TYPEt">t</a> Apron.Manager.t -> 'a Apron.Manager.t</code></pre>
-<pre><span id="VALmanager_of_ppl_grid"><span class="keyword">val</span> manager_of_ppl_grid</span> : <code class="type"><a href="Ppl.html#TYPEgrid">grid</a> <a href="Ppl.html#TYPEt">t</a> Apron.Manager.t -> 'a Apron.Manager.t</code></pre><div class="info ">
+<pre><span id="VALmanager_of_ppl"><span class="keyword">val</span> manager_of_ppl</span> : <code class="type">'a <a href="Ppl.html#TYPEt">t</a> Apron.Manager.t -&gt; 'b Apron.Manager.t</code></pre>
+<pre><span id="VALmanager_of_ppl_loose"><span class="keyword">val</span> manager_of_ppl_loose</span> : <code class="type"><a href="Ppl.html#TYPEloose">loose</a> <a href="Ppl.html#TYPEt">t</a> Apron.Manager.t -&gt; 'a Apron.Manager.t</code></pre>
+<pre><span id="VALmanager_of_ppl_strict"><span class="keyword">val</span> manager_of_ppl_strict</span> : <code class="type"><a href="Ppl.html#TYPEstrict">strict</a> <a href="Ppl.html#TYPEt">t</a> Apron.Manager.t -&gt; 'a Apron.Manager.t</code></pre>
+<pre><span id="VALmanager_of_ppl_grid"><span class="keyword">val</span> manager_of_ppl_grid</span> : <code class="type"><a href="Ppl.html#TYPEgrid">grid</a> <a href="Ppl.html#TYPEt">t</a> Apron.Manager.t -&gt; 'a Apron.Manager.t</code></pre><div class="info ">
 <div class="info-desc">
 <p>Make a ppl manager generic</p>
 </div>
 </div>
 
-<pre><span id="VALmanager_to_ppl"><span class="keyword">val</span> manager_to_ppl</span> : <code class="type">'a Apron.Manager.t -> 'b <a href="Ppl.html#TYPEt">t</a> Apron.Manager.t</code></pre>
-<pre><span id="VALmanager_to_ppl_loose"><span class="keyword">val</span> manager_to_ppl_loose</span> : <code class="type">'a Apron.Manager.t -> <a href="Ppl.html#TYPEloose">loose</a> <a href="Ppl.html#TYPEt">t</a> Apron.Manager.t</code></pre>
-<pre><span id="VALmanager_to_ppl_strict"><span class="keyword">val</span> manager_to_ppl_strict</span> : <code class="type">'a Apron.Manager.t -> <a href="Ppl.html#TYPEstrict">strict</a> <a href="Ppl.html#TYPEt">t</a> Apron.Manager.t</code></pre>
-<pre><span id="VALmanager_to_ppl_grid"><span class="keyword">val</span> manager_to_ppl_grid</span> : <code class="type">'a Apron.Manager.t -> <a href="Ppl.html#TYPEgrid">grid</a> <a href="Ppl.html#TYPEt">t</a> Apron.Manager.t</code></pre><div class="info ">
+<pre><span id="VALmanager_to_ppl"><span class="keyword">val</span> manager_to_ppl</span> : <code class="type">'a Apron.Manager.t -&gt; 'b <a href="Ppl.html#TYPEt">t</a> Apron.Manager.t</code></pre>
+<pre><span id="VALmanager_to_ppl_loose"><span class="keyword">val</span> manager_to_ppl_loose</span> : <code class="type">'a Apron.Manager.t -&gt; <a href="Ppl.html#TYPEloose">loose</a> <a href="Ppl.html#TYPEt">t</a> Apron.Manager.t</code></pre>
+<pre><span id="VALmanager_to_ppl_strict"><span class="keyword">val</span> manager_to_ppl_strict</span> : <code class="type">'a Apron.Manager.t -&gt; <a href="Ppl.html#TYPEstrict">strict</a> <a href="Ppl.html#TYPEt">t</a> Apron.Manager.t</code></pre>
+<pre><span id="VALmanager_to_ppl_grid"><span class="keyword">val</span> manager_to_ppl_grid</span> : <code class="type">'a Apron.Manager.t -&gt; <a href="Ppl.html#TYPEgrid">grid</a> <a href="Ppl.html#TYPEt">t</a> Apron.Manager.t</code></pre><div class="info ">
 <div class="info-desc">
 <p>Instanciate the type of a ppl manager.
       Raises <code class="code"><span class="constructor">Failure</span></code> if the argument manager is not a ppl manager</p>

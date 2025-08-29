@@ -1,8 +1,8 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" href="style.css" type="text/css">
-<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="Start" href="index.html">
 <link rel="previous" href="Coeff.html">
@@ -39,6 +39,7 @@
 <link title="Box" rel="Chapter" href="Box.html">
 <link title="Oct" rel="Chapter" href="Oct.html">
 <link title="Polka" rel="Chapter" href="Polka.html">
+<link title="T1p" rel="Chapter" href="T1p.html">
 <link title="Ppl" rel="Chapter" href="Ppl.html">
 <link title="PolkaGrid" rel="Chapter" href="PolkaGrid.html">
 <link title="Mpz" rel="Chapter" href="Mpz.html">
@@ -84,7 +85,7 @@
 <code><span id="TYPEELTchange.realdim">realdim</span>&nbsp;: <code class="type">int</code>;</code></td>
 
 </tr></table>
-}
+<code>}</code>
 
 
 
@@ -103,7 +104,7 @@
 <code><span id="TYPEELTchange2.remove">remove</span>&nbsp;: <code class="type"><a href="Dim.html#TYPEchange">change</a> option</code>;</code></td>
 
 </tr></table>
-}
+<code>}</code>
 
 
 
@@ -125,7 +126,7 @@
 <code><span id="TYPEELTdimension.reald">reald</span>&nbsp;: <code class="type">int</code>;</code></td>
 
 </tr></table>
-}
+<code>}</code>
 
 
 <p>APRON Dimensions and related types</p>
@@ -176,21 +177,21 @@ integer and real dimensions).
 </li>
 </ul>
 
-<pre><span id="VALchange_add_invert"><span class="keyword">val</span> change_add_invert</span> : <code class="type"><a href="Dim.html#TYPEchange">change</a> -> unit</code></pre><div class="info ">
+<pre><span id="VALchange_add_invert"><span class="keyword">val</span> change_add_invert</span> : <code class="type"><a href="Dim.html#TYPEchange">change</a> -&gt; unit</code></pre><div class="info ">
 <div class="info-desc">
 <p>Assuming a transformation for add_dimensions, invert it in-place to
     obtain the inverse transformation using remove_dimensions</p>
 </div>
 </div>
 
-<pre><span id="VALperm_compose"><span class="keyword">val</span> perm_compose</span> : <code class="type"><a href="Dim.html#TYPEperm">perm</a> -> <a href="Dim.html#TYPEperm">perm</a> -> <a href="Dim.html#TYPEperm">perm</a></code></pre><div class="info ">
+<pre><span id="VALperm_compose"><span class="keyword">val</span> perm_compose</span> : <code class="type"><a href="Dim.html#TYPEperm">perm</a> -&gt; <a href="Dim.html#TYPEperm">perm</a> -&gt; <a href="Dim.html#TYPEperm">perm</a></code></pre><div class="info ">
 <div class="info-desc">
 <p><code class="code">perm_compose&nbsp;perm1&nbsp;perm2</code> composes the 2 permutations perm1 and perm2
   (in this order). The sizes of permutations are supposed to be equal.</p>
 </div>
 </div>
 
-<pre><span id="VALperm_invert"><span class="keyword">val</span> perm_invert</span> : <code class="type"><a href="Dim.html#TYPEperm">perm</a> -> <a href="Dim.html#TYPEperm">perm</a></code></pre><div class="info ">
+<pre><span id="VALperm_invert"><span class="keyword">val</span> perm_invert</span> : <code class="type"><a href="Dim.html#TYPEperm">perm</a> -&gt; <a href="Dim.html#TYPEperm">perm</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Invert a permutation</p>
 </div>

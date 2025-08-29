@@ -1,8 +1,8 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" href="style.css" type="text/css">
-<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="Start" href="index.html">
 <link rel="previous" href="Manager.html">
@@ -39,6 +39,7 @@
 <link title="Box" rel="Chapter" href="Box.html">
 <link title="Oct" rel="Chapter" href="Oct.html">
 <link title="Polka" rel="Chapter" href="Polka.html">
+<link title="T1p" rel="Chapter" href="T1p.html">
 <link title="Ppl" rel="Chapter" href="Ppl.html">
 <link title="PolkaGrid" rel="Chapter" href="PolkaGrid.html">
 <link title="Mpz" rel="Chapter" href="Mpz.html">
@@ -83,132 +84,131 @@
 <p>APRON Abstract value of level 0</p>
 <p>The type parameter <code class="code"><span class="keywordsign">'</span>a</code> allows to distinguish abstract values with different underlying abstract domains.</p>
 
-<pre><span id="VALset_gc"><span class="keyword">val</span> set_gc</span> : <code class="type">int -> unit</code></pre><div class="info ">
-<div class="info-desc">
-<p>TO BE DOCUMENTED</p>
-</div>
-</div>
-<h3 id="2_Generalmanagement">General management</h3><h4 id="3_Memory">Memory</h4>
-<pre><span id="VALcopy"><span class="keyword">val</span> copy</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALset_gc"><span class="keyword">val</span> set_gc</span> : <code class="type">int -&gt; unit</code></pre><h3 id="2_Generalmanagement">General management</h3><h4 id="3_Memory">Memory</h4>
+<pre><span id="VALcopy"><span class="keyword">val</span> copy</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Copy a value</p>
 </div>
 </div>
 
-<pre><span id="VALsize"><span class="keyword">val</span> size</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> int</code></pre><div class="info ">
+<pre><span id="VALsize"><span class="keyword">val</span> size</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; int</code></pre><div class="info ">
 <div class="info-desc">
 <p>Return the abstract size of a value</p>
 </div>
 </div>
 <h4 id="3_Controlofinternalrepresentation">Control of internal representation</h4>
-<pre><span id="VALminimize"><span class="keyword">val</span> minimize</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> unit</code></pre><div class="info ">
+<pre><span id="VALminimize"><span class="keyword">val</span> minimize</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; unit</code></pre><div class="info ">
 <div class="info-desc">
 <p>Minimize the size of the representation of the value. This may result in a later recomputation of internal information.</p>
 </div>
 </div>
 
-<pre><span id="VALcanonicalize"><span class="keyword">val</span> canonicalize</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> unit</code></pre><div class="info ">
+<pre><span id="VALcanonicalize"><span class="keyword">val</span> canonicalize</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; unit</code></pre><div class="info ">
 <div class="info-desc">
 <p>Put the abstract value in canonical form. (not yet clear definition)</p>
 </div>
 </div>
 
-<pre><span id="VALhash"><span class="keyword">val</span> hash</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> int</code></pre>
-<pre><span id="VALapproximate"><span class="keyword">val</span> approximate</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> int -> unit</code></pre><div class="info ">
+<pre><span id="VALhash"><span class="keyword">val</span> hash</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; int</code></pre>
+<pre><span id="VALapproximate"><span class="keyword">val</span> approximate</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; int -&gt; unit</code></pre><div class="info ">
 <div class="info-desc">
 <p><code class="code">approximate&nbsp;man&nbsp;abs&nbsp;alg</code> perform some transformation on the abstract value, guided by the argument <code class="code">alg</code>. The transformation may lose information.  The argument <code class="code">alg</code> overrides the field algorithm of the structure of type <code class="code"><span class="constructor">Manager</span>.funopt</code> associated to ap_abstract0_approximate (commodity feature).</p>
 </div>
 </div>
 <h4 id="3_Printing">Printing</h4>
-<pre><span id="VALfdump"><span class="keyword">val</span> fdump</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> unit</code></pre><div class="info ">
+<pre><span id="VALfdump"><span class="keyword">val</span> fdump</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; unit</code></pre><div class="info ">
 <div class="info-desc">
 <p>Dump on the <code class="code">stdout</code> C stream the internal representation of an abstract value, for debugging purposes</p>
 </div>
 </div>
 
-<pre><span id="VALprint"><span class="keyword">val</span> print</span> : <code class="type">(int -> string) -> Stdlib.Format.formatter -> 'a <a href="Abstract0.html#TYPEt">t</a> -> unit</code></pre><div class="info ">
+<pre><span id="VALprint"><span class="keyword">val</span> print</span> : <code class="type">(int -&gt; string) -&gt; Stdlib.Format.formatter -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; unit</code></pre><div class="info ">
 <div class="info-desc">
 <p>Print as a set of constraints</p>
 </div>
 </div>
 <h4 id="3_Serialization">Serialization</h4><h3 id="2_Constructoraccessorstestsandpropertyextraction">Constructor, accessors, tests and property extraction</h3><h4 id="3_Basicconstructors">Basic constructors</h4>
-<pre><span id="VALbottom"><span class="keyword">val</span> bottom</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> int -> int -> 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALbottom"><span class="keyword">val</span> bottom</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; int -&gt; int -&gt; 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Create a bottom (empty) value with the given number of integer and real variables</p>
 </div>
 </div>
 
-<pre><span id="VALtop"><span class="keyword">val</span> top</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> int -> int -> 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALtop"><span class="keyword">val</span> top</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; int -&gt; int -&gt; 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Create a top (universe) value with the given number of integer and real variables</p>
 </div>
 </div>
 
-<pre><span id="VALof_box"><span class="keyword">val</span> of_box</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> int -> int -> <a href="Interval.html#TYPEt">Interval.t</a> array -> 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALof_box"><span class="keyword">val</span> of_box</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; int -&gt; int -&gt; <a href="Interval.html#TYPEt">Interval.t</a> array -&gt; 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Abstract an hypercube.</p>
 
-<p><code class="code">of_box&nbsp;man&nbsp;intdim&nbsp;realdim&nbsp;array</code> abstracts an hypercube defined by the array of intervals of size <code class="code">intdim+realdim</code></p>
+<p><code class="code">of_box&nbsp;man&nbsp;intdim&nbsp;realdim&nbsp;array</code> abstracts an hypercube defined by the array of intervals of size <code class="code">intdim+realdim</code>. If any interval is empty, the resulting abstract element is empty (bottom). In case of a 0-dimensional element (<code class="code">intdim+realdim=0</code>), the abstract element is always top (not bottom).</p>
 </div>
 </div>
 <h4 id="3_Accessors">Accessors</h4>
-<pre><span id="VALdimension"><span class="keyword">val</span> dimension</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> <a href="Dim.html#TYPEdimension">Dim.dimension</a></code></pre>
-<pre><span id="VALmanager"><span class="keyword">val</span> manager</span> : <code class="type">'a <a href="Abstract0.html#TYPEt">t</a> -> 'a <a href="Manager.html#TYPEt">Manager.t</a></code></pre><h4 id="3_Tests">Tests</h4>
-<pre><span id="VALis_bottom"><span class="keyword">val</span> is_bottom</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> bool</code></pre><div class="info ">
+<pre><span id="VALdimension"><span class="keyword">val</span> dimension</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; <a href="Dim.html#TYPEdimension">Dim.dimension</a></code></pre>
+<pre><span id="VALmanager"><span class="keyword">val</span> manager</span> : <code class="type">'a <a href="Abstract0.html#TYPEt">t</a> -&gt; 'a <a href="Manager.html#TYPEt">Manager.t</a></code></pre><h4 id="3_Tests">Tests</h4><p>NOTE: Abstract elements are not totally ordered.
+As of 0.9.15, they do not implement the polymorphic <code class="code">compare</code> function to avoid confusion.
+As a consequence, the polymorphic <code class="code">=</code>, <code class="code">&lt;=</code>, etc. operators cannot be used.
+Use <code class="code">is_eq</code> and <code class="code">is_leq</code> instead.</p>
+
+<pre><span id="VALis_bottom"><span class="keyword">val</span> is_bottom</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; bool</code></pre><div class="info ">
 <div class="info-desc">
 <p>Emptiness test</p>
 </div>
 </div>
 
-<pre><span id="VALis_top"><span class="keyword">val</span> is_top</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> bool</code></pre><div class="info ">
+<pre><span id="VALis_top"><span class="keyword">val</span> is_top</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; bool</code></pre><div class="info ">
 <div class="info-desc">
 <p>Universality test</p>
 </div>
 </div>
 
-<pre><span id="VALis_leq"><span class="keyword">val</span> is_leq</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> bool</code></pre><div class="info ">
+<pre><span id="VALis_leq"><span class="keyword">val</span> is_leq</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; bool</code></pre><div class="info ">
 <div class="info-desc">
 <p>Inclusion test. The 2 abstract values should be compatible.</p>
 </div>
 </div>
 
-<pre><span id="VALis_eq"><span class="keyword">val</span> is_eq</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> bool</code></pre><div class="info ">
+<pre><span id="VALis_eq"><span class="keyword">val</span> is_eq</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; bool</code></pre><div class="info ">
 <div class="info-desc">
 <p>Equality test. The 2 abstract values should be compatible.</p>
 </div>
 </div>
 
-<pre><span id="VALsat_lincons"><span class="keyword">val</span> sat_lincons</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> <a href="Lincons0.html#TYPEt">Lincons0.t</a> -> bool</code></pre><div class="info ">
+<pre><span id="VALsat_lincons"><span class="keyword">val</span> sat_lincons</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; <a href="Lincons0.html#TYPEt">Lincons0.t</a> -&gt; bool</code></pre><div class="info ">
 <div class="info-desc">
 <p>Does the abstract value satisfy the linear constraint ?</p>
 </div>
 </div>
 
-<pre><span id="VALsat_tcons"><span class="keyword">val</span> sat_tcons</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> <a href="Tcons0.html#TYPEt">Tcons0.t</a> -> bool</code></pre><div class="info ">
+<pre><span id="VALsat_tcons"><span class="keyword">val</span> sat_tcons</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; <a href="Tcons0.html#TYPEt">Tcons0.t</a> -&gt; bool</code></pre><div class="info ">
 <div class="info-desc">
 <p>Does the abstract value satisfy the tree expression constraint ?</p>
 </div>
 </div>
 
-<pre><span id="VALsat_interval"><span class="keyword">val</span> sat_interval</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> <a href="Dim.html#TYPEt">Dim.t</a> -> <a href="Interval.html#TYPEt">Interval.t</a> -> bool</code></pre><div class="info ">
+<pre><span id="VALsat_interval"><span class="keyword">val</span> sat_interval</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; <a href="Dim.html#TYPEt">Dim.t</a> -&gt; <a href="Interval.html#TYPEt">Interval.t</a> -&gt; bool</code></pre><div class="info ">
 <div class="info-desc">
 <p>Does the abstract value satisfy the constraint <code class="code">dim&nbsp;<span class="keyword">in</span>&nbsp;interval</code> ?</p>
 </div>
 </div>
 
-<pre><span id="VALis_dimension_unconstrained"><span class="keyword">val</span> is_dimension_unconstrained</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> <a href="Dim.html#TYPEt">Dim.t</a> -> bool</code></pre><div class="info ">
+<pre><span id="VALis_dimension_unconstrained"><span class="keyword">val</span> is_dimension_unconstrained</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; <a href="Dim.html#TYPEt">Dim.t</a> -&gt; bool</code></pre><div class="info ">
 <div class="info-desc">
 <p>Is the dimension unconstrained in the abstract value ? If yes, this means that the existential quantification of the dimension does not change the value.</p>
 </div>
 </div>
 <h4 id="3_Extractionofproperties">Extraction of properties</h4>
-<pre><span id="VALbound_dimension"><span class="keyword">val</span> bound_dimension</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> <a href="Dim.html#TYPEt">Dim.t</a> -> <a href="Interval.html#TYPEt">Interval.t</a></code></pre><div class="info ">
+<pre><span id="VALbound_dimension"><span class="keyword">val</span> bound_dimension</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; <a href="Dim.html#TYPEt">Dim.t</a> -&gt; <a href="Interval.html#TYPEt">Interval.t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Return the interval of variation of the dimension in the abstract value.</p>
 </div>
 </div>
 
-<pre><span id="VALbound_linexpr"><span class="keyword">val</span> bound_linexpr</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> <a href="Linexpr0.html#TYPEt">Linexpr0.t</a> -> <a href="Interval.html#TYPEt">Interval.t</a></code></pre><div class="info ">
+<pre><span id="VALbound_linexpr"><span class="keyword">val</span> bound_linexpr</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; <a href="Linexpr0.html#TYPEt">Linexpr0.t</a> -&gt; <a href="Interval.html#TYPEt">Interval.t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Return the interval of variation of the linear expression in the abstract value.</p>
 
@@ -216,73 +216,73 @@
 </div>
 </div>
 
-<pre><span id="VALbound_texpr"><span class="keyword">val</span> bound_texpr</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> <a href="Texpr0.html#TYPEt">Texpr0.t</a> -> <a href="Interval.html#TYPEt">Interval.t</a></code></pre><div class="info ">
+<pre><span id="VALbound_texpr"><span class="keyword">val</span> bound_texpr</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; <a href="Texpr0.html#TYPEt">Texpr0.t</a> -&gt; <a href="Interval.html#TYPEt">Interval.t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Return the interval of variation of the tree expression in the abstract value.</p>
 </div>
 </div>
 
-<pre><span id="VALto_box"><span class="keyword">val</span> to_box</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> <a href="Interval.html#TYPEt">Interval.t</a> array</code></pre><div class="info ">
+<pre><span id="VALto_box"><span class="keyword">val</span> to_box</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; <a href="Interval.html#TYPEt">Interval.t</a> array</code></pre><div class="info ">
 <div class="info-desc">
-<p>Convert the abstract value to an hypercube</p>
+<p>Convert the abstract value to an hypercube. In case of an empty (bottom) abstract element of size <code class="code">n</code>, the array contains <code class="code">n</code> empty intervals. For 0-dimensional abstract elements, the array has size 0, and it is impossible to distinguish a 0-dimensional bottom element from a 0-dimensional non-bottom (i.e., top) element. Converting it back to an abstract element with <code class="code">of_box</code> will then always construct a 0-dimensional top element.</p>
 </div>
 </div>
 
-<pre><span id="VALto_lincons_array"><span class="keyword">val</span> to_lincons_array</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> <a href="Lincons0.html#TYPEt">Lincons0.t</a> array</code></pre><div class="info ">
+<pre><span id="VALto_lincons_array"><span class="keyword">val</span> to_lincons_array</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; <a href="Lincons0.html#TYPEt">Lincons0.t</a> array</code></pre><div class="info ">
 <div class="info-desc">
 <p>Convert the abstract value to a conjunction of linear constraints.</p>
 </div>
 </div>
 
-<pre><span id="VALto_tcons_array"><span class="keyword">val</span> to_tcons_array</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> <a href="Tcons0.html#TYPEt">Tcons0.t</a> array</code></pre><div class="info ">
+<pre><span id="VALto_tcons_array"><span class="keyword">val</span> to_tcons_array</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; <a href="Tcons0.html#TYPEt">Tcons0.t</a> array</code></pre><div class="info ">
 <div class="info-desc">
 <p>Convert the abstract value to a conjunction of tree expression constraints.</p>
 </div>
 </div>
 
-<pre><span id="VALto_generator_array"><span class="keyword">val</span> to_generator_array</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> <a href="Generator0.html#TYPEt">Generator0.t</a> array</code></pre><div class="info ">
+<pre><span id="VALto_generator_array"><span class="keyword">val</span> to_generator_array</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; <a href="Generator0.html#TYPEt">Generator0.t</a> array</code></pre><div class="info ">
 <div class="info-desc">
 <p>Convert the abstract value to a set of generators that defines it.</p>
 </div>
 </div>
 <h3 id="2_Operations">Operations</h3><h4 id="3_MeetandJoin">Meet and Join</h4>
-<pre><span id="VALmeet"><span class="keyword">val</span> meet</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALmeet"><span class="keyword">val</span> meet</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Meet of 2 abstract values.</p>
 </div>
 </div>
 
-<pre><span id="VALmeet_array"><span class="keyword">val</span> meet_array</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> array -> 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALmeet_array"><span class="keyword">val</span> meet_array</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> array -&gt; 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Meet of a non empty array of abstract values.</p>
 </div>
 </div>
 
-<pre><span id="VALmeet_lincons_array"><span class="keyword">val</span> meet_lincons_array</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> <a href="Lincons0.html#TYPEt">Lincons0.t</a> array -> 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALmeet_lincons_array"><span class="keyword">val</span> meet_lincons_array</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; <a href="Lincons0.html#TYPEt">Lincons0.t</a> array -&gt; 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Meet of an abstract value with an array of linear constraints.</p>
 </div>
 </div>
 
-<pre><span id="VALmeet_tcons_array"><span class="keyword">val</span> meet_tcons_array</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> <a href="Tcons0.html#TYPEt">Tcons0.t</a> array -> 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALmeet_tcons_array"><span class="keyword">val</span> meet_tcons_array</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; <a href="Tcons0.html#TYPEt">Tcons0.t</a> array -&gt; 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Meet of an abstract value with an array of tree expression constraints.</p>
 </div>
 </div>
 
-<pre><span id="VALjoin"><span class="keyword">val</span> join</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALjoin"><span class="keyword">val</span> join</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Join of 2 abstract values.</p>
 </div>
 </div>
 
-<pre><span id="VALjoin_array"><span class="keyword">val</span> join_array</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> array -> 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALjoin_array"><span class="keyword">val</span> join_array</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> array -&gt; 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Join of a non empty array of abstract values.</p>
 </div>
 </div>
 
-<pre><span id="VALadd_ray_array"><span class="keyword">val</span> add_ray_array</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> <a href="Generator0.html#TYPEt">Generator0.t</a> array -> 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALadd_ray_array"><span class="keyword">val</span> add_ray_array</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; <a href="Generator0.html#TYPEt">Generator0.t</a> array -&gt; 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Add the array of generators to the abstract value (time elapse operator).</p>
 
@@ -290,50 +290,50 @@
 </div>
 </div>
 <h6 id="5_Sideeffectversionsofthepreviousfunctions">Side-effect versions of the previous functions</h6>
-<pre><span id="VALmeet_with"><span class="keyword">val</span> meet_with</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> unit</code></pre>
-<pre><span id="VALmeet_lincons_array_with"><span class="keyword">val</span> meet_lincons_array_with</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> <a href="Lincons0.html#TYPEt">Lincons0.t</a> array -> unit</code></pre>
-<pre><span id="VALmeet_tcons_array_with"><span class="keyword">val</span> meet_tcons_array_with</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> <a href="Tcons0.html#TYPEt">Tcons0.t</a> array -> unit</code></pre>
-<pre><span id="VALjoin_with"><span class="keyword">val</span> join_with</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> unit</code></pre>
-<pre><span id="VALadd_ray_array_with"><span class="keyword">val</span> add_ray_array_with</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> <a href="Generator0.html#TYPEt">Generator0.t</a> array -> unit</code></pre><h4 id="3_AssignementsandSubstitutions">Assignements and Substitutions</h4>
-<pre><span id="VALassign_linexpr_array"><span class="keyword">val</span> assign_linexpr_array</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -><br>       'a <a href="Abstract0.html#TYPEt">t</a> -><br>       <a href="Dim.html#TYPEt">Dim.t</a> array -> <a href="Linexpr0.html#TYPEt">Linexpr0.t</a> array -> 'a <a href="Abstract0.html#TYPEt">t</a> option -> 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALmeet_with"><span class="keyword">val</span> meet_with</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; unit</code></pre>
+<pre><span id="VALmeet_lincons_array_with"><span class="keyword">val</span> meet_lincons_array_with</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; <a href="Lincons0.html#TYPEt">Lincons0.t</a> array -&gt; unit</code></pre>
+<pre><span id="VALmeet_tcons_array_with"><span class="keyword">val</span> meet_tcons_array_with</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; <a href="Tcons0.html#TYPEt">Tcons0.t</a> array -&gt; unit</code></pre>
+<pre><span id="VALjoin_with"><span class="keyword">val</span> join_with</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; unit</code></pre>
+<pre><span id="VALadd_ray_array_with"><span class="keyword">val</span> add_ray_array_with</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; <a href="Generator0.html#TYPEt">Generator0.t</a> array -&gt; unit</code></pre><h4 id="3_AssignementsandSubstitutions">Assignements and Substitutions</h4>
+<pre><span id="VALassign_linexpr_array"><span class="keyword">val</span> assign_linexpr_array</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt;<br>       'a <a href="Abstract0.html#TYPEt">t</a> -&gt;<br>       <a href="Dim.html#TYPEt">Dim.t</a> array -&gt; <a href="Linexpr0.html#TYPEt">Linexpr0.t</a> array -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> option -&gt; 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Parallel assignement of an array of dimensions by an array of same size of linear expressions</p>
 </div>
 </div>
 
-<pre><span id="VALsubstitute_linexpr_array"><span class="keyword">val</span> substitute_linexpr_array</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -><br>       'a <a href="Abstract0.html#TYPEt">t</a> -><br>       <a href="Dim.html#TYPEt">Dim.t</a> array -> <a href="Linexpr0.html#TYPEt">Linexpr0.t</a> array -> 'a <a href="Abstract0.html#TYPEt">t</a> option -> 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALsubstitute_linexpr_array"><span class="keyword">val</span> substitute_linexpr_array</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt;<br>       'a <a href="Abstract0.html#TYPEt">t</a> -&gt;<br>       <a href="Dim.html#TYPEt">Dim.t</a> array -&gt; <a href="Linexpr0.html#TYPEt">Linexpr0.t</a> array -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> option -&gt; 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Parallel substitution of an array of dimensions by an array of same size of linear expressions</p>
 </div>
 </div>
 
-<pre><span id="VALassign_texpr_array"><span class="keyword">val</span> assign_texpr_array</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -><br>       'a <a href="Abstract0.html#TYPEt">t</a> -><br>       <a href="Dim.html#TYPEt">Dim.t</a> array -> <a href="Texpr0.html#TYPEt">Texpr0.t</a> array -> 'a <a href="Abstract0.html#TYPEt">t</a> option -> 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALassign_texpr_array"><span class="keyword">val</span> assign_texpr_array</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt;<br>       'a <a href="Abstract0.html#TYPEt">t</a> -&gt;<br>       <a href="Dim.html#TYPEt">Dim.t</a> array -&gt; <a href="Texpr0.html#TYPEt">Texpr0.t</a> array -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> option -&gt; 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Parallel assignement of an array of dimensions by an array of same size of tree expressions</p>
 </div>
 </div>
 
-<pre><span id="VALsubstitute_texpr_array"><span class="keyword">val</span> substitute_texpr_array</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -><br>       'a <a href="Abstract0.html#TYPEt">t</a> -><br>       <a href="Dim.html#TYPEt">Dim.t</a> array -> <a href="Texpr0.html#TYPEt">Texpr0.t</a> array -> 'a <a href="Abstract0.html#TYPEt">t</a> option -> 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALsubstitute_texpr_array"><span class="keyword">val</span> substitute_texpr_array</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt;<br>       'a <a href="Abstract0.html#TYPEt">t</a> -&gt;<br>       <a href="Dim.html#TYPEt">Dim.t</a> array -&gt; <a href="Texpr0.html#TYPEt">Texpr0.t</a> array -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> option -&gt; 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Parallel substitution of an array of dimensions by an array of same size of tree expressions</p>
 </div>
 </div>
 <h6 id="5_Sideeffectversionsofthepreviousfunctions">Side-effect versions of the previous functions</h6>
-<pre><span id="VALassign_linexpr_array_with"><span class="keyword">val</span> assign_linexpr_array_with</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -><br>       'a <a href="Abstract0.html#TYPEt">t</a> -><br>       <a href="Dim.html#TYPEt">Dim.t</a> array -> <a href="Linexpr0.html#TYPEt">Linexpr0.t</a> array -> 'a <a href="Abstract0.html#TYPEt">t</a> option -> unit</code></pre>
-<pre><span id="VALsubstitute_linexpr_array_with"><span class="keyword">val</span> substitute_linexpr_array_with</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -><br>       'a <a href="Abstract0.html#TYPEt">t</a> -><br>       <a href="Dim.html#TYPEt">Dim.t</a> array -> <a href="Linexpr0.html#TYPEt">Linexpr0.t</a> array -> 'a <a href="Abstract0.html#TYPEt">t</a> option -> unit</code></pre>
-<pre><span id="VALassign_texpr_array_with"><span class="keyword">val</span> assign_texpr_array_with</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -><br>       'a <a href="Abstract0.html#TYPEt">t</a> -><br>       <a href="Dim.html#TYPEt">Dim.t</a> array -> <a href="Texpr0.html#TYPEt">Texpr0.t</a> array -> 'a <a href="Abstract0.html#TYPEt">t</a> option -> unit</code></pre>
-<pre><span id="VALsubstitute_texpr_array_with"><span class="keyword">val</span> substitute_texpr_array_with</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -><br>       'a <a href="Abstract0.html#TYPEt">t</a> -><br>       <a href="Dim.html#TYPEt">Dim.t</a> array -> <a href="Texpr0.html#TYPEt">Texpr0.t</a> array -> 'a <a href="Abstract0.html#TYPEt">t</a> option -> unit</code></pre><h4 id="3_Projections">Projections</h4><p>These functions implements forgeting (existential quantification) of (array of) dimensions. Both functional and side-effect versions are provided. The Boolean, if true, adds a projection onto 0-plane.</p>
+<pre><span id="VALassign_linexpr_array_with"><span class="keyword">val</span> assign_linexpr_array_with</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt;<br>       'a <a href="Abstract0.html#TYPEt">t</a> -&gt;<br>       <a href="Dim.html#TYPEt">Dim.t</a> array -&gt; <a href="Linexpr0.html#TYPEt">Linexpr0.t</a> array -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> option -&gt; unit</code></pre>
+<pre><span id="VALsubstitute_linexpr_array_with"><span class="keyword">val</span> substitute_linexpr_array_with</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt;<br>       'a <a href="Abstract0.html#TYPEt">t</a> -&gt;<br>       <a href="Dim.html#TYPEt">Dim.t</a> array -&gt; <a href="Linexpr0.html#TYPEt">Linexpr0.t</a> array -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> option -&gt; unit</code></pre>
+<pre><span id="VALassign_texpr_array_with"><span class="keyword">val</span> assign_texpr_array_with</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt;<br>       'a <a href="Abstract0.html#TYPEt">t</a> -&gt;<br>       <a href="Dim.html#TYPEt">Dim.t</a> array -&gt; <a href="Texpr0.html#TYPEt">Texpr0.t</a> array -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> option -&gt; unit</code></pre>
+<pre><span id="VALsubstitute_texpr_array_with"><span class="keyword">val</span> substitute_texpr_array_with</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt;<br>       'a <a href="Abstract0.html#TYPEt">t</a> -&gt;<br>       <a href="Dim.html#TYPEt">Dim.t</a> array -&gt; <a href="Texpr0.html#TYPEt">Texpr0.t</a> array -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> option -&gt; unit</code></pre><h4 id="3_Projections">Projections</h4><p>These functions implements forgeting (existential quantification) of (array of) dimensions. Both functional and side-effect versions are provided. The Boolean, if true, adds a projection onto 0-plane.</p>
 
-<pre><span id="VALforget_array"><span class="keyword">val</span> forget_array</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> <a href="Dim.html#TYPEt">Dim.t</a> array -> bool -> 'a <a href="Abstract0.html#TYPEt">t</a></code></pre>
-<pre><span id="VALforget_array_with"><span class="keyword">val</span> forget_array_with</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> <a href="Dim.html#TYPEt">Dim.t</a> array -> bool -> unit</code></pre><h4 id="3_Changeandpermutationofdimensions">Change and permutation of dimensions</h4>
-<pre><span id="VALadd_dimensions"><span class="keyword">val</span> add_dimensions</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> <a href="Dim.html#TYPEchange">Dim.change</a> -> bool -> 'a <a href="Abstract0.html#TYPEt">t</a></code></pre>
-<pre><span id="VALremove_dimensions"><span class="keyword">val</span> remove_dimensions</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> <a href="Dim.html#TYPEchange">Dim.change</a> -> 'a <a href="Abstract0.html#TYPEt">t</a></code></pre>
-<pre><span id="VALapply_dimchange2"><span class="keyword">val</span> apply_dimchange2</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> <a href="Dim.html#TYPEchange2">Dim.change2</a> -> bool -> 'a <a href="Abstract0.html#TYPEt">t</a></code></pre>
-<pre><span id="VALpermute_dimensions"><span class="keyword">val</span> permute_dimensions</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> <a href="Dim.html#TYPEperm">Dim.perm</a> -> 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><h6 id="5_Sideeffectversionsofthepreviousfunctions">Side-effect versions of the previous functions</h6>
-<pre><span id="VALadd_dimensions_with"><span class="keyword">val</span> add_dimensions_with</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> <a href="Dim.html#TYPEchange">Dim.change</a> -> bool -> unit</code></pre>
-<pre><span id="VALremove_dimensions_with"><span class="keyword">val</span> remove_dimensions_with</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> <a href="Dim.html#TYPEchange">Dim.change</a> -> unit</code></pre>
-<pre><span id="VALapply_dimchange2_with"><span class="keyword">val</span> apply_dimchange2_with</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> <a href="Dim.html#TYPEchange2">Dim.change2</a> -> bool -> unit</code></pre>
-<pre><span id="VALpermute_dimensions_with"><span class="keyword">val</span> permute_dimensions_with</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> <a href="Dim.html#TYPEperm">Dim.perm</a> option -> unit</code></pre><h4 id="3_Expansionandfoldingofdimensions">Expansion and folding of dimensions</h4><p>These functions allows to expand one dimension into several ones having the
+<pre><span id="VALforget_array"><span class="keyword">val</span> forget_array</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; <a href="Dim.html#TYPEt">Dim.t</a> array -&gt; bool -&gt; 'a <a href="Abstract0.html#TYPEt">t</a></code></pre>
+<pre><span id="VALforget_array_with"><span class="keyword">val</span> forget_array_with</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; <a href="Dim.html#TYPEt">Dim.t</a> array -&gt; bool -&gt; unit</code></pre><h4 id="3_Changeandpermutationofdimensions">Change and permutation of dimensions</h4>
+<pre><span id="VALadd_dimensions"><span class="keyword">val</span> add_dimensions</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; <a href="Dim.html#TYPEchange">Dim.change</a> -&gt; bool -&gt; 'a <a href="Abstract0.html#TYPEt">t</a></code></pre>
+<pre><span id="VALremove_dimensions"><span class="keyword">val</span> remove_dimensions</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; <a href="Dim.html#TYPEchange">Dim.change</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a></code></pre>
+<pre><span id="VALapply_dimchange2"><span class="keyword">val</span> apply_dimchange2</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; <a href="Dim.html#TYPEchange2">Dim.change2</a> -&gt; bool -&gt; 'a <a href="Abstract0.html#TYPEt">t</a></code></pre>
+<pre><span id="VALpermute_dimensions"><span class="keyword">val</span> permute_dimensions</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; <a href="Dim.html#TYPEperm">Dim.perm</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><h6 id="5_Sideeffectversionsofthepreviousfunctions">Side-effect versions of the previous functions</h6>
+<pre><span id="VALadd_dimensions_with"><span class="keyword">val</span> add_dimensions_with</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; <a href="Dim.html#TYPEchange">Dim.change</a> -&gt; bool -&gt; unit</code></pre>
+<pre><span id="VALremove_dimensions_with"><span class="keyword">val</span> remove_dimensions_with</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; <a href="Dim.html#TYPEchange">Dim.change</a> -&gt; unit</code></pre>
+<pre><span id="VALapply_dimchange2_with"><span class="keyword">val</span> apply_dimchange2_with</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; <a href="Dim.html#TYPEchange2">Dim.change2</a> -&gt; bool -&gt; unit</code></pre>
+<pre><span id="VALpermute_dimensions_with"><span class="keyword">val</span> permute_dimensions_with</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; <a href="Dim.html#TYPEperm">Dim.perm</a> option -&gt; unit</code></pre><h4 id="3_Expansionandfoldingofdimensions">Expansion and folding of dimensions</h4><p>These functions allows to expand one dimension into several ones having the
 same properties with respect to the other dimensions, and to fold several
 dimensions into one. Formally,</p>
 
@@ -343,7 +343,7 @@ dimensions into one. Formally,</p>
 if z and w are folded onto z</li>
 </ul>
 
-<pre><span id="VALexpand"><span class="keyword">val</span> expand</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> <a href="Dim.html#TYPEt">Dim.t</a> -> int -> 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALexpand"><span class="keyword">val</span> expand</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; <a href="Dim.html#TYPEt">Dim.t</a> -&gt; int -&gt; 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Expansion: <code class="code">expand&nbsp;a&nbsp;dim&nbsp;n</code> expands the dimension <code class="code">dim</code> into itself + <code class="code">n</code>
 additional dimensions.  It results in (n+1) unrelated dimensions having
@@ -359,7 +359,7 @@ dimensions.</li>
 </div>
 </div>
 
-<pre><span id="VALfold"><span class="keyword">val</span> fold</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> <a href="Dim.html#TYPEt">Dim.t</a> array -> 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALfold"><span class="keyword">val</span> fold</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; <a href="Dim.html#TYPEt">Dim.t</a> array -&gt; 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Folding: <code class="code">fold&nbsp;a&nbsp;tdim</code> fold the dimensions in the array <code class="code">tdim</code> of size n&gt;=1
 and put the result in the first dimension of the array. The other
@@ -368,53 +368,53 @@ ap_abstract0_permute_remove_dimensions).</p>
 </div>
 </div>
 
-<pre><span id="VALexpand_with"><span class="keyword">val</span> expand_with</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> <a href="Dim.html#TYPEt">Dim.t</a> -> int -> unit</code></pre>
-<pre><span id="VALfold_with"><span class="keyword">val</span> fold_with</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> <a href="Dim.html#TYPEt">Dim.t</a> array -> unit</code></pre><h4 id="3_Widening">Widening</h4>
-<pre><span id="VALwidening"><span class="keyword">val</span> widening</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALexpand_with"><span class="keyword">val</span> expand_with</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; <a href="Dim.html#TYPEt">Dim.t</a> -&gt; int -&gt; unit</code></pre>
+<pre><span id="VALfold_with"><span class="keyword">val</span> fold_with</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; <a href="Dim.html#TYPEt">Dim.t</a> array -&gt; unit</code></pre><h4 id="3_Widening">Widening</h4>
+<pre><span id="VALwidening"><span class="keyword">val</span> widening</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Widening. Assumes that the first abstract value is included in the second one.</p>
 </div>
 </div>
 
-<pre><span id="VALwidening_threshold"><span class="keyword">val</span> widening_threshold</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -><br>       'a <a href="Abstract0.html#TYPEt">t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> <a href="Lincons0.html#TYPEt">Lincons0.t</a> array -> 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><h4 id="3_Closureoperation">Closure operation</h4>
-<pre><span id="VALclosure"><span class="keyword">val</span> closure</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALwidening_threshold"><span class="keyword">val</span> widening_threshold</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt;<br>       'a <a href="Abstract0.html#TYPEt">t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; <a href="Lincons0.html#TYPEt">Lincons0.t</a> array -&gt; 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><h4 id="3_Closureoperation">Closure operation</h4>
+<pre><span id="VALclosure"><span class="keyword">val</span> closure</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Closure: transform strict constraints into non-strict ones.</p>
 </div>
 </div>
 
-<pre><span id="VALclosure_with"><span class="keyword">val</span> closure_with</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> -> unit</code></pre><div class="info ">
+<pre><span id="VALclosure_with"><span class="keyword">val</span> closure_with</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> -&gt; unit</code></pre><div class="info ">
 <div class="info-desc">
 <p>Side-effect version</p>
 </div>
 </div>
 <h3 id="2_Additionaloperations">Additional operations</h3>
-<pre><span id="VALof_lincons_array"><span class="keyword">val</span> of_lincons_array</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> int -> int -> <a href="Lincons0.html#TYPEt">Lincons0.t</a> array -> 'a <a href="Abstract0.html#TYPEt">t</a></code></pre>
-<pre><span id="VALof_tcons_array"><span class="keyword">val</span> of_tcons_array</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> int -> int -> <a href="Tcons0.html#TYPEt">Tcons0.t</a> array -> 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALof_lincons_array"><span class="keyword">val</span> of_lincons_array</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; int -&gt; int -&gt; <a href="Lincons0.html#TYPEt">Lincons0.t</a> array -&gt; 'a <a href="Abstract0.html#TYPEt">t</a></code></pre>
+<pre><span id="VALof_tcons_array"><span class="keyword">val</span> of_tcons_array</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; int -&gt; int -&gt; <a href="Tcons0.html#TYPEt">Tcons0.t</a> array -&gt; 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Abstract a conjunction of constraints</p>
 </div>
 </div>
 
-<pre><span id="VALassign_linexpr"><span class="keyword">val</span> assign_linexpr</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -><br>       'a <a href="Abstract0.html#TYPEt">t</a> -><br>       <a href="Dim.html#TYPEt">Dim.t</a> -> <a href="Linexpr0.html#TYPEt">Linexpr0.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> option -> 'a <a href="Abstract0.html#TYPEt">t</a></code></pre>
-<pre><span id="VALsubstitute_linexpr"><span class="keyword">val</span> substitute_linexpr</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -><br>       'a <a href="Abstract0.html#TYPEt">t</a> -><br>       <a href="Dim.html#TYPEt">Dim.t</a> -> <a href="Linexpr0.html#TYPEt">Linexpr0.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> option -> 'a <a href="Abstract0.html#TYPEt">t</a></code></pre>
-<pre><span id="VALassign_texpr"><span class="keyword">val</span> assign_texpr</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -><br>       'a <a href="Abstract0.html#TYPEt">t</a> -><br>       <a href="Dim.html#TYPEt">Dim.t</a> -> <a href="Texpr0.html#TYPEt">Texpr0.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> option -> 'a <a href="Abstract0.html#TYPEt">t</a></code></pre>
-<pre><span id="VALsubstitute_texpr"><span class="keyword">val</span> substitute_texpr</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -><br>       'a <a href="Abstract0.html#TYPEt">t</a> -><br>       <a href="Dim.html#TYPEt">Dim.t</a> -> <a href="Texpr0.html#TYPEt">Texpr0.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> option -> 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALassign_linexpr"><span class="keyword">val</span> assign_linexpr</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt;<br>       'a <a href="Abstract0.html#TYPEt">t</a> -&gt;<br>       <a href="Dim.html#TYPEt">Dim.t</a> -&gt; <a href="Linexpr0.html#TYPEt">Linexpr0.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> option -&gt; 'a <a href="Abstract0.html#TYPEt">t</a></code></pre>
+<pre><span id="VALsubstitute_linexpr"><span class="keyword">val</span> substitute_linexpr</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt;<br>       'a <a href="Abstract0.html#TYPEt">t</a> -&gt;<br>       <a href="Dim.html#TYPEt">Dim.t</a> -&gt; <a href="Linexpr0.html#TYPEt">Linexpr0.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> option -&gt; 'a <a href="Abstract0.html#TYPEt">t</a></code></pre>
+<pre><span id="VALassign_texpr"><span class="keyword">val</span> assign_texpr</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt;<br>       'a <a href="Abstract0.html#TYPEt">t</a> -&gt;<br>       <a href="Dim.html#TYPEt">Dim.t</a> -&gt; <a href="Texpr0.html#TYPEt">Texpr0.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> option -&gt; 'a <a href="Abstract0.html#TYPEt">t</a></code></pre>
+<pre><span id="VALsubstitute_texpr"><span class="keyword">val</span> substitute_texpr</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt;<br>       'a <a href="Abstract0.html#TYPEt">t</a> -&gt;<br>       <a href="Dim.html#TYPEt">Dim.t</a> -&gt; <a href="Texpr0.html#TYPEt">Texpr0.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> option -&gt; 'a <a href="Abstract0.html#TYPEt">t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Assignement/Substitution of a single dimension by a single expression</p>
 </div>
 </div>
 
-<pre><span id="VALassign_linexpr_with"><span class="keyword">val</span> assign_linexpr_with</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -><br>       'a <a href="Abstract0.html#TYPEt">t</a> -> <a href="Dim.html#TYPEt">Dim.t</a> -> <a href="Linexpr0.html#TYPEt">Linexpr0.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> option -> unit</code></pre>
-<pre><span id="VALsubstitute_linexpr_with"><span class="keyword">val</span> substitute_linexpr_with</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -><br>       'a <a href="Abstract0.html#TYPEt">t</a> -> <a href="Dim.html#TYPEt">Dim.t</a> -> <a href="Linexpr0.html#TYPEt">Linexpr0.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> option -> unit</code></pre>
-<pre><span id="VALassign_texpr_with"><span class="keyword">val</span> assign_texpr_with</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -><br>       'a <a href="Abstract0.html#TYPEt">t</a> -> <a href="Dim.html#TYPEt">Dim.t</a> -> <a href="Texpr0.html#TYPEt">Texpr0.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> option -> unit</code></pre>
-<pre><span id="VALsubstitute_texpr_with"><span class="keyword">val</span> substitute_texpr_with</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -><br>       'a <a href="Abstract0.html#TYPEt">t</a> -> <a href="Dim.html#TYPEt">Dim.t</a> -> <a href="Texpr0.html#TYPEt">Texpr0.t</a> -> 'a <a href="Abstract0.html#TYPEt">t</a> option -> unit</code></pre><div class="info ">
+<pre><span id="VALassign_linexpr_with"><span class="keyword">val</span> assign_linexpr_with</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt;<br>       'a <a href="Abstract0.html#TYPEt">t</a> -&gt; <a href="Dim.html#TYPEt">Dim.t</a> -&gt; <a href="Linexpr0.html#TYPEt">Linexpr0.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> option -&gt; unit</code></pre>
+<pre><span id="VALsubstitute_linexpr_with"><span class="keyword">val</span> substitute_linexpr_with</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt;<br>       'a <a href="Abstract0.html#TYPEt">t</a> -&gt; <a href="Dim.html#TYPEt">Dim.t</a> -&gt; <a href="Linexpr0.html#TYPEt">Linexpr0.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> option -&gt; unit</code></pre>
+<pre><span id="VALassign_texpr_with"><span class="keyword">val</span> assign_texpr_with</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt;<br>       'a <a href="Abstract0.html#TYPEt">t</a> -&gt; <a href="Dim.html#TYPEt">Dim.t</a> -&gt; <a href="Texpr0.html#TYPEt">Texpr0.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> option -&gt; unit</code></pre>
+<pre><span id="VALsubstitute_texpr_with"><span class="keyword">val</span> substitute_texpr_with</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt;<br>       'a <a href="Abstract0.html#TYPEt">t</a> -&gt; <a href="Dim.html#TYPEt">Dim.t</a> -&gt; <a href="Texpr0.html#TYPEt">Texpr0.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">t</a> option -&gt; unit</code></pre><div class="info ">
 <div class="info-desc">
 <p>Side-effect version of the previous functions</p>
 </div>
 </div>
 
-<pre><span id="VALprint_array"><span class="keyword">val</span> print_array</span> : <code class="type">?first:(unit, Stdlib.Format.formatter, unit) Stdlib.format -><br>       ?sep:(unit, Stdlib.Format.formatter, unit) Stdlib.format -><br>       ?last:(unit, Stdlib.Format.formatter, unit) Stdlib.format -><br>       (Stdlib.Format.formatter -> 'a -> unit) -><br>       Stdlib.Format.formatter -> 'a array -> unit</code></pre><div class="info ">
+<pre><span id="VALprint_array"><span class="keyword">val</span> print_array</span> : <code class="type">?first:(unit, Stdlib.Format.formatter, unit) Stdlib.format -&gt;<br>       ?sep:(unit, Stdlib.Format.formatter, unit) Stdlib.format -&gt;<br>       ?last:(unit, Stdlib.Format.formatter, unit) Stdlib.format -&gt;<br>       (Stdlib.Format.formatter -&gt; 'a -&gt; unit) -&gt;<br>       Stdlib.Format.formatter -&gt; 'a array -&gt; unit</code></pre><div class="info ">
 <div class="info-desc">
 <p>General use</p>
 </div>

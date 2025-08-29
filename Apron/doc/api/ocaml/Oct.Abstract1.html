@@ -1,8 +1,8 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" href="style.css" type="text/css">
-<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="Start" href="index.html">
 <link rel="previous" href="Oct.Abstract0.html">
@@ -38,6 +38,7 @@
 <link title="Box" rel="Chapter" href="Box.html">
 <link title="Oct" rel="Chapter" href="Oct.html">
 <link title="Polka" rel="Chapter" href="Polka.html">
+<link title="T1p" rel="Chapter" href="T1p.html">
 <link title="Ppl" rel="Chapter" href="Ppl.html">
 <link title="PolkaGrid" rel="Chapter" href="PolkaGrid.html">
 <link title="Mpz" rel="Chapter" href="Mpz.html">
@@ -57,19 +58,19 @@
 
 <pre><span id="MODULEAbstract1"><span class="keyword">module</span> Abstract1</span>: <code class="code"><span class="keyword">sig</span></code> <a href="Oct.Abstract1.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><hr width="100%">
 
-<pre><span id="VALis_oct"><span class="keyword">val</span> is_oct</span> : <code class="type">'a Apron.Abstract1.t -> bool</code></pre><div class="info ">
+<pre><span id="VALis_oct"><span class="keyword">val</span> is_oct</span> : <code class="type">'a Apron.Abstract1.t -&gt; bool</code></pre><div class="info ">
 <div class="info-desc">
 <p>Return <code class="code"><span class="keyword">true</span></code> iff the argument value is an oct value</p>
 </div>
 </div>
 
-<pre><span id="VALof_oct"><span class="keyword">val</span> of_oct</span> : <code class="type"><a href="Oct.html#TYPEt">Oct.t</a> Apron.Abstract1.t -> 'a Apron.Abstract1.t</code></pre><div class="info ">
+<pre><span id="VALof_oct"><span class="keyword">val</span> of_oct</span> : <code class="type"><a href="Oct.html#TYPEt">Oct.t</a> Apron.Abstract1.t -&gt; 'a Apron.Abstract1.t</code></pre><div class="info ">
 <div class="info-desc">
 <p>Make an oct value generic</p>
 </div>
 </div>
 
-<pre><span id="VALto_oct"><span class="keyword">val</span> to_oct</span> : <code class="type">'a Apron.Abstract1.t -> <a href="Oct.html#TYPEt">Oct.t</a> Apron.Abstract1.t</code></pre><div class="info ">
+<pre><span id="VALto_oct"><span class="keyword">val</span> to_oct</span> : <code class="type">'a Apron.Abstract1.t -&gt; <a href="Oct.html#TYPEt">Oct.t</a> Apron.Abstract1.t</code></pre><div class="info ">
 <div class="info-desc">
 <p>Instanciate the type of an oct value.
 	Raises <code class="code"><span class="constructor">Failure</span></code> if the argument value is not an oct value</p>

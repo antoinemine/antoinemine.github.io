@@ -1,8 +1,8 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" href="style.css" type="text/css">
-<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="Start" href="index.html">
 <link rel="previous" href="Policy.html">
@@ -39,6 +39,7 @@
 <link title="Box" rel="Chapter" href="Box.html">
 <link title="Oct" rel="Chapter" href="Oct.html">
 <link title="Polka" rel="Chapter" href="Polka.html">
+<link title="T1p" rel="Chapter" href="T1p.html">
 <link title="Ppl" rel="Chapter" href="Ppl.html">
 <link title="PolkaGrid" rel="Chapter" href="PolkaGrid.html">
 <link title="Mpz" rel="Chapter" href="Mpz.html">
@@ -68,31 +69,31 @@
 <pre><span id="TYPEt"><span class="keyword">type</span> <code class="type">'a</code> t</span> </pre>
 
 
-<pre><span id="VALmanager_alloc"><span class="keyword">val</span> manager_alloc</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Disjunction.html#TYPEt">t</a> <a href="Manager.html#TYPEt">Manager.t</a></code></pre>
-<pre><span id="VALmanager_decompose"><span class="keyword">val</span> manager_decompose</span> : <code class="type">'a <a href="Disjunction.html#TYPEt">t</a> <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Manager.html#TYPEt">Manager.t</a></code></pre>
-<pre><span id="VALto_lincons0_set"><span class="keyword">val</span> to_lincons0_set</span> : <code class="type">'a <a href="Disjunction.html#TYPEt">t</a> <a href="Manager.html#TYPEt">Manager.t</a> -><br>       'a <a href="Disjunction.html#TYPEt">t</a> <a href="Abstract0.html#TYPEt">Abstract0.t</a> -> <a href="Lincons0.html#TYPEt">Lincons0.t</a> array</code></pre>
-<pre><span id="VALto_lincons1_set"><span class="keyword">val</span> to_lincons1_set</span> : <code class="type">'a <a href="Disjunction.html#TYPEt">t</a> <a href="Manager.html#TYPEt">Manager.t</a> -> 'a <a href="Disjunction.html#TYPEt">t</a> <a href="Abstract1.html#TYPEt">Abstract1.t</a> -> <a href="Lincons1.html#TYPEearray">Lincons1.earray</a></code></pre>
-<pre><span id="VAL_decompose"><span class="keyword">val</span> _decompose</span> : <code class="type">'a <a href="Disjunction.html#TYPEt">t</a> <a href="Manager.html#TYPEt">Manager.t</a> -><br>       'a <a href="Disjunction.html#TYPEt">t</a> <a href="Abstract0.html#TYPEt">Abstract0.t</a> -> 'a <a href="Abstract0.html#TYPEt">Abstract0.t</a> array * int</code></pre><div class="info ">
+<pre><span id="VALmanager_alloc"><span class="keyword">val</span> manager_alloc</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Disjunction.html#TYPEt">t</a> <a href="Manager.html#TYPEt">Manager.t</a></code></pre>
+<pre><span id="VALmanager_decompose"><span class="keyword">val</span> manager_decompose</span> : <code class="type">'a <a href="Disjunction.html#TYPEt">t</a> <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Manager.html#TYPEt">Manager.t</a></code></pre>
+<pre><span id="VALto_lincons0_set"><span class="keyword">val</span> to_lincons0_set</span> : <code class="type">'a <a href="Disjunction.html#TYPEt">t</a> <a href="Manager.html#TYPEt">Manager.t</a> -&gt;<br>       'a <a href="Disjunction.html#TYPEt">t</a> <a href="Abstract0.html#TYPEt">Abstract0.t</a> -&gt; <a href="Lincons0.html#TYPEt">Lincons0.t</a> array</code></pre>
+<pre><span id="VALto_lincons1_set"><span class="keyword">val</span> to_lincons1_set</span> : <code class="type">'a <a href="Disjunction.html#TYPEt">t</a> <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'a <a href="Disjunction.html#TYPEt">t</a> <a href="Abstract1.html#TYPEt">Abstract1.t</a> -&gt; <a href="Lincons1.html#TYPEearray">Lincons1.earray</a></code></pre>
+<pre><span id="VAL_decompose"><span class="keyword">val</span> _decompose</span> : <code class="type">'a <a href="Disjunction.html#TYPEt">t</a> <a href="Manager.html#TYPEt">Manager.t</a> -&gt;<br>       'a <a href="Disjunction.html#TYPEt">t</a> <a href="Abstract0.html#TYPEt">Abstract0.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">Abstract0.t</a> array * int</code></pre><div class="info ">
 <div class="info-desc">
 <p>Decompose an abstract value</p>
 </div>
 </div>
 
-<pre><span id="VALdecompose"><span class="keyword">val</span> decompose</span> : <code class="type">'a <a href="Disjunction.html#TYPEt">t</a> <a href="Manager.html#TYPEt">Manager.t</a> -><br>       'a <a href="Disjunction.html#TYPEt">t</a> <a href="Abstract0.html#TYPEt">Abstract0.t</a> -> 'a <a href="Abstract0.html#TYPEt">Abstract0.t</a> array</code></pre>
-<pre><span id="VALcompose"><span class="keyword">val</span> compose</span> : <code class="type">'a <a href="Disjunction.html#TYPEt">t</a> <a href="Manager.html#TYPEt">Manager.t</a> -><br>       'a <a href="Abstract0.html#TYPEt">Abstract0.t</a> array -> 'a <a href="Disjunction.html#TYPEt">t</a> <a href="Abstract0.html#TYPEt">Abstract0.t</a></code></pre><h3 id="2_Typeconversions">Type conversions</h3>
-<pre><span id="VALmanager_is_disjunction"><span class="keyword">val</span> manager_is_disjunction</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> bool</code></pre><div class="info ">
+<pre><span id="VALdecompose"><span class="keyword">val</span> decompose</span> : <code class="type">'a <a href="Disjunction.html#TYPEt">t</a> <a href="Manager.html#TYPEt">Manager.t</a> -&gt;<br>       'a <a href="Disjunction.html#TYPEt">t</a> <a href="Abstract0.html#TYPEt">Abstract0.t</a> -&gt; 'a <a href="Abstract0.html#TYPEt">Abstract0.t</a> array</code></pre>
+<pre><span id="VALcompose"><span class="keyword">val</span> compose</span> : <code class="type">'a <a href="Disjunction.html#TYPEt">t</a> <a href="Manager.html#TYPEt">Manager.t</a> -&gt;<br>       'a <a href="Abstract0.html#TYPEt">Abstract0.t</a> array -&gt; 'a <a href="Disjunction.html#TYPEt">t</a> <a href="Abstract0.html#TYPEt">Abstract0.t</a></code></pre><h3 id="2_Typeconversions">Type conversions</h3>
+<pre><span id="VALmanager_is_disjunction"><span class="keyword">val</span> manager_is_disjunction</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; bool</code></pre><div class="info ">
 <div class="info-desc">
 <p>Return <code class="code"><span class="keyword">true</span></code> iff the argument manager is a disjunction manager</p>
 </div>
 </div>
 
-<pre><span id="VALmanager_of_disjunction"><span class="keyword">val</span> manager_of_disjunction</span> : <code class="type">'a <a href="Disjunction.html#TYPEt">t</a> <a href="Manager.html#TYPEt">Manager.t</a> -> 'b <a href="Manager.html#TYPEt">Manager.t</a></code></pre><div class="info ">
+<pre><span id="VALmanager_of_disjunction"><span class="keyword">val</span> manager_of_disjunction</span> : <code class="type">'a <a href="Disjunction.html#TYPEt">t</a> <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'b <a href="Manager.html#TYPEt">Manager.t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Make a disjunction manager generic</p>
 </div>
 </div>
 
-<pre><span id="VALmanager_to_disjunction"><span class="keyword">val</span> manager_to_disjunction</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> 'b <a href="Disjunction.html#TYPEt">t</a> <a href="Manager.html#TYPEt">Manager.t</a></code></pre><div class="info ">
+<pre><span id="VALmanager_to_disjunction"><span class="keyword">val</span> manager_to_disjunction</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; 'b <a href="Disjunction.html#TYPEt">t</a> <a href="Manager.html#TYPEt">Manager.t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Instanciate the type of a disjunction manager.
       Raises <code class="code"><span class="constructor">Failure</span></code> if the argument manager is not a disjunction manager</p>

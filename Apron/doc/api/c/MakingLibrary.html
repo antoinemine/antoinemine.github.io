@@ -1,35 +1,25 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.6, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.2, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>MakingLibrary (APRON 0.9.12)</title>
+<title>MakingLibrary (APRON 0.9.15)</title>
 
-<meta name="description" content="MakingLibrary (APRON 0.9.12)">
-<meta name="keywords" content="MakingLibrary (APRON 0.9.12)">
+<meta name="description" content="MakingLibrary (APRON 0.9.15)">
+<meta name="keywords" content="MakingLibrary (APRON 0.9.15)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
-<link href="index.html#Top" rel="start" title="Top">
-<link href="APRON-Guidelines.html#APRON-Guidelines" rel="up" title="APRON Guidelines">
-<link href="Managers-and-Abstract-Domains.html#Managers-and-Abstract-Domains" rel="next" title="Managers and Abstract Domains">
-<link href="OCaml-Programming-Guidelines.html#OCaml-Programming-Guidelines" rel="prev" title="OCaml Programming Guidelines">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="APRON-Guidelines.html" rel="up" title="APRON Guidelines">
+<link href="OCaml-Programming-Guidelines.html" rel="prev" title="OCaml Programming Guidelines">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+span:hover a.copiable-link {visibility: visible}
 -->
 </style>
 
@@ -37,42 +27,43 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="MakingLibrary"></span><div class="header">
+<div class="section-level-extent" id="MakingLibrary">
+<div class="nav-panel">
 <p>
-Previous: <a href="OCaml-Programming-Guidelines.html#OCaml-Programming-Guidelines" accesskey="p" rel="prev">OCaml Programming Guidelines</a>, Up: <a href="APRON-Guidelines.html#APRON-Guidelines" accesskey="u" rel="up">APRON Guidelines</a> &nbsp; </p>
+Previous: <a href="OCaml-Programming-Guidelines.html" accesskey="p" rel="prev">OCaml Programming Guidelines</a>, Up: <a href="APRON-Guidelines.html" accesskey="u" rel="up">APRON Guidelines</a> &nbsp; </p>
 </div>
-<span id="How-to-make-an-existing-library-conformant-to-APRON-_003f"></span><h3 class="section">How to make an existing library conformant to APRON ?</h3>
+<h3 class="section" id="How-to-make-an-existing-library-conformant-to-APRON-_003f"><span>How to make an existing library conformant to APRON ?<a class="copiable-link" href="#How-to-make-an-existing-library-conformant-to-APRON-_003f"> &para;</a></span></h3>
 
 <p>We briefly describe here how to connect an existing library to the
 common interface.
 </p>
 <p>First, the library has to expose an interface which conforms to the
-level 0 of the interface (module <code>abstract0</code>).  All the functions
+level 0 of the interface (module <code class="code">abstract0</code>).  All the functions
 described in this module should be defined. If a function is not
 really implemented, at least it shoulld contain the code raising the
-exception <code>EXC_NOT_IMPLEMENTED</code>.  The implementor may use any
-functions of the files <samp>ap_coeff.h</samp>, <samp>ap_linexpr0.h</samp>,
-<samp>ap_lincons0.h</samp>, <samp>ap_generator0.h</samp> and <samp>ap_manager.h</samp>
+exception <code class="code">EXC_NOT_IMPLEMENTED</code>.  The implementor may use any
+functions of the files <samp class="file">ap_coeff.h</samp>, <samp class="file">ap_linexpr0.h</samp>,
+<samp class="file">ap_lincons0.h</samp>, <samp class="file">ap_generator0.h</samp> and <samp class="file">ap_manager.h</samp>
 to help the job of converting datatypes of the interface to internal
 datatypes used inside the library.
 </p>
 <p>Second and last, the library should expose an initialization
 function that allocates and initializes properly an object of type
-<code>manager_t</code>. For this purpose, the module <code>manager</code> offers the
-utility functions <code>manager_alloc</code>. As an example, we give the
+<code class="code">manager_t</code>. For this purpose, the module <code class="code">manager</code> offers the
+utility functions <code class="code">manager_alloc</code>. As an example, we give the
 definition of the function allocating a manager as implemented in
-the <em>NewPolka</em>.
+the <em class="emph">NewPolka</em>.
 </p>
-<ol>
+<ol class="enumerate">
 <li> Header of the function:
 <div class="example">
-<pre class="example">manager_t* pk_manager_alloc(
+<pre class="example-preformatted">manager_t* pk_manager_alloc(
   bool strict /* specific parameter: do we allow strict constaints ? */
 )
 </pre></div>
-</li><li> Allocation and initialisation of global data specific to <em>NewPolka</em>:
+</li><li> Allocation and initialisation of global data specific to <em class="emph">NewPolka</em>:
 <div class="example">
-<pre class="example">{
+<pre class="example-preformatted">{
   pk_internal_t* pk = pk_internal_alloc(strict); /* allocation */
   pk_set_approximate_max_coeff_size(pk, 1);
     /* initialization of specific functions
@@ -81,19 +72,19 @@ the <em>NewPolka</em>.
 </pre></div>
 </li><li> Allocation of the manager itself:
 <div class="example">
-<pre class="example">  manager_t* man = ap_manager_alloc(&quot;polka&quot;,&quot;2.0&quot;,
+<pre class="example-preformatted">  manager_t* man = ap_manager_alloc(&quot;polka&quot;,&quot;2.0&quot;,
 				    pk, (void (*)(void*))pk_internal_free);
 </pre></div>
 <p>We provide resp. name, version, internal specific manager, and the
 function to free it.
 </p>
-<p>The function <code>manager_alloc</code> sets the options of the
+<p>The function <code class="code">manager_alloc</code> sets the options of the
 common interface to their default value (see documentation).
 </p></li><li> Initialization of the &ldquo;virtual&rdquo; table: we need to connect
-  the generic functions of the interface (eg, <code>abstract_meet</code>,
-  \ldots) to the actual functions of the library.
+  the generic functions of the interface (eg, <code class="code">abstract_meet</code>,
+  <small class="enddots">...</small>) to the actual functions of the library.
 <div class="example">
-<pre class="example">  funptr = man-&gt;funptr;
+<pre class="example-preformatted">  funptr = man-&gt;funptr;
 
   funptr[fun_minimize] = &amp;poly_minimize;
   funptr[fun_canonicalize] = &amp;poly_canonicalize;
@@ -106,16 +97,17 @@ common interface to their default value (see documentation).
 </pre></div>
 </li><li> Last, we return the allocated manager:
 <div class="example">
-<pre class="example">  return man;
+<pre class="example-preformatted">  return man;
 }
 </pre></div>
 </li></ol>
 <p>That&rsquo;s all for the implementor side.
 </p>
+</div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
-Previous: <a href="OCaml-Programming-Guidelines.html#OCaml-Programming-Guidelines" accesskey="p" rel="prev">OCaml Programming Guidelines</a>, Up: <a href="APRON-Guidelines.html#APRON-Guidelines" accesskey="u" rel="up">APRON Guidelines</a> &nbsp; </p>
+Previous: <a href="OCaml-Programming-Guidelines.html" accesskey="p" rel="prev">OCaml Programming Guidelines</a>, Up: <a href="APRON-Guidelines.html" accesskey="u" rel="up">APRON Guidelines</a> &nbsp; </p>
 </div>
 
 

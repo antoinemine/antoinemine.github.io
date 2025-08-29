@@ -1,8 +1,8 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" href="style.css" type="text/css">
-<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="Start" href="index.html">
 <link rel="next" href="Ppl.Abstract1.html">
@@ -38,6 +38,7 @@
 <link title="Box" rel="Chapter" href="Box.html">
 <link title="Oct" rel="Chapter" href="Oct.html">
 <link title="Polka" rel="Chapter" href="Polka.html">
+<link title="T1p" rel="Chapter" href="T1p.html">
 <link title="Ppl" rel="Chapter" href="Ppl.html">
 <link title="PolkaGrid" rel="Chapter" href="PolkaGrid.html">
 <link title="Mpz" rel="Chapter" href="Mpz.html">
@@ -57,28 +58,28 @@
 
 <pre><span id="MODULEAbstract0"><span class="keyword">module</span> Abstract0</span>: <code class="code"><span class="keyword">sig</span></code> <a href="Ppl.Abstract0.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><hr width="100%">
 
-<pre><span id="VALis_ppl"><span class="keyword">val</span> is_ppl</span> : <code class="type">'a Apron.Abstract0.t -> bool</code></pre>
-<pre><span id="VALis_ppl_loose"><span class="keyword">val</span> is_ppl_loose</span> : <code class="type">'a Apron.Abstract0.t -> bool</code></pre>
-<pre><span id="VALis_ppl_strict"><span class="keyword">val</span> is_ppl_strict</span> : <code class="type">'a Apron.Abstract0.t -> bool</code></pre>
-<pre><span id="VALis_ppl_grid"><span class="keyword">val</span> is_ppl_grid</span> : <code class="type">'a Apron.Abstract0.t -> bool</code></pre><div class="info ">
+<pre><span id="VALis_ppl"><span class="keyword">val</span> is_ppl</span> : <code class="type">'a Apron.Abstract0.t -&gt; bool</code></pre>
+<pre><span id="VALis_ppl_loose"><span class="keyword">val</span> is_ppl_loose</span> : <code class="type">'a Apron.Abstract0.t -&gt; bool</code></pre>
+<pre><span id="VALis_ppl_strict"><span class="keyword">val</span> is_ppl_strict</span> : <code class="type">'a Apron.Abstract0.t -&gt; bool</code></pre>
+<pre><span id="VALis_ppl_grid"><span class="keyword">val</span> is_ppl_grid</span> : <code class="type">'a Apron.Abstract0.t -&gt; bool</code></pre><div class="info ">
 <div class="info-desc">
 <p>Return <code class="code"><span class="keyword">true</span></code> iff the argument manager is a ppl value</p>
 </div>
 </div>
 
-<pre><span id="VALof_ppl"><span class="keyword">val</span> of_ppl</span> : <code class="type">'a <a href="Ppl.html#TYPEt">Ppl.t</a> Apron.Abstract0.t -> 'b Apron.Abstract0.t</code></pre>
-<pre><span id="VALof_ppl_loose"><span class="keyword">val</span> of_ppl_loose</span> : <code class="type"><a href="Ppl.html#TYPEloose">Ppl.loose</a> <a href="Ppl.html#TYPEt">Ppl.t</a> Apron.Abstract0.t -> 'a Apron.Abstract0.t</code></pre>
-<pre><span id="VALof_ppl_strict"><span class="keyword">val</span> of_ppl_strict</span> : <code class="type"><a href="Ppl.html#TYPEstrict">Ppl.strict</a> <a href="Ppl.html#TYPEt">Ppl.t</a> Apron.Abstract0.t -> 'a Apron.Abstract0.t</code></pre>
-<pre><span id="VALof_ppl_grid"><span class="keyword">val</span> of_ppl_grid</span> : <code class="type"><a href="Ppl.html#TYPEgrid">Ppl.grid</a> <a href="Ppl.html#TYPEt">Ppl.t</a> Apron.Abstract0.t -> 'a Apron.Abstract0.t</code></pre><div class="info ">
+<pre><span id="VALof_ppl"><span class="keyword">val</span> of_ppl</span> : <code class="type">'a <a href="Ppl.html#TYPEt">Ppl.t</a> Apron.Abstract0.t -&gt; 'b Apron.Abstract0.t</code></pre>
+<pre><span id="VALof_ppl_loose"><span class="keyword">val</span> of_ppl_loose</span> : <code class="type"><a href="Ppl.html#TYPEloose">Ppl.loose</a> <a href="Ppl.html#TYPEt">Ppl.t</a> Apron.Abstract0.t -&gt; 'a Apron.Abstract0.t</code></pre>
+<pre><span id="VALof_ppl_strict"><span class="keyword">val</span> of_ppl_strict</span> : <code class="type"><a href="Ppl.html#TYPEstrict">Ppl.strict</a> <a href="Ppl.html#TYPEt">Ppl.t</a> Apron.Abstract0.t -&gt; 'a Apron.Abstract0.t</code></pre>
+<pre><span id="VALof_ppl_grid"><span class="keyword">val</span> of_ppl_grid</span> : <code class="type"><a href="Ppl.html#TYPEgrid">Ppl.grid</a> <a href="Ppl.html#TYPEt">Ppl.t</a> Apron.Abstract0.t -&gt; 'a Apron.Abstract0.t</code></pre><div class="info ">
 <div class="info-desc">
 <p>Make a ppl value generic</p>
 </div>
 </div>
 
-<pre><span id="VALto_ppl"><span class="keyword">val</span> to_ppl</span> : <code class="type">'a Apron.Abstract0.t -> 'b <a href="Ppl.html#TYPEt">Ppl.t</a> Apron.Abstract0.t</code></pre>
-<pre><span id="VALto_ppl_loose"><span class="keyword">val</span> to_ppl_loose</span> : <code class="type">'a Apron.Abstract0.t -> <a href="Ppl.html#TYPEloose">Ppl.loose</a> <a href="Ppl.html#TYPEt">Ppl.t</a> Apron.Abstract0.t</code></pre>
-<pre><span id="VALto_ppl_strict"><span class="keyword">val</span> to_ppl_strict</span> : <code class="type">'a Apron.Abstract0.t -> <a href="Ppl.html#TYPEstrict">Ppl.strict</a> <a href="Ppl.html#TYPEt">Ppl.t</a> Apron.Abstract0.t</code></pre>
-<pre><span id="VALto_ppl_grid"><span class="keyword">val</span> to_ppl_grid</span> : <code class="type">'a Apron.Abstract0.t -> <a href="Ppl.html#TYPEgrid">Ppl.grid</a> <a href="Ppl.html#TYPEt">Ppl.t</a> Apron.Abstract0.t</code></pre><div class="info ">
+<pre><span id="VALto_ppl"><span class="keyword">val</span> to_ppl</span> : <code class="type">'a Apron.Abstract0.t -&gt; 'b <a href="Ppl.html#TYPEt">Ppl.t</a> Apron.Abstract0.t</code></pre>
+<pre><span id="VALto_ppl_loose"><span class="keyword">val</span> to_ppl_loose</span> : <code class="type">'a Apron.Abstract0.t -&gt; <a href="Ppl.html#TYPEloose">Ppl.loose</a> <a href="Ppl.html#TYPEt">Ppl.t</a> Apron.Abstract0.t</code></pre>
+<pre><span id="VALto_ppl_strict"><span class="keyword">val</span> to_ppl_strict</span> : <code class="type">'a Apron.Abstract0.t -&gt; <a href="Ppl.html#TYPEstrict">Ppl.strict</a> <a href="Ppl.html#TYPEt">Ppl.t</a> Apron.Abstract0.t</code></pre>
+<pre><span id="VALto_ppl_grid"><span class="keyword">val</span> to_ppl_grid</span> : <code class="type">'a Apron.Abstract0.t -&gt; <a href="Ppl.html#TYPEgrid">Ppl.grid</a> <a href="Ppl.html#TYPEt">Ppl.t</a> Apron.Abstract0.t</code></pre><div class="info ">
 <div class="info-desc">
 <p>Instanciate the type of a ppl value.
 	Raises <code class="code"><span class="constructor">Failure</span></code> if the argument manager is not a ppl manager</p>

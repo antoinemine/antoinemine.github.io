@@ -1,8 +1,8 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" href="style.css" type="text/css">
-<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="Start" href="index.html">
 <link rel="previous" href="Linexpr0.html">
@@ -39,6 +39,7 @@
 <link title="Box" rel="Chapter" href="Box.html">
 <link title="Oct" rel="Chapter" href="Oct.html">
 <link title="Polka" rel="Chapter" href="Polka.html">
+<link title="T1p" rel="Chapter" href="T1p.html">
 <link title="Ppl" rel="Chapter" href="Ppl.html">
 <link title="PolkaGrid" rel="Chapter" href="PolkaGrid.html">
 <link title="Mpz" rel="Chapter" href="Mpz.html">
@@ -74,7 +75,7 @@
 <code><span class="keyword">mutable&nbsp;</span><span id="TYPEELTt.typ">typ</span>&nbsp;: <code class="type"><a href="Lincons0.html#TYPEtyp">typ</a></code>;</code></td>
 
 </tr></table>
-}
+<code>}</code>
 
 
 
@@ -122,26 +123,26 @@
 </div>
 
 
-<pre><span id="VALmake"><span class="keyword">val</span> make</span> : <code class="type"><a href="Linexpr0.html#TYPEt">Linexpr0.t</a> -> <a href="Lincons0.html#TYPEtyp">typ</a> -> <a href="Lincons0.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALmake"><span class="keyword">val</span> make</span> : <code class="type"><a href="Linexpr0.html#TYPEt">Linexpr0.t</a> -&gt; <a href="Lincons0.html#TYPEtyp">typ</a> -&gt; <a href="Lincons0.html#TYPEt">t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Make a linear constraint. Modifying later the linear expression
 modifies correspondingly the linear constraint and conversely</p>
 </div>
 </div>
 
-<pre><span id="VALcopy"><span class="keyword">val</span> copy</span> : <code class="type"><a href="Lincons0.html#TYPEt">t</a> -> <a href="Lincons0.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALcopy"><span class="keyword">val</span> copy</span> : <code class="type"><a href="Lincons0.html#TYPEt">t</a> -&gt; <a href="Lincons0.html#TYPEt">t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Copy a linear constraint (deep copy)</p>
 </div>
 </div>
 
-<pre><span id="VALstring_of_typ"><span class="keyword">val</span> string_of_typ</span> : <code class="type"><a href="Lincons0.html#TYPEtyp">typ</a> -> string</code></pre><div class="info ">
+<pre><span id="VALstring_of_typ"><span class="keyword">val</span> string_of_typ</span> : <code class="type"><a href="Lincons0.html#TYPEtyp">typ</a> -&gt; string</code></pre><div class="info ">
 <div class="info-desc">
 <p>Convert a constraint type to a string (<code class="code">=</code>,<code class="code">&gt;=</code>, or <code class="code">&gt;</code>)</p>
 </div>
 </div>
 
-<pre><span id="VALprint"><span class="keyword">val</span> print</span> : <code class="type">(<a href="Dim.html#TYPEt">Dim.t</a> -> string) -> Stdlib.Format.formatter -> <a href="Lincons0.html#TYPEt">t</a> -> unit</code></pre><div class="info ">
+<pre><span id="VALprint"><span class="keyword">val</span> print</span> : <code class="type">(<a href="Dim.html#TYPEt">Dim.t</a> -&gt; string) -&gt; Stdlib.Format.formatter -&gt; <a href="Lincons0.html#TYPEt">t</a> -&gt; unit</code></pre><div class="info ">
 <div class="info-desc">
 <p>Print a constraint</p>
 </div>

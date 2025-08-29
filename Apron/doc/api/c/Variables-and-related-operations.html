@@ -1,35 +1,27 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.6, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.2, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Variables and related operations (APRON 0.9.12)</title>
+<title>Variables and related operations (APRON 0.9.15)</title>
 
-<meta name="description" content="Variables and related operations (APRON 0.9.12)">
-<meta name="keywords" content="Variables and related operations (APRON 0.9.12)">
+<meta name="description" content="Variables and related operations (APRON 0.9.15)">
+<meta name="keywords" content="Variables and related operations (APRON 0.9.15)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
-<link href="index.html#Top" rel="start" title="Top">
-<link href="Level-1-of-the-interface.html#Level-1-of-the-interface" rel="up" title="Level 1 of the interface">
-<link href="Environments.html#Environments" rel="next" title="Environments">
-<link href="Level-1-of-the-interface.html#Level-1-of-the-interface" rel="prev" title="Level 1 of the interface">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Level-1-of-the-interface.html" rel="up" title="Level 1 of the interface">
+<link href="Environments.html" rel="next" title="Environments">
+<link href="Level-1-of-the-interface.html" rel="prev" title="Level 1 of the interface">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+span:hover a.copiable-link {visibility: visible}
+strong.def-name {font-family: monospace; font-weight: bold; font-size: larger}
 -->
 </style>
 
@@ -37,41 +29,42 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Variables-and-related-operations"></span><div class="header">
+<div class="section-level-extent" id="Variables-and-related-operations">
+<div class="nav-panel">
 <p>
-Next: <a href="Environments.html#Environments" accesskey="n" rel="next">Environments</a>, Previous: <a href="Level-1-of-the-interface.html#Level-1-of-the-interface" accesskey="p" rel="prev">Level 1 of the interface</a>, Up: <a href="Level-1-of-the-interface.html#Level-1-of-the-interface" accesskey="u" rel="up">Level 1 of the interface</a> &nbsp; </p>
+Next: <a href="Environments.html" accesskey="n" rel="next">Environments (<samp class="file">ap_environment.h</samp>)</a>, Previous: <a href="Level-1-of-the-interface.html" accesskey="p" rel="prev">Level 1 of the interface</a>, Up: <a href="Level-1-of-the-interface.html" accesskey="u" rel="up">Level 1 of the interface</a> &nbsp; </p>
 </div>
-<span id="Variables-and-related-operations-_0028ap_005fvar_002eh_0029"></span><h3 class="section">Variables and related operations (<samp>ap_var.h</samp>)</h3>
+<h3 class="section" id="Variables-and-related-operations-_0028ap_005fvar_002eh_0029"><span>Variables and related operations (<samp class="file">ap_var.h</samp>)<a class="copiable-link" href="#Variables-and-related-operations-_0028ap_005fvar_002eh_0029"> &para;</a></span></h3>
 
 <p>A variable is not necessarily a name, it can be a more complex
 structured datatype, depending on the application. That is the
 motivation to make it a parameter of the interface.
 </p>
-<p>The abstract type <code>ap_var_t</code> is equipped with a total ordering
+<p>The abstract type <code class="code">ap_var_t</code> is equipped with a total ordering
 function, a hashing function, a copy function, and a free function.
 The parametrization of the interface is performed via a global
-variable pointing to a <code>ap_var_operations_t</code> structure,
-containing the above-mentione doperations on <code>ap_var_t</code> objects.
+variable pointing to a <code class="code">ap_var_operations_t</code> structure,
+containing the above-mentione doperations on <code class="code">ap_var_t</code> objects.
 This means that this type should be fixed once, and that in a
 multitreaded application all threads should share the same
-<code>ap_var_t</code> type.
+<code class="code">ap_var_t</code> type.
 </p>
-<p>By default, <code>ap_var_t</code> is a C string (<code>char*</code>), and the
-global variable <code>ap_var_operations</code> is properly initialized.
+<p>By default, <code class="code">ap_var_t</code> is a C string (<code class="code">char*</code>), and the
+global variable <code class="code">ap_var_operations</code> is properly initialized.
 </p>
-<dl>
-<dt id="index-ap_005fvar_005ft">datatype: <strong>ap_var_t</strong></dt>
+<dl class="first-deftp def-block">
+<dt class="deftp def-line" id="index-ap_005fvar_005ft"><span class="category-def">datatype: </span><span><strong class="def-name">ap_var_t</strong><a class="copiable-link" href="#index-ap_005fvar_005ft"> &para;</a></span></dt>
 <dd><div class="example">
-<pre class="example">typedef void* ap_var_t;
+<pre class="example-preformatted">typedef void* ap_var_t;
 </pre></div>
 <p>Datatype for &ldquo;variables&rdquo;. It is assumed to be of size
-<code>sizeof(void*)</code>.
+<code class="code">sizeof(void*)</code>.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005fvar_005foperations_005ft">datatype: <strong>ap_var_operations_t</strong></dt>
+<dl class="first-deftp def-block">
+<dt class="deftp def-line" id="index-ap_005fvar_005foperations_005ft"><span class="category-def">datatype: </span><span><strong class="def-name">ap_var_operations_t</strong><a class="copiable-link" href="#index-ap_005fvar_005foperations_005ft"> &para;</a></span></dt>
 <dd><div class="example">
-<pre class="example">typedef struct ap_var_operations_t {
+<pre class="example-preformatted">typedef struct ap_var_operations_t {
   int (*compare)(ap_var_t v1, ap_var_t v2); /* Total ordering function */
   int (*hash)(ap_var_t v);                  /* Hash function */
   ap_var_t (*copy)(ap_var_t var);           /* Duplication function */
@@ -83,20 +76,21 @@ global variable <code>ap_var_operations</code> is properly initialized.
 <p>Datatype for defining the operations on &ldquo;variables&rdquo;.
 </p></dd></dl>
 
-<dl>
-<dt id="index-var_005foperations_005fdefault">Variable: <em>ap_var_operations_t</em> <strong>var_operations_default</strong></dt>
-<dd><p>Default manager, where <code>ap_var_t</code> is assumed to be <code>char*</code>.
+<dl class="first-deftypevr first-deftypevar-alias-first-deftypevr def-block">
+<dt class="deftypevr deftypevar-alias-deftypevr def-line" id="index-var_005foperations_005fdefault"><span class="category-def">Variable: </span><span><code class="def-type">ap_var_operations_t</code> <strong class="def-name">var_operations_default</strong><a class="copiable-link" href="#index-var_005foperations_005fdefault"> &para;</a></span></dt>
+<dd><p>Default manager, where <code class="code">ap_var_t</code> is assumed to be <code class="code">char*</code>.
 </p></dd></dl>
 
-<dl>
-<dt id="index-var_005foperations">Variable: <em>ap_var_operations_t*</em> <strong>var_operations</strong></dt>
-<dd><p>Global pointer to the manager in use, by default points to <code>ap_var_operations_default</code>.
+<dl class="first-deftypevr first-deftypevar-alias-first-deftypevr def-block">
+<dt class="deftypevr deftypevar-alias-deftypevr def-line" id="index-var_005foperations"><span class="category-def">Variable: </span><span><code class="def-type">ap_var_operations_t*</code> <strong class="def-name">var_operations</strong><a class="copiable-link" href="#index-var_005foperations"> &para;</a></span></dt>
+<dd><p>Global pointer to the manager in use, by default points to <code class="code">ap_var_operations_default</code>.
 </p></dd></dl>
 
+</div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
-Next: <a href="Environments.html#Environments" accesskey="n" rel="next">Environments</a>, Previous: <a href="Level-1-of-the-interface.html#Level-1-of-the-interface" accesskey="p" rel="prev">Level 1 of the interface</a>, Up: <a href="Level-1-of-the-interface.html#Level-1-of-the-interface" accesskey="u" rel="up">Level 1 of the interface</a> &nbsp; </p>
+Next: <a href="Environments.html" accesskey="n" rel="next">Environments (<samp class="file">ap_environment.h</samp>)</a>, Previous: <a href="Level-1-of-the-interface.html" accesskey="p" rel="prev">Level 1 of the interface</a>, Up: <a href="Level-1-of-the-interface.html" accesskey="u" rel="up">Level 1 of the interface</a> &nbsp; </p>
 </div>
 
 

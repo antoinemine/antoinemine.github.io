@@ -1,8 +1,8 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" href="style.css" type="text/css">
-<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="Start" href="index.html">
 <link rel="previous" href="Version.html">
@@ -39,6 +39,7 @@
 <link title="Box" rel="Chapter" href="Box.html">
 <link title="Oct" rel="Chapter" href="Oct.html">
 <link title="Polka" rel="Chapter" href="Polka.html">
+<link title="T1p" rel="Chapter" href="T1p.html">
 <link title="Ppl" rel="Chapter" href="Ppl.html">
 <link title="PolkaGrid" rel="Chapter" href="PolkaGrid.html">
 <link title="Mpz" rel="Chapter" href="Mpz.html">
@@ -144,57 +145,57 @@
 </div>
 </div>
 
-<pre><span id="VALlinexpr1_of_lexbuf"><span class="keyword">val</span> linexpr1_of_lexbuf</span> : <code class="type"><a href="Environment.html#TYPEt">Environment.t</a> -> Stdlib.Lexing.lexbuf -> <a href="Linexpr1.html#TYPEt">Linexpr1.t</a></code></pre>
-<pre><span id="VALlincons1_of_lexbuf"><span class="keyword">val</span> lincons1_of_lexbuf</span> : <code class="type"><a href="Environment.html#TYPEt">Environment.t</a> -> Stdlib.Lexing.lexbuf -> <a href="Lincons1.html#TYPEt">Lincons1.t</a></code></pre>
-<pre><span id="VALgenerator1_of_lexbuf"><span class="keyword">val</span> generator1_of_lexbuf</span> : <code class="type"><a href="Environment.html#TYPEt">Environment.t</a> -> Stdlib.Lexing.lexbuf -> <a href="Generator1.html#TYPEt">Generator1.t</a></code></pre><div class="info ">
+<pre><span id="VALlinexpr1_of_lexbuf"><span class="keyword">val</span> linexpr1_of_lexbuf</span> : <code class="type"><a href="Environment.html#TYPEt">Environment.t</a> -&gt; Stdlib.Lexing.lexbuf -&gt; <a href="Linexpr1.html#TYPEt">Linexpr1.t</a></code></pre>
+<pre><span id="VALlincons1_of_lexbuf"><span class="keyword">val</span> lincons1_of_lexbuf</span> : <code class="type"><a href="Environment.html#TYPEt">Environment.t</a> -&gt; Stdlib.Lexing.lexbuf -&gt; <a href="Lincons1.html#TYPEt">Lincons1.t</a></code></pre>
+<pre><span id="VALgenerator1_of_lexbuf"><span class="keyword">val</span> generator1_of_lexbuf</span> : <code class="type"><a href="Environment.html#TYPEt">Environment.t</a> -&gt; Stdlib.Lexing.lexbuf -&gt; <a href="Generator1.html#TYPEt">Generator1.t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Conversion from lexing buffers to resp. linear expressions, linear
     constraints and generators, defined on the given environment.</p>
 </div>
 </div>
 
-<pre><span id="VALtexpr1expr_of_lexbuf"><span class="keyword">val</span> texpr1expr_of_lexbuf</span> : <code class="type">Stdlib.Lexing.lexbuf -> <a href="Texpr1.html#TYPEexpr">Texpr1.expr</a></code></pre>
-<pre><span id="VALtexpr1_of_lexbuf"><span class="keyword">val</span> texpr1_of_lexbuf</span> : <code class="type"><a href="Environment.html#TYPEt">Environment.t</a> -> Stdlib.Lexing.lexbuf -> <a href="Texpr1.html#TYPEt">Texpr1.t</a></code></pre>
-<pre><span id="VALtcons1_of_lexbuf"><span class="keyword">val</span> tcons1_of_lexbuf</span> : <code class="type"><a href="Environment.html#TYPEt">Environment.t</a> -> Stdlib.Lexing.lexbuf -> <a href="Tcons1.html#TYPEt">Tcons1.t</a></code></pre><div class="info ">
+<pre><span id="VALtexpr1expr_of_lexbuf"><span class="keyword">val</span> texpr1expr_of_lexbuf</span> : <code class="type">Stdlib.Lexing.lexbuf -&gt; <a href="Texpr1.html#TYPEexpr">Texpr1.expr</a></code></pre>
+<pre><span id="VALtexpr1_of_lexbuf"><span class="keyword">val</span> texpr1_of_lexbuf</span> : <code class="type"><a href="Environment.html#TYPEt">Environment.t</a> -&gt; Stdlib.Lexing.lexbuf -&gt; <a href="Texpr1.html#TYPEt">Texpr1.t</a></code></pre>
+<pre><span id="VALtcons1_of_lexbuf"><span class="keyword">val</span> tcons1_of_lexbuf</span> : <code class="type"><a href="Environment.html#TYPEt">Environment.t</a> -&gt; Stdlib.Lexing.lexbuf -&gt; <a href="Tcons1.html#TYPEt">Tcons1.t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Conversion from lexing buffers to resp. tree expressions and
       constraints, defined on the given environment.</p>
 </div>
 </div>
 
-<pre><span id="VALlinexpr1_of_string"><span class="keyword">val</span> linexpr1_of_string</span> : <code class="type"><a href="Environment.html#TYPEt">Environment.t</a> -> string -> <a href="Linexpr1.html#TYPEt">Linexpr1.t</a></code></pre>
-<pre><span id="VALlincons1_of_string"><span class="keyword">val</span> lincons1_of_string</span> : <code class="type"><a href="Environment.html#TYPEt">Environment.t</a> -> string -> <a href="Lincons1.html#TYPEt">Lincons1.t</a></code></pre>
-<pre><span id="VALgenerator1_of_string"><span class="keyword">val</span> generator1_of_string</span> : <code class="type"><a href="Environment.html#TYPEt">Environment.t</a> -> string -> <a href="Generator1.html#TYPEt">Generator1.t</a></code></pre><div class="info ">
+<pre><span id="VALlinexpr1_of_string"><span class="keyword">val</span> linexpr1_of_string</span> : <code class="type"><a href="Environment.html#TYPEt">Environment.t</a> -&gt; string -&gt; <a href="Linexpr1.html#TYPEt">Linexpr1.t</a></code></pre>
+<pre><span id="VALlincons1_of_string"><span class="keyword">val</span> lincons1_of_string</span> : <code class="type"><a href="Environment.html#TYPEt">Environment.t</a> -&gt; string -&gt; <a href="Lincons1.html#TYPEt">Lincons1.t</a></code></pre>
+<pre><span id="VALgenerator1_of_string"><span class="keyword">val</span> generator1_of_string</span> : <code class="type"><a href="Environment.html#TYPEt">Environment.t</a> -&gt; string -&gt; <a href="Generator1.html#TYPEt">Generator1.t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Conversion from strings to resp. linear expressions, linear
     constraints and generators, defined on the given environment.</p>
 </div>
 </div>
 
-<pre><span id="VALtexpr1expr_of_string"><span class="keyword">val</span> texpr1expr_of_string</span> : <code class="type">string -> <a href="Texpr1.html#TYPEexpr">Texpr1.expr</a></code></pre>
-<pre><span id="VALtexpr1_of_string"><span class="keyword">val</span> texpr1_of_string</span> : <code class="type"><a href="Environment.html#TYPEt">Environment.t</a> -> string -> <a href="Texpr1.html#TYPEt">Texpr1.t</a></code></pre>
-<pre><span id="VALtcons1_of_string"><span class="keyword">val</span> tcons1_of_string</span> : <code class="type"><a href="Environment.html#TYPEt">Environment.t</a> -> string -> <a href="Tcons1.html#TYPEt">Tcons1.t</a></code></pre><div class="info ">
+<pre><span id="VALtexpr1expr_of_string"><span class="keyword">val</span> texpr1expr_of_string</span> : <code class="type">string -&gt; <a href="Texpr1.html#TYPEexpr">Texpr1.expr</a></code></pre>
+<pre><span id="VALtexpr1_of_string"><span class="keyword">val</span> texpr1_of_string</span> : <code class="type"><a href="Environment.html#TYPEt">Environment.t</a> -&gt; string -&gt; <a href="Texpr1.html#TYPEt">Texpr1.t</a></code></pre>
+<pre><span id="VALtcons1_of_string"><span class="keyword">val</span> tcons1_of_string</span> : <code class="type"><a href="Environment.html#TYPEt">Environment.t</a> -&gt; string -&gt; <a href="Tcons1.html#TYPEt">Tcons1.t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Conversion from lexing buffers to resp. tree expressions and
       constraints, defined on the given environment.</p>
 </div>
 </div>
 
-<pre><span id="VALlincons1_of_lstring"><span class="keyword">val</span> lincons1_of_lstring</span> : <code class="type"><a href="Environment.html#TYPEt">Environment.t</a> -> string list -> <a href="Lincons1.html#TYPEearray">Lincons1.earray</a></code></pre>
-<pre><span id="VALgenerator1_of_lstring"><span class="keyword">val</span> generator1_of_lstring</span> : <code class="type"><a href="Environment.html#TYPEt">Environment.t</a> -> string list -> <a href="Generator1.html#TYPEearray">Generator1.earray</a></code></pre><div class="info ">
+<pre><span id="VALlincons1_of_lstring"><span class="keyword">val</span> lincons1_of_lstring</span> : <code class="type"><a href="Environment.html#TYPEt">Environment.t</a> -&gt; string list -&gt; <a href="Lincons1.html#TYPEearray">Lincons1.earray</a></code></pre>
+<pre><span id="VALgenerator1_of_lstring"><span class="keyword">val</span> generator1_of_lstring</span> : <code class="type"><a href="Environment.html#TYPEt">Environment.t</a> -&gt; string list -&gt; <a href="Generator1.html#TYPEearray">Generator1.earray</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Conversion from lists of strings to array of resp. linear
       constraints and generators, defined on the given environment.</p>
 </div>
 </div>
 
-<pre><span id="VALtcons1_of_lstring"><span class="keyword">val</span> tcons1_of_lstring</span> : <code class="type"><a href="Environment.html#TYPEt">Environment.t</a> -> string list -> <a href="Tcons1.html#TYPEearray">Tcons1.earray</a></code></pre><div class="info ">
+<pre><span id="VALtcons1_of_lstring"><span class="keyword">val</span> tcons1_of_lstring</span> : <code class="type"><a href="Environment.html#TYPEt">Environment.t</a> -&gt; string list -&gt; <a href="Tcons1.html#TYPEearray">Tcons1.earray</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Conversion from lists of strings to array of tree constraints.</p>
 </div>
 </div>
 
-<pre><span id="VALof_lstring"><span class="keyword">val</span> of_lstring</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -> <a href="Environment.html#TYPEt">Environment.t</a> -> string list -> 'a <a href="Abstract1.html#TYPEt">Abstract1.t</a></code></pre><div class="info ">
+<pre><span id="VALof_lstring"><span class="keyword">val</span> of_lstring</span> : <code class="type">'a <a href="Manager.html#TYPEt">Manager.t</a> -&gt; <a href="Environment.html#TYPEt">Environment.t</a> -&gt; string list -&gt; 'a <a href="Abstract1.html#TYPEt">Abstract1.t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Abstraction of lists of strings representing constraints to abstract
     values, on the abstract domain defined by the given manager.</p>

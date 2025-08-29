@@ -1,8 +1,8 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" href="style.css" type="text/css">
-<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="Start" href="index.html">
 <link rel="previous" href="Var.html">
@@ -39,6 +39,7 @@
 <link title="Box" rel="Chapter" href="Box.html">
 <link title="Oct" rel="Chapter" href="Oct.html">
 <link title="Polka" rel="Chapter" href="Polka.html">
+<link title="T1p" rel="Chapter" href="T1p.html">
 <link title="Ppl" rel="Chapter" href="Ppl.html">
 <link title="PolkaGrid" rel="Chapter" href="PolkaGrid.html">
 <link title="Mpz" rel="Chapter" href="Mpz.html">
@@ -80,39 +81,43 @@
 <pre><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> </pre>
 
 <p>APRON Environments binding dimensions to names</p>
+<p>NOTE: Environments are not totally ordered.
+  As of 0.9.15, environments do not implement the polymorphic <code class="code">compare</code> function to avoid confusion.
+ As a consequence, the polymorphic <code class="code">=</code>, <code class="code">&lt;=</code>, etc. operators cannot be used.
+Use <code class="code">equal</code> and <code class="code">cmp</code> to compare environments.</p>
 
-<pre><span id="VALmake"><span class="keyword">val</span> make</span> : <code class="type"><a href="Var.html#TYPEt">Var.t</a> array -> <a href="Var.html#TYPEt">Var.t</a> array -> <a href="Environment.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALmake"><span class="keyword">val</span> make</span> : <code class="type"><a href="Var.html#TYPEt">Var.t</a> array -&gt; <a href="Var.html#TYPEt">Var.t</a> array -&gt; <a href="Environment.html#TYPEt">t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Making an environment from a set of integer and real variables. Raise <code class="code"><span class="constructor">Failure</span></code> in case of name conflict.</p>
 </div>
 </div>
 
-<pre><span id="VALadd"><span class="keyword">val</span> add</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -> <a href="Var.html#TYPEt">Var.t</a> array -> <a href="Var.html#TYPEt">Var.t</a> array -> <a href="Environment.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALadd"><span class="keyword">val</span> add</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -&gt; <a href="Var.html#TYPEt">Var.t</a> array -&gt; <a href="Var.html#TYPEt">Var.t</a> array -&gt; <a href="Environment.html#TYPEt">t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Adding to an environment a set of integer and real variables. Raise <code class="code"><span class="constructor">Failure</span></code> in case of name conflict.</p>
 </div>
 </div>
 
-<pre><span id="VALremove"><span class="keyword">val</span> remove</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -> <a href="Var.html#TYPEt">Var.t</a> array -> <a href="Environment.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALremove"><span class="keyword">val</span> remove</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -&gt; <a href="Var.html#TYPEt">Var.t</a> array -&gt; <a href="Environment.html#TYPEt">t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Remove from an environment a set of variables. Raise <code class="code"><span class="constructor">Failure</span></code> in case of non-existing variables.</p>
 </div>
 </div>
 
-<pre><span id="VALrename"><span class="keyword">val</span> rename</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -> <a href="Var.html#TYPEt">Var.t</a> array -> <a href="Var.html#TYPEt">Var.t</a> array -> <a href="Environment.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALrename"><span class="keyword">val</span> rename</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -&gt; <a href="Var.html#TYPEt">Var.t</a> array -&gt; <a href="Var.html#TYPEt">Var.t</a> array -&gt; <a href="Environment.html#TYPEt">t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Renaming in an environment a set of variables. Raise <code class="code"><span class="constructor">Failure</span></code> in case of interferences with the variables that are not renamed.</p>
 </div>
 </div>
 
-<pre><span id="VALrename_perm"><span class="keyword">val</span> rename_perm</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -> <a href="Var.html#TYPEt">Var.t</a> array -> <a href="Var.html#TYPEt">Var.t</a> array -> <a href="Environment.html#TYPEt">t</a> * <a href="Dim.html#TYPEperm">Dim.perm</a></code></pre><div class="info ">
+<pre><span id="VALrename_perm"><span class="keyword">val</span> rename_perm</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -&gt; <a href="Var.html#TYPEt">Var.t</a> array -&gt; <a href="Var.html#TYPEt">Var.t</a> array -&gt; <a href="Environment.html#TYPEt">t</a> * <a href="Dim.html#TYPEperm">Dim.perm</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Similar to previous function, but returns also 
 the permutation on dimensions induced by the renaming.</p>
 </div>
 </div>
 
-<pre><span id="VALlce"><span class="keyword">val</span> lce</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -> <a href="Environment.html#TYPEt">t</a> -> <a href="Environment.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALlce"><span class="keyword">val</span> lce</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -&gt; <a href="Environment.html#TYPEt">t</a> -&gt; <a href="Environment.html#TYPEt">t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Compute the least common environment of 2 environment, 
 that is, the environment composed of all the variables 
@@ -122,7 +127,7 @@ in the 2 environment.</p>
 </div>
 </div>
 
-<pre><span id="VALlce_change"><span class="keyword">val</span> lce_change</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -><br>       <a href="Environment.html#TYPEt">t</a> -> <a href="Environment.html#TYPEt">t</a> * <a href="Dim.html#TYPEchange">Dim.change</a> option * <a href="Dim.html#TYPEchange">Dim.change</a> option</code></pre><div class="info ">
+<pre><span id="VALlce_change"><span class="keyword">val</span> lce_change</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -&gt;<br>       <a href="Environment.html#TYPEt">t</a> -&gt; <a href="Environment.html#TYPEt">t</a> * <a href="Dim.html#TYPEchange">Dim.change</a> option * <a href="Dim.html#TYPEchange">Dim.change</a> option</code></pre><div class="info ">
 <div class="info-desc">
 <p>Similar to the previous function, but returns also the transformations 
 required to convert from <code class="code">e1</code> (resp. <code class="code">e2</code>) 
@@ -131,7 +136,7 @@ that <code class="code">e1</code> (resp. <code class="code">e2</code>) is identi
 </div>
 </div>
 
-<pre><span id="VALdimchange"><span class="keyword">val</span> dimchange</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -> <a href="Environment.html#TYPEt">t</a> -> <a href="Dim.html#TYPEchange">Dim.change</a></code></pre><div class="info ">
+<pre><span id="VALdimchange"><span class="keyword">val</span> dimchange</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -&gt; <a href="Environment.html#TYPEt">t</a> -&gt; <a href="Dim.html#TYPEchange">Dim.change</a></code></pre><div class="info ">
 <div class="info-desc">
 <p><code class="code">dimchange&nbsp;e1&nbsp;e2</code> computes the transformation for 
 converting from an environment <code class="code">e1</code> to a superenvironment 
@@ -139,7 +144,7 @@ converting from an environment <code class="code">e1</code> to a superenvironmen
 </div>
 </div>
 
-<pre><span id="VALdimchange2"><span class="keyword">val</span> dimchange2</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -> <a href="Environment.html#TYPEt">t</a> -> <a href="Dim.html#TYPEchange2">Dim.change2</a></code></pre><div class="info ">
+<pre><span id="VALdimchange2"><span class="keyword">val</span> dimchange2</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -&gt; <a href="Environment.html#TYPEt">t</a> -&gt; <a href="Dim.html#TYPEchange2">Dim.change2</a></code></pre><div class="info ">
 <div class="info-desc">
 <p><code class="code">dimchange2&nbsp;e1&nbsp;e2</code> computes the transformation for 
  converting from an environment <code class="code">e1</code> to a (compatible) environment 
@@ -149,67 +154,67 @@ are incompatible.</p>
 </div>
 </div>
 
-<pre><span id="VALequal"><span class="keyword">val</span> equal</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -> <a href="Environment.html#TYPEt">t</a> -> bool</code></pre><div class="info ">
+<pre><span id="VALequal"><span class="keyword">val</span> equal</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -&gt; <a href="Environment.html#TYPEt">t</a> -&gt; bool</code></pre><div class="info ">
 <div class="info-desc">
-<p>Test equality if two environments</p>
+<p>Test the equality of two environments</p>
 </div>
 </div>
 
-<pre><span id="VALcompare"><span class="keyword">val</span> compare</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -> <a href="Environment.html#TYPEt">t</a> -> int</code></pre><div class="info ">
+<pre><span id="VALcmp"><span class="keyword">val</span> cmp</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -&gt; <a href="Environment.html#TYPEt">t</a> -&gt; int</code></pre><div class="info ">
 <div class="info-desc">
-<p>Compare two environment. <code class="code">compare&nbsp;env1&nbsp;env2</code> return <code class="code">-2</code> if the environments are not compatible (a variable has different types in the 2 environments), <code class="code">-1</code> if <code class="code">env1</code> is a subset of env2, <code class="code">0</code> if equality,  <code class="code">+1</code> if env1 is a superset of env2, and <code class="code">+2</code> otherwise (the lce exists and is a strict superset of both)</p>
+<p>Compare two environment. <code class="code">cmp&nbsp;env1&nbsp;env2</code> return <code class="code">-2</code> if the environments are not compatible (a variable has different types in the 2 environments), <code class="code">-1</code> if <code class="code">env1</code> is a subset of env2, <code class="code">0</code> if equality,  <code class="code">+1</code> if env1 is a superset of env2, and <code class="code">+2</code> otherwise (the lce exists and is a strict superset of both). This is not a total order, and cannot be used as comparison function when a total order is needed (e.g., in <code class="code"><span class="constructor">Set</span>.<span class="constructor">Make</span></code>). The function has been renamed from <code class="code">compare</code> to avoid confusion.</p>
 </div>
 </div>
 
-<pre><span id="VALhash"><span class="keyword">val</span> hash</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -> int</code></pre><div class="info ">
+<pre><span id="VALhash"><span class="keyword">val</span> hash</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -&gt; int</code></pre><div class="info ">
 <div class="info-desc">
 <p>Hashing function for environments</p>
 </div>
 </div>
 
-<pre><span id="VALdimension"><span class="keyword">val</span> dimension</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -> <a href="Dim.html#TYPEdimension">Dim.dimension</a></code></pre><div class="info ">
+<pre><span id="VALdimension"><span class="keyword">val</span> dimension</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -&gt; <a href="Dim.html#TYPEdimension">Dim.dimension</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Return the dimension of the environment</p>
 </div>
 </div>
 
-<pre><span id="VALsize"><span class="keyword">val</span> size</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -> int</code></pre><div class="info ">
+<pre><span id="VALsize"><span class="keyword">val</span> size</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -&gt; int</code></pre><div class="info ">
 <div class="info-desc">
 <p>Return the size of the environment</p>
 </div>
 </div>
 
-<pre><span id="VALmem_var"><span class="keyword">val</span> mem_var</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -> <a href="Var.html#TYPEt">Var.t</a> -> bool</code></pre><div class="info ">
+<pre><span id="VALmem_var"><span class="keyword">val</span> mem_var</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -&gt; <a href="Var.html#TYPEt">Var.t</a> -&gt; bool</code></pre><div class="info ">
 <div class="info-desc">
 <p>Return true if the variable is present in the environment.</p>
 </div>
 </div>
 
-<pre><span id="VALtyp_of_var"><span class="keyword">val</span> typ_of_var</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -> <a href="Var.html#TYPEt">Var.t</a> -> <a href="Environment.html#TYPEtypvar">typvar</a></code></pre><div class="info ">
+<pre><span id="VALtyp_of_var"><span class="keyword">val</span> typ_of_var</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -&gt; <a href="Var.html#TYPEt">Var.t</a> -&gt; <a href="Environment.html#TYPEtypvar">typvar</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Return the type of variables in the environment. If the variable does not belong to the environment, raise a <code class="code"><span class="constructor">Failure</span></code> exception.</p>
 </div>
 </div>
 
-<pre><span id="VALvars"><span class="keyword">val</span> vars</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -> <a href="Var.html#TYPEt">Var.t</a> array * <a href="Var.html#TYPEt">Var.t</a> array</code></pre><div class="info ">
+<pre><span id="VALvars"><span class="keyword">val</span> vars</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -&gt; <a href="Var.html#TYPEt">Var.t</a> array * <a href="Var.html#TYPEt">Var.t</a> array</code></pre><div class="info ">
 <div class="info-desc">
 <p>Return the (lexicographically ordered) sets of integer and real variables in the environment</p>
 </div>
 </div>
 
-<pre><span id="VALvar_of_dim"><span class="keyword">val</span> var_of_dim</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -> <a href="Dim.html#TYPEt">Dim.t</a> -> <a href="Var.html#TYPEt">Var.t</a></code></pre><div class="info ">
+<pre><span id="VALvar_of_dim"><span class="keyword">val</span> var_of_dim</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -&gt; <a href="Dim.html#TYPEt">Dim.t</a> -&gt; <a href="Var.html#TYPEt">Var.t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Return the variable corresponding to the given dimension in the environment. Raise <code class="code"><span class="constructor">Failure</span></code> is the dimension is out of the range of the environment (greater than or equal to <code class="code">dim&nbsp;env</code>)</p>
 </div>
 </div>
 
-<pre><span id="VALdim_of_var"><span class="keyword">val</span> dim_of_var</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -> <a href="Var.html#TYPEt">Var.t</a> -> <a href="Dim.html#TYPEt">Dim.t</a></code></pre><div class="info ">
+<pre><span id="VALdim_of_var"><span class="keyword">val</span> dim_of_var</span> : <code class="type"><a href="Environment.html#TYPEt">t</a> -&gt; <a href="Var.html#TYPEt">Var.t</a> -&gt; <a href="Dim.html#TYPEt">Dim.t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Return the dimension associated to the given variable in the environment. Raise <code class="code"><span class="constructor">Failure</span></code> if the variable does not belong to the environment.</p>
 </div>
 </div>
 
-<pre><span id="VALprint"><span class="keyword">val</span> print</span> : <code class="type">?first:(unit, Stdlib.Format.formatter, unit) Stdlib.format -><br>       ?sep:(unit, Stdlib.Format.formatter, unit) Stdlib.format -><br>       ?last:(unit, Stdlib.Format.formatter, unit) Stdlib.format -><br>       Stdlib.Format.formatter -> <a href="Environment.html#TYPEt">t</a> -> unit</code></pre><div class="info ">
+<pre><span id="VALprint"><span class="keyword">val</span> print</span> : <code class="type">?first:(unit, Stdlib.Format.formatter, unit) Stdlib.format -&gt;<br>       ?sep:(unit, Stdlib.Format.formatter, unit) Stdlib.format -&gt;<br>       ?last:(unit, Stdlib.Format.formatter, unit) Stdlib.format -&gt;<br>       Stdlib.Format.formatter -&gt; <a href="Environment.html#TYPEt">t</a> -&gt; unit</code></pre><div class="info ">
 <div class="info-desc">
 <p>Printing</p>
 </div>

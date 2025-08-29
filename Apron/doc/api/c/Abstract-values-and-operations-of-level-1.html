@@ -1,35 +1,27 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.6, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.2, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Abstract values and operations of level 1 (APRON 0.9.12)</title>
+<title>Abstract values and operations of level 1 (APRON 0.9.15)</title>
 
-<meta name="description" content="Abstract values and operations of level 1 (APRON 0.9.12)">
-<meta name="keywords" content="Abstract values and operations of level 1 (APRON 0.9.12)">
+<meta name="description" content="Abstract values and operations of level 1 (APRON 0.9.15)">
+<meta name="keywords" content="Abstract values and operations of level 1 (APRON 0.9.15)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
-<link href="index.html#Top" rel="start" title="Top">
-<link href="Level-1-of-the-interface.html#Level-1-of-the-interface" rel="up" title="Level 1 of the interface">
-<link href="Level-0-of-the-interface.html#Level-0-of-the-interface" rel="next" title="Level 0 of the interface">
-<link href="Tree-constraints-of-level-1.html#Arrays-of-tree-constraints-of-level-1" rel="prev" title="Arrays of tree constraints of level 1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Level-1-of-the-interface.html" rel="up" title="Level 1 of the interface">
+<link href="Tree-constraints-of-level-1.html#Tree-constraints-of-level-1" rel="prev" title="Tree constraints of level 1">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+span:hover a.copiable-link {visibility: visible}
+strong.def-name {font-family: monospace; font-weight: bold; font-size: larger}
+ul.mark-bullet {list-style-type: disc}
 -->
 </style>
 
@@ -37,19 +29,20 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Abstract-values-and-operations-of-level-1"></span><div class="header">
+<div class="section-level-extent" id="Abstract-values-and-operations-of-level-1">
+<div class="nav-panel">
 <p>
-Previous: <a href="Tree-constraints-of-level-1.html#Tree-constraints-of-level-1" accesskey="p" rel="prev">Tree constraints of level 1</a>, Up: <a href="Level-1-of-the-interface.html#Level-1-of-the-interface" accesskey="u" rel="up">Level 1 of the interface</a> &nbsp; </p>
+Previous: <a href="Tree-constraints-of-level-1.html#Tree-constraints-of-level-1" accesskey="p" rel="prev">Tree constraints of level 1 (<samp class="file">ap_tcons1.h</samp>)</a>, Up: <a href="Level-1-of-the-interface.html" accesskey="u" rel="up">Level 1 of the interface</a> &nbsp; </p>
 </div>
-<span id="Abstract-values-and-operations-of-level-1-_0028ap_005fabstract1_002eh_0029"></span><h3 class="section">Abstract values and operations of level 1 (<samp>ap_abstract1.h</samp>)</h3>
+<h3 class="section" id="Abstract-values-and-operations-of-level-1-_0028ap_005fabstract1_002eh_0029"><span>Abstract values and operations of level 1 (<samp class="file">ap_abstract1.h</samp>)<a class="copiable-link" href="#Abstract-values-and-operations-of-level-1-_0028ap_005fabstract1_002eh_0029"> &para;</a></span></h3>
 
-<dl>
-<dt id="index-ap_005fabstract1_005ft">datatype: <strong>ap_abstract1_t</strong></dt>
+<dl class="first-deftp def-block">
+<dt class="deftp def-line" id="index-ap_005fabstract1_005ft"><span class="category-def">datatype: </span><span><strong class="def-name">ap_abstract1_t</strong><a class="copiable-link" href="#index-ap_005fabstract1_005ft"> &para;</a></span></dt>
 <dd><p>Datatype for abstract values at level 1.
 </p>
 <p>For information:
 </p><div class="example">
-<pre class="example">typedef struct ap_abstract1_t {
+<pre class="example-preformatted">typedef struct ap_abstract1_t {
   ap_abstract0_t* abstract0;
   ap_environment_t* env;
 } ap_abstract1_t;
@@ -59,10 +52,10 @@ Previous: <a href="Tree-constraints-of-level-1.html#Tree-constraints-of-level-1"
 </pre></div>
 </dd></dl>
 
-<dl>
-<dt id="index-ap_005fbox1_005ft">datatype: <strong>ap_box1_t</strong></dt>
+<dl class="first-deftp def-block">
+<dt class="deftp def-line" id="index-ap_005fbox1_005ft"><span class="category-def">datatype: </span><span><strong class="def-name">ap_box1_t</strong><a class="copiable-link" href="#index-ap_005fbox1_005ft"> &para;</a></span></dt>
 <dd><div class="example">
-<pre class="example">typedef struct ap_box1_t {
+<pre class="example-preformatted">typedef struct ap_box1_t {
   ap_interval_t** p;
   ap_environment_t* env;
 } ap_box1_t;
@@ -71,537 +64,550 @@ void ap_box1_clear(ap_box1_t* box);
 </pre></div>
 </dd></dl>
 
-<p>Most operations are offered in 2 versions: <em>functional</em> or
-<em>destructive</em> See <a href="Abstract-values-and-operations-of-level-0.html#Abstract-values-and-operations-of-level-0">Abstract values and operations of level 0</a>.
+<p>Most operations are offered in 2 versions: <em class="emph">functional</em> or
+<em class="emph">destructive</em> See <a class="xref" href="Abstract-values-and-operations-of-level-0.html#Abstract-values-and-operations-of-level-0">Abstract values and operations of level 0 (<samp class="file">ap_abstract0.h</samp>)</a>.
 </p>
-<p>We remind the policy for redimensioning (see <a href="Level-1-of-the-interface.html#Level-1-of-the-interface">Level 1 of the interface</a>):
+<p>We remind the policy for redimensioning (see <a class="pxref" href="Level-1-of-the-interface.html">Level 1 of the interface</a>):
 </p>
-<ul>
-<li> For functions taking one abstract value and one expression (or
+<ul class="itemize mark-bullet">
+<li>For functions taking one abstract value and one expression (or
 constraint or generator, or array of ...), the environment of the
 expression should be a sub-environment of the environment of the
 abstract value. The environment of the result is the environment of
 the argument abstract value.
-</li><li> For functions taking several abstract values, their environments
+</li><li>For functions taking several abstract values, their environments
 should be the same. Otherwise, it is up to the user to move them to a
-common super-environment (see <a href="Environments.html#Environments">Environments</a>).
+common super-environment (see <a class="pxref" href="Environments.html">Environments (<samp class="file">ap_environment.h</samp>)</a>).
 </li></ul>
 
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#Allocating-abstract-values-of-level-1" accesskey="1">Allocating abstract values of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Control-of-internal-representation-of-abstract-values-of-level-1" accesskey="2">Control of internal representation of abstract values of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Printing-abstract-values-of-level-1" accesskey="3">Printing abstract values of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Serialization-of-abstract-values-of-level-1" accesskey="4">Serialization of abstract values of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 
-Constructors, Accessors, Tests and Extraction of properties
-</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Constructors-for-abstract-values-of-level-1" accesskey="5">Constructors for abstract values of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Accessors-for-abstract-values-of-level-1" accesskey="6">Accessors for abstract values of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Tests-on-abstract-values-of-level-1" accesskey="7">Tests on abstract values of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Extraction-of-properties-of-abstract-values-of-level-1" accesskey="8">Extraction of properties of abstract values of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
-
-Operations
-</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Meet-and-Join-of-abstract-values-of-level-1" accesskey="9">Meet and Join of abstract values of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Assignements-and-Substitutions-of-abstract-values-of-level-1">Assignements and Substitutions of abstract values of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Existential-quantification-of-abstract-values-of-level-1">Existential quantification of abstract values of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Change-of-environments-of-abstract-values-of-level-1">Change of environments of abstract values of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Expansion-and-Folding-of-dimensions-in-abstract-values-of-level-1">Expansion and Folding of dimensions in abstract values of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Widening-of-abstract-values-of-level-1">Widening of abstract values of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Topological-closure-of-abstract-values-of-level-1">Topological closure of abstract values of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
-
-Additional functions
-</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Additional-functions-on-abstract-values-of-level-1">Additional functions on abstract values of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
-
+<ul class="mini-toc">
+<li><a href="#Allocating-abstract-values-of-level-1" accesskey="1">Allocating abstract values of level 1</a></li>
+<li><a href="#Control-of-internal-representation-of-abstract-values-of-level-1" accesskey="2">Control of internal representation of abstract values of level 1</a></li>
+<li><a href="#Printing-abstract-values-of-level-1" accesskey="3">Printing abstract values of level 1</a></li>
+<li><a href="#Serialization-of-abstract-values-of-level-1" accesskey="4">Serialization of abstract values of level 1</a></li>
+<li><a href="#Constructors-for-abstract-values-of-level-1" accesskey="5">Constructors for abstract values of level 1</a></li>
+<li><a href="#Accessors-for-abstract-values-of-level-1" accesskey="6">Accessors for abstract values of level 1</a></li>
+<li><a href="#Tests-on-abstract-values-of-level-1" accesskey="7">Tests on abstract values of level 1</a></li>
+<li><a href="#Extraction-of-properties-of-abstract-values-of-level-1" accesskey="8">Extraction of properties of abstract values of level 1</a></li>
+<li><a href="#Meet-and-Join-of-abstract-values-of-level-1" accesskey="9">Meet and Join of abstract values of level 1</a></li>
+<li><a href="#Assignements-and-Substitutions-of-abstract-values-of-level-1">Assignements and Substitutions of abstract values of level 1</a></li>
+<li><a href="#Existential-quantification-of-abstract-values-of-level-1">Existential quantification of abstract values of level 1</a></li>
+<li><a href="#Change-of-environments-of-abstract-values-of-level-1">Change of environments of abstract values of level 1</a></li>
+<li><a href="#Expansion-and-Folding-of-dimensions-in-abstract-values-of-level-1">Expansion and Folding of dimensions of abstract values of level 1</a></li>
+<li><a href="#Widening-of-abstract-values-of-level-1">Widening of abstract values of level 1</a></li>
+<li><a href="#Topological-closure-of-abstract-values-of-level-1">Topological closure of abstract values of level 1</a></li>
+<li><a href="#Additional-functions-on-abstract-values-of-level-1">Additional functions on abstract values of level 1</a></li>
+</ul>
 <hr>
-<span id="Allocating-abstract-values-of-level-1"></span><div class="header">
+<div class="subsection-level-extent" id="Allocating-abstract-values-of-level-1">
+<div class="nav-panel">
 <p>
-Next: <a href="#Control-of-internal-representation-of-abstract-values-of-level-1" accesskey="n" rel="next">Control of internal representation of abstract values of level 1</a>, Previous: <a href="#Abstract-values-and-operations-of-level-1" accesskey="p" rel="prev">Abstract values and operations of level 1</a>, Up: <a href="#Abstract-values-and-operations-of-level-1" accesskey="u" rel="up">Abstract values and operations of level 1</a> &nbsp; </p>
+Next: <a href="#Control-of-internal-representation-of-abstract-values-of-level-1" accesskey="n" rel="next">Control of internal representation of abstract values of level 1</a>, Previous: <a href="#Abstract-values-and-operations-of-level-1" accesskey="p" rel="prev">Abstract values and operations of level 1 (<samp class="file">ap_abstract1.h</samp>)</a>, Up: <a href="#Abstract-values-and-operations-of-level-1" accesskey="u" rel="up">Abstract values and operations of level 1 (<samp class="file">ap_abstract1.h</samp>)</a> &nbsp; </p>
 </div>
-<span id="Allocating-abstract-values-of-level-1-1"></span><h4 class="subsection">Allocating abstract values of level 1</h4>
+<h4 class="subsection" id="Allocating-abstract-values-of-level-1-1"><span>Allocating abstract values of level 1<a class="copiable-link" href="#Allocating-abstract-values-of-level-1-1"> &para;</a></span></h4>
 
-<dl>
-<dt id="index-ap_005fabstract1_005fcopy">Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_copy</strong> <em>(ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>)</em></dt>
-<dd><p>Return a copy of <var>a</var>, on which destructive update does not
-affect <var>a</var>.
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005fcopy"><span class="category-def">Function: </span><span><code class="def-type">ap_abstract1_t</code> <strong class="def-name">ap_abstract1_copy</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, ap_abstract1_t* <var class="var">a</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fcopy"> &para;</a></span></dt>
+<dd><p>Return a copy of <var class="var">a</var>, on which destructive update does not
+affect <var class="var">a</var>.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005fabstract1_005fclear">Function: <em>void</em> <strong>ap_abstract1_clear</strong> <em>(ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>)</em></dt>
-<dd><p>Free all the memory used by <var>a</var>.
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005fclear"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">ap_abstract1_clear</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, ap_abstract1_t* <var class="var">a</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fclear"> &para;</a></span></dt>
+<dd><p>Free all the memory used by <var class="var">a</var>.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005fabstract1_005fsize">Function: <em>size_t</em> <strong>ap_abstract1_size</strong> <em>(ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>)</em></dt>
-<dd><p>Return the abstract size of <var>a</var>.
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005fsize"><span class="category-def">Function: </span><span><code class="def-type">size_t</code> <strong class="def-name">ap_abstract1_size</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, ap_abstract1_t* <var class="var">a</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fsize"> &para;</a></span></dt>
+<dd><p>Return the abstract size of <var class="var">a</var>.
 </p></dd></dl>
 
 <hr>
-<span id="Control-of-internal-representation-of-abstract-values-of-level-1"></span><div class="header">
-<p>
-Next: <a href="#Printing-abstract-values-of-level-1" accesskey="n" rel="next">Printing abstract values of level 1</a>, Previous: <a href="#Allocating-abstract-values-of-level-1" accesskey="p" rel="prev">Allocating abstract values of level 1</a>, Up: <a href="#Abstract-values-and-operations-of-level-1" accesskey="u" rel="up">Abstract values and operations of level 1</a> &nbsp; </p>
 </div>
-<span id="Control-of-internal-representation-of-abstract-values-of-level-1-1"></span><h4 class="subsection">Control of internal representation of abstract values of level 1</h4>
+<div class="subsection-level-extent" id="Control-of-internal-representation-of-abstract-values-of-level-1">
+<div class="nav-panel">
+<p>
+Next: <a href="#Printing-abstract-values-of-level-1" accesskey="n" rel="next">Printing abstract values of level 1</a>, Previous: <a href="#Allocating-abstract-values-of-level-1" accesskey="p" rel="prev">Allocating abstract values of level 1</a>, Up: <a href="#Abstract-values-and-operations-of-level-1" accesskey="u" rel="up">Abstract values and operations of level 1 (<samp class="file">ap_abstract1.h</samp>)</a> &nbsp; </p>
+</div>
+<h4 class="subsection" id="Control-of-internal-representation-of-abstract-values-of-level-1-1"><span>Control of internal representation of abstract values of level 1<a class="copiable-link" href="#Control-of-internal-representation-of-abstract-values-of-level-1-1"> &para;</a></span></h4>
 
-<dl>
-<dt id="index-ap_005fabstract1_005fminimize">Function: <em>void</em> <strong>ap_abstract1_minimize</strong> <em>(ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>)</em></dt>
-<dd><p>Minimize the size of the representation of <var>a</var>.  This may result in
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005fminimize"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">ap_abstract1_minimize</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, ap_abstract1_t* <var class="var">a</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fminimize"> &para;</a></span></dt>
+<dd><p>Minimize the size of the representation of <var class="var">a</var>.  This may result in
 a later recomputation of internal information.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005fabstract1_005fcanonicalize">Function: <em>void</em> <strong>ap_abstract1_canonicalize</strong> <em>(ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>)</em></dt>
-<dd><p>Put <var>a</var> in canonical form. (not yet clear definition).
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005fcanonicalize"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">ap_abstract1_canonicalize</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, ap_abstract1_t* <var class="var">a</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fcanonicalize"> &para;</a></span></dt>
+<dd><p>Put <var class="var">a</var> in canonical form. (not yet clear definition).
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005fabstract1_005fhash">Function: <em>int</em> <strong>ap_abstract1_hash</strong> <em>(ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>)</em></dt>
-<dd><p>Return an hash value for <var>a</var>.  Two abstract values in canonical
-from (according to <code>ap_abstract1_canonicalize</code>) and considered as
-equal by the function <code>ap_abstract1_is_eq</code> are given the
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005fhash"><span class="category-def">Function: </span><span><code class="def-type">int</code> <strong class="def-name">ap_abstract1_hash</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, ap_abstract1_t* <var class="var">a</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fhash"> &para;</a></span></dt>
+<dd><p>Return an hash value for <var class="var">a</var>.  Two abstract values in canonical
+from (according to <code class="code">ap_abstract1_canonicalize</code>) and considered as
+equal by the function <code class="code">ap_abstract1_is_eq</code> are given the
 same hash value.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005fabstract1_005fapproximate">Function: <em>void</em> <strong>ap_abstract1_approximate</strong> <em>(ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>, int <var>algorithm</var>)</em></dt>
-<dd><p>Perform some transformation on <var>a</var>, guided by the field
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005fapproximate"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">ap_abstract1_approximate</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, ap_abstract1_t* <var class="var">a</var>, int <var class="var">algorithm</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fapproximate"> &para;</a></span></dt>
+<dd><p>Perform some transformation on <var class="var">a</var>, guided by the field
 algorithm.
 </p>
 <p>The transformation may lose information.  The argument
-<var>algorithm</var> overrides the field algorithm of the structure of
-type <code>ap_funopt_t</code> associated to
-<code>ap_abstract1_approximate</code>.
+<var class="var">algorithm</var> overrides the field algorithm of the structure of
+type <code class="code">ap_funopt_t</code> associated to
+<code class="code">ap_abstract1_approximate</code>.
 </p></dd></dl>
 
 <hr>
-<span id="Printing-abstract-values-of-level-1"></span><div class="header">
-<p>
-Next: <a href="#Serialization-of-abstract-values-of-level-1" accesskey="n" rel="next">Serialization of abstract values of level 1</a>, Previous: <a href="#Control-of-internal-representation-of-abstract-values-of-level-1" accesskey="p" rel="prev">Control of internal representation of abstract values of level 1</a>, Up: <a href="#Abstract-values-and-operations-of-level-1" accesskey="u" rel="up">Abstract values and operations of level 1</a> &nbsp; </p>
 </div>
-<span id="Printing-abstract-values-of-level-1-1"></span><h4 class="subsection">Printing abstract values of level 1</h4>
+<div class="subsection-level-extent" id="Printing-abstract-values-of-level-1">
+<div class="nav-panel">
+<p>
+Next: <a href="#Serialization-of-abstract-values-of-level-1" accesskey="n" rel="next">Serialization of abstract values of level 1</a>, Previous: <a href="#Control-of-internal-representation-of-abstract-values-of-level-1" accesskey="p" rel="prev">Control of internal representation of abstract values of level 1</a>, Up: <a href="#Abstract-values-and-operations-of-level-1" accesskey="u" rel="up">Abstract values and operations of level 1 (<samp class="file">ap_abstract1.h</samp>)</a> &nbsp; </p>
+</div>
+<h4 class="subsection" id="Printing-abstract-values-of-level-1-1"><span>Printing abstract values of level 1<a class="copiable-link" href="#Printing-abstract-values-of-level-1-1"> &para;</a></span></h4>
 
-<dl>
-<dt id="index-ap_005fabstract1_005ffprint">Function: <em>void</em> <strong>ap_abstract1_fprint</strong> <em>(FILE* <var>stream</var>, ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>)</em></dt>
-<dd><p>Print <var>a</var> in a pretty way on the stream.
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005ffprint"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">ap_abstract1_fprint</strong> <code class="def-code-arguments">(FILE* <var class="var">stream</var>, ap_manager_t* <var class="var">man</var>, ap_abstract1_t* <var class="var">a</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005ffprint"> &para;</a></span></dt>
+<dd><p>Print <var class="var">a</var> in a pretty way on the stream.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005fabstract1_005ffprintdiff">Function: <em>void</em> <strong>ap_abstract1_fprintdiff</strong> <em>(FILE* <var>stream</var>, ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a1</var>, ap_abstract1_t* <var>a2</var>)</em></dt>
-<dd><p>Print the difference between <var>a1</var> (old value) and <var>a2</var> (new
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005ffprintdiff"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">ap_abstract1_fprintdiff</strong> <code class="def-code-arguments">(FILE* <var class="var">stream</var>, ap_manager_t* <var class="var">man</var>, ap_abstract1_t* <var class="var">a1</var>, ap_abstract1_t* <var class="var">a2</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005ffprintdiff"> &para;</a></span></dt>
+<dd><p>Print the difference between <var class="var">a1</var> (old value) and <var class="var">a2</var> (new
 value). The meaning of difference is library dependent.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005fabstract1_005ffdump">Function: <em>void</em> <strong>ap_abstract1_fdump</strong> <em>(FILE* <var>stream</var>, ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>)</em></dt>
-<dd><p>Dump the internal representation of <var>a</var> for debugging
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005ffdump"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">ap_abstract1_fdump</strong> <code class="def-code-arguments">(FILE* <var class="var">stream</var>, ap_manager_t* <var class="var">man</var>, ap_abstract1_t* <var class="var">a</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005ffdump"> &para;</a></span></dt>
+<dd><p>Dump the internal representation of <var class="var">a</var> for debugging
 purposes.
 </p></dd></dl>
 
 <hr>
-<span id="Serialization-of-abstract-values-of-level-1"></span><div class="header">
-<p>
-Next: <a href="#Constructors-for-abstract-values-of-level-1" accesskey="n" rel="next">Constructors for abstract values of level 1</a>, Previous: <a href="#Printing-abstract-values-of-level-1" accesskey="p" rel="prev">Printing abstract values of level 1</a>, Up: <a href="#Abstract-values-and-operations-of-level-1" accesskey="u" rel="up">Abstract values and operations of level 1</a> &nbsp; </p>
 </div>
-<span id="Serialization-of-abstract-values-of-level-1-1"></span><h4 class="subsection">Serialization of abstract values of level 1</h4>
-<dl>
-<dt id="index-ap_005fabstract1_005fserialize_005fraw">Function: <em>ap_membuf_t</em> <strong>ap_abstract1_serialize_raw</strong> <em>(ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>)</em></dt>
-<dd><p>Allocate a memory buffer (with <code>malloc</code>), output <var>a</var>
+<div class="subsection-level-extent" id="Serialization-of-abstract-values-of-level-1">
+<div class="nav-panel">
+<p>
+Next: <a href="#Constructors-for-abstract-values-of-level-1" accesskey="n" rel="next">Constructors for abstract values of level 1</a>, Previous: <a href="#Printing-abstract-values-of-level-1" accesskey="p" rel="prev">Printing abstract values of level 1</a>, Up: <a href="#Abstract-values-and-operations-of-level-1" accesskey="u" rel="up">Abstract values and operations of level 1 (<samp class="file">ap_abstract1.h</samp>)</a> &nbsp; </p>
+</div>
+<h4 class="subsection" id="Serialization-of-abstract-values-of-level-1-1"><span>Serialization of abstract values of level 1<a class="copiable-link" href="#Serialization-of-abstract-values-of-level-1-1"> &para;</a></span></h4>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005fserialize_005fraw"><span class="category-def">Function: </span><span><code class="def-type">ap_membuf_t</code> <strong class="def-name">ap_abstract1_serialize_raw</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, ap_abstract1_t* <var class="var">a</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fserialize_005fraw"> &para;</a></span></dt>
+<dd><p>Allocate a memory buffer (with <code class="code">malloc</code>), output <var class="var">a</var>
 in raw binary format to it and return a pointer on the memory
 buffer and the number of bytes written.  It is the user
-responsability to free the memory afterwards (with <code>free</code>).
+responsability to free the memory afterwards (with <code class="code">free</code>).
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005fabstract1_005fdeserialize_005fraw">Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_deserialize_raw</strong> <em>(ap_manager_t* <var>man</var>, void* <var>ptr</var>, size_t* <var>size</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005fdeserialize_005fraw"><span class="category-def">Function: </span><span><code class="def-type">ap_abstract1_t</code> <strong class="def-name">ap_abstract1_deserialize_raw</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, void* <var class="var">ptr</var>, size_t* <var class="var">size</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fdeserialize_005fraw"> &para;</a></span></dt>
 <dd><p>Return the abstract value read in raw binary format from the
-buffer pointed by <var>ptr</var> and store in size the number of bytes
+buffer pointed by <var class="var">ptr</var> and store in size the number of bytes
 read.
 </p></dd></dl>
 
 <hr>
-<span id="Constructors-for-abstract-values-of-level-1"></span><div class="header">
-<p>
-Next: <a href="#Accessors-for-abstract-values-of-level-1" accesskey="n" rel="next">Accessors for abstract values of level 1</a>, Previous: <a href="#Serialization-of-abstract-values-of-level-1" accesskey="p" rel="prev">Serialization of abstract values of level 1</a>, Up: <a href="#Abstract-values-and-operations-of-level-1" accesskey="u" rel="up">Abstract values and operations of level 1</a> &nbsp; </p>
 </div>
-<span id="Constructors-for-abstract-values-of-level-1-1"></span><h4 class="subsection">Constructors for abstract values of level 1</h4>
+<div class="subsection-level-extent" id="Constructors-for-abstract-values-of-level-1">
+<div class="nav-panel">
+<p>
+Next: <a href="#Accessors-for-abstract-values-of-level-1" accesskey="n" rel="next">Accessors for abstract values of level 1</a>, Previous: <a href="#Serialization-of-abstract-values-of-level-1" accesskey="p" rel="prev">Serialization of abstract values of level 1</a>, Up: <a href="#Abstract-values-and-operations-of-level-1" accesskey="u" rel="up">Abstract values and operations of level 1 (<samp class="file">ap_abstract1.h</samp>)</a> &nbsp; </p>
+</div>
+<h4 class="subsection" id="Constructors-for-abstract-values-of-level-1-1"><span>Constructors for abstract values of level 1<a class="copiable-link" href="#Constructors-for-abstract-values-of-level-1-1"> &para;</a></span></h4>
 
-<dl>
-<dt id="index-ap_005fabstract1_005fbottom">Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_bottom</strong> <em>(ap_manager_t* <var>man</var>, ap_environment_t* <var>env</var>)</em></dt>
-<dt id="index-ap_005fabstract1_005ftop">Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_top</strong> <em>(ap_manager_t* <var>man</var>, ap_environment_t* <var>env</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005fbottom"><span class="category-def">Function: </span><span><code class="def-type">ap_abstract1_t</code> <strong class="def-name">ap_abstract1_bottom</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, ap_environment_t* <var class="var">env</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fbottom"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005fabstract1_005ftop"><span class="category-def">Function: </span><span><code class="def-type">ap_abstract1_t</code> <strong class="def-name">ap_abstract1_top</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, ap_environment_t* <var class="var">env</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005ftop"> &para;</a></span></dt>
 <dd><p>Create resp. a bottom (empty) value and a top (universe) value defined
-on the environment <var>env</var>.
+on the environment <var class="var">env</var>.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005fabstract1_005fof_005fbox">Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_of_box</strong> <em>(ap_manager_t* <var>man</var>, ap_environment_t* <var>env</var>, ap_var_t* <var>tvar</var>, ap_interval_t** <var>tinterval</var>, size_t <var>size</var>)</em></dt>
-<dd><p>Abstract an hypercube defined by the arrays <var>tvar</var> and
-<var>tintnerval</var> of size <var>size</var>.
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005fof_005fbox"><span class="category-def">Function: </span><span><code class="def-type">ap_abstract1_t</code> <strong class="def-name">ap_abstract1_of_box</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, ap_environment_t* <var class="var">env</var>, ap_var_t* <var class="var">tvar</var>, ap_interval_t** <var class="var">tinterval</var>, size_t <var class="var">size</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fof_005fbox"> &para;</a></span></dt>
+<dd><p>Abstract an hypercube defined by the arrays <var class="var">tvar</var> and
+<var class="var">tintnerval</var> of size <var class="var">size</var>.
 </p>
 <p>If no inclusion is specified for a variable in the environment, its
 value is no constrained in the resulting abstract value.
+</p>
+<p>If any interval is empty, the resulting abstract element is empty (bottom).
+In case of a 0-dimensional element (empty environment), the abstract element is always top (not bottom).
 </p></dd></dl>
 
 <hr>
-<span id="Accessors-for-abstract-values-of-level-1"></span><div class="header">
-<p>
-Next: <a href="#Tests-on-abstract-values-of-level-1" accesskey="n" rel="next">Tests on abstract values of level 1</a>, Previous: <a href="#Constructors-for-abstract-values-of-level-1" accesskey="p" rel="prev">Constructors for abstract values of level 1</a>, Up: <a href="#Abstract-values-and-operations-of-level-1" accesskey="u" rel="up">Abstract values and operations of level 1</a> &nbsp; </p>
 </div>
-<span id="Accessors-for-abstract-values-of-level-1-1"></span><h4 class="subsection">Accessors for abstract values of level 1</h4>
+<div class="subsection-level-extent" id="Accessors-for-abstract-values-of-level-1">
+<div class="nav-panel">
+<p>
+Next: <a href="#Tests-on-abstract-values-of-level-1" accesskey="n" rel="next">Tests on abstract values of level 1</a>, Previous: <a href="#Constructors-for-abstract-values-of-level-1" accesskey="p" rel="prev">Constructors for abstract values of level 1</a>, Up: <a href="#Abstract-values-and-operations-of-level-1" accesskey="u" rel="up">Abstract values and operations of level 1 (<samp class="file">ap_abstract1.h</samp>)</a> &nbsp; </p>
+</div>
+<h4 class="subsection" id="Accessors-for-abstract-values-of-level-1-1"><span>Accessors for abstract values of level 1<a class="copiable-link" href="#Accessors-for-abstract-values-of-level-1-1"> &para;</a></span></h4>
 
-<dl>
-<dt id="index-ap_005fabstract1_005fenvironment">Function: <em>ap_dimension_t</em> <strong>ap_abstract1_environment</strong> <em>(ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>)</em></dt>
-<dd><p>Get a reference to the environment of <var>a</var>. Do not free it.
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005fenvironment"><span class="category-def">Function: </span><span><code class="def-type">ap_dimension_t</code> <strong class="def-name">ap_abstract1_environment</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, ap_abstract1_t* <var class="var">a</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fenvironment"> &para;</a></span></dt>
+<dd><p>Get a reference to the environment of <var class="var">a</var>. Do not free it.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005fabstract1_005fmanager">Function: <em>ap_manager_t*</em> <strong>ap_abstract1_manager</strong> <em>(ap_abstract1_t* <var>a</var>)</em></dt>
-<dd><p>Get a reference to the manager contained in <var>a</var>.
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005fmanager"><span class="category-def">Function: </span><span><code class="def-type">ap_manager_t*</code> <strong class="def-name">ap_abstract1_manager</strong> <code class="def-code-arguments">(ap_abstract1_t* <var class="var">a</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fmanager"> &para;</a></span></dt>
+<dd><p>Get a reference to the manager contained in <var class="var">a</var>.
 Do not free it.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005fabstract1_005fabstract0">Function: <em>ap_dimension_t</em> <strong>ap_abstract1_abstract0</strong> <em>(ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005fabstract0"><span class="category-def">Function: </span><span><code class="def-type">ap_dimension_t</code> <strong class="def-name">ap_abstract1_abstract0</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, ap_abstract1_t* <var class="var">a</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fabstract0"> &para;</a></span></dt>
 <dd><p>Get a reference to the underlying abstract value of level 0 in
-<var>a</var>. Do not free it.
+<var class="var">a</var>. Do not free it.
 </p></dd></dl>
 
 <hr>
-<span id="Tests-on-abstract-values-of-level-1"></span><div class="header">
-<p>
-Next: <a href="#Extraction-of-properties-of-abstract-values-of-level-1" accesskey="n" rel="next">Extraction of properties of abstract values of level 1</a>, Previous: <a href="#Accessors-for-abstract-values-of-level-1" accesskey="p" rel="prev">Accessors for abstract values of level 1</a>, Up: <a href="#Abstract-values-and-operations-of-level-1" accesskey="u" rel="up">Abstract values and operations of level 1</a> &nbsp; </p>
 </div>
-<span id="Tests-on-abstract-values-of-level-1-1"></span><h4 class="subsection">Tests on abstract values of level 1</h4>
+<div class="subsection-level-extent" id="Tests-on-abstract-values-of-level-1">
+<div class="nav-panel">
+<p>
+Next: <a href="#Extraction-of-properties-of-abstract-values-of-level-1" accesskey="n" rel="next">Extraction of properties of abstract values of level 1</a>, Previous: <a href="#Accessors-for-abstract-values-of-level-1" accesskey="p" rel="prev">Accessors for abstract values of level 1</a>, Up: <a href="#Abstract-values-and-operations-of-level-1" accesskey="u" rel="up">Abstract values and operations of level 1 (<samp class="file">ap_abstract1.h</samp>)</a> &nbsp; </p>
+</div>
+<h4 class="subsection" id="Tests-on-abstract-values-of-level-1-1"><span>Tests on abstract values of level 1<a class="copiable-link" href="#Tests-on-abstract-values-of-level-1-1"> &para;</a></span></h4>
 
 <p>In abstract tests,
-</p><ul>
-<li> true means that the predicate is certainly true;
-</li><li> false means false <em>or</em> don&rsquo;t know (an exception has occurred, or
+</p><ul class="itemize mark-bullet">
+<li>true means that the predicate is certainly true;
+</li><li>false means false <em class="emph">or</em> don&rsquo;t know (an exception has occurred, or
 the exact computation was considered too expensive to be performed,
 according to the options).
 </li></ul>
 
-<dl>
-<dt id="index-ap_005fabstract1_005fis_005fbottom">Function: <em>bool</em> <strong>ap_abstract1_is_bottom</strong> <em>(ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>)</em></dt>
-<dt id="index-ap_005fabstract1_005fis_005ftop">Function: <em>bool</em> <strong>ap_abstract1_is_top</strong> <em>(ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005fis_005fbottom"><span class="category-def">Function: </span><span><code class="def-type">bool</code> <strong class="def-name">ap_abstract1_is_bottom</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, ap_abstract1_t* <var class="var">a</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fis_005fbottom"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005fabstract1_005fis_005ftop"><span class="category-def">Function: </span><span><code class="def-type">bool</code> <strong class="def-name">ap_abstract1_is_top</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, ap_abstract1_t* <var class="var">a</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fis_005ftop"> &para;</a></span></dt>
 <dd><p>Emtpiness and universality tests.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005fabstract1_005fis_005fleq">Function: <em>bool</em> <strong>ap_abstract1_is_leq</strong> <em>(ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a1</var>, ap_abstract1_t* <var>a2</var>)</em></dt>
-<dt id="index-ap_005fabstract1_005fis_005feq">Function: <em>bool</em> <strong>ap_abstract1_is_eq</strong> <em>(ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a1</var>, ap_abstract1_t* <var>a2</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005fis_005fleq"><span class="category-def">Function: </span><span><code class="def-type">bool</code> <strong class="def-name">ap_abstract1_is_leq</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, ap_abstract1_t* <var class="var">a1</var>, ap_abstract1_t* <var class="var">a2</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fis_005fleq"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005fabstract1_005fis_005feq"><span class="category-def">Function: </span><span><code class="def-type">bool</code> <strong class="def-name">ap_abstract1_is_eq</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, ap_abstract1_t* <var class="var">a1</var>, ap_abstract1_t* <var class="var">a2</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fis_005feq"> &para;</a></span></dt>
 <dd><p>Inclusion and equality tests.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005fabstract1_005fsat_005finterval">Function: <em>bool</em> <strong>ap_abstract1_sat_interval</strong> <em>(ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>, ap_var_t <var>var</var>, ap_interval_t* <var>interval</var>)</em></dt>
-<dd><p>Is the variable <var>var</var> included in the interval <var>interval</var> in the abstract value <var>a</var> ?
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005fsat_005finterval"><span class="category-def">Function: </span><span><code class="def-type">bool</code> <strong class="def-name">ap_abstract1_sat_interval</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, ap_abstract1_t* <var class="var">a</var>, ap_var_t <var class="var">var</var>, ap_interval_t* <var class="var">interval</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fsat_005finterval"> &para;</a></span></dt>
+<dd><p>Is the variable <var class="var">var</var> included in the interval <var class="var">interval</var> in the abstract value <var class="var">a</var> ?
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005fabstract1_005fsat_005flincons">Function: <em>bool</em> <strong>ap_abstract1_sat_lincons</strong> <em>(ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>, ap_lincons1_t* <var>cons</var>)</em></dt>
-<dt id="index-ap_005fabstract1_005fsat_005ftcons">Function: <em>bool</em> <strong>ap_abstract1_sat_tcons</strong> <em>(ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>, ap_tcons1_t* <var>cons</var>)</em></dt>
-<dd><p>Does the abstract value <var>a</var> satisfy the constraint <var>cons</var> ?
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005fsat_005flincons"><span class="category-def">Function: </span><span><code class="def-type">bool</code> <strong class="def-name">ap_abstract1_sat_lincons</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, ap_abstract1_t* <var class="var">a</var>, ap_lincons1_t* <var class="var">cons</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fsat_005flincons"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005fabstract1_005fsat_005ftcons"><span class="category-def">Function: </span><span><code class="def-type">bool</code> <strong class="def-name">ap_abstract1_sat_tcons</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, ap_abstract1_t* <var class="var">a</var>, ap_tcons1_t* <var class="var">cons</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fsat_005ftcons"> &para;</a></span></dt>
+<dd><p>Does the abstract value <var class="var">a</var> satisfy the constraint <var class="var">cons</var> ?
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005fabstract1_005fis_005fvariable_005funconstrained">Function: <em>bool</em> <strong>ap_abstract1_is_variable_unconstrained</strong> <em>(ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>, ap_var_t <var>var</var>)</em></dt>
-<dd><p>Is the dimension <var>dim</var> unconstrained in the abstract value <var>a</var> ?
-If it is the case, we have <code>forget(man,a,dim) == a</code>.
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005fis_005fvariable_005funconstrained"><span class="category-def">Function: </span><span><code class="def-type">bool</code> <strong class="def-name">ap_abstract1_is_variable_unconstrained</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, ap_abstract1_t* <var class="var">a</var>, ap_var_t <var class="var">var</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fis_005fvariable_005funconstrained"> &para;</a></span></dt>
+<dd><p>Is the dimension <var class="var">dim</var> unconstrained in the abstract value <var class="var">a</var> ?
+If it is the case, we have <code class="code">forget(man,a,dim) == a</code>.
 </p></dd></dl>
 
 <hr>
-<span id="Extraction-of-properties-of-abstract-values-of-level-1"></span><div class="header">
-<p>
-Next: <a href="#Meet-and-Join-of-abstract-values-of-level-1" accesskey="n" rel="next">Meet and Join of abstract values of level 1</a>, Previous: <a href="#Tests-on-abstract-values-of-level-1" accesskey="p" rel="prev">Tests on abstract values of level 1</a>, Up: <a href="#Abstract-values-and-operations-of-level-1" accesskey="u" rel="up">Abstract values and operations of level 1</a> &nbsp; </p>
 </div>
-<span id="Extraction-of-properties-of-abstract-values-of-level-1-1"></span><h4 class="subsection">Extraction of properties of abstract values of level 1</h4>
+<div class="subsection-level-extent" id="Extraction-of-properties-of-abstract-values-of-level-1">
+<div class="nav-panel">
+<p>
+Next: <a href="#Meet-and-Join-of-abstract-values-of-level-1" accesskey="n" rel="next">Meet and Join of abstract values of level 1</a>, Previous: <a href="#Tests-on-abstract-values-of-level-1" accesskey="p" rel="prev">Tests on abstract values of level 1</a>, Up: <a href="#Abstract-values-and-operations-of-level-1" accesskey="u" rel="up">Abstract values and operations of level 1 (<samp class="file">ap_abstract1.h</samp>)</a> &nbsp; </p>
+</div>
+<h4 class="subsection" id="Extraction-of-properties-of-abstract-values-of-level-1-1"><span>Extraction of properties of abstract values of level 1<a class="copiable-link" href="#Extraction-of-properties-of-abstract-values-of-level-1-1"> &para;</a></span></h4>
 
-<dl>
-<dt id="index-ap_005fabstract1_005fbound_005fvariable">Function: <em>ap_interval_t*</em> <strong>ap_abstract1_bound_variable</strong> <em>(ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>, ap_var_t <var>var</var>)</em></dt>
-<dd><p>Return the interval taken by the variable <var>var</var> over the abstract
-value <var>a</var>.
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005fbound_005fvariable"><span class="category-def">Function: </span><span><code class="def-type">ap_interval_t*</code> <strong class="def-name">ap_abstract1_bound_variable</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, ap_abstract1_t* <var class="var">a</var>, ap_var_t <var class="var">var</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fbound_005fvariable"> &para;</a></span></dt>
+<dd><p>Return the interval taken by the variable <var class="var">var</var> over the abstract
+value <var class="var">a</var>.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005fabstract1_005fbound_005flinexpr">Function: <em>ap_interval_t*</em> <strong>ap_abstract1_bound_linexpr</strong> <em>(ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>, ap_linexpr1_t* <var>expr</var>)</em></dt>
-<dt id="index-ap_005fabstract1_005fbound_005ftexpr">Function: <em>ap_interval_t*</em> <strong>ap_abstract1_bound_texpr</strong> <em>(ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>, ap_texpr1_t* <var>expr</var>)</em></dt>
-<dd><p>Return the interval taken by the expression <var>expr</var> over
-the abstract value <var>a</var>.
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005fbound_005flinexpr"><span class="category-def">Function: </span><span><code class="def-type">ap_interval_t*</code> <strong class="def-name">ap_abstract1_bound_linexpr</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, ap_abstract1_t* <var class="var">a</var>, ap_linexpr1_t* <var class="var">expr</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fbound_005flinexpr"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005fabstract1_005fbound_005ftexpr"><span class="category-def">Function: </span><span><code class="def-type">ap_interval_t*</code> <strong class="def-name">ap_abstract1_bound_texpr</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, ap_abstract1_t* <var class="var">a</var>, ap_texpr1_t* <var class="var">expr</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fbound_005ftexpr"> &para;</a></span></dt>
+<dd><p>Return the interval taken by the expression <var class="var">expr</var> over
+the abstract value <var class="var">a</var>.
 </p>
 <p>In the case of truly linear expression, this function allows to solve
 a Linear Programming (LP) problem, but depending on the underlying
 domain the solution may be not optimal.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005fabstract1_005fto_005fbox">Function: <em>ap_box1_t</em> <strong>ap_abstract1_to_box</strong> <em>(ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>)</em></dt>
-<dd><p>Convert <var>a</var> to an interval/hypercube.
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005fto_005fbox"><span class="category-def">Function: </span><span><code class="def-type">ap_box1_t</code> <strong class="def-name">ap_abstract1_to_box</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, ap_abstract1_t* <var class="var">a</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fto_005fbox"> &para;</a></span></dt>
+<dd><p>Convert <var class="var">a</var> to an interval/hypercube.
+In case of an empty (bottom) abstract element, all the intervals in the returned box are empty.
+For abstract elements with empty environments (no variable), it is impossible to distinguish a bottom element from a top element. Converting the box back to an abstract element with ap_abstract1_of_box will then always construct a top element.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005fabstract1_005fto_005flincons_005farray">Function: <em>ap_lincons1_array_t</em> <strong>ap_abstract1_to_lincons_array</strong> <em>(ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>)</em></dt>
-<dt id="index-ap_005fabstract1_005fto_005ftcons_005farray">Function: <em>ap_tcons1_array_t</em> <strong>ap_abstract1_to_tcons_array</strong> <em>(ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>)</em></dt>
-<dd><p>Convert <var>a</var> to a conjunction of linear (resp. tree)
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005fto_005flincons_005farray"><span class="category-def">Function: </span><span><code class="def-type">ap_lincons1_array_t</code> <strong class="def-name">ap_abstract1_to_lincons_array</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, ap_abstract1_t* <var class="var">a</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fto_005flincons_005farray"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005fabstract1_005fto_005ftcons_005farray"><span class="category-def">Function: </span><span><code class="def-type">ap_tcons1_array_t</code> <strong class="def-name">ap_abstract1_to_tcons_array</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, ap_abstract1_t* <var class="var">a</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fto_005ftcons_005farray"> &para;</a></span></dt>
+<dd><p>Convert <var class="var">a</var> to a conjunction of linear (resp. tree)
 constraints.
 </p>
 <p>The constraints are normally guaranteed to be without intervals.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005fabstract1_005fto_005fgenerator_005farray">Function: <em>ap_generator1_array_t</em> <strong>ap_abstract1_to_generator_array</strong> <em>(ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>)</em></dt>
-<dd><p>Convert <var>a</var> to an array of generators.
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005fto_005fgenerator_005farray"><span class="category-def">Function: </span><span><code class="def-type">ap_generator1_array_t</code> <strong class="def-name">ap_abstract1_to_generator_array</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, ap_abstract1_t* <var class="var">a</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fto_005fgenerator_005farray"> &para;</a></span></dt>
+<dd><p>Convert <var class="var">a</var> to an array of generators.
 </p></dd></dl>
 
 <hr>
-<span id="Meet-and-Join-of-abstract-values-of-level-1"></span><div class="header">
-<p>
-Next: <a href="#Assignements-and-Substitutions-of-abstract-values-of-level-1" accesskey="n" rel="next">Assignements and Substitutions of abstract values of level 1</a>, Previous: <a href="#Extraction-of-properties-of-abstract-values-of-level-1" accesskey="p" rel="prev">Extraction of properties of abstract values of level 1</a>, Up: <a href="#Abstract-values-and-operations-of-level-1" accesskey="u" rel="up">Abstract values and operations of level 1</a> &nbsp; </p>
 </div>
-<span id="Meet-and-Join-of-abstract-values-of-level-1-1"></span><h4 class="subsection">Meet and Join of abstract values of level 1</h4>
+<div class="subsection-level-extent" id="Meet-and-Join-of-abstract-values-of-level-1">
+<div class="nav-panel">
+<p>
+Next: <a href="#Assignements-and-Substitutions-of-abstract-values-of-level-1" accesskey="n" rel="next">Assignements and Substitutions of abstract values of level 1</a>, Previous: <a href="#Extraction-of-properties-of-abstract-values-of-level-1" accesskey="p" rel="prev">Extraction of properties of abstract values of level 1</a>, Up: <a href="#Abstract-values-and-operations-of-level-1" accesskey="u" rel="up">Abstract values and operations of level 1 (<samp class="file">ap_abstract1.h</samp>)</a> &nbsp; </p>
+</div>
+<h4 class="subsection" id="Meet-and-Join-of-abstract-values-of-level-1-1"><span>Meet and Join of abstract values of level 1<a class="copiable-link" href="#Meet-and-Join-of-abstract-values-of-level-1-1"> &para;</a></span></h4>
 
-<dl>
-<dt id="index-ap_005fabstract1_005fmeet">Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_meet</strong> <em>(ap_manager_t* <var>man</var>, bool <var>destructive</var>, ap_abstract1_t* <var>a1</var>, ap_abstract1_t* <var>a2</var>)</em></dt>
-<dt id="index-ap_005fabstract1_005fjoin">Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_join</strong> <em>(ap_manager_t* <var>man</var>, bool <var>destructive</var>, ap_abstract1_t* <var>a1</var>, ap_abstract1_t* <var>a2</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005fmeet"><span class="category-def">Function: </span><span><code class="def-type">ap_abstract1_t</code> <strong class="def-name">ap_abstract1_meet</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, bool <var class="var">destructive</var>, ap_abstract1_t* <var class="var">a1</var>, ap_abstract1_t* <var class="var">a2</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fmeet"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005fabstract1_005fjoin"><span class="category-def">Function: </span><span><code class="def-type">ap_abstract1_t</code> <strong class="def-name">ap_abstract1_join</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, bool <var class="var">destructive</var>, ap_abstract1_t* <var class="var">a1</var>, ap_abstract1_t* <var class="var">a2</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fjoin"> &para;</a></span></dt>
 <dd><p>Meet and Join of 2 abstract values
 </p></dd></dl>
 
 
-<dl>
-<dt id="index-ap_005fabstract1_005fmeet_005farray">Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_meet_array</strong> <em>(ap_manager_t* <var>man</var>, ap_abstract1_t* <var>array</var>, size_t <var>size</var>)</em></dt>
-<dt id="index-ap_005fabstract1_005fjoin_005farray">Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_join_array</strong> <em>(ap_manager_t* <var>man</var>, ap_abstract1_t* <var>array</var>, size_t <var>size</var>)</em></dt>
-<dd><p>Meet and Join of the array <var>array</var> of abstract values of size
-<var>size</var>.
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005fmeet_005farray"><span class="category-def">Function: </span><span><code class="def-type">ap_abstract1_t</code> <strong class="def-name">ap_abstract1_meet_array</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, ap_abstract1_t* <var class="var">array</var>, size_t <var class="var">size</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fmeet_005farray"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005fabstract1_005fjoin_005farray"><span class="category-def">Function: </span><span><code class="def-type">ap_abstract1_t</code> <strong class="def-name">ap_abstract1_join_array</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, ap_abstract1_t* <var class="var">array</var>, size_t <var class="var">size</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fjoin_005farray"> &para;</a></span></dt>
+<dd><p>Meet and Join of the array <var class="var">array</var> of abstract values of size
+<var class="var">size</var>.
 </p>
-<p>Raise an <code>AP_EXC_INVALID_ARGUMENT</code> exception if
-<code>size==1</code> (no way to define the environment of the result
+<p>Raise an <code class="code">AP_EXC_INVALID_ARGUMENT</code> exception if
+<code class="code">size==1</code> (no way to define the environment of the result
 in such a case).
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005fabstract1_005fmeet_005flincons_005farray">Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_meet_lincons_array</strong> <em>(ap_manager_t* <var>man</var>, bool <var>destructive</var>, ap_abstract1_t* <var>a</var>, ap_lincons1_array_t* <var>array</var>)</em></dt>
-<dt id="index-ap_005fabstract1_005fmeet_005ftcons_005farray">Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_meet_tcons_array</strong> <em>(ap_manager_t* <var>man</var>, bool <var>destructive</var>, ap_abstract1_t* <var>a</var>, ap_tcons1_array_t* <var>array</var>)</em></dt>
-<dd><p>Meet of the abstract value <var>a</var> with the set of constraints
-<var>array</var>.
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005fmeet_005flincons_005farray"><span class="category-def">Function: </span><span><code class="def-type">ap_abstract1_t</code> <strong class="def-name">ap_abstract1_meet_lincons_array</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, bool <var class="var">destructive</var>, ap_abstract1_t* <var class="var">a</var>, ap_lincons1_array_t* <var class="var">array</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fmeet_005flincons_005farray"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005fabstract1_005fmeet_005ftcons_005farray"><span class="category-def">Function: </span><span><code class="def-type">ap_abstract1_t</code> <strong class="def-name">ap_abstract1_meet_tcons_array</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, bool <var class="var">destructive</var>, ap_abstract1_t* <var class="var">a</var>, ap_tcons1_array_t* <var class="var">array</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fmeet_005ftcons_005farray"> &para;</a></span></dt>
+<dd><p>Meet of the abstract value <var class="var">a</var> with the set of constraints
+<var class="var">array</var>.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005fabstract1_005fadd_005fray_005farray">Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_add_ray_array</strong> <em>(ap_manager_t* <var>man</var>, bool <var>destructive</var>, ap_abstract1_t* <var>a</var>, ap_generator1_array_t* <var>array</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005fadd_005fray_005farray"><span class="category-def">Function: </span><span><code class="def-type">ap_abstract1_t</code> <strong class="def-name">ap_abstract1_add_ray_array</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, bool <var class="var">destructive</var>, ap_abstract1_t* <var class="var">a</var>, ap_generator1_array_t* <var class="var">array</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fadd_005fray_005farray"> &para;</a></span></dt>
 <dd><p>Generalized time elapse operator.
 </p>
-<p><var>array</var> is supposed to contain only rays or lines, no vertices.
+<p><var class="var">array</var> is supposed to contain only rays or lines, no vertices.
 </p></dd></dl>
 
 <hr>
-<span id="Assignements-and-Substitutions-of-abstract-values-of-level-1"></span><div class="header">
-<p>
-Next: <a href="#Existential-quantification-of-abstract-values-of-level-1" accesskey="n" rel="next">Existential quantification of abstract values of level 1</a>, Previous: <a href="#Meet-and-Join-of-abstract-values-of-level-1" accesskey="p" rel="prev">Meet and Join of abstract values of level 1</a>, Up: <a href="#Abstract-values-and-operations-of-level-1" accesskey="u" rel="up">Abstract values and operations of level 1</a> &nbsp; </p>
 </div>
-<span id="Assignements-and-Substitutions-of-abstract-values-of-level-1-1"></span><h4 class="subsection">Assignements and Substitutions of abstract values of level 1</h4>
+<div class="subsection-level-extent" id="Assignements-and-Substitutions-of-abstract-values-of-level-1">
+<div class="nav-panel">
+<p>
+Next: <a href="#Existential-quantification-of-abstract-values-of-level-1" accesskey="n" rel="next">Existential quantification of abstract values of level 1</a>, Previous: <a href="#Meet-and-Join-of-abstract-values-of-level-1" accesskey="p" rel="prev">Meet and Join of abstract values of level 1</a>, Up: <a href="#Abstract-values-and-operations-of-level-1" accesskey="u" rel="up">Abstract values and operations of level 1 (<samp class="file">ap_abstract1.h</samp>)</a> &nbsp; </p>
+</div>
+<h4 class="subsection" id="Assignements-and-Substitutions-of-abstract-values-of-level-1-1"><span>Assignements and Substitutions of abstract values of level 1<a class="copiable-link" href="#Assignements-and-Substitutions-of-abstract-values-of-level-1-1"> &para;</a></span></h4>
 
-<dl>
-<dt id="index-ap_005fabstract1_005fassign_005flinexpr_005farray">Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_assign_linexpr_array</strong> <em>(ap_manager_t* <var>man</var>, bool <var>destructive</var>, ap_abstract1_t* <var>org</var>, ap_var_t* <var>tvar</var>, ap_linexpr1_t* <var>texpr</var>, size_t <var>size</var>, ap_abstract1_t* <var>dest</var>)</em></dt>
-<dt id="index-ap_005fabstract1_005fsubstitute_005flinexpr_005farray">Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_substitute_linexpr_array</strong> <em>(ap_manager_t* <var>man</var>, bool <var>destructive</var>, ap_abstract1_t* <var>org</var>, ap_var_t* <var>tvar</var>, ap_linexpr1_t* <var>texpr</var>, size_t <var>size</var>, ap_abstract1_t* <var>dest</var>)</em></dt>
-<dt id="index-ap_005fabstract1_005fassign_005ftexpr_005farray">Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_assign_texpr_array</strong> <em>(ap_manager_t* <var>man</var>, bool <var>destructive</var>, ap_abstract1_t* <var>org</var>, ap_var_t* <var>tvar</var>, ap_texpr1_t* <var>texpr</var>, size_t <var>size</var>, ap_abstract1_t* <var>dest</var>)</em></dt>
-<dt id="index-ap_005fabstract1_005fsubstitute_005ftexpr_005farray">Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_substitute_texpr_array</strong> <em>(ap_manager_t* <var>man</var>, bool <var>destructive</var>, ap_abstract1_t* <var>org</var>, ap_var_t* <var>tvar</var>, ap_texpr1_t* <var>texpr</var>, size_t <var>size</var>, ap_abstract1_t* <var>dest</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005fassign_005flinexpr_005farray"><span class="category-def">Function: </span><span><code class="def-type">ap_abstract1_t</code> <strong class="def-name">ap_abstract1_assign_linexpr_array</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, bool <var class="var">destructive</var>, ap_abstract1_t* <var class="var">org</var>, ap_var_t* <var class="var">tvar</var>, ap_linexpr1_t* <var class="var">texpr</var>, size_t <var class="var">size</var>, ap_abstract1_t* <var class="var">dest</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fassign_005flinexpr_005farray"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005fabstract1_005fsubstitute_005flinexpr_005farray"><span class="category-def">Function: </span><span><code class="def-type">ap_abstract1_t</code> <strong class="def-name">ap_abstract1_substitute_linexpr_array</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, bool <var class="var">destructive</var>, ap_abstract1_t* <var class="var">org</var>, ap_var_t* <var class="var">tvar</var>, ap_linexpr1_t* <var class="var">texpr</var>, size_t <var class="var">size</var>, ap_abstract1_t* <var class="var">dest</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fsubstitute_005flinexpr_005farray"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005fabstract1_005fassign_005ftexpr_005farray"><span class="category-def">Function: </span><span><code class="def-type">ap_abstract1_t</code> <strong class="def-name">ap_abstract1_assign_texpr_array</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, bool <var class="var">destructive</var>, ap_abstract1_t* <var class="var">org</var>, ap_var_t* <var class="var">tvar</var>, ap_texpr1_t* <var class="var">texpr</var>, size_t <var class="var">size</var>, ap_abstract1_t* <var class="var">dest</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fassign_005ftexpr_005farray"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005fabstract1_005fsubstitute_005ftexpr_005farray"><span class="category-def">Function: </span><span><code class="def-type">ap_abstract1_t</code> <strong class="def-name">ap_abstract1_substitute_texpr_array</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, bool <var class="var">destructive</var>, ap_abstract1_t* <var class="var">org</var>, ap_var_t* <var class="var">tvar</var>, ap_texpr1_t* <var class="var">texpr</var>, size_t <var class="var">size</var>, ap_abstract1_t* <var class="var">dest</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fsubstitute_005ftexpr_005farray"> &para;</a></span></dt>
 <dd><p>Parallel Assignement and Substitution of several variables by
-expressions in abstract value <var>org</var>.
+expressions in abstract value <var class="var">org</var>.
 </p>
-<p><var>dest</var> is an optional argument. If not NULL, semantically speaking,
-the result of the transformation is intersected with <var>dest</var>. This is
+<p><var class="var">dest</var> is an optional argument. If not NULL, semantically speaking,
+the result of the transformation is intersected with <var class="var">dest</var>. This is
 useful for precise backward transformations in lattices like intervals or
 octagons.
 </p></dd></dl>
 
 <hr>
-<span id="Existential-quantification-of-abstract-values-of-level-1"></span><div class="header">
-<p>
-Next: <a href="#Change-of-environments-of-abstract-values-of-level-1" accesskey="n" rel="next">Change of environments of abstract values of level 1</a>, Previous: <a href="#Assignements-and-Substitutions-of-abstract-values-of-level-1" accesskey="p" rel="prev">Assignements and Substitutions of abstract values of level 1</a>, Up: <a href="#Abstract-values-and-operations-of-level-1" accesskey="u" rel="up">Abstract values and operations of level 1</a> &nbsp; </p>
 </div>
-<span id="Existential-quantification-of-abstract-values-of-level-1-1"></span><h4 class="subsection">Existential quantification of abstract values of level 1</h4>
+<div class="subsection-level-extent" id="Existential-quantification-of-abstract-values-of-level-1">
+<div class="nav-panel">
+<p>
+Next: <a href="#Change-of-environments-of-abstract-values-of-level-1" accesskey="n" rel="next">Change of environments of abstract values of level 1</a>, Previous: <a href="#Assignements-and-Substitutions-of-abstract-values-of-level-1" accesskey="p" rel="prev">Assignements and Substitutions of abstract values of level 1</a>, Up: <a href="#Abstract-values-and-operations-of-level-1" accesskey="u" rel="up">Abstract values and operations of level 1 (<samp class="file">ap_abstract1.h</samp>)</a> &nbsp; </p>
+</div>
+<h4 class="subsection" id="Existential-quantification-of-abstract-values-of-level-1-1"><span>Existential quantification of abstract values of level 1<a class="copiable-link" href="#Existential-quantification-of-abstract-values-of-level-1-1"> &para;</a></span></h4>
 
-<dl>
-<dt id="index-ap_005fabstract1_005fforget_005farray">Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_forget_array</strong> <em>(ap_manager_t* <var>man</var>, bool <var>destructive</var>, ap_abstract1_t* <var>a</var>, ap_var_t* <var>tvar</var>, size_t <var>size</var>, bool <var>project</var>)</em></dt>
-<dd><p>Forget (<code>project=false</code>) or Project (<code>project=true</code>) the
-array of variables <var>tvar</var> of size <var>size</var> in the abstract
-value <var>a</var>.
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005fforget_005farray"><span class="category-def">Function: </span><span><code class="def-type">ap_abstract1_t</code> <strong class="def-name">ap_abstract1_forget_array</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, bool <var class="var">destructive</var>, ap_abstract1_t* <var class="var">a</var>, ap_var_t* <var class="var">tvar</var>, size_t <var class="var">size</var>, bool <var class="var">project</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fforget_005farray"> &para;</a></span></dt>
+<dd><p>Forget (<code class="code">project==false</code>) or Project (<code class="code">project==true</code>) the
+array of variables <var class="var">tvar</var> of size <var class="var">size</var> in the abstract
+value <var class="var">a</var>.
 </p></dd></dl>
 
 <hr>
-<span id="Change-of-environments-of-abstract-values-of-level-1"></span><div class="header">
-<p>
-Next: <a href="#Expansion-and-Folding-of-dimensions-in-abstract-values-of-level-1" accesskey="n" rel="next">Expansion and Folding of dimensions in abstract values of level 1</a>, Previous: <a href="#Existential-quantification-of-abstract-values-of-level-1" accesskey="p" rel="prev">Existential quantification of abstract values of level 1</a>, Up: <a href="#Abstract-values-and-operations-of-level-1" accesskey="u" rel="up">Abstract values and operations of level 1</a> &nbsp; </p>
 </div>
-<span id="Change-of-environments-of-abstract-values-of-level-1-1"></span><h4 class="subsection">Change of environments of abstract values of level 1</h4>
+<div class="subsection-level-extent" id="Change-of-environments-of-abstract-values-of-level-1">
+<div class="nav-panel">
+<p>
+Next: <a href="#Expansion-and-Folding-of-dimensions-in-abstract-values-of-level-1" accesskey="n" rel="next">Expansion and Folding of dimensions of abstract values of level 1</a>, Previous: <a href="#Existential-quantification-of-abstract-values-of-level-1" accesskey="p" rel="prev">Existential quantification of abstract values of level 1</a>, Up: <a href="#Abstract-values-and-operations-of-level-1" accesskey="u" rel="up">Abstract values and operations of level 1 (<samp class="file">ap_abstract1.h</samp>)</a> &nbsp; </p>
+</div>
+<h4 class="subsection" id="Change-of-environments-of-abstract-values-of-level-1-1"><span>Change of environments of abstract values of level 1<a class="copiable-link" href="#Change-of-environments-of-abstract-values-of-level-1-1"> &para;</a></span></h4>
 
-<dl>
-<dt id="index-ap_005fabstract1_005fchange_005fenvironment">Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_change_environment</strong> <em>(ap_manager_t* <var>man</var>, bool <var>destructive</var>, ap_abstract1_t* <var>a</var>, ap_environment_t* <var>nenv</var>, bool <var>project</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005fchange_005fenvironment"><span class="category-def">Function: </span><span><code class="def-type">ap_abstract1_t</code> <strong class="def-name">ap_abstract1_change_environment</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, bool <var class="var">destructive</var>, ap_abstract1_t* <var class="var">a</var>, ap_environment_t* <var class="var">nenv</var>, bool <var class="var">project</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fchange_005fenvironment"> &para;</a></span></dt>
 <dd><p>Change the environment of the abstract values.  Variables that are
 removed are first existentially quantified, and variables that are
-introduced are either unconstrained (<code>project==false</code>) or
-initialized to 0 (<code>project==false</code>).
+introduced are either unconstrained (<code class="code">project==false</code>) or
+initialized to 0 (<code class="code">project==true</code>).
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005fabstract1_005fminimize_005fenvironment">Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_minimize_environment</strong> <em>(ap_manager_t* <var>man</var>, bool <var>destructive</var>, ap_abstract1_t* <var>a</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005fminimize_005fenvironment"><span class="category-def">Function: </span><span><code class="def-type">ap_abstract1_t</code> <strong class="def-name">ap_abstract1_minimize_environment</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, bool <var class="var">destructive</var>, ap_abstract1_t* <var class="var">a</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fminimize_005fenvironment"> &para;</a></span></dt>
 <dd><p>Remove from the environment of the abstract value and from the
 abstract value itself variables that are unconstrained in it.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005fabstract1_005frename_005farray">Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_rename_array</strong> <em>(ap_manager_t* <var>man</var>, bool <var>destructive</var>, ap_abstract1_t* <var>a</var>, ap_var_t* <var>tvar</var>, ap_var_t* <var>ntvar</var>, size_t <var>size</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005frename_005farray"><span class="category-def">Function: </span><span><code class="def-type">ap_abstract1_t</code> <strong class="def-name">ap_abstract1_rename_array</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, bool <var class="var">destructive</var>, ap_abstract1_t* <var class="var">a</var>, ap_var_t* <var class="var">tvar</var>, ap_var_t* <var class="var">ntvar</var>, size_t <var class="var">size</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005frename_005farray"> &para;</a></span></dt>
 <dd><p>Parallel renaming of the environment of the abstract value. The new
 variables should not interfere with the variables that are not
 renamed.
 </p></dd></dl>
 
 <hr>
-<span id="Expansion-and-Folding-of-dimensions-in-abstract-values-of-level-1"></span><div class="header">
-<p>
-Next: <a href="#Widening-of-abstract-values-of-level-1" accesskey="n" rel="next">Widening of abstract values of level 1</a>, Previous: <a href="#Change-of-environments-of-abstract-values-of-level-1" accesskey="p" rel="prev">Change of environments of abstract values of level 1</a>, Up: <a href="#Abstract-values-and-operations-of-level-1" accesskey="u" rel="up">Abstract values and operations of level 1</a> &nbsp; </p>
 </div>
-<span id="Expansion-and-Folding-of-dimensions-of-abstract-values-of-level-1"></span><h4 class="subsection">Expansion and Folding of dimensions of abstract values of level 1</h4>
+<div class="subsection-level-extent" id="Expansion-and-Folding-of-dimensions-in-abstract-values-of-level-1">
+<div class="nav-panel">
+<p>
+Next: <a href="#Widening-of-abstract-values-of-level-1" accesskey="n" rel="next">Widening of abstract values of level 1</a>, Previous: <a href="#Change-of-environments-of-abstract-values-of-level-1" accesskey="p" rel="prev">Change of environments of abstract values of level 1</a>, Up: <a href="#Abstract-values-and-operations-of-level-1" accesskey="u" rel="up">Abstract values and operations of level 1 (<samp class="file">ap_abstract1.h</samp>)</a> &nbsp; </p>
+</div>
+<h4 class="subsection" id="Expansion-and-Folding-of-dimensions-of-abstract-values-of-level-1"><span>Expansion and Folding of dimensions of abstract values of level 1<a class="copiable-link" href="#Expansion-and-Folding-of-dimensions-of-abstract-values-of-level-1"> &para;</a></span></h4>
 
-<p>Formally, expanding <code>z</code> into <code>z</code> and <code>w</code> in
-abstract value (predicate) <code>P</code> is defined by
-<em>expand(P(x,y,z),z,w) = P(x,y,z) and P(x,y,w)</em>.
+<p>Formally, expanding <code class="code">z</code> into <code class="code">z</code> and <code class="code">w</code> in
+abstract value (predicate) <code class="code">P</code> is defined by
+<em class="math">expand(P(x,y,z),z,w) = P(x,y,z) and P(x,y,w)</em>.
 </p>
-<p>Conversely, folding <code>z</code> and <code>w</code> into <code>z</code> in
-abstract value (predicate) <code>Q</code> is defined by
-<em>fold(Q(x,y,z,w),z,w) = (exists w: Q(x,y,z,w)) or (exists z:Q(x,y,z,w)[z&lt;-w])</em>.
+<p>Conversely, folding <code class="code">z</code> and <code class="code">w</code> into <code class="code">z</code> in
+abstract value (predicate) <code class="code">Q</code> is defined by
+<em class="math">fold(Q(x,y,z,w),z,w) = (exists w: Q(x,y,z,w)) or (exists z:Q(x,y,z,w)[z&lt;-w])</em>.
 </p>
-<dl>
-<dt id="index-ap_005fabstract1_005fexpand">Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_expand</strong> <em>(ap_manager_t* <var>man</var>, bool <var>destructive</var>, ap_abstract1_t* <var>a</var>, ap_var_t <var>var</var>, ap_var_t* <var>tvar</var>, size_t <var>size</var>)</em></dt>
-<dd><p>Expand the variable <var>var</var> into itself + the <var>size</var> additional
-variables of the array <var>tvar</var>, which are given the same type as
-<var>var</var>.  The additional variables are added to the environment of
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005fexpand"><span class="category-def">Function: </span><span><code class="def-type">ap_abstract1_t</code> <strong class="def-name">ap_abstract1_expand</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, bool <var class="var">destructive</var>, ap_abstract1_t* <var class="var">a</var>, ap_var_t <var class="var">var</var>, ap_var_t* <var class="var">tvar</var>, size_t <var class="var">size</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fexpand"> &para;</a></span></dt>
+<dd><p>Expand the variable <var class="var">var</var> into itself + the <var class="var">size</var> additional
+variables of the array <var class="var">tvar</var>, which are given the same type as
+<var class="var">var</var>.  The additional variables are added to the environment of
 the argument for making the environment of the result, so they should
 not belong to the initial environment.
 </p>
-<p>It results in <code>size+1</code> unrelated variables having same relations
+<p>It results in <code class="code">size+1</code> unrelated variables having same relations
 with other dimensions.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005fabstract1_005ffold">Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_fold</strong> <em>(ap_manager_t* <var>man</var>, bool <var>destructive</var>, ap_abstract1_t* <var>a</var>, ap_var_t* <var>tvar</var>, size_t <var>size</var>)</em></dt>
-<dd><p>Fold the variables in the array <var>tvar</var> of size <var>size</var>&gt;=1 and
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005ffold"><span class="category-def">Function: </span><span><code class="def-type">ap_abstract1_t</code> <strong class="def-name">ap_abstract1_fold</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, bool <var class="var">destructive</var>, ap_abstract1_t* <var class="var">a</var>, ap_var_t* <var class="var">tvar</var>, size_t <var class="var">size</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005ffold"> &para;</a></span></dt>
+<dd><p>Fold the variables in the array <var class="var">tvar</var> of size <var class="var">size</var>&gt;=1 and
 put the result in the first variable in the array. The other variables
 of the array are then forgot and removed from the environment.
 </p></dd></dl>
 
 <hr>
-<span id="Widening-of-abstract-values-of-level-1"></span><div class="header">
-<p>
-Next: <a href="#Topological-closure-of-abstract-values-of-level-1" accesskey="n" rel="next">Topological closure of abstract values of level 1</a>, Previous: <a href="#Expansion-and-Folding-of-dimensions-in-abstract-values-of-level-1" accesskey="p" rel="prev">Expansion and Folding of dimensions in abstract values of level 1</a>, Up: <a href="#Abstract-values-and-operations-of-level-1" accesskey="u" rel="up">Abstract values and operations of level 1</a> &nbsp; </p>
 </div>
-<span id="Widening-of-abstract-values-of-level-1-1"></span><h4 class="subsection">Widening of abstract values of level 1</h4>
+<div class="subsection-level-extent" id="Widening-of-abstract-values-of-level-1">
+<div class="nav-panel">
+<p>
+Next: <a href="#Topological-closure-of-abstract-values-of-level-1" accesskey="n" rel="next">Topological closure of abstract values of level 1</a>, Previous: <a href="#Expansion-and-Folding-of-dimensions-in-abstract-values-of-level-1" accesskey="p" rel="prev">Expansion and Folding of dimensions of abstract values of level 1</a>, Up: <a href="#Abstract-values-and-operations-of-level-1" accesskey="u" rel="up">Abstract values and operations of level 1 (<samp class="file">ap_abstract1.h</samp>)</a> &nbsp; </p>
+</div>
+<h4 class="subsection" id="Widening-of-abstract-values-of-level-1-1"><span>Widening of abstract values of level 1<a class="copiable-link" href="#Widening-of-abstract-values-of-level-1-1"> &para;</a></span></h4>
 
-<dl>
-<dt id="index-ap_005fabstract1_005fwidening">Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_widening</strong> <em>(ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a1</var>, ap_abstract1_t* <var>a2</var>)</em></dt>
-<dd><p>Widening of <var>a1</var> with <var>a2</var>. <var>a1</var> is supposed to be
-included in <var>a2</var>.
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005fwidening"><span class="category-def">Function: </span><span><code class="def-type">ap_abstract1_t</code> <strong class="def-name">ap_abstract1_widening</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, ap_abstract1_t* <var class="var">a1</var>, ap_abstract1_t* <var class="var">a2</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fwidening"> &para;</a></span></dt>
+<dd><p>Widening of <var class="var">a1</var> with <var class="var">a2</var>. <var class="var">a1</var> is supposed to be
+included in <var class="var">a2</var>.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005fabstract1_005fwidening_005fthreshold">Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_widening_threshold</strong> <em>(ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a1</var>, ap_abstract1_t* <var>a2</var>, ap_lincons1_array_t* <var>array</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005fwidening_005fthreshold"><span class="category-def">Function: </span><span><code class="def-type">ap_abstract1_t</code> <strong class="def-name">ap_abstract1_widening_threshold</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, ap_abstract1_t* <var class="var">a1</var>, ap_abstract1_t* <var class="var">a2</var>, ap_lincons1_array_t* <var class="var">array</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fwidening_005fthreshold"> &para;</a></span></dt>
 <dd><p>Widening with threshold.
 </p>
 <p>Intersect the result of the standard widening with all the
-constraints in <var>array</var> that are satisfied by both <var>a1</var> and
-<var>a2</var>.
+constraints in <var class="var">array</var> that are satisfied by both <var class="var">a1</var> and
+<var class="var">a2</var>.
 </p></dd></dl>
 
 <hr>
-<span id="Topological-closure-of-abstract-values-of-level-1"></span><div class="header">
-<p>
-Next: <a href="#Additional-functions-on-abstract-values-of-level-1" accesskey="n" rel="next">Additional functions on abstract values of level 1</a>, Previous: <a href="#Widening-of-abstract-values-of-level-1" accesskey="p" rel="prev">Widening of abstract values of level 1</a>, Up: <a href="#Abstract-values-and-operations-of-level-1" accesskey="u" rel="up">Abstract values and operations of level 1</a> &nbsp; </p>
 </div>
-<span id="Topological-closure-of-abstract-values-of-level-1-1"></span><h4 class="subsection">Topological closure of abstract values of level 1</h4>
+<div class="subsection-level-extent" id="Topological-closure-of-abstract-values-of-level-1">
+<div class="nav-panel">
+<p>
+Next: <a href="#Additional-functions-on-abstract-values-of-level-1" accesskey="n" rel="next">Additional functions on abstract values of level 1</a>, Previous: <a href="#Widening-of-abstract-values-of-level-1" accesskey="p" rel="prev">Widening of abstract values of level 1</a>, Up: <a href="#Abstract-values-and-operations-of-level-1" accesskey="u" rel="up">Abstract values and operations of level 1 (<samp class="file">ap_abstract1.h</samp>)</a> &nbsp; </p>
+</div>
+<h4 class="subsection" id="Topological-closure-of-abstract-values-of-level-1-1"><span>Topological closure of abstract values of level 1<a class="copiable-link" href="#Topological-closure-of-abstract-values-of-level-1-1"> &para;</a></span></h4>
 
-<dl>
-<dt id="index-ap_005fabstract1_005fclosure">Function: <em>ap_abstract1_t*</em> <strong>ap_abstract1_closure</strong> <em>(ap_manager_t* <var>man</var>, bool <var>destructive</var>, ap_abstract1_t* <var>a</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005fclosure"><span class="category-def">Function: </span><span><code class="def-type">ap_abstract1_t*</code> <strong class="def-name">ap_abstract1_closure</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, bool <var class="var">destructive</var>, ap_abstract1_t* <var class="var">a</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fclosure"> &para;</a></span></dt>
 <dd><p>Relax strict constraints into non strict constraints.
 </p></dd></dl>
 
 <hr>
-<span id="Additional-functions-on-abstract-values-of-level-1"></span><div class="header">
-<p>
-Previous: <a href="#Topological-closure-of-abstract-values-of-level-1" accesskey="p" rel="prev">Topological closure of abstract values of level 1</a>, Up: <a href="#Abstract-values-and-operations-of-level-1" accesskey="u" rel="up">Abstract values and operations of level 1</a> &nbsp; </p>
 </div>
-<span id="Additional-functions-on-abstract-values-of-level-1-1"></span><h4 class="subsection">Additional functions on abstract values of level 1</h4>
+<div class="subsection-level-extent" id="Additional-functions-on-abstract-values-of-level-1">
+<div class="nav-panel">
+<p>
+Previous: <a href="#Topological-closure-of-abstract-values-of-level-1" accesskey="p" rel="prev">Topological closure of abstract values of level 1</a>, Up: <a href="#Abstract-values-and-operations-of-level-1" accesskey="u" rel="up">Abstract values and operations of level 1 (<samp class="file">ap_abstract1.h</samp>)</a> &nbsp; </p>
+</div>
+<h4 class="subsection" id="Additional-functions-on-abstract-values-of-level-1-1"><span>Additional functions on abstract values of level 1<a class="copiable-link" href="#Additional-functions-on-abstract-values-of-level-1-1"> &para;</a></span></h4>
 
-<dl>
-<dt id="index-ap_005fabstract1_005fof_005flincons_005farray">Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_of_lincons_array</strong> <em>(ap_manager_t* <var>man</var>, ap_environment_t* <var>env</var>, ap_lincons1_array_t* <var>array</var>)</em></dt>
-<dt id="index-ap_005fabstract1_005fof_005ftcons_005farray">Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_of_tcons_array</strong> <em>(ap_manager_t* <var>man</var>, ap_environment_t* <var>env</var>, ap_tcons1_array_t* <var>array</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005fof_005flincons_005farray"><span class="category-def">Function: </span><span><code class="def-type">ap_abstract1_t</code> <strong class="def-name">ap_abstract1_of_lincons_array</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, ap_environment_t* <var class="var">env</var>, ap_lincons1_array_t* <var class="var">array</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fof_005flincons_005farray"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005fabstract1_005fof_005ftcons_005farray"><span class="category-def">Function: </span><span><code class="def-type">ap_abstract1_t</code> <strong class="def-name">ap_abstract1_of_tcons_array</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, ap_environment_t* <var class="var">env</var>, ap_tcons1_array_t* <var class="var">array</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fof_005ftcons_005farray"> &para;</a></span></dt>
 <dd><p>Abstract a conjunction of constraints. The environment of the array should be
-a subset of the environment <var>env</var>.
+a subset of the environment <var class="var">env</var>.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005fabstract1_005fassign_005flinexpr">Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_assign_linexpr</strong> <em>(ap_manager_t* <var>man</var>, bool <var>destructive</var>, ap_abstract1_t* <var>org</var>, ap_var_t <var>var</var>, ap_linexpr1_t* <var>expr</var>, ap_abstract1_t* <var>dest</var>)</em></dt>
-<dt id="index-ap_005fabstract1_005fsubstitute_005flinexpr">Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_substitute_linexpr</strong> <em>(ap_manager_t* <var>man</var>, bool <var>destructive</var>, ap_abstract1_t* <var>org</var>, ap_var_t <var>var</var>, ap_linexpr1_t* <var>expr</var>, ap_abstract1_t* <var>dest</var>)</em></dt>
-<dt id="index-ap_005fabstract1_005fassign_005ftexpr">Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_assign_texpr</strong> <em>(ap_manager_t* <var>man</var>, bool <var>destructive</var>, ap_abstract1_t* <var>org</var>, ap_var_t <var>var</var>, ap_texpr1_t* <var>expr</var>, ap_abstract1_t* <var>dest</var>)</em></dt>
-<dt id="index-ap_005fabstract1_005fsubstitute_005ftexpr">Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_substitute_texpr</strong> <em>(ap_manager_t* <var>man</var>, bool <var>destructive</var>, ap_abstract1_t* <var>org</var>, ap_var_t <var>var</var>, ap_texpr1_t* <var>expr</var>, ap_abstract1_t* <var>dest</var>)</em></dt>
-<dd><p>Assignement and Substitution of the dimension <var>dim</var> by the
-expression <var>expr</var> in abstract value <var>org</var>.
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005fassign_005flinexpr"><span class="category-def">Function: </span><span><code class="def-type">ap_abstract1_t</code> <strong class="def-name">ap_abstract1_assign_linexpr</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, bool <var class="var">destructive</var>, ap_abstract1_t* <var class="var">org</var>, ap_var_t <var class="var">var</var>, ap_linexpr1_t* <var class="var">expr</var>, ap_abstract1_t* <var class="var">dest</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fassign_005flinexpr"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005fabstract1_005fsubstitute_005flinexpr"><span class="category-def">Function: </span><span><code class="def-type">ap_abstract1_t</code> <strong class="def-name">ap_abstract1_substitute_linexpr</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, bool <var class="var">destructive</var>, ap_abstract1_t* <var class="var">org</var>, ap_var_t <var class="var">var</var>, ap_linexpr1_t* <var class="var">expr</var>, ap_abstract1_t* <var class="var">dest</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fsubstitute_005flinexpr"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005fabstract1_005fassign_005ftexpr"><span class="category-def">Function: </span><span><code class="def-type">ap_abstract1_t</code> <strong class="def-name">ap_abstract1_assign_texpr</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, bool <var class="var">destructive</var>, ap_abstract1_t* <var class="var">org</var>, ap_var_t <var class="var">var</var>, ap_texpr1_t* <var class="var">expr</var>, ap_abstract1_t* <var class="var">dest</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fassign_005ftexpr"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005fabstract1_005fsubstitute_005ftexpr"><span class="category-def">Function: </span><span><code class="def-type">ap_abstract1_t</code> <strong class="def-name">ap_abstract1_substitute_texpr</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, bool <var class="var">destructive</var>, ap_abstract1_t* <var class="var">org</var>, ap_var_t <var class="var">var</var>, ap_texpr1_t* <var class="var">expr</var>, ap_abstract1_t* <var class="var">dest</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fsubstitute_005ftexpr"> &para;</a></span></dt>
+<dd><p>Assignement and Substitution of the dimension <var class="var">dim</var> by the
+expression <var class="var">expr</var> in abstract value <var class="var">org</var>.
 </p>
-<p><var>dest</var> is an optional argument. If not NULL, semantically
+<p><var class="var">dest</var> is an optional argument. If not NULL, semantically
 speaking, the result of the transformation is intersected with
-<var>dest</var>. This is useful for precise backward transformations in
+<var class="var">dest</var>. This is useful for precise backward transformations in
 lattices like intervals or octagons.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005fabstract1_005funify">Function: <em>ap_abstract1_t</em> <strong>ap_abstract1_unify</strong> <em>(ap_manager_t* <var>man</var>, bool <var>destructive</var>, ap_abstract1_t* <var>a1</var>, ap_abstract1_t* <var>a2</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005funify"><span class="category-def">Function: </span><span><code class="def-type">ap_abstract1_t</code> <strong class="def-name">ap_abstract1_unify</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, bool <var class="var">destructive</var>, ap_abstract1_t* <var class="var">a1</var>, ap_abstract1_t* <var class="var">a2</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005funify"> &para;</a></span></dt>
 <dd><p>Unify two abstract values on their common variables, that is,
 embed them on the least common environment and then compute their
 meet. The result is defined on the least common environment.
 </p>
-<p>For instance, the unification of <code>1&lt;=x&lt;=3 and x=y</code> defined on
-<code>{ x, y }</code> and <code>2&lt;=z&lt;=4 and z=y</code> defined on
-<code>{y,z }</code> results in <code>2&lt;=x&lt;=3 and x=y=z</code> defined on
-<code>{x,y,z}</code>.
+<p>For instance, the unification of <code class="code">1&lt;=x&lt;=3 and x=y</code> defined on
+<code class="code">{ x, y }</code> and <code class="code">2&lt;=z&lt;=4 and z=y</code> defined on
+<code class="code">{y,z }</code> results in <code class="code">2&lt;=x&lt;=3 and x=y=z</code> defined on
+<code class="code">{x,y,z}</code>.
 </p></dd></dl>
 
 
-<dl>
-<dt id="index-ap_005fabstract1_005fquasilinear_005fof_005fintlinear">Function: <em>ap_linexpr1_t</em> <strong>ap_abstract1_quasilinear_of_intlinear</strong> <em>(ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>, ap_linexpr1_t* <var>expr</var>)</em></dt>
-<dd><p>Evaluate the interval linear expression <var>expr</var> on the abstract
-value <var>a</var> and approximate it by a quasilinear expression.
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005fquasilinear_005fof_005fintlinear"><span class="category-def">Function: </span><span><code class="def-type">ap_linexpr1_t</code> <strong class="def-name">ap_abstract1_quasilinear_of_intlinear</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, ap_abstract1_t* <var class="var">a</var>, ap_linexpr1_t* <var class="var">expr</var>)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fquasilinear_005fof_005fintlinear"> &para;</a></span></dt>
+<dd><p>Evaluate the interval linear expression <var class="var">expr</var> on the abstract
+value <var class="var">a</var> and approximate it by a quasilinear expression.
 </p>
-<p>This implies calls to <code>ap_abstract0_bound_dimension</code>.
+<p>This implies calls to <code class="code">ap_abstract0_bound_dimension</code>.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005fabstract1_005fintlinear_005fof_005ftree">Function: <em>ap_linexpr1_t</em> <strong>ap_abstract1_intlinear_of_tree</strong> <em>(ap_manager_t* <var>man</var>, ap_abstract1_t* <var>a</var>, ap_texpr1_t* <var>expr</var>, bool quasilinear)</em></dt>
-<dd><p>Evaluate the tree expression <var>expr</var> on the abstract value <var>a</var>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fabstract1_005fintlinear_005fof_005ftree"><span class="category-def">Function: </span><span><code class="def-type">ap_linexpr1_t</code> <strong class="def-name">ap_abstract1_intlinear_of_tree</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, ap_abstract1_t* <var class="var">a</var>, ap_texpr1_t* <var class="var">expr</var>, bool quasilinear)</code><a class="copiable-link" href="#index-ap_005fabstract1_005fintlinear_005fof_005ftree"> &para;</a></span></dt>
+<dd><p>Evaluate the tree expression <var class="var">expr</var> on the abstract value <var class="var">a</var>
 and approximate it by an interval linear (resp. quasilinear if
-<var>quasilinear</var> is true) expression.
+<var class="var">quasilinear</var> is true) expression.
 </p>
-<p>This implies calls to <code>ap_abstract0_bound_dimension</code>.
+<p>This implies calls to <code class="code">ap_abstract0_bound_dimension</code>.
 </p></dd></dl>
 
+</div>
+</div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
-Previous: <a href="#Topological-closure-of-abstract-values-of-level-1" accesskey="p" rel="prev">Topological closure of abstract values of level 1</a>, Up: <a href="#Abstract-values-and-operations-of-level-1" accesskey="u" rel="up">Abstract values and operations of level 1</a> &nbsp; </p>
+Previous: <a href="Tree-constraints-of-level-1.html#Tree-constraints-of-level-1" accesskey="p" rel="prev">Tree constraints of level 1 (<samp class="file">ap_tcons1.h</samp>)</a>, Up: <a href="Level-1-of-the-interface.html" accesskey="u" rel="up">Level 1 of the interface</a> &nbsp; </p>
 </div>
 
 

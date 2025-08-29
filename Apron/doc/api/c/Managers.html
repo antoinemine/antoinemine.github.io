@@ -1,35 +1,27 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.6, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.2, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Managers (APRON 0.9.12)</title>
+<title>Managers (APRON 0.9.15)</title>
 
-<meta name="description" content="Managers (APRON 0.9.12)">
-<meta name="keywords" content="Managers (APRON 0.9.12)">
+<meta name="description" content="Managers (APRON 0.9.15)">
+<meta name="keywords" content="Managers (APRON 0.9.15)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
-<link href="index.html#Top" rel="start" title="Top">
-<link href="Managers-and-Abstract-Domains.html#Managers-and-Abstract-Domains" rel="up" title="Managers and Abstract Domains">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Managers-and-Abstract-Domains.html" rel="up" title="Managers and Abstract Domains">
 <link href="Box.html#Box" rel="next" title="Box">
-<link href="Managers-and-Abstract-Domains.html#Managers-and-Abstract-Domains" rel="prev" title="Managers and Abstract Domains">
+<link href="Managers-and-Abstract-Domains.html" rel="prev" title="Managers and Abstract Domains">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+span:hover a.copiable-link {visibility: visible}
+strong.def-name {font-family: monospace; font-weight: bold; font-size: larger}
 -->
 </style>
 
@@ -37,30 +29,30 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Managers"></span><div class="header">
+<div class="section-level-extent" id="Managers">
+<div class="nav-panel">
 <p>
-Next: <a href="Box.html#Box" accesskey="n" rel="next">Box</a>, Previous: <a href="Managers-and-Abstract-Domains.html#Managers-and-Abstract-Domains" accesskey="p" rel="prev">Managers and Abstract Domains</a>, Up: <a href="Managers-and-Abstract-Domains.html#Managers-and-Abstract-Domains" accesskey="u" rel="up">Managers and Abstract Domains</a> &nbsp; </p>
+Next: <a href="Box.html#Box" accesskey="n" rel="next">Box (<samp class="file">box.h</samp>): intervals abstract domain</a>, Previous: <a href="Managers-and-Abstract-Domains.html" accesskey="p" rel="prev">Managers and Abstract Domains</a>, Up: <a href="Managers-and-Abstract-Domains.html" accesskey="u" rel="up">Managers and Abstract Domains</a> &nbsp; </p>
 </div>
-<span id="Managers-_0028ap_005fmanager_002eh_0029"></span><h3 class="section">Managers (<samp>ap_manager.h</samp>)</h3>
+<h3 class="section" id="Managers-_0028ap_005fmanager_002eh_0029"><span>Managers (<samp class="file">ap_manager.h</samp>)<a class="copiable-link" href="#Managers-_0028ap_005fmanager_002eh_0029"> &para;</a></span></h3>
 
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#APRON-Global-Datatypes" accesskey="1">APRON Global Datatypes</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Functions-related-to-managers" accesskey="2">Functions related to managers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
+<ul class="mini-toc">
+<li><a href="#APRON-Global-Datatypes" accesskey="1">Datatypes</a></li>
+<li><a href="#Functions-related-to-managers" accesskey="2">Functions related to managers</a></li>
+</ul>
 <hr>
-<span id="APRON-Global-Datatypes"></span><div class="header">
+<div class="subsection-level-extent" id="APRON-Global-Datatypes">
+<div class="nav-panel">
 <p>
-Next: <a href="#Functions-related-to-managers" accesskey="n" rel="next">Functions related to managers</a>, Previous: <a href="#Managers" accesskey="p" rel="prev">Managers</a>, Up: <a href="#Managers" accesskey="u" rel="up">Managers</a> &nbsp; </p>
+Next: <a href="#Functions-related-to-managers" accesskey="n" rel="next">Functions related to managers</a>, Previous: <a href="#Managers" accesskey="p" rel="prev">Managers (<samp class="file">ap_manager.h</samp>)</a>, Up: <a href="#Managers" accesskey="u" rel="up">Managers (<samp class="file">ap_manager.h</samp>)</a> &nbsp; </p>
 </div>
-<span id="Datatypes"></span><h4 class="subsection">Datatypes</h4>
+<h4 class="subsection" id="Datatypes"><span>Datatypes<a class="copiable-link" href="#Datatypes"> &para;</a></span></h4>
 
-<dl>
-<dt id="index-tbool_005ft">datatype: <strong>tbool_t</strong></dt>
+<dl class="first-deftp def-block">
+<dt class="deftp def-line" id="index-tbool_005ft"><span class="category-def">datatype: </span><span><strong class="def-name">tbool_t</strong><a class="copiable-link" href="#index-tbool_005ft"> &para;</a></span></dt>
 <dd><div class="example">
-<pre class="example">typedef enum tbool_t {
+<pre class="example-preformatted">typedef enum tbool_t {
   tbool_false=0,
   tbool_true=1,
   tbool_top=2,   /* don't know */
@@ -72,10 +64,10 @@ static inline tbool_t tbool_and(tbool_t a, tbool_t b);
 <p>Booleans with a third unknown value.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005fmembuf_005ft">datatype: <strong>ap_membuf_t</strong></dt>
+<dl class="first-deftp def-block">
+<dt class="deftp def-line" id="index-ap_005fmembuf_005ft"><span class="category-def">datatype: </span><span><strong class="def-name">ap_membuf_t</strong><a class="copiable-link" href="#index-ap_005fmembuf_005ft"> &para;</a></span></dt>
 <dd><div class="example">
-<pre class="example">typedef struct ap_membuf_t {
+<pre class="example-preformatted">typedef struct ap_membuf_t {
   void* ptr;
   size_t size;
 } ap_membuf_t;
@@ -83,17 +75,17 @@ static inline tbool_t tbool_and(tbool_t a, tbool_t b);
 <p>For serialization.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005fmanager_005ft">datatype: <strong>ap_manager_t</strong></dt>
+<dl class="first-deftp def-block">
+<dt class="deftp def-line" id="index-ap_005fmanager_005ft"><span class="category-def">datatype: </span><span><strong class="def-name">ap_manager_t</strong><a class="copiable-link" href="#index-ap_005fmanager_005ft"> &para;</a></span></dt>
 <dd><p>APRON managers (opaque type).
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005ffunid_005ft">datatype: <strong>ap_funid_t</strong></dt>
-<dd><p>For identifying functions in excpetions, and when reading/setting
+<dl class="first-deftp def-block">
+<dt class="deftp def-line" id="index-ap_005ffunid_005ft"><span class="category-def">datatype: </span><span><strong class="def-name">ap_funid_t</strong><a class="copiable-link" href="#index-ap_005ffunid_005ft"> &para;</a></span></dt>
+<dd><p>For identifying functions in exceptions, and when reading/setting
 options attached to them.
 </p><div class="example">
-<pre class="example">typedef enum ap_funid_t {
+<pre class="example-preformatted">typedef enum ap_funid_t {
   AP_FUNID_UNKNOWN,
   AP_FUNID_COPY,
   AP_FUNID_FREE,
@@ -156,13 +148,13 @@ extern const char* ap_name_of_funid[AP_FUNID_SIZE2];
 </pre></div>
 </dd></dl>
 
-<dl>
-<dt id="index-ap_005fexc_005ft">datatype: <strong>ap_exc_t</strong></dt>
-<dt id="index-ap_005fexc_005flog_005ft">datatype: <strong>ap_exc_log_t</strong></dt>
+<dl class="first-deftp def-block">
+<dt class="deftp def-line" id="index-ap_005fexc_005ft"><span class="category-def">datatype: </span><span><strong class="def-name">ap_exc_t</strong><a class="copiable-link" href="#index-ap_005fexc_005ft"> &para;</a></span></dt>
+<dt class="deftpx def-cmd-deftp def-line" id="index-ap_005fexc_005flog_005ft"><span class="category-def">datatype: </span><span><strong class="def-name">ap_exc_log_t</strong><a class="copiable-link" href="#index-ap_005fexc_005flog_005ft"> &para;</a></span></dt>
 <dd><p>Exceptions and exception logs (chained in a list, the first one being
 the last one).
 </p><div class="example">
-<pre class="example">typedef enum ap_exc_t {
+<pre class="example-preformatted">typedef enum ap_exc_t {
   AP_EXC_NONE,           /* no exception detected */
   AP_EXC_TIMEOUT,        /* timeout detected */
   AP_EXC_OUT_OF_SPACE,   /* out of space detected */
@@ -181,11 +173,11 @@ typedef struct ap_exclog_t {
 </pre></div>
 </dd></dl>
 
-<span id="ap_005ffunopt_005ft"></span><dl>
-<dt id="index-ap_005ffunopt_005ft">datatype: <strong>ap_funopt_t</strong></dt>
+<a class="anchor" id="ap_005ffunopt_005ft"></a><dl class="first-deftp def-block">
+<dt class="deftp def-line" id="index-ap_005ffunopt_005ft"><span class="category-def">datatype: </span><span><strong class="def-name">ap_funopt_t</strong><a class="copiable-link" href="#index-ap_005ffunopt_005ft"> &para;</a></span></dt>
 <dd><p>Options attached to functions.
 </p><div class="example">
-<pre class="example">typedef struct ap_funopt_t {
+<pre class="example-preformatted">typedef struct ap_funopt_t {
   int algorithm;
   /* Algorithm selection:
      - 0 is default algorithm;
@@ -212,78 +204,82 @@ typedef struct ap_exclog_t {
 </dd></dl>
 
 <hr>
-<span id="Functions-related-to-managers"></span><div class="header">
-<p>
-Previous: <a href="#APRON-Global-Datatypes" accesskey="p" rel="prev">APRON Global Datatypes</a>, Up: <a href="#Managers" accesskey="u" rel="up">Managers</a> &nbsp; </p>
 </div>
-<span id="Functions-related-to-managers-1"></span><h4 class="subsection">Functions related to managers</h4>
+<div class="subsection-level-extent" id="Functions-related-to-managers">
+<div class="nav-panel">
+<p>
+Previous: <a href="#APRON-Global-Datatypes" accesskey="p" rel="prev">Datatypes</a>, Up: <a href="#Managers" accesskey="u" rel="up">Managers (<samp class="file">ap_manager.h</samp>)</a> &nbsp; </p>
+</div>
+<h4 class="subsection" id="Functions-related-to-managers-1"><span>Functions related to managers<a class="copiable-link" href="#Functions-related-to-managers-1"> &para;</a></span></h4>
 
-<dl>
-<dt id="index-ap_005fmanager_005ffree">Function: <em>void</em> <strong>ap_manager_free</strong> <em>(ap_manager_t* <var>man</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fmanager_005ffree"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">ap_manager_free</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>)</code><a class="copiable-link" href="#index-ap_005fmanager_005ffree"> &para;</a></span></dt>
 <dd><p>Free a manager (dereference a counter, and possibly deallocate).
 </p></dd></dl>
 
-<dl>
-<dt id="index-char_002a">Function: <em>const</em> <strong>char*</strong> <em>ap_manager_get_library (ap_manager_t* <var>man</var>)</em></dt>
-<dt id="index-char_002a-1">Function: <em>const</em> <strong>char*</strong> <em>ap_manager_get_version (ap_manager_t* <var>man</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-char_002a"><span class="category-def">Function: </span><span><code class="def-type">const</code> <strong class="def-name">char*</strong> <code class="def-code-arguments">ap_manager_get_library (ap_manager_t* <var class="var">man</var>)</code><a class="copiable-link" href="#index-char_002a"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-char_002a-1"><span class="category-def">Function: </span><span><code class="def-type">const</code> <strong class="def-name">char*</strong> <code class="def-code-arguments">ap_manager_get_version (ap_manager_t* <var class="var">man</var>)</code><a class="copiable-link" href="#index-char_002a-1"> &para;</a></span></dt>
 <dd><p>Reading the name and the version of the attached underlying library.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005fmanager_005fget_005fflag_005fexact">Function: <em>bool</em> <strong>ap_manager_get_flag_exact</strong> <em>(ap_manager_t* <var>man</var>)</em></dt>
-<dt id="index-ap_005fmanager_005fget_005fflag_005fbest">Function: <em>bool</em> <strong>ap_manager_get_flag_best</strong> <em>(ap_manager_t* <var>man</var>)</em></dt>
-<dd><p>Return <code>true</code> if the last called APRON function returned an
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fmanager_005fget_005fflag_005fexact"><span class="category-def">Function: </span><span><code class="def-type">bool</code> <strong class="def-name">ap_manager_get_flag_exact</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>)</code><a class="copiable-link" href="#index-ap_005fmanager_005fget_005fflag_005fexact"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005fmanager_005fget_005fflag_005fbest"><span class="category-def">Function: </span><span><code class="def-type">bool</code> <strong class="def-name">ap_manager_get_flag_best</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>)</code><a class="copiable-link" href="#index-ap_005fmanager_005fget_005fflag_005fbest"> &para;</a></span></dt>
+<dd><p>Return <code class="code">true</code> if the last called APRON function returned an
 exact (resp. a best approximation) result.
 </p></dd></dl>
 
-<span id="Manager-options"></span><span id="Options"></span><h4 class="subheading">Options</h4>
-<p>See <a href="#ap_005ffunopt_005ft">ap_funopt_t</a>.
-</p><dl>
-<dt id="index-ap_005fmanager_005fget_005ffunopt">Function: <em>ap_funopt_t</em> <strong>ap_manager_get_funopt</strong> <em>(ap_manager_t* <var>man</var>, ap_funid_t <var>funid</var>)</em></dt>
+<a class="anchor" id="Manager-options"></a><h4 class="subheading" id="Options"><span>Options<a class="copiable-link" href="#Options"> &para;</a></span></h4>
+<p>See <a class="xref" href="#ap_005ffunopt_005ft">ap_funopt_t</a>.
+</p><dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fmanager_005fget_005ffunopt"><span class="category-def">Function: </span><span><code class="def-type">ap_funopt_t</code> <strong class="def-name">ap_manager_get_funopt</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, ap_funid_t <var class="var">funid</var>)</code><a class="copiable-link" href="#index-ap_005fmanager_005fget_005ffunopt"> &para;</a></span></dt>
 <dd><p>Getting the option attached to the specified function in the
-manager. <var>funid</var> should be less than <code>AP_FUNID_SIZE</code> (no
+manager. <var class="var">funid</var> should be less than <code class="code">AP_FUNID_SIZE</code> (no
 option associated to other identifiers). Otherwise, abort with a
 message.
 </p></dd></dl>
-<dl>
-<dt id="index-ap_005fmanager_005fset_005ffunopt">Function: <em>void</em> <strong>ap_manager_set_funopt</strong> <em>(ap_manager_t* <var>man</var>, ap_funid_t <var>funid</var>, ap_funopt_t* <var>fopt</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fmanager_005fset_005ffunopt"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">ap_manager_set_funopt</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, ap_funid_t <var class="var">funid</var>, ap_funopt_t* <var class="var">fopt</var>)</code><a class="copiable-link" href="#index-ap_005fmanager_005fset_005ffunopt"> &para;</a></span></dt>
 <dd><p>Setting the option attached to the specified function in the
-manager. <var>fopt</var> is copied (and not only referenced). <var>funid</var>
-should be less than <code>AP_FUNID_SIZE</code> (no option associated to
+manager. <var class="var">fopt</var> is copied (and not only referenced). <var class="var">funid</var>
+should be less than <code class="code">AP_FUNID_SIZE</code> (no option associated to
 other identifiers). Otherwise, do nothing.
 </p></dd></dl>
-<dl>
-<dt id="index-ap_005ffunopt_005finit">Function: <em>void</em> <strong>ap_funopt_init</strong> <em>(ap_funopt_t* <var>fopt</var>)</em></dt>
-<dd><p>Initialize <var>fopt</var> with default values.
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005ffunopt_005finit"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">ap_funopt_init</strong> <code class="def-code-arguments">(ap_funopt_t* <var class="var">fopt</var>)</code><a class="copiable-link" href="#index-ap_005ffunopt_005finit"> &para;</a></span></dt>
+<dd><p>Initialize <var class="var">fopt</var> with default values.
 </p></dd></dl>
 
-<span id="Exceptions"></span><h4 class="subheading">Exceptions</h4>
+<h4 class="subheading" id="Exceptions"><span>Exceptions<a class="copiable-link" href="#Exceptions"> &para;</a></span></h4>
 
-<dl>
-<dt id="index-ap_005fmanager_005fget_005fabort_005fif_005fexception">Function: <em>bool</em> <strong>ap_manager_get_abort_if_exception</strong> <em>(ap_manager_t* <var>man</var>, ap_exc_t <var>exn</var>)</em></dt>
-<dd><p>Return true if the program abort when the exception <var>exn</var> is
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fmanager_005fget_005fabort_005fif_005fexception"><span class="category-def">Function: </span><span><code class="def-type">bool</code> <strong class="def-name">ap_manager_get_abort_if_exception</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, ap_exc_t <var class="var">exn</var>)</code><a class="copiable-link" href="#index-ap_005fmanager_005fget_005fabort_005fif_005fexception"> &para;</a></span></dt>
+<dd><p>Return true if the program abort when the exception <var class="var">exn</var> is
 raised by some function. Otherwise, in such a case, a valid (but
 dummy) value should be returned by the function that raises the exception.
 </p></dd></dl>
-<dl>
-<dt id="index-ap_005fmanager_005fset_005fabort_005fif_005fexception">Function: <em>void</em> <strong>ap_manager_set_abort_if_exception</strong> <em>(ap_manager_t* <var>man</var>, ap_exc_t <var>exn</var>, bool <var>flag</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fmanager_005fset_005fabort_005fif_005fexception"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">ap_manager_set_abort_if_exception</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, ap_exc_t <var class="var">exn</var>, bool <var class="var">flag</var>)</code><a class="copiable-link" href="#index-ap_005fmanager_005fset_005fabort_005fif_005fexception"> &para;</a></span></dt>
 <dd><p>Position the above-described option.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005fmanager_005fget_005fexception">Function: <em>ap_exc_t</em> <strong>ap_manager_get_exception</strong> <em>(ap_manager_t* <var>man</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fmanager_005fget_005fexception"><span class="category-def">Function: </span><span><code class="def-type">ap_exc_t</code> <strong class="def-name">ap_manager_get_exception</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>)</code><a class="copiable-link" href="#index-ap_005fmanager_005fget_005fexception"> &para;</a></span></dt>
 <dd><p>Get the last exception raised.
 </p></dd></dl>
-<dl>
-<dt id="index-ap_005fmanager_005fget_005fexclog">Function: <em>ap_exclog_t</em> <strong>ap_manager_get_exclog</strong> <em>(ap_manager_t* <var>man</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fmanager_005fget_005fexclog"><span class="category-def">Function: </span><span><code class="def-type">ap_exclog_t</code> <strong class="def-name">ap_manager_get_exclog</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>)</code><a class="copiable-link" href="#index-ap_005fmanager_005fget_005fexclog"> &para;</a></span></dt>
 <dd><p>Get the full log of exceptions. The first one in the list is the last
 raised one.
 </p></dd></dl>
 
+</div>
+</div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
-Previous: <a href="#APRON-Global-Datatypes" accesskey="p" rel="prev">APRON Global Datatypes</a>, Up: <a href="#Managers" accesskey="u" rel="up">Managers</a> &nbsp; </p>
+Next: <a href="Box.html#Box" accesskey="n" rel="next">Box (<samp class="file">box.h</samp>): intervals abstract domain</a>, Previous: <a href="Managers-and-Abstract-Domains.html" accesskey="p" rel="prev">Managers and Abstract Domains</a>, Up: <a href="Managers-and-Abstract-Domains.html" accesskey="u" rel="up">Managers and Abstract Domains</a> &nbsp; </p>
 </div>
 
 

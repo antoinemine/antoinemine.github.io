@@ -1,8 +1,8 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" href="style.css" type="text/css">
-<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="Start" href="index.html">
 <link rel="previous" href="Generator0.html">
@@ -39,6 +39,7 @@
 <link title="Box" rel="Chapter" href="Box.html">
 <link title="Oct" rel="Chapter" href="Oct.html">
 <link title="Polka" rel="Chapter" href="Polka.html">
+<link title="T1p" rel="Chapter" href="T1p.html">
 <link title="Ppl" rel="Chapter" href="Ppl.html">
 <link title="PolkaGrid" rel="Chapter" href="PolkaGrid.html">
 <link title="Mpz" rel="Chapter" href="Mpz.html">
@@ -243,6 +244,10 @@
 </div>
 
 <p>APRON tree expressions of level 0</p>
+<p>NOTE: Expressions are not totally ordered.
+As of 0.9.15, they do not implement the polymorphic <code class="code">compare</code> function to avoid confusion.
+As a consequence, the polymorphic <code class="code">=</code>, <code class="code">&lt;=</code>, etc. operators cannot be used.
+Use <code class="code">equal</code> instead.</p>
 
 <pre><code><span id="TYPEexpr"><span class="keyword">type</span> <code class="type"></code>expr</span> = </code></pre><table class="typetable">
 <tr>
@@ -281,60 +286,72 @@
 </div>
 
 <h3 id="2_ConstructorsandDestructor">Constructors and Destructor</h3>
-<pre><span id="VALof_expr"><span class="keyword">val</span> of_expr</span> : <code class="type"><a href="Texpr0.html#TYPEexpr">expr</a> -> <a href="Texpr0.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALof_expr"><span class="keyword">val</span> of_expr</span> : <code class="type"><a href="Texpr0.html#TYPEexpr">expr</a> -&gt; <a href="Texpr0.html#TYPEt">t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>General constructor (actually the most efficient</p>
 </div>
 </div>
 
-<pre><span id="VALcopy"><span class="keyword">val</span> copy</span> : <code class="type"><a href="Texpr0.html#TYPEt">t</a> -> <a href="Texpr0.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALcopy"><span class="keyword">val</span> copy</span> : <code class="type"><a href="Texpr0.html#TYPEt">t</a> -&gt; <a href="Texpr0.html#TYPEt">t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Copy</p>
 </div>
 </div>
 
-<pre><span id="VALof_linexpr"><span class="keyword">val</span> of_linexpr</span> : <code class="type"><a href="Linexpr0.html#TYPEt">Linexpr0.t</a> -> <a href="Texpr0.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALof_linexpr"><span class="keyword">val</span> of_linexpr</span> : <code class="type"><a href="Linexpr0.html#TYPEt">Linexpr0.t</a> -&gt; <a href="Texpr0.html#TYPEt">t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Conversion</p>
 </div>
 </div>
 
-<pre><span id="VALto_expr"><span class="keyword">val</span> to_expr</span> : <code class="type"><a href="Texpr0.html#TYPEt">t</a> -> <a href="Texpr0.html#TYPEexpr">expr</a></code></pre><div class="info ">
+<pre><span id="VALto_expr"><span class="keyword">val</span> to_expr</span> : <code class="type"><a href="Texpr0.html#TYPEt">t</a> -&gt; <a href="Texpr0.html#TYPEexpr">expr</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>General destructor</p>
 </div>
 </div>
 <h4 id="3_Incrementalconstructors">Incremental constructors</h4>
-<pre><span id="VALcst"><span class="keyword">val</span> cst</span> : <code class="type"><a href="Coeff.html#TYPEt">Coeff.t</a> -> <a href="Texpr0.html#TYPEt">t</a></code></pre>
-<pre><span id="VALdim"><span class="keyword">val</span> dim</span> : <code class="type"><a href="Dim.html#TYPEt">Dim.t</a> -> <a href="Texpr0.html#TYPEt">t</a></code></pre>
-<pre><span id="VALunop"><span class="keyword">val</span> unop</span> : <code class="type"><a href="Texpr0.html#TYPEunop">unop</a> -> <a href="Texpr0.html#TYPEt">t</a> -> <a href="Texpr0.html#TYPEtyp">typ</a> -> <a href="Texpr0.html#TYPEround">round</a> -> <a href="Texpr0.html#TYPEt">t</a></code></pre>
-<pre><span id="VALbinop"><span class="keyword">val</span> binop</span> : <code class="type"><a href="Texpr0.html#TYPEbinop">binop</a> -><br>       <a href="Texpr0.html#TYPEtyp">typ</a> -> <a href="Texpr0.html#TYPEround">round</a> -> <a href="Texpr0.html#TYPEt">t</a> -> <a href="Texpr0.html#TYPEt">t</a> -> <a href="Texpr0.html#TYPEt">t</a></code></pre><h3 id="2_Tests">Tests</h3>
-<pre><span id="VALis_interval_cst"><span class="keyword">val</span> is_interval_cst</span> : <code class="type"><a href="Texpr0.html#TYPEt">t</a> -> bool</code></pre>
-<pre><span id="VALis_interval_linear"><span class="keyword">val</span> is_interval_linear</span> : <code class="type"><a href="Texpr0.html#TYPEt">t</a> -> bool</code></pre>
-<pre><span id="VALis_interval_polynomial"><span class="keyword">val</span> is_interval_polynomial</span> : <code class="type"><a href="Texpr0.html#TYPEt">t</a> -> bool</code></pre>
-<pre><span id="VALis_interval_polyfrac"><span class="keyword">val</span> is_interval_polyfrac</span> : <code class="type"><a href="Texpr0.html#TYPEt">t</a> -> bool</code></pre>
-<pre><span id="VALis_scalar"><span class="keyword">val</span> is_scalar</span> : <code class="type"><a href="Texpr0.html#TYPEt">t</a> -> bool</code></pre><h3 id="2_Printing">Printing</h3>
-<pre><span id="VALstring_of_unop"><span class="keyword">val</span> string_of_unop</span> : <code class="type"><a href="Texpr0.html#TYPEunop">unop</a> -> string</code></pre>
-<pre><span id="VALstring_of_binop"><span class="keyword">val</span> string_of_binop</span> : <code class="type"><a href="Texpr0.html#TYPEbinop">binop</a> -> string</code></pre>
-<pre><span id="VALstring_of_typ"><span class="keyword">val</span> string_of_typ</span> : <code class="type"><a href="Texpr0.html#TYPEtyp">typ</a> -> string</code></pre>
-<pre><span id="VALstring_of_round"><span class="keyword">val</span> string_of_round</span> : <code class="type"><a href="Texpr0.html#TYPEround">round</a> -> string</code></pre>
-<pre><span id="VALprint_unop"><span class="keyword">val</span> print_unop</span> : <code class="type">Stdlib.Format.formatter -> <a href="Texpr0.html#TYPEunop">unop</a> -> unit</code></pre>
-<pre><span id="VALprint_binop"><span class="keyword">val</span> print_binop</span> : <code class="type">Stdlib.Format.formatter -> <a href="Texpr0.html#TYPEbinop">binop</a> -> unit</code></pre>
-<pre><span id="VALprint_typ"><span class="keyword">val</span> print_typ</span> : <code class="type">Stdlib.Format.formatter -> <a href="Texpr0.html#TYPEtyp">typ</a> -> unit</code></pre>
-<pre><span id="VALprint_round"><span class="keyword">val</span> print_round</span> : <code class="type">Stdlib.Format.formatter -> <a href="Texpr0.html#TYPEround">round</a> -> unit</code></pre>
-<pre><span id="VALprint_expr"><span class="keyword">val</span> print_expr</span> : <code class="type">(<a href="Dim.html#TYPEt">Dim.t</a> -> string) -> Stdlib.Format.formatter -> <a href="Texpr0.html#TYPEexpr">expr</a> -> unit</code></pre><div class="info ">
+<pre><span id="VALcst"><span class="keyword">val</span> cst</span> : <code class="type"><a href="Coeff.html#TYPEt">Coeff.t</a> -&gt; <a href="Texpr0.html#TYPEt">t</a></code></pre>
+<pre><span id="VALdim"><span class="keyword">val</span> dim</span> : <code class="type"><a href="Dim.html#TYPEt">Dim.t</a> -&gt; <a href="Texpr0.html#TYPEt">t</a></code></pre>
+<pre><span id="VALunop"><span class="keyword">val</span> unop</span> : <code class="type"><a href="Texpr0.html#TYPEunop">unop</a> -&gt; <a href="Texpr0.html#TYPEt">t</a> -&gt; <a href="Texpr0.html#TYPEtyp">typ</a> -&gt; <a href="Texpr0.html#TYPEround">round</a> -&gt; <a href="Texpr0.html#TYPEt">t</a></code></pre>
+<pre><span id="VALbinop"><span class="keyword">val</span> binop</span> : <code class="type"><a href="Texpr0.html#TYPEbinop">binop</a> -&gt;<br>       <a href="Texpr0.html#TYPEtyp">typ</a> -&gt; <a href="Texpr0.html#TYPEround">round</a> -&gt; <a href="Texpr0.html#TYPEt">t</a> -&gt; <a href="Texpr0.html#TYPEt">t</a> -&gt; <a href="Texpr0.html#TYPEt">t</a></code></pre><h3 id="2_Tests">Tests</h3>
+<pre><span id="VALis_interval_cst"><span class="keyword">val</span> is_interval_cst</span> : <code class="type"><a href="Texpr0.html#TYPEt">t</a> -&gt; bool</code></pre>
+<pre><span id="VALis_interval_linear"><span class="keyword">val</span> is_interval_linear</span> : <code class="type"><a href="Texpr0.html#TYPEt">t</a> -&gt; bool</code></pre>
+<pre><span id="VALis_interval_polynomial"><span class="keyword">val</span> is_interval_polynomial</span> : <code class="type"><a href="Texpr0.html#TYPEt">t</a> -&gt; bool</code></pre>
+<pre><span id="VALis_interval_polyfrac"><span class="keyword">val</span> is_interval_polyfrac</span> : <code class="type"><a href="Texpr0.html#TYPEt">t</a> -&gt; bool</code></pre>
+<pre><span id="VALis_scalar"><span class="keyword">val</span> is_scalar</span> : <code class="type"><a href="Texpr0.html#TYPEt">t</a> -&gt; bool</code></pre>
+<pre><span id="VALequal"><span class="keyword">val</span> equal</span> : <code class="type"><a href="Texpr0.html#TYPEt">t</a> -&gt; <a href="Texpr0.html#TYPEt">t</a> -&gt; bool</code></pre><div class="info ">
+<div class="info-desc">
+<p>Equality test</p>
+</div>
+</div>
+
+<pre><span id="VALhash"><span class="keyword">val</span> hash</span> : <code class="type"><a href="Texpr0.html#TYPEt">t</a> -&gt; int</code></pre><div class="info ">
+<div class="info-desc">
+<p>Hashing function</p>
+</div>
+</div>
+<h3 id="2_Printing">Printing</h3>
+<pre><span id="VALstring_of_unop"><span class="keyword">val</span> string_of_unop</span> : <code class="type"><a href="Texpr0.html#TYPEunop">unop</a> -&gt; string</code></pre>
+<pre><span id="VALstring_of_binop"><span class="keyword">val</span> string_of_binop</span> : <code class="type"><a href="Texpr0.html#TYPEbinop">binop</a> -&gt; string</code></pre>
+<pre><span id="VALstring_of_typ"><span class="keyword">val</span> string_of_typ</span> : <code class="type"><a href="Texpr0.html#TYPEtyp">typ</a> -&gt; string</code></pre>
+<pre><span id="VALstring_of_round"><span class="keyword">val</span> string_of_round</span> : <code class="type"><a href="Texpr0.html#TYPEround">round</a> -&gt; string</code></pre>
+<pre><span id="VALprint_unop"><span class="keyword">val</span> print_unop</span> : <code class="type">Stdlib.Format.formatter -&gt; <a href="Texpr0.html#TYPEunop">unop</a> -&gt; unit</code></pre>
+<pre><span id="VALprint_binop"><span class="keyword">val</span> print_binop</span> : <code class="type">Stdlib.Format.formatter -&gt; <a href="Texpr0.html#TYPEbinop">binop</a> -&gt; unit</code></pre>
+<pre><span id="VALprint_typ"><span class="keyword">val</span> print_typ</span> : <code class="type">Stdlib.Format.formatter -&gt; <a href="Texpr0.html#TYPEtyp">typ</a> -&gt; unit</code></pre>
+<pre><span id="VALprint_round"><span class="keyword">val</span> print_round</span> : <code class="type">Stdlib.Format.formatter -&gt; <a href="Texpr0.html#TYPEround">round</a> -&gt; unit</code></pre>
+<pre><span id="VALprint_expr"><span class="keyword">val</span> print_expr</span> : <code class="type">(<a href="Dim.html#TYPEt">Dim.t</a> -&gt; string) -&gt; Stdlib.Format.formatter -&gt; <a href="Texpr0.html#TYPEexpr">expr</a> -&gt; unit</code></pre><div class="info ">
 <div class="info-desc">
 <p>Print a tree expression, using a function converting from dimensions to names</p>
 </div>
 </div>
 
-<pre><span id="VALprint"><span class="keyword">val</span> print</span> : <code class="type">(<a href="Dim.html#TYPEt">Dim.t</a> -> string) -> Stdlib.Format.formatter -> <a href="Texpr0.html#TYPEt">t</a> -> unit</code></pre><div class="info ">
+<pre><span id="VALprint"><span class="keyword">val</span> print</span> : <code class="type">(<a href="Dim.html#TYPEt">Dim.t</a> -&gt; string) -&gt; Stdlib.Format.formatter -&gt; <a href="Texpr0.html#TYPEt">t</a> -&gt; unit</code></pre><div class="info ">
 <div class="info-desc">
 <p>Print an abstract tree expression, using a function converting from dimensions to names</p>
 </div>
 </div>
 <h3 id="2_Internalusageforlevel1">Internal usage for level 1</h3>
-<pre><span id="VALprint_sprint_unop"><span class="keyword">val</span> print_sprint_unop</span> : <code class="type"><a href="Texpr0.html#TYPEunop">unop</a> -> <a href="Texpr0.html#TYPEtyp">typ</a> -> <a href="Texpr0.html#TYPEround">round</a> -> string</code></pre>
-<pre><span id="VALprint_sprint_binop"><span class="keyword">val</span> print_sprint_binop</span> : <code class="type"><a href="Texpr0.html#TYPEbinop">binop</a> -> <a href="Texpr0.html#TYPEtyp">typ</a> -> <a href="Texpr0.html#TYPEround">round</a> -> string</code></pre>
-<pre><span id="VALprint_precedence_of_unop"><span class="keyword">val</span> print_precedence_of_unop</span> : <code class="type"><a href="Texpr0.html#TYPEunop">unop</a> -> int</code></pre>
-<pre><span id="VALprint_precedence_of_binop"><span class="keyword">val</span> print_precedence_of_binop</span> : <code class="type"><a href="Texpr0.html#TYPEbinop">binop</a> -> int</code></pre></body></html>
+<pre><span id="VALprint_sprint_unop"><span class="keyword">val</span> print_sprint_unop</span> : <code class="type"><a href="Texpr0.html#TYPEunop">unop</a> -&gt; <a href="Texpr0.html#TYPEtyp">typ</a> -&gt; <a href="Texpr0.html#TYPEround">round</a> -&gt; string</code></pre>
+<pre><span id="VALprint_sprint_binop"><span class="keyword">val</span> print_sprint_binop</span> : <code class="type"><a href="Texpr0.html#TYPEbinop">binop</a> -&gt; <a href="Texpr0.html#TYPEtyp">typ</a> -&gt; <a href="Texpr0.html#TYPEround">round</a> -&gt; string</code></pre>
+<pre><span id="VALprint_precedence_of_unop"><span class="keyword">val</span> print_precedence_of_unop</span> : <code class="type"><a href="Texpr0.html#TYPEunop">unop</a> -&gt; int</code></pre>
+<pre><span id="VALprint_precedence_of_binop"><span class="keyword">val</span> print_precedence_of_binop</span> : <code class="type"><a href="Texpr0.html#TYPEbinop">binop</a> -&gt; int</code></pre></body></html>

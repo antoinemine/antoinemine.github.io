@@ -1,35 +1,25 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.6, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.2, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>APRON Rationale and Functionalities (APRON 0.9.12)</title>
+<title>APRON Rationale and Functionalities (APRON 0.9.15)</title>
 
-<meta name="description" content="APRON Rationale and Functionalities (APRON 0.9.12)">
-<meta name="keywords" content="APRON Rationale and Functionalities (APRON 0.9.12)">
+<meta name="description" content="APRON Rationale and Functionalities (APRON 0.9.15)">
+<meta name="keywords" content="APRON Rationale and Functionalities (APRON 0.9.15)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
-<link href="index.html#Top" rel="start" title="Top">
-<link href="index.html#Top" rel="up" title="Top">
-<link href="General-choices.html#General-choices" rel="next" title="General choices">
-<link href="Introduction-to-APRON.html#Introduction-to-APRON" rel="prev" title="Introduction to APRON">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="index.html" rel="up" title="Top">
+<link href="APRON-Guidelines.html" rel="next" title="APRON Guidelines">
+<link href="Introduction-to-APRON.html" rel="prev" title="Introduction to APRON">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
 -->
 </style>
 
@@ -37,26 +27,25 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="APRON-Rationale-and-Functionalities"></span><div class="header">
+<div class="chapter-level-extent" id="APRON-Rationale-and-Functionalities">
+<div class="nav-panel">
 <p>
-Next: <a href="APRON-Guidelines.html#APRON-Guidelines" accesskey="n" rel="next">APRON Guidelines</a>, Previous: <a href="Introduction-to-APRON.html#Introduction-to-APRON" accesskey="p" rel="prev">Introduction to APRON</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="APRON-Guidelines.html" accesskey="n" rel="next">APRON Guidelines</a>, Previous: <a href="Introduction-to-APRON.html" accesskey="p" rel="prev">Introduction to APRON</a>, Up: <a href="index.html" accesskey="u" rel="up">APRON</a> &nbsp; </p>
 </div>
-<span id="APRON-Rationale-and-Functionalities-1"></span><h2 class="chapter">APRON Rationale and Functionalities</h2>
+<h2 class="chapter" id="APRON-Rationale-and-Functionalities-1"><span>APRON Rationale and Functionalities<a class="copiable-link" href="#APRON-Rationale-and-Functionalities-1"> &para;</a></span></h2>
 
 
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="General-choices.html#General-choices" accesskey="1">General choices</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Functionalities-of-the-interface-at-level-0.html#Functionalities-of-the-interface-at-level-0" accesskey="2">Functionalities of the interface at level 0</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Functionalities-of-the-interface-at-level-1.html#Functionalities-of-the-interface-at-level-1" accesskey="3">Functionalities of the interface at level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
+<ul class="mini-toc">
+<li><a href="General-choices.html#General-choices" accesskey="1">General choices</a></li>
+<li><a href="Functionalities-of-the-interface-at-level-0.html#Functionalities-of-the-interface-at-level-0" accesskey="2">Functionalities of the interface at level 0</a></li>
+<li><a href="Functionalities-of-the-interface-at-level-1.html#Functionalities-of-the-interface-at-level-1" accesskey="3">Functionalities of the interface at level 1</a></li>
+</ul>
+</div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
-Next: <a href="APRON-Guidelines.html#APRON-Guidelines" accesskey="n" rel="next">APRON Guidelines</a>, Previous: <a href="Introduction-to-APRON.html#Introduction-to-APRON" accesskey="p" rel="prev">Introduction to APRON</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="APRON-Guidelines.html" accesskey="n" rel="next">APRON Guidelines</a>, Previous: <a href="Introduction-to-APRON.html" accesskey="p" rel="prev">Introduction to APRON</a>, Up: <a href="index.html" accesskey="u" rel="up">APRON</a> &nbsp; </p>
 </div>
 
 

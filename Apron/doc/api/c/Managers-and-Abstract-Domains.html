@@ -1,35 +1,26 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.6, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.2, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Managers and Abstract Domains (APRON 0.9.12)</title>
+<title>Managers and Abstract Domains (APRON 0.9.15)</title>
 
-<meta name="description" content="Managers and Abstract Domains (APRON 0.9.12)">
-<meta name="keywords" content="Managers and Abstract Domains (APRON 0.9.12)">
+<meta name="description" content="Managers and Abstract Domains (APRON 0.9.15)">
+<meta name="keywords" content="Managers and Abstract Domains (APRON 0.9.15)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
-<link href="index.html#Top" rel="start" title="Top">
-<link href="index.html#Top" rel="up" title="Top">
-<link href="Managers.html#Managers" rel="next" title="Managers">
-<link href="MakingLibrary.html#MakingLibrary" rel="prev" title="MakingLibrary">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="index.html" rel="up" title="Top">
+<link href="Scalars-_0026-Intervals-_0026-Coefficients.html" rel="next" title="Scalars &amp; Intervals &amp; Coefficients">
+<link href="APRON-Guidelines.html" rel="prev" title="APRON Guidelines">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+ul.mark-bullet {list-style-type: disc}
 -->
 </style>
 
@@ -37,19 +28,20 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Managers-and-Abstract-Domains"></span><div class="header">
+<div class="chapter-level-extent" id="Managers-and-Abstract-Domains">
+<div class="nav-panel">
 <p>
-Next: <a href="Scalars-_0026-Intervals-_0026-Coefficients.html#Scalars-_0026-Intervals-_0026-Coefficients" accesskey="n" rel="next">Scalars &amp; Intervals &amp; Coefficients</a>, Previous: <a href="APRON-Guidelines.html#APRON-Guidelines" accesskey="p" rel="prev">APRON Guidelines</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="Scalars-_0026-Intervals-_0026-Coefficients.html" accesskey="n" rel="next">Scalars &amp; Intervals &amp; coefficients</a>, Previous: <a href="APRON-Guidelines.html" accesskey="p" rel="prev">APRON Guidelines</a>, Up: <a href="index.html" accesskey="u" rel="up">APRON</a> &nbsp; </p>
 </div>
-<span id="Managers-and-Abstract-Domains-1"></span><h2 class="chapter">Managers and Abstract Domains</h2>
+<h2 class="chapter" id="Managers-and-Abstract-Domains-1"><span>Managers and Abstract Domains<a class="copiable-link" href="#Managers-and-Abstract-Domains-1"> &para;</a></span></h2>
 
 <p>APRON makes use of a global manager for:
 </p>
-<ul>
-<li> selecting an effective underlying library/abstract domain;
-</li><li> controlling various options;
-</li><li> managing exceptions and flags;
-</li><li> and also managing internal workspace needed for some library.
+<ul class="itemize mark-bullet">
+<li>selecting an effective underlying library/abstract domain;
+</li><li>controlling various options;
+</li><li>managing exceptions and flags;
+</li><li>and also managing internal workspace needed for some library.
 </li></ul>
 
 <p>In a multithreaded program, both managers and abstract values should
@@ -57,25 +49,21 @@ not be shared between threads (make copies to transmit information).
 </p>
 <p>Managers are allocated by the underlying libraries/abstract domains, but are freed via an APRON function.
 </p>
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="Managers.html#Managers" accesskey="1">Managers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Box.html#Box" accesskey="2">Box</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="Oct.html#Oct" accesskey="3">Oct</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="NewPolka.html#NewPolka" accesskey="4">NewPolka</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="PPL.html#PPL" accesskey="5">PPL</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="pkgrid.html#pkgrid" accesskey="6">pkgrid</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
+<ul class="mini-toc">
+<li><a href="Managers.html#Managers" accesskey="1">Managers (<samp class="file">ap_manager.h</samp>)</a></li>
+<li><a href="Box.html#Box" accesskey="2">Box (<samp class="file">box.h</samp>): intervals abstract domain</a></li>
+<li><a href="Oct.html" accesskey="3">Oct: octagon abstract domain</a></li>
+<li><a href="NewPolka.html#NewPolka" accesskey="4">NewPolka (<samp class="file">pk.h</samp>): convex polyhedra and linear equalities abstract domains</a></li>
+<li><a href="PPL.html#PPL" accesskey="5">PPL (<samp class="file">ap_ppl.h</samp>): convex polyhedra and linear congruences abstract domains</a></li>
+<li><a href="pkgrid.html#pkgrid" accesskey="6">pkgrid (<samp class="file">ap_pkgrid.h</samp>): reduced product of NewPolka convex polyhedra and PPL linear congruences abstract domains</a></li>
+<li><a href="PPLite.html#PPLite" accesskey="7">PPLite (<samp class="file">ap_pplite.h</samp>): convex polyhedra abstract domains</a></li>
+</ul>
+</div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
-Next: <a href="Scalars-_0026-Intervals-_0026-Coefficients.html#Scalars-_0026-Intervals-_0026-Coefficients" accesskey="n" rel="next">Scalars &amp; Intervals &amp; Coefficients</a>, Previous: <a href="APRON-Guidelines.html#APRON-Guidelines" accesskey="p" rel="prev">APRON Guidelines</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="Scalars-_0026-Intervals-_0026-Coefficients.html" accesskey="n" rel="next">Scalars &amp; Intervals &amp; coefficients</a>, Previous: <a href="APRON-Guidelines.html" accesskey="p" rel="prev">APRON Guidelines</a>, Up: <a href="index.html" accesskey="u" rel="up">APRON</a> &nbsp; </p>
 </div>
 
 

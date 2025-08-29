@@ -1,35 +1,26 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.6, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.2, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Introduction to APRON (APRON 0.9.12)</title>
+<title>Introduction to APRON (APRON 0.9.15)</title>
 
-<meta name="description" content="Introduction to APRON (APRON 0.9.12)">
-<meta name="keywords" content="Introduction to APRON (APRON 0.9.12)">
+<meta name="description" content="Introduction to APRON (APRON 0.9.15)">
+<meta name="keywords" content="Introduction to APRON (APRON 0.9.15)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
-<link href="index.html#Top" rel="start" title="Top">
-<link href="index.html#Top" rel="up" title="Top">
-<link href="APRON-Rationale-and-Functionalities.html#APRON-Rationale-and-Functionalities" rel="next" title="APRON Rationale and Functionalities">
-<link href="Copying.html#Copying" rel="prev" title="Copying">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="index.html" rel="up" title="Top">
+<link href="APRON-Rationale-and-Functionalities.html" rel="next" title="APRON Rationale and Functionalities">
+<link href="Copying.html" rel="prev" title="Copying">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+ul.mark-bullet {list-style-type: disc}
 -->
 </style>
 
@@ -37,13 +28,14 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Introduction-to-APRON"></span><div class="header">
+<div class="chapter-level-extent" id="Introduction-to-APRON">
+<div class="nav-panel">
 <p>
-Next: <a href="APRON-Rationale-and-Functionalities.html#APRON-Rationale-and-Functionalities" accesskey="n" rel="next">APRON Rationale and Functionalities</a>, Previous: <a href="Copying.html#Copying" accesskey="p" rel="prev">Copying</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="APRON-Rationale-and-Functionalities.html" accesskey="n" rel="next">APRON Rationale and Functionalities</a>, Previous: <a href="Copying.html" accesskey="p" rel="prev">APRON Copying Conditions (LGPL)</a>, Up: <a href="index.html" accesskey="u" rel="up">APRON</a> &nbsp; </p>
 </div>
-<span id="Introduction-to-APRON-1"></span><h2 class="chapter">Introduction to APRON</h2>
+<h2 class="chapter" id="Introduction-to-APRON-1"><span>Introduction to APRON<a class="copiable-link" href="#Introduction-to-APRON-1"> &para;</a></span></h2>
 
-<p>The APRON library provides a common interface for <em>abstract
+<p>The APRON library provides a common interface for <em class="emph">abstract
 domains of invariants</em> for numerical variables, in the sense of the
 Abstract Interpretation theory. It includes a few domains, and
 provides interfaces to libraries implemented by other teams.
@@ -56,22 +48,22 @@ inequalities. Although they offer a kernel of common functionalities,
 their API may differ greatly, and some functionalities may lack in some
 libraries. The aim of the APRON library is to offer a common interface to these
 libraries. Such a standardized interface offers several advantages: it allows
-</p><ul>
-<li> to easily
+</p><ul class="itemize mark-bullet">
+<li>to easily
 substitute a library/abstract domain by another in the same analysis
 tool; this is useful to compare the efficiency of 2 implementations of
 the same abstract domain, or the precision of 2 different abstract
 domains.
-</li><li> to factorize services which are mostly independant of the abstract
+</li><li>to factorize services which are mostly independant of the abstract
 domain (variables management, linearization of non-linear expressions,
 etc...);
-</li><li> to make easier the combination of abstract domains: the abstract
+</li><li>to make easier the combination of abstract domains: the abstract
 domains to be combined are used through the same interface, as the
 resulting combination;
 </li></ul>
 
-<span id="As-a-user_002c-why-should-I-use-APRON-_003f"></span><h4 class="subsubheading">As a user, why should I use APRON ?</h4>
-<ol>
+<h4 class="subsubheading" id="As-a-user_002c-why-should-I-use-APRON-_003f"><span>As a user, why should I use APRON ?<a class="copiable-link" href="#As-a-user_002c-why-should-I-use-APRON-_003f"> &para;</a></span></h4>
+<ol class="enumerate">
 <li> it makes very easy to switch the abstract domain (for numerical
 variables) in use in an analyzer;
 </li><li> it already offers the most used abstract domains, ranging from
@@ -90,8 +82,8 @@ addition of a generic non-linear expressions layer and a
 floating-point arithmetic layer.
 </li></ol>
 
-<span id="As-a-domain-implementor_002c-why-should-I-interface-my-abstract-domain_002flibrary-to-APRON-_003f"></span><h4 class="subsubheading">As a domain implementor, why should I interface my abstract domain/library to APRON ?</h4>
-<ol>
+<h4 class="subsubheading" id="As-a-domain-implementor_002c-why-should-I-interface-my-abstract-domain_002flibrary-to-APRON-_003f"><span>As a domain implementor, why should I interface my abstract domain/library to APRON ?<a class="copiable-link" href="#As-a-domain-implementor_002c-why-should-I-interface-my-abstract-domain_002flibrary-to-APRON-_003f"> &para;</a></span></h4>
+<ol class="enumerate">
 <li> to incite existing users of the APRON interface to try your library;
 </li><li> to make your users, including yourself, benefit from previous points 1 and 4;
 </li><li> to not waste your time implementing environments, variables renaming,
@@ -101,10 +93,11 @@ interface should at minimum be counterbalanced by such gains;
 
 
 
+</div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
-Next: <a href="APRON-Rationale-and-Functionalities.html#APRON-Rationale-and-Functionalities" accesskey="n" rel="next">APRON Rationale and Functionalities</a>, Previous: <a href="Copying.html#Copying" accesskey="p" rel="prev">Copying</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="APRON-Rationale-and-Functionalities.html" accesskey="n" rel="next">APRON Rationale and Functionalities</a>, Previous: <a href="Copying.html" accesskey="p" rel="prev">APRON Copying Conditions (LGPL)</a>, Up: <a href="index.html" accesskey="u" rel="up">APRON</a> &nbsp; </p>
 </div>
 
 

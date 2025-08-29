@@ -1,8 +1,8 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" href="style.css" type="text/css">
-<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="Start" href="index.html">
 <link rel="previous" href="Abstract1.html">
@@ -39,6 +39,7 @@
 <link title="Box" rel="Chapter" href="Box.html">
 <link title="Oct" rel="Chapter" href="Oct.html">
 <link title="Polka" rel="Chapter" href="Polka.html">
+<link title="T1p" rel="Chapter" href="T1p.html">
 <link title="Ppl" rel="Chapter" href="Ppl.html">
 <link title="PolkaGrid" rel="Chapter" href="PolkaGrid.html">
 <link title="Mpz" rel="Chapter" href="Mpz.html">
@@ -67,20 +68,20 @@
 <pre><span id="TYPEt"><span class="keyword">type</span> <code class="type">'a</code> t</span> </pre>
 
 
-<pre><span id="VALmanager_get_manager"><span class="keyword">val</span> manager_get_manager</span> : <code class="type">'a <a href="Policy.html#TYPEman">man</a> -> 'a <a href="Manager.html#TYPEt">Manager.t</a></code></pre><div class="info ">
+<pre><span id="VALmanager_get_manager"><span class="keyword">val</span> manager_get_manager</span> : <code class="type">'a <a href="Policy.html#TYPEman">man</a> -&gt; 'a <a href="Manager.html#TYPEt">Manager.t</a></code></pre><div class="info ">
 <div class="info-desc">
 <h3 id="2_Policymanager">Policy manager</h3></div>
 </div>
 
-<pre><span id="VALmanager"><span class="keyword">val</span> manager</span> : <code class="type">'a <a href="Policy.html#TYPEt">t</a> -> 'a <a href="Policy.html#TYPEman">man</a></code></pre><div class="info ">
+<pre><span id="VALmanager"><span class="keyword">val</span> manager</span> : <code class="type">'a <a href="Policy.html#TYPEt">t</a> -&gt; 'a <a href="Policy.html#TYPEman">man</a></code></pre><div class="info ">
 <div class="info-desc">
 <h3 id="2_Policygeneral">Policy, general</h3></div>
 </div>
 
-<pre><span id="VALcopy"><span class="keyword">val</span> copy</span> : <code class="type">'a <a href="Policy.html#TYPEman">man</a> -> 'a <a href="Policy.html#TYPEt">t</a> -> 'a <a href="Policy.html#TYPEt">t</a></code></pre>
-<pre><span id="VALfdump"><span class="keyword">val</span> fdump</span> : <code class="type">'a <a href="Policy.html#TYPEman">man</a> -> 'a <a href="Policy.html#TYPEt">t</a> -> unit</code></pre>
-<pre><span id="VALto_string"><span class="keyword">val</span> to_string</span> : <code class="type">'a <a href="Policy.html#TYPEman">man</a> -> 'a <a href="Policy.html#TYPEt">t</a> -> string</code></pre>
-<pre><span id="VALdimension"><span class="keyword">val</span> dimension</span> : <code class="type">'a <a href="Policy.html#TYPEman">man</a> -> 'a <a href="Policy.html#TYPEt">t</a> -> int</code></pre>
-<pre><span id="VALequal"><span class="keyword">val</span> equal</span> : <code class="type">'a <a href="Policy.html#TYPEman">man</a> -> 'a <a href="Policy.html#TYPEt">t</a> -> 'a <a href="Policy.html#TYPEt">t</a> -> bool</code></pre><h3 id="2_Policylevel0">Policy, level 0</h3>
+<pre><span id="VALcopy"><span class="keyword">val</span> copy</span> : <code class="type">'a <a href="Policy.html#TYPEman">man</a> -&gt; 'a <a href="Policy.html#TYPEt">t</a> -&gt; 'a <a href="Policy.html#TYPEt">t</a></code></pre>
+<pre><span id="VALfdump"><span class="keyword">val</span> fdump</span> : <code class="type">'a <a href="Policy.html#TYPEman">man</a> -&gt; 'a <a href="Policy.html#TYPEt">t</a> -&gt; unit</code></pre>
+<pre><span id="VALto_string"><span class="keyword">val</span> to_string</span> : <code class="type">'a <a href="Policy.html#TYPEman">man</a> -&gt; 'a <a href="Policy.html#TYPEt">t</a> -&gt; string</code></pre>
+<pre><span id="VALdimension"><span class="keyword">val</span> dimension</span> : <code class="type">'a <a href="Policy.html#TYPEman">man</a> -&gt; 'a <a href="Policy.html#TYPEt">t</a> -&gt; int</code></pre>
+<pre><span id="VALequal"><span class="keyword">val</span> equal</span> : <code class="type">'a <a href="Policy.html#TYPEman">man</a> -&gt; 'a <a href="Policy.html#TYPEt">t</a> -&gt; 'a <a href="Policy.html#TYPEt">t</a> -&gt; bool</code></pre><h3 id="2_Policylevel0">Policy, level 0</h3>
 <pre><span id="MODULEAbstract0"><span class="keyword">module</span> <a href="Policy.Abstract0.html">Abstract0</a></span>: <code class="code"><span class="keyword">sig</span></code> <a href="Policy.Abstract0.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><h3 id="2_Policylevel1">Policy, level 1</h3>
 <pre><span id="MODULEAbstract1"><span class="keyword">module</span> <a href="Policy.Abstract1.html">Abstract1</a></span>: <code class="code"><span class="keyword">sig</span></code> <a href="Policy.Abstract1.html">..</a> <code class="code"><span class="keyword">end</span></code></pre></body></html>

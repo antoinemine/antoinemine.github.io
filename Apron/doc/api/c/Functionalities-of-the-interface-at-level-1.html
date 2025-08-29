@@ -1,35 +1,25 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.6, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.2, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Functionalities of the interface at level 1 (APRON 0.9.12)</title>
+<title>Functionalities of the interface at level 1 (APRON 0.9.15)</title>
 
-<meta name="description" content="Functionalities of the interface at level 1 (APRON 0.9.12)">
-<meta name="keywords" content="Functionalities of the interface at level 1 (APRON 0.9.12)">
+<meta name="description" content="Functionalities of the interface at level 1 (APRON 0.9.15)">
+<meta name="keywords" content="Functionalities of the interface at level 1 (APRON 0.9.15)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
-<link href="index.html#Top" rel="start" title="Top">
-<link href="APRON-Rationale-and-Functionalities.html#APRON-Rationale-and-Functionalities" rel="up" title="APRON Rationale and Functionalities">
-<link href="APRON-Guidelines.html#APRON-Guidelines" rel="next" title="APRON Guidelines">
-<link href="Functionalities-of-the-interface-at-level-0.html#Other-operations" rel="prev" title="Other operations">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="APRON-Rationale-and-Functionalities.html" rel="up" title="APRON Rationale and Functionalities">
+<link href="Functionalities-of-the-interface-at-level-0.html#Functionalities-of-the-interface-at-level-0" rel="prev" title="Functionalities of the interface at level 0">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
-div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+ul.mark-bullet {list-style-type: disc}
 -->
 </style>
 
@@ -37,59 +27,46 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Functionalities-of-the-interface-at-level-1"></span><div class="header">
+<div class="section-level-extent" id="Functionalities-of-the-interface-at-level-1">
+<div class="nav-panel">
 <p>
-Previous: <a href="Functionalities-of-the-interface-at-level-0.html#Functionalities-of-the-interface-at-level-0" accesskey="p" rel="prev">Functionalities of the interface at level 0</a>, Up: <a href="APRON-Rationale-and-Functionalities.html#APRON-Rationale-and-Functionalities" accesskey="u" rel="up">APRON Rationale and Functionalities</a> &nbsp; </p>
+Previous: <a href="Functionalities-of-the-interface-at-level-0.html#Functionalities-of-the-interface-at-level-0" accesskey="p" rel="prev">Functionalities of the interface at level 0</a>, Up: <a href="APRON-Rationale-and-Functionalities.html" accesskey="u" rel="up">APRON Rationale and Functionalities</a> &nbsp; </p>
 </div>
-<span id="Functionalities-of-the-interface-at-level-1-1"></span><h3 class="section">Functionalities of the interface at level 1</h3>
+<h3 class="section" id="Functionalities-of-the-interface-at-level-1-1"><span>Functionalities of the interface at level 1<a class="copiable-link" href="#Functionalities-of-the-interface-at-level-1-1"> &para;</a></span></h3>
 
 <p>We focus on the changes brought by the level 1 w.r.t. the level 0.
 </p>
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#Variables-and-Environments" accesskey="1">Variables and Environments</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Semantics-and-Representation-of-an-abstract-value" accesskey="2">Semantics and Representation of an abstract value</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Operations-on-environments" accesskey="3">Operations on environments</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Dynamic-typing-w_002er_002et_002e-environments" accesskey="4">Dynamic typing w.r.t. environments</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Operations-on-variables-in-abstract-values" accesskey="5">Operations on variables in abstract values</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
 <hr>
-<span id="Variables-and-Environments"></span><div class="header">
+<a class="node" id="Variables-and-Environments"></a><div class="nav-panel">
 <p>
 Next: <a href="#Semantics-and-Representation-of-an-abstract-value" accesskey="n" rel="next">Semantics and Representation of an abstract value</a>, Previous: <a href="#Functionalities-of-the-interface-at-level-1" accesskey="p" rel="prev">Functionalities of the interface at level 1</a>, Up: <a href="#Functionalities-of-the-interface-at-level-1" accesskey="u" rel="up">Functionalities of the interface at level 1</a> &nbsp; </p>
 </div>
-<h4 class="node-heading">Variables and Environments</h4>
-<span id="Variables"></span><h4 class="subsubheading">Variables</h4>
+<h4 class="subsubheading" id="Variables"><span>Variables<a class="copiable-link" href="#Variables"> &para;</a></span></h4>
 
-<p>Dimensions are replaced by <em>variables</em>.
+<p>Dimensions are replaced by <em class="emph">variables</em>.
 </p>
 <p>In the C interface, variables are defined by a generic type
-(<code>char*</code>, structured type, ...), equipped with the operations
-<code>compare</code>, <code>copy</code>, <code>free</code>, <code>to_string</code>. In the
-<small>OCAML</small>, for technical reasons, the type is just the <code>string</code>
+(<code class="code">char*</code>, structured type, ...), equipped with the operations
+<code class="code">compare</code>, <code class="code">copy</code>, <code class="code">free</code>, <code class="code">to_string</code>. In the
+<small class="sc">OCAML</small>, for technical reasons, the type is just the <code class="code">string</code>
 type.
 </p>
-<p><em>Environments</em> manages the correspondance between the numerical
+<p><em class="emph">Environments</em> manages the correspondance between the numerical
 dimensions of level 0 and the variables of level 1.
 </p>
 <hr>
-<span id="Semantics-and-Representation-of-an-abstract-value"></span><div class="header">
+<a class="node" id="Semantics-and-Representation-of-an-abstract-value"></a><div class="nav-panel">
 <p>
 Next: <a href="#Operations-on-environments" accesskey="n" rel="next">Operations on environments</a>, Previous: <a href="#Variables-and-Environments" accesskey="p" rel="prev">Variables and Environments</a>, Up: <a href="#Functionalities-of-the-interface-at-level-1" accesskey="u" rel="up">Functionalities of the interface at level 1</a> &nbsp; </p>
 </div>
-<h4 class="node-heading">Semantics and Representation of an abstract value</h4>
-<span id="Semantics-and-Representation-of-an-abstract-value-1"></span><h4 class="subsubheading">Semantics and Representation of an abstract value</h4>
+<h4 class="subsubheading" id="Semantics-and-Representation-of-an-abstract-value-1"><span>Semantics and Representation of an abstract value<a class="copiable-link" href="#Semantics-and-Representation-of-an-abstract-value-1"> &para;</a></span></h4>
 
 <p>The semantics of an abstract value is a subset
-</p><blockquote>
+</p><blockquote class="quotation">
 <p>X -&gt; (N+R).
 </p></blockquote>
-<p>where <em>X</em> is a set of variables.
+<p>where <em class="math">X</em> is a set of variables.
 Abstract values are typed according to their environment.
 </p>
 <p>It is represented by a structure
@@ -104,25 +81,23 @@ Abstract values are typed according to their environment.
 };
 </pre>
 <hr>
-<span id="Operations-on-environments"></span><div class="header">
+<a class="node" id="Operations-on-environments"></a><div class="nav-panel">
 <p>
 Next: <a href="#Dynamic-typing-w_002er_002et_002e-environments" accesskey="n" rel="next">Dynamic typing w.r.t. environments</a>, Previous: <a href="#Semantics-and-Representation-of-an-abstract-value" accesskey="p" rel="prev">Semantics and Representation of an abstract value</a>, Up: <a href="#Functionalities-of-the-interface-at-level-1" accesskey="u" rel="up">Functionalities of the interface at level 1</a> &nbsp; </p>
 </div>
-<h4 class="node-heading">Operations on environments</h4>
-<span id="Operations-on-environments-1"></span><h4 class="subsubheading">Operations on environments</h4>
+<h4 class="subsubheading" id="Operations-on-environments-1"><span>Operations on environments<a class="copiable-link" href="#Operations-on-environments-1"> &para;</a></span></h4>
 
-<ul>
-<li> creation, merging, destruction
-</li><li> addition/removal/renaming of variables
+<ul class="itemize mark-bullet">
+<li>creation, merging, destruction
+</li><li>addition/removal/renaming of variables
 </li></ul>
 
 <hr>
-<span id="Dynamic-typing-w_002er_002et_002e-environments"></span><div class="header">
+<a class="node" id="Dynamic-typing-w_002er_002et_002e-environments"></a><div class="nav-panel">
 <p>
 Next: <a href="#Operations-on-variables-in-abstract-values" accesskey="n" rel="next">Operations on variables in abstract values</a>, Previous: <a href="#Operations-on-environments" accesskey="p" rel="prev">Operations on environments</a>, Up: <a href="#Functionalities-of-the-interface-at-level-1" accesskey="u" rel="up">Functionalities of the interface at level 1</a> &nbsp; </p>
 </div>
-<h4 class="node-heading">Dynamic typing w.r.t. environments</h4>
-<span id="Dynamic-typing-w_002er_002et_002e-environments-1"></span><h4 class="subsubheading">Dynamic typing w.r.t. environments</h4>
+<h4 class="subsubheading" id="Dynamic-typing-w_002er_002et_002e-environments-1"><span>Dynamic typing w.r.t. environments<a class="copiable-link" href="#Dynamic-typing-w_002er_002et_002e-environments-1"> &para;</a></span></h4>
 
 <p>For binary operations on abstract values, the environments should be
 the same.
@@ -133,28 +108,28 @@ the expression is a subenvironment of the environment of the abstract
 value, and one resize if necessary.
 </p>
 <hr>
-<span id="Operations-on-variables-in-abstract-values"></span><div class="header">
+<a class="node" id="Operations-on-variables-in-abstract-values"></a><div class="nav-panel">
 <p>
 Previous: <a href="#Dynamic-typing-w_002er_002et_002e-environments" accesskey="p" rel="prev">Dynamic typing w.r.t. environments</a>, Up: <a href="#Functionalities-of-the-interface-at-level-1" accesskey="u" rel="up">Functionalities of the interface at level 1</a> &nbsp; </p>
 </div>
-<h4 class="node-heading">Operations on variables in abstract values</h4>
-<span id="Operations-on-variables-in-abstract-values-1"></span><h4 class="subsubheading">Operations on variables in abstract values</h4>
+<h4 class="subsubheading" id="Operations-on-variables-in-abstract-values-1"><span>Operations on variables in abstract values<a class="copiable-link" href="#Operations-on-variables-in-abstract-values-1"> &para;</a></span></h4>
 
 <p>Operations on dimensions are lifted to operations on variables:
 </p>
-<ul>
-<li> Projection/Elimination of one or several variables with constant
+<ul class="itemize mark-bullet">
+<li>Projection/Elimination of one or several variables with constant
 environment;
-</li><li> Addition/Removal/Renaming of variables with corresponding change
+</li><li>Addition/Removal/Renaming of variables with corresponding change
 of environment;
-</li><li> Change of environment (possibly combining removal and addition of variables);
-</li><li> Expansion and folding of variables. 
+</li><li>Change of environment (possibly combining removal and addition of variables);
+</li><li>Expansion and folding of variables. 
 </li></ul>
 
+</div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
-Previous: <a href="#Dynamic-typing-w_002er_002et_002e-environments" accesskey="p" rel="prev">Dynamic typing w.r.t. environments</a>, Up: <a href="#Functionalities-of-the-interface-at-level-1" accesskey="u" rel="up">Functionalities of the interface at level 1</a> &nbsp; </p>
+Previous: <a href="Functionalities-of-the-interface-at-level-0.html#Functionalities-of-the-interface-at-level-0" accesskey="p" rel="prev">Functionalities of the interface at level 0</a>, Up: <a href="APRON-Rationale-and-Functionalities.html" accesskey="u" rel="up">APRON Rationale and Functionalities</a> &nbsp; </p>
 </div>
 
 

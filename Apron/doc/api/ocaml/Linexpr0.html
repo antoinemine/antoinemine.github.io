@@ -1,8 +1,8 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" href="style.css" type="text/css">
-<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="Start" href="index.html">
 <link rel="previous" href="Dim.html">
@@ -39,6 +39,7 @@
 <link title="Box" rel="Chapter" href="Box.html">
 <link title="Oct" rel="Chapter" href="Oct.html">
 <link title="Polka" rel="Chapter" href="Polka.html">
+<link title="T1p" rel="Chapter" href="T1p.html">
 <link title="Ppl" rel="Chapter" href="Ppl.html">
 <link title="PolkaGrid" rel="Chapter" href="PolkaGrid.html">
 <link title="Mpz" rel="Chapter" href="Mpz.html">
@@ -62,68 +63,78 @@
 <pre><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> </pre>
 
 <p>APRON Linear expressions of level 0</p>
+<p>NOTE: Linear expressions are not totally ordered.
+As of 0.9.15, they do not implement the polymorphic <code class="code">compare</code> function to avoid confusion.
+As a consequence, the polymorphic <code class="code">=</code>, <code class="code">&lt;=</code>, etc. operators cannot be used.
+Use <code class="code">equal</code> and <code class="code">cmp</code> instead.</p>
 
-<pre><span id="VALmake"><span class="keyword">val</span> make</span> : <code class="type">int option -> <a href="Linexpr0.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALmake"><span class="keyword">val</span> make</span> : <code class="type">int option -&gt; <a href="Linexpr0.html#TYPEt">t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Create a linear expression. Its representation is sparse if <code class="code"><span class="constructor">None</span></code> is provided, dense of size <code class="code">size</code> if <code class="code"><span class="constructor">Some</span>&nbsp;size</code> is provided.</p>
 </div>
 </div>
 
-<pre><span id="VALof_list"><span class="keyword">val</span> of_list</span> : <code class="type">int option -> (<a href="Coeff.html#TYPEt">Coeff.t</a> * <a href="Dim.html#TYPEt">Dim.t</a>) list -> <a href="Coeff.html#TYPEt">Coeff.t</a> option -> <a href="Linexpr0.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALof_list"><span class="keyword">val</span> of_list</span> : <code class="type">int option -&gt; (<a href="Coeff.html#TYPEt">Coeff.t</a> * <a href="Dim.html#TYPEt">Dim.t</a>) list -&gt; <a href="Coeff.html#TYPEt">Coeff.t</a> option -&gt; <a href="Linexpr0.html#TYPEt">t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Combines <a href="Linexpr0.html#VALmake"><code class="code"><span class="constructor">Linexpr0</span>.make</code></a> and <a href="Linexpr0.html#VALset_list"><code class="code"><span class="constructor">Linexpr0</span>.set_list</code></a> (see below)</p>
 </div>
 </div>
 
-<pre><span id="VALof_array"><span class="keyword">val</span> of_array</span> : <code class="type">int option -> (<a href="Coeff.html#TYPEt">Coeff.t</a> * <a href="Dim.html#TYPEt">Dim.t</a>) array -> <a href="Coeff.html#TYPEt">Coeff.t</a> option -> <a href="Linexpr0.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALof_array"><span class="keyword">val</span> of_array</span> : <code class="type">int option -&gt; (<a href="Coeff.html#TYPEt">Coeff.t</a> * <a href="Dim.html#TYPEt">Dim.t</a>) array -&gt; <a href="Coeff.html#TYPEt">Coeff.t</a> option -&gt; <a href="Linexpr0.html#TYPEt">t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Combines <a href="Linexpr0.html#VALmake"><code class="code"><span class="constructor">Linexpr0</span>.make</code></a> and <a href="Linexpr0.html#VALset_array"><code class="code"><span class="constructor">Linexpr0</span>.set_array</code></a> (see below)</p>
 </div>
 </div>
 
-<pre><span id="VALminimize"><span class="keyword">val</span> minimize</span> : <code class="type"><a href="Linexpr0.html#TYPEt">t</a> -> unit</code></pre><div class="info ">
+<pre><span id="VALminimize"><span class="keyword">val</span> minimize</span> : <code class="type"><a href="Linexpr0.html#TYPEt">t</a> -&gt; unit</code></pre><div class="info ">
 <div class="info-desc">
 <p>In case of sparse representation, remove zero coefficients</p>
 </div>
 </div>
 
-<pre><span id="VALcopy"><span class="keyword">val</span> copy</span> : <code class="type"><a href="Linexpr0.html#TYPEt">t</a> -> <a href="Linexpr0.html#TYPEt">t</a></code></pre><div class="info ">
+<pre><span id="VALcopy"><span class="keyword">val</span> copy</span> : <code class="type"><a href="Linexpr0.html#TYPEt">t</a> -&gt; <a href="Linexpr0.html#TYPEt">t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Copy</p>
 </div>
 </div>
 
-<pre><span id="VALcompare"><span class="keyword">val</span> compare</span> : <code class="type"><a href="Linexpr0.html#TYPEt">t</a> -> <a href="Linexpr0.html#TYPEt">t</a> -> int</code></pre><div class="info ">
+<pre><span id="VALcmp"><span class="keyword">val</span> cmp</span> : <code class="type"><a href="Linexpr0.html#TYPEt">t</a> -&gt; <a href="Linexpr0.html#TYPEt">t</a> -&gt; int</code></pre><div class="info ">
 <div class="info-desc">
-<p>Comparison with lexicographic ordering using Coeff.cmp, terminating by constant</p>
+<p>Comparison with lexicographic ordering using <code class="code"><span class="constructor">Coeff</span>.cmp</code>, terminating by constant. This is a partial ordrer; as <code class="code"><span class="constructor">Coeff</span>.cmp</code> it returns an integer between -3 and 3. It cannot be used when a total order is required (e.g., in <code class="code"><span class="constructor">Set</span>.<span class="constructor">Make</span></code>).</p>
 </div>
 </div>
 
-<pre><span id="VALhash"><span class="keyword">val</span> hash</span> : <code class="type"><a href="Linexpr0.html#TYPEt">t</a> -> int</code></pre><div class="info ">
+<pre><span id="VALequal"><span class="keyword">val</span> equal</span> : <code class="type"><a href="Linexpr0.html#TYPEt">t</a> -&gt; <a href="Linexpr0.html#TYPEt">t</a> -&gt; bool</code></pre><div class="info ">
+<div class="info-desc">
+<p>Equality comparison</p>
+</div>
+</div>
+
+<pre><span id="VALhash"><span class="keyword">val</span> hash</span> : <code class="type"><a href="Linexpr0.html#TYPEt">t</a> -&gt; int</code></pre><div class="info ">
 <div class="info-desc">
 <p>Hashing function</p>
 </div>
 </div>
 
-<pre><span id="VALget_size"><span class="keyword">val</span> get_size</span> : <code class="type"><a href="Linexpr0.html#TYPEt">t</a> -> int</code></pre><div class="info ">
+<pre><span id="VALget_size"><span class="keyword">val</span> get_size</span> : <code class="type"><a href="Linexpr0.html#TYPEt">t</a> -&gt; int</code></pre><div class="info ">
 <div class="info-desc">
 <p>Get the size of the linear expression (which may be sparse or dense)</p>
 </div>
 </div>
 
-<pre><span id="VALget_cst"><span class="keyword">val</span> get_cst</span> : <code class="type"><a href="Linexpr0.html#TYPEt">t</a> -> <a href="Coeff.html#TYPEt">Coeff.t</a></code></pre><div class="info ">
+<pre><span id="VALget_cst"><span class="keyword">val</span> get_cst</span> : <code class="type"><a href="Linexpr0.html#TYPEt">t</a> -&gt; <a href="Coeff.html#TYPEt">Coeff.t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Get the constant</p>
 </div>
 </div>
 
-<pre><span id="VALget_coeff"><span class="keyword">val</span> get_coeff</span> : <code class="type"><a href="Linexpr0.html#TYPEt">t</a> -> int -> <a href="Coeff.html#TYPEt">Coeff.t</a></code></pre><div class="info ">
+<pre><span id="VALget_coeff"><span class="keyword">val</span> get_coeff</span> : <code class="type"><a href="Linexpr0.html#TYPEt">t</a> -&gt; int -&gt; <a href="Coeff.html#TYPEt">Coeff.t</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Get the coefficient corresponding to the dimension</p>
 </div>
 </div>
 
-<pre><span id="VALset_list"><span class="keyword">val</span> set_list</span> : <code class="type"><a href="Linexpr0.html#TYPEt">t</a> -> (<a href="Coeff.html#TYPEt">Coeff.t</a> * <a href="Dim.html#TYPEt">Dim.t</a>) list -> <a href="Coeff.html#TYPEt">Coeff.t</a> option -> unit</code></pre><div class="info ">
+<pre><span id="VALset_list"><span class="keyword">val</span> set_list</span> : <code class="type"><a href="Linexpr0.html#TYPEt">t</a> -&gt; (<a href="Coeff.html#TYPEt">Coeff.t</a> * <a href="Dim.html#TYPEt">Dim.t</a>) list -&gt; <a href="Coeff.html#TYPEt">Coeff.t</a> option -&gt; unit</code></pre><div class="info ">
 <div class="info-desc">
 <p>Set simultaneously a number of coefficients.</p>
 
@@ -134,27 +145,27 @@ the constant coefficient is not assigned.</p>
 </div>
 </div>
 
-<pre><span id="VALset_array"><span class="keyword">val</span> set_array</span> : <code class="type"><a href="Linexpr0.html#TYPEt">t</a> -> (<a href="Coeff.html#TYPEt">Coeff.t</a> * <a href="Dim.html#TYPEt">Dim.t</a>) array -> <a href="Coeff.html#TYPEt">Coeff.t</a> option -> unit</code></pre><div class="info ">
+<pre><span id="VALset_array"><span class="keyword">val</span> set_array</span> : <code class="type"><a href="Linexpr0.html#TYPEt">t</a> -&gt; (<a href="Coeff.html#TYPEt">Coeff.t</a> * <a href="Dim.html#TYPEt">Dim.t</a>) array -&gt; <a href="Coeff.html#TYPEt">Coeff.t</a> option -&gt; unit</code></pre><div class="info ">
 <div class="info-desc">
 <p>Set simultaneously a number of coefficients, as <code class="code">set_list</code>.</p>
 </div>
 </div>
 
-<pre><span id="VALset_cst"><span class="keyword">val</span> set_cst</span> : <code class="type"><a href="Linexpr0.html#TYPEt">t</a> -> <a href="Coeff.html#TYPEt">Coeff.t</a> -> unit</code></pre><div class="info ">
+<pre><span id="VALset_cst"><span class="keyword">val</span> set_cst</span> : <code class="type"><a href="Linexpr0.html#TYPEt">t</a> -&gt; <a href="Coeff.html#TYPEt">Coeff.t</a> -&gt; unit</code></pre><div class="info ">
 <div class="info-desc">
 <p>Set the constant</p>
 </div>
 </div>
 
-<pre><span id="VALset_coeff"><span class="keyword">val</span> set_coeff</span> : <code class="type"><a href="Linexpr0.html#TYPEt">t</a> -> int -> <a href="Coeff.html#TYPEt">Coeff.t</a> -> unit</code></pre><div class="info ">
+<pre><span id="VALset_coeff"><span class="keyword">val</span> set_coeff</span> : <code class="type"><a href="Linexpr0.html#TYPEt">t</a> -&gt; int -&gt; <a href="Coeff.html#TYPEt">Coeff.t</a> -&gt; unit</code></pre><div class="info ">
 <div class="info-desc">
 <p>Set the coefficient corresponding to the dimension</p>
 </div>
 </div>
 <p>Iter the function on the pairs coefficient/dimension of the linear expression</p>
 
-<pre><span id="VALiter"><span class="keyword">val</span> iter</span> : <code class="type">(<a href="Coeff.html#TYPEt">Coeff.t</a> -> <a href="Dim.html#TYPEt">Dim.t</a> -> unit) -> <a href="Linexpr0.html#TYPEt">t</a> -> unit</code></pre>
-<pre><span id="VALprint"><span class="keyword">val</span> print</span> : <code class="type">(<a href="Dim.html#TYPEt">Dim.t</a> -> string) -> Stdlib.Format.formatter -> <a href="Linexpr0.html#TYPEt">t</a> -> unit</code></pre><div class="info ">
+<pre><span id="VALiter"><span class="keyword">val</span> iter</span> : <code class="type">(<a href="Coeff.html#TYPEt">Coeff.t</a> -&gt; <a href="Dim.html#TYPEt">Dim.t</a> -&gt; unit) -&gt; <a href="Linexpr0.html#TYPEt">t</a> -&gt; unit</code></pre>
+<pre><span id="VALprint"><span class="keyword">val</span> print</span> : <code class="type">(<a href="Dim.html#TYPEt">Dim.t</a> -&gt; string) -&gt; Stdlib.Format.formatter -&gt; <a href="Linexpr0.html#TYPEt">t</a> -&gt; unit</code></pre><div class="info ">
 <div class="info-desc">
 <p>Print a linear expression, using a function converting from dimensions to names</p>
 </div>

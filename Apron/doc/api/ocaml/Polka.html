@@ -1,12 +1,12 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" href="style.css" type="text/css">
-<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="Start" href="index.html">
 <link rel="previous" href="Oct.html">
-<link rel="next" href="Ppl.html">
+<link rel="next" href="T1p.html">
 <link rel="Up" href="index.html">
 <link title="Index of types" rel=Appendix href="index_types.html">
 <link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
@@ -39,6 +39,7 @@
 <link title="Box" rel="Chapter" href="Box.html">
 <link title="Oct" rel="Chapter" href="Oct.html">
 <link title="Polka" rel="Chapter" href="Polka.html">
+<link title="T1p" rel="Chapter" href="T1p.html">
 <link title="Ppl" rel="Chapter" href="Ppl.html">
 <link title="PolkaGrid" rel="Chapter" href="PolkaGrid.html">
 <link title="Mpz" rel="Chapter" href="Mpz.html">
@@ -58,7 +59,7 @@
 <body>
 <div class="navbar"><a class="pre" href="Oct.html" title="Oct">Previous</a>
 &nbsp;<a class="up" href="index.html" title="Index">Up</a>
-&nbsp;<a class="post" href="Ppl.html" title="Ppl">Next</a>
+&nbsp;<a class="post" href="T1p.html" title="T1p">Next</a>
 </div>
 <h1>Module <a href="type_Polka.html">Polka</a></h1>
 
@@ -116,57 +117,57 @@
 </div>
 
 
-<pre><span id="VALmanager_alloc_loose"><span class="keyword">val</span> manager_alloc_loose</span> : <code class="type">unit -> <a href="Polka.html#TYPEloose">loose</a> <a href="Polka.html#TYPEt">t</a> Apron.Manager.t</code></pre><div class="info ">
+<pre><span id="VALmanager_alloc_loose"><span class="keyword">val</span> manager_alloc_loose</span> : <code class="type">unit -&gt; <a href="Polka.html#TYPEloose">loose</a> <a href="Polka.html#TYPEt">t</a> Apron.Manager.t</code></pre><div class="info ">
 <div class="info-desc">
 <p>Create a NewPolka manager for loose convex polyhedra.</p>
 </div>
 </div>
 
-<pre><span id="VALmanager_alloc_strict"><span class="keyword">val</span> manager_alloc_strict</span> : <code class="type">unit -> <a href="Polka.html#TYPEstrict">strict</a> <a href="Polka.html#TYPEt">t</a> Apron.Manager.t</code></pre><div class="info ">
+<pre><span id="VALmanager_alloc_strict"><span class="keyword">val</span> manager_alloc_strict</span> : <code class="type">unit -&gt; <a href="Polka.html#TYPEstrict">strict</a> <a href="Polka.html#TYPEt">t</a> Apron.Manager.t</code></pre><div class="info ">
 <div class="info-desc">
 <p>Create a NewPolka manager for strict convex polyhedra.</p>
 </div>
 </div>
 
-<pre><span id="VALmanager_alloc_equalities"><span class="keyword">val</span> manager_alloc_equalities</span> : <code class="type">unit -> <a href="Polka.html#TYPEequalities">equalities</a> <a href="Polka.html#TYPEt">t</a> Apron.Manager.t</code></pre><div class="info ">
+<pre><span id="VALmanager_alloc_equalities"><span class="keyword">val</span> manager_alloc_equalities</span> : <code class="type">unit -&gt; <a href="Polka.html#TYPEequalities">equalities</a> <a href="Polka.html#TYPEt">t</a> Apron.Manager.t</code></pre><div class="info ">
 <div class="info-desc">
 <p>Create a NewPolka manager for conjunctions of linear equalities.</p>
 </div>
 </div>
 
-<pre><span id="VALmanager_get_internal"><span class="keyword">val</span> manager_get_internal</span> : <code class="type">'a <a href="Polka.html#TYPEt">t</a> Apron.Manager.t -> <a href="Polka.html#TYPEinternal">internal</a></code></pre><div class="info ">
+<pre><span id="VALmanager_get_internal"><span class="keyword">val</span> manager_get_internal</span> : <code class="type">'a <a href="Polka.html#TYPEt">t</a> Apron.Manager.t -&gt; <a href="Polka.html#TYPEinternal">internal</a></code></pre><div class="info ">
 <div class="info-desc">
 <p>Get the internal submanager of a NewPolka manager.</p>
 </div>
 </div>
 <p>Various options. See the C documentation</p>
 
-<pre><span id="VALset_max_coeff_size"><span class="keyword">val</span> set_max_coeff_size</span> : <code class="type"><a href="Polka.html#TYPEinternal">internal</a> -> int -> unit</code></pre>
-<pre><span id="VALset_approximate_max_coeff_size"><span class="keyword">val</span> set_approximate_max_coeff_size</span> : <code class="type"><a href="Polka.html#TYPEinternal">internal</a> -> int -> unit</code></pre>
-<pre><span id="VALget_max_coeff_size"><span class="keyword">val</span> get_max_coeff_size</span> : <code class="type"><a href="Polka.html#TYPEinternal">internal</a> -> int</code></pre>
-<pre><span id="VALget_approximate_max_coeff_size"><span class="keyword">val</span> get_approximate_max_coeff_size</span> : <code class="type"><a href="Polka.html#TYPEinternal">internal</a> -> int</code></pre><h3 id="2_Typeconversions">Type conversions</h3>
-<pre><span id="VALmanager_is_polka"><span class="keyword">val</span> manager_is_polka</span> : <code class="type">'a Apron.Manager.t -> bool</code></pre>
-<pre><span id="VALmanager_is_polka_loose"><span class="keyword">val</span> manager_is_polka_loose</span> : <code class="type">'a Apron.Manager.t -> bool</code></pre>
-<pre><span id="VALmanager_is_polka_strict"><span class="keyword">val</span> manager_is_polka_strict</span> : <code class="type">'a Apron.Manager.t -> bool</code></pre>
-<pre><span id="VALmanager_is_polka_equalities"><span class="keyword">val</span> manager_is_polka_equalities</span> : <code class="type">'a Apron.Manager.t -> bool</code></pre><div class="info ">
+<pre><span id="VALset_max_coeff_size"><span class="keyword">val</span> set_max_coeff_size</span> : <code class="type"><a href="Polka.html#TYPEinternal">internal</a> -&gt; int -&gt; unit</code></pre>
+<pre><span id="VALset_approximate_max_coeff_size"><span class="keyword">val</span> set_approximate_max_coeff_size</span> : <code class="type"><a href="Polka.html#TYPEinternal">internal</a> -&gt; int -&gt; unit</code></pre>
+<pre><span id="VALget_max_coeff_size"><span class="keyword">val</span> get_max_coeff_size</span> : <code class="type"><a href="Polka.html#TYPEinternal">internal</a> -&gt; int</code></pre>
+<pre><span id="VALget_approximate_max_coeff_size"><span class="keyword">val</span> get_approximate_max_coeff_size</span> : <code class="type"><a href="Polka.html#TYPEinternal">internal</a> -&gt; int</code></pre><h3 id="2_Typeconversions">Type conversions</h3>
+<pre><span id="VALmanager_is_polka"><span class="keyword">val</span> manager_is_polka</span> : <code class="type">'a Apron.Manager.t -&gt; bool</code></pre>
+<pre><span id="VALmanager_is_polka_loose"><span class="keyword">val</span> manager_is_polka_loose</span> : <code class="type">'a Apron.Manager.t -&gt; bool</code></pre>
+<pre><span id="VALmanager_is_polka_strict"><span class="keyword">val</span> manager_is_polka_strict</span> : <code class="type">'a Apron.Manager.t -&gt; bool</code></pre>
+<pre><span id="VALmanager_is_polka_equalities"><span class="keyword">val</span> manager_is_polka_equalities</span> : <code class="type">'a Apron.Manager.t -&gt; bool</code></pre><div class="info ">
 <div class="info-desc">
 <p>Return <code class="code"><span class="keyword">true</span></code> iff the argument manager is a polka manager</p>
 </div>
 </div>
 
-<pre><span id="VALmanager_of_polka"><span class="keyword">val</span> manager_of_polka</span> : <code class="type">'a <a href="Polka.html#TYPEt">t</a> Apron.Manager.t -> 'b Apron.Manager.t</code></pre>
-<pre><span id="VALmanager_of_polka_loose"><span class="keyword">val</span> manager_of_polka_loose</span> : <code class="type"><a href="Polka.html#TYPEloose">loose</a> <a href="Polka.html#TYPEt">t</a> Apron.Manager.t -> 'a Apron.Manager.t</code></pre>
-<pre><span id="VALmanager_of_polka_strict"><span class="keyword">val</span> manager_of_polka_strict</span> : <code class="type"><a href="Polka.html#TYPEstrict">strict</a> <a href="Polka.html#TYPEt">t</a> Apron.Manager.t -> 'a Apron.Manager.t</code></pre>
-<pre><span id="VALmanager_of_polka_equalities"><span class="keyword">val</span> manager_of_polka_equalities</span> : <code class="type"><a href="Polka.html#TYPEequalities">equalities</a> <a href="Polka.html#TYPEt">t</a> Apron.Manager.t -> 'a Apron.Manager.t</code></pre><div class="info ">
+<pre><span id="VALmanager_of_polka"><span class="keyword">val</span> manager_of_polka</span> : <code class="type">'a <a href="Polka.html#TYPEt">t</a> Apron.Manager.t -&gt; 'b Apron.Manager.t</code></pre>
+<pre><span id="VALmanager_of_polka_loose"><span class="keyword">val</span> manager_of_polka_loose</span> : <code class="type"><a href="Polka.html#TYPEloose">loose</a> <a href="Polka.html#TYPEt">t</a> Apron.Manager.t -&gt; 'a Apron.Manager.t</code></pre>
+<pre><span id="VALmanager_of_polka_strict"><span class="keyword">val</span> manager_of_polka_strict</span> : <code class="type"><a href="Polka.html#TYPEstrict">strict</a> <a href="Polka.html#TYPEt">t</a> Apron.Manager.t -&gt; 'a Apron.Manager.t</code></pre>
+<pre><span id="VALmanager_of_polka_equalities"><span class="keyword">val</span> manager_of_polka_equalities</span> : <code class="type"><a href="Polka.html#TYPEequalities">equalities</a> <a href="Polka.html#TYPEt">t</a> Apron.Manager.t -&gt; 'a Apron.Manager.t</code></pre><div class="info ">
 <div class="info-desc">
 <p>Makes a polka manager generic</p>
 </div>
 </div>
 
-<pre><span id="VALmanager_to_polka"><span class="keyword">val</span> manager_to_polka</span> : <code class="type">'a Apron.Manager.t -> 'b <a href="Polka.html#TYPEt">t</a> Apron.Manager.t</code></pre>
-<pre><span id="VALmanager_to_polka_loose"><span class="keyword">val</span> manager_to_polka_loose</span> : <code class="type">'a Apron.Manager.t -> <a href="Polka.html#TYPEloose">loose</a> <a href="Polka.html#TYPEt">t</a> Apron.Manager.t</code></pre>
-<pre><span id="VALmanager_to_polka_strict"><span class="keyword">val</span> manager_to_polka_strict</span> : <code class="type">'a Apron.Manager.t -> <a href="Polka.html#TYPEstrict">strict</a> <a href="Polka.html#TYPEt">t</a> Apron.Manager.t</code></pre>
-<pre><span id="VALmanager_to_polka_equalities"><span class="keyword">val</span> manager_to_polka_equalities</span> : <code class="type">'a Apron.Manager.t -> <a href="Polka.html#TYPEequalities">equalities</a> <a href="Polka.html#TYPEt">t</a> Apron.Manager.t</code></pre><div class="info ">
+<pre><span id="VALmanager_to_polka"><span class="keyword">val</span> manager_to_polka</span> : <code class="type">'a Apron.Manager.t -&gt; 'b <a href="Polka.html#TYPEt">t</a> Apron.Manager.t</code></pre>
+<pre><span id="VALmanager_to_polka_loose"><span class="keyword">val</span> manager_to_polka_loose</span> : <code class="type">'a Apron.Manager.t -&gt; <a href="Polka.html#TYPEloose">loose</a> <a href="Polka.html#TYPEt">t</a> Apron.Manager.t</code></pre>
+<pre><span id="VALmanager_to_polka_strict"><span class="keyword">val</span> manager_to_polka_strict</span> : <code class="type">'a Apron.Manager.t -&gt; <a href="Polka.html#TYPEstrict">strict</a> <a href="Polka.html#TYPEt">t</a> Apron.Manager.t</code></pre>
+<pre><span id="VALmanager_to_polka_equalities"><span class="keyword">val</span> manager_to_polka_equalities</span> : <code class="type">'a Apron.Manager.t -&gt; <a href="Polka.html#TYPEequalities">equalities</a> <a href="Polka.html#TYPEt">t</a> Apron.Manager.t</code></pre><div class="info ">
 <div class="info-desc">
 <p>Instanciate the type of a polka manager. 
       Raises <code class="code"><span class="constructor">Failure</span></code> if the argument manager is not a polka manager</p>

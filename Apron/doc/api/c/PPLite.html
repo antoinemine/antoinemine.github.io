@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.2, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>PPLite (APRON 0.9.15)</title>
+
+<meta name="description" content="PPLite (APRON 0.9.15)">
+<meta name="keywords" content="PPLite (APRON 0.9.15)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Managers-and-Abstract-Domains.html" rel="next" title="Managers and Abstract Domains">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+div.example {margin-left: 3.2em}
+span:hover a.copiable-link {visibility: visible}
+strong.def-name {font-family: monospace; font-weight: bold; font-size: larger}
+ul.mark-bullet {list-style-type: disc}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="section-level-extent" id="PPLite">
+<div class="nav-panel">
+<p>
+Next: <a href="Managers-and-Abstract-Domains.html" accesskey="n" rel="next">Managers and Abstract Domains</a> &nbsp; </p>
+</div>
+<h3 class="section" id="PPLite-_0028ap_005fpplite_002eh_0029_003a-convex-polyhedra-abstract-domains"><span>PPLite (<samp class="file">ap_pplite.h</samp>): convex polyhedra abstract domains<a class="copiable-link" href="#PPLite-_0028ap_005fpplite_002eh_0029_003a-convex-polyhedra-abstract-domains"> &para;</a></span></h3>
+
+
+
+<p>The <small class="sc">APRON PPLITE</small> library is an APRON wrapper around the
+<a class="uref" href="https://github.com/ezaffanella/PPLite">PPLite library</a>.
+The wrapper offers (variants of) the convex polyhedra abstract domain.
+</p>
+
+<ul class="mini-toc">
+<li><a href="#Use-of-APRON-PPLite" accesskey="1">Use of APRON PPLite</a></li>
+<li><a href="#Allocating-APRON-PPLite-managers" accesskey="2">Allocating APRON PPLite managers</a></li>
+<li><a href="#APRON-PPLite-standard-options" accesskey="3">APRON PPLite standard options</a></li>
+</ul>
+<hr>
+<div class="subsection-level-extent" id="Use-of-APRON-PPLite">
+<div class="nav-panel">
+<p>
+Next: <a href="#Allocating-APRON-PPLite-managers" accesskey="n" rel="next">Allocating APRON PPLite managers</a>, Up: <a href="#PPLite" accesskey="u" rel="up">PPLite (<samp class="file">ap_pplite.h</samp>): convex polyhedra abstract domains</a> &nbsp; </p>
+</div>
+<h4 class="subsection" id="Use-of-APRON-PPLite-1"><span>Use of APRON PPLite<a class="copiable-link" href="#Use-of-APRON-PPLite-1"> &para;</a></span></h4>
+
+<p>To use APRON PPLite you need to install PPLite and its dependencies
+Flint and GMP; currently, the APRON wrapper requires PPLite version 0.12.
+You need to add
+</p><div class="example">
+<pre class="example-preformatted">#include &quot;ap_pplite.h&quot;
+</pre></div>
+<p>in your C source file(s)
+and add &lsquo;<samp class="samp">-I$(APRON_PREFIX)/include</samp>&rsquo; in the command line
+specified in your Majefile to compile C code.
+</p>
+<p>Your object files should be linked with the APRON PPLite library
+using &lsquo;<samp class="samp">g++</samp>&rsquo; (instead of &lsquo;<samp class="samp">gcc</samp>&rsquo;)
+because <samp class="file">libpplite.a</samp> is a C++ library,
+adding link options
+&lsquo;<samp class="samp">-L$(APRON_PREFIX)/lib -lap_pplite -L$(PPLITE_PREFIX)/lib -lpplite
+-L$(FLINT_PREFIX)/lib -lflint</samp>&rsquo;
+(followed by the standard &lsquo;<samp class="samp">-lapron -litvmpq -litvdbl
+-L$(MPFR_PREFIX)/lib -lmpfr -L$(GMP_PREFIX)/lib -lgmp</samp>&rsquo;).
+</p>
+<p>The wrapper library is also available in debug mode
+(&lsquo;<samp class="samp">libap_pplite_debug.a</samp>&rsquo;).
+</p>
+<hr>
+</div>
+<div class="subsection-level-extent" id="Allocating-APRON-PPLite-managers">
+<div class="nav-panel">
+<p>
+Next: <a href="#APRON-PPLite-standard-options" accesskey="n" rel="next">APRON PPLite standard options</a>, Previous: <a href="#Use-of-APRON-PPLite" accesskey="p" rel="prev">Use of APRON PPLite</a>, Up: <a href="#PPLite" accesskey="u" rel="up">PPLite (<samp class="file">ap_pplite.h</samp>): convex polyhedra abstract domains</a> &nbsp; </p>
+</div>
+<h4 class="subsection" id="Allocating-APRON-PPLite-managers-1"><span>Allocating APRON PPLite managers<a class="copiable-link" href="#Allocating-APRON-PPLite-managers-1"> &para;</a></span></h4>
+
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fpplite_005fmanager_005falloc"><span class="category-def">Function: </span><span><code class="def-type">ap_manager_t*</code> <strong class="def-name">ap_pplite_manager_alloc</strong> <code class="def-code-arguments">(bool <var class="var">strict</var>)</code><a class="copiable-link" href="#index-ap_005fpplite_005fmanager_005falloc"> &para;</a></span></dt>
+<dd><p>Allocate an APRON manager for convex polyhedra linked to the PPLite
+library.
+</p>
+<p>The <var class="var">strict</var> option, when true, enables strict constraints in polyhedra
+(like <code class="code">x&gt;0</code>). Managers in strict mode or in loose mode
+(strict constraints disabled) are not compatible, and so are
+corresponding abstract values.
+</p></dd></dl>
+
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fpplite_005fmanager_005fset_005fkind"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">ap_pplite_manager_set_kind</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, const char* <var class="var">name</var>)</code><a class="copiable-link" href="#index-ap_005fpplite_005fmanager_005fset_005fkind"> &para;</a></span></dt>
+<dd><p>Set the abstract domain polyhedron kind (i.e., variant implementation)
+to <var class="var">name</var>. The default kind is <code class="code">&quot;Poly&quot;</code>; other legal values are
+<code class="code">&quot;F_Poly&quot;</code> (applies Cartesian factoring),
+<code class="code">&quot;U_Poly&quot;</code> (avoids wasting space for unconstrained dimensions),
+<code class="code">&quot;P_Set&quot;</code> (uses finite powerset of polyhedra),
+<code class="code">&quot;FP_Set&quot;</code> (uses finite powerset of Cartesian factored polyhedra).
+Note that objects of different kinds are incompatible and should not be
+mixed in computations: hence, the kind should be set (if ever)
+at the beginning of the computation and then never changed;
+also note that powerset domains are experimental.
+</p></dd></dl>
+
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-char_002a-2"><span class="category-def">Function: </span><span><code class="def-type">const</code> <strong class="def-name">char*</strong> <code class="def-code-arguments">ap_pplite_manager_get_kind (ap_manager_t* <var class="var">man</var>)</code><a class="copiable-link" href="#index-char_002a-2"> &para;</a></span></dt>
+<dd><p>Returns the currently set value for the polyhedron kind.
+</p></dd></dl>
+
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fpplite_005fmanager_005fset_005fwiden_005fspec"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">ap_pplite_manager_set_widen_spec</strong> <code class="def-code-arguments">(ap_manager_t* <var class="var">man</var>, const char* <var class="var">name</var>)</code><a class="copiable-link" href="#index-ap_005fpplite_005fmanager_005fset_005fwiden_005fspec"> &para;</a></span></dt>
+<dd><p>Sets the specification for the widening operator to value <var class="var">name</var>,
+which should be either <code class="code">&quot;safe&quot;</code> (default value) or <code class="code">&quot;risky&quot;</code>.
+</p>
+<p>The <code class="code">&quot;risky&quot;</code> specification is the alternative one
+(see footnote 6 in Cousot-Cousot PLILP 1992 paper),
+which assumes that the second argument of the widening contains the
+first one; hence, when using this specification the user is usually
+required to compute the join before the widening (otherwise, an undefined
+behavior may result).
+Note: this assumption is done by other APRON&rsquo;s domains, including
+the polyhedra domains in NewPolka and PPL.
+</p>
+<p>The <code class="code">&quot;safe&quot;</code> specification is the classical one
+(see Cousot-Cousot POPL 1977 paper), without the assumption;
+hence, the user can directly apply the widening without computing a join.
+</p></dd></dl>
+
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-char_002a-3"><span class="category-def">Function: </span><span><code class="def-type">const</code> <strong class="def-name">char*</strong> <code class="def-code-arguments">ap_pplite_manager_get_widen_spec (ap_manager_t* <var class="var">man</var>)</code><a class="copiable-link" href="#index-char_002a-3"> &para;</a></span></dt>
+<dd><p>Returns the widening specification currently in use.
+</p></dd></dl>
+
+<hr>
+</div>
+<div class="subsection-level-extent" id="APRON-PPLite-standard-options">
+<div class="nav-panel">
+<p>
+Previous: <a href="#Allocating-APRON-PPLite-managers" accesskey="p" rel="prev">Allocating APRON PPLite managers</a>, Up: <a href="#PPLite" accesskey="u" rel="up">PPLite (<samp class="file">ap_pplite.h</samp>): convex polyhedra abstract domains</a> &nbsp; </p>
+</div>
+<h4 class="subsection" id="APRON-PPLite-standard-options-1"><span>APRON PPLite standard options<a class="copiable-link" href="#APRON-PPLite-standard-options-1"> &para;</a></span></h4>
+
+<p>Currently, the choice of the specific variant of widening operator
+(both with and without thresholds) is controlled by option <code class="code">algorithm</code>.
+Possible values are:
+</p><ul class="itemize mark-bullet">
+<li><code class="code">0</code> for standard widening (Cousot &amp; Halbwachs POPL 1978);
+</li><li><code class="code">1</code> for BHRZ03 widening (Bagnara et al., SAS 2003);
+</li><li><code class="code">2</code> for the boxed standard widening (combining the intervals
+and polyhedra widenings).
+</li></ul>
+
+
+</div>
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="Managers-and-Abstract-Domains.html" accesskey="n" rel="next">Managers and Abstract Domains</a> &nbsp; </p>
+</div>
+
+
+
+</body>
+</html>

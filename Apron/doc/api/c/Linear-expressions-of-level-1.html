@@ -1,35 +1,27 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.6, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.2, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Linear expressions of level 1 (APRON 0.9.12)</title>
+<title>Linear expressions of level 1 (APRON 0.9.15)</title>
 
-<meta name="description" content="Linear expressions of level 1 (APRON 0.9.12)">
-<meta name="keywords" content="Linear expressions of level 1 (APRON 0.9.12)">
+<meta name="description" content="Linear expressions of level 1 (APRON 0.9.15)">
+<meta name="keywords" content="Linear expressions of level 1 (APRON 0.9.15)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
-<link href="index.html#Top" rel="start" title="Top">
-<link href="Level-1-of-the-interface.html#Level-1-of-the-interface" rel="up" title="Level 1 of the interface">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Level-1-of-the-interface.html" rel="up" title="Level 1 of the interface">
 <link href="Linear-constraints-of-level-1.html#Linear-constraints-of-level-1" rel="next" title="Linear constraints of level 1">
-<link href="Environments.html#Environments" rel="prev" title="Environments">
+<link href="Environments.html" rel="prev" title="Environments">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+span:hover a.copiable-link {visibility: visible}
+strong.def-name {font-family: monospace; font-weight: bold; font-size: larger}
 -->
 </style>
 
@@ -37,288 +29,308 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="Linear-expressions-of-level-1"></span><div class="header">
+<div class="section-level-extent" id="Linear-expressions-of-level-1">
+<div class="nav-panel">
 <p>
-Next: <a href="Linear-constraints-of-level-1.html#Linear-constraints-of-level-1" accesskey="n" rel="next">Linear constraints of level 1</a>, Previous: <a href="Environments.html#Environments" accesskey="p" rel="prev">Environments</a>, Up: <a href="Level-1-of-the-interface.html#Level-1-of-the-interface" accesskey="u" rel="up">Level 1 of the interface</a> &nbsp; </p>
+Next: <a href="Linear-constraints-of-level-1.html#Linear-constraints-of-level-1" accesskey="n" rel="next">Linear constraints of level 1 (<samp class="file">ap_lincons1.h</samp>)</a>, Previous: <a href="Environments.html" accesskey="p" rel="prev">Environments (<samp class="file">ap_environment.h</samp>)</a>, Up: <a href="Level-1-of-the-interface.html" accesskey="u" rel="up">Level 1 of the interface</a> &nbsp; </p>
 </div>
-<span id="Linear-expressions-of-level-1-_0028ap_005flinexpr1_002eh_0029"></span><h3 class="section">Linear expressions of level 1 (<samp>ap_linexpr1.h</samp>)</h3>
+<h3 class="section" id="Linear-expressions-of-level-1-_0028ap_005flinexpr1_002eh_0029"><span>Linear expressions of level 1 (<samp class="file">ap_linexpr1.h</samp>)<a class="copiable-link" href="#Linear-expressions-of-level-1-_0028ap_005flinexpr1_002eh_0029"> &para;</a></span></h3>
 
 <p>We manipulate here expressions of the form
-</p><blockquote>
-<p><em>a_0.x_0 + ... + a_n.x_n + b</em>
+</p><blockquote class="quotation">
+<p><em class="math">a_0.x_0 + ... + a_n.x_n + b</em>
 </p></blockquote>
-<p>where the coefficients <em>a_0, ..., a_n, b</em> are of
-<code>ap_coeff_t</code> type (either scalars or intervals) and the variables
-<em>x_0, ... , x_n</em> are of type <code>ap_var_t</code>.
+<p>where the coefficients <em class="math">a_0, ..., a_n, b</em> are of
+<code class="code">ap_coeff_t</code> type (either scalars or intervals) and the variables
+<em class="math">x_0, ... , x_n</em> are of type <code class="code">ap_var_t</code>.
 </p>
 <p>The semantics of linear expressions is exact, in the sense that the
 arithmetic operations are interpreted in the real (or rational)
 numbers. However, abstract domains are free to overapproximate this
 exact semantics (this may occur when converting rational scalars to
-<code>double</code> type for instance).
+<code class="code">double</code> type for instance).
 </p>
 <p>A special remark concerns integer variables. Abstract domains are
 assumed to perform the operations involving linear expressions using a
 real/rational semantics, and then possibly to reduce the result using
 the knowledge that integer variables may only take integer
 values.
-</p><blockquote>
-<p>This semantics <em>coincides</em> with the natural integer semantics of
-expressions involving only integer variables <em>only if</em> the
+</p><blockquote class="quotation">
+<p>This semantics <em class="emph">coincides</em> with the natural integer semantics of
+expressions involving only integer variables <em class="emph">only if</em> the
 involved coefficients are all integers.
 </p></blockquote>
-<blockquote>
-<p>A typical counter-example to this is an assignement <em>y := 1/3 x</em> where
-<em>x</em> and <em>y</em> are integer variables. If this assignement is
-applied to the <small>BOX</small> abstract domain value <em>x in [1;1]</em>, it
-may lead to the bottom value, because one will first obtain <em>y in
+<blockquote class="quotation">
+<p>A typical counter-example to this is an assignement <em class="math">y := 1/3 x</em> where
+<em class="math">x</em> and <em class="math">y</em> are integer variables. If this assignement is
+applied to the <small class="sc">BOX</small> abstract domain value <em class="math">x in [1;1]</em>, it
+may lead to the bottom value, because one will first obtain <em class="math">y in
 [1/3;1/3]</em> by real/rational computations, and this may be reduced to
-the empty interval because <em>y</em> is integer and the interval
+the empty interval because <em class="math">y</em> is integer and the interval
 contains no integer values.
 </p></blockquote>
 
 <p>If you need expressions with a less simple semantics (mixing integer,
 real/rational and floating-point semantics with casts), you should use
-tree expressions (see <a href="Tree-expressions-of-level-1.html#Tree-expressions-of-level-1">Tree expressions of level 1</a>).
+tree expressions (see <a class="pxref" href="Tree-expressions-of-level-1.html#Tree-expressions-of-level-1">Tree expressions of level 1 (<samp class="file">ap_texpr1.h</samp>)</a>).
 </p>
-<dl>
-<dt id="index-ap_005flinexpr1_005ft">datatype: <strong>ap_linexpr1_t</strong></dt>
+<dl class="first-deftp def-block">
+<dt class="deftp def-line" id="index-ap_005flinexpr1_005ft"><span class="category-def">datatype: </span><span><strong class="def-name">ap_linexpr1_t</strong><a class="copiable-link" href="#index-ap_005flinexpr1_005ft"> &para;</a></span></dt>
 <dd><p>(Internal) type of interval linear expressions.
 </p>
 <p>Linear expressions of level 1 are created as objects of type
-<code>ap_linexpr1_t</code>, not as pointers of type <code>ap_linexpr1_t*</code>.
+<code class="code">ap_linexpr1_t</code>, not as pointers of type <code class="code">ap_linexpr1_t*</code>.
 </p>
 <p>For information:
 </p><div class="example">
-<pre class="example">typedef struct ap_linexpr1_t {
+<pre class="example-preformatted">typedef struct ap_linexpr1_t {
   ap_linexpr0_t* linexpr0;
   ap_environment_t* env;
 } ap_linexpr1_t;
 </pre></div>
 </dd></dl>
 
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#Allocating-linear-expressions-of-level-1" accesskey="1">Allocating linear expressions of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Tests-on-linear-expressions-of-level-1" accesskey="2">Tests on linear expressions of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Access-to-linear-expressions-of-level-1" accesskey="3">Access to linear expressions of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Change-of-dimensions-and-permutations-of-linear-expressions-of-level-1" accesskey="4">Change of dimensions and permutations of linear expressions of level 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
+<ul class="mini-toc">
+<li><a href="#Allocating-linear-expressions-of-level-1" accesskey="1">Allocating linear expressions of level 1</a></li>
+<li><a href="#Tests-on-linear-expressions-of-level-1" accesskey="2">Tests on linear expressions of level 1</a></li>
+<li><a href="#Access-to-linear-expressions-of-level-1" accesskey="3">Access to linear expressions of level 1</a></li>
+<li><a href="#Change-of-dimensions-and-permutations-of-linear-expressions-of-level-1" accesskey="4">Change of dimensions and permutations of linear expressions of level 1</a></li>
+</ul>
 <hr>
-<span id="Allocating-linear-expressions-of-level-1"></span><div class="header">
+<div class="subsection-level-extent" id="Allocating-linear-expressions-of-level-1">
+<div class="nav-panel">
 <p>
-Next: <a href="#Tests-on-linear-expressions-of-level-1" accesskey="n" rel="next">Tests on linear expressions of level 1</a>, Previous: <a href="#Linear-expressions-of-level-1" accesskey="p" rel="prev">Linear expressions of level 1</a>, Up: <a href="#Linear-expressions-of-level-1" accesskey="u" rel="up">Linear expressions of level 1</a> &nbsp; </p>
+Next: <a href="#Tests-on-linear-expressions-of-level-1" accesskey="n" rel="next">Tests on linear expressions of level 1</a>, Previous: <a href="#Linear-expressions-of-level-1" accesskey="p" rel="prev">Linear expressions of level 1 (<samp class="file">ap_linexpr1.h</samp>)</a>, Up: <a href="#Linear-expressions-of-level-1" accesskey="u" rel="up">Linear expressions of level 1 (<samp class="file">ap_linexpr1.h</samp>)</a> &nbsp; </p>
 </div>
-<span id="Allocating-linear-expressions-of-level-1-1"></span><h4 class="subsection">Allocating linear expressions of level 1</h4>
+<h4 class="subsection" id="Allocating-linear-expressions-of-level-1-1"><span>Allocating linear expressions of level 1<a class="copiable-link" href="#Allocating-linear-expressions-of-level-1-1"> &para;</a></span></h4>
 
-<dl>
-<dt id="index-ap_005flinexpr1_005fmake">Function: <em>ap_linexpr1_t</em> <strong>ap_linexpr1_make</strong> <em>(ap_environment_t* <var>env</var>, ap_linexpr_discr_t <var>lin_discr</var>, size_t <var>size</var>)</em></dt>
-<dd><p>Build a linear expressions on the environment <var>env</var>, with by
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005flinexpr1_005fmake"><span class="category-def">Function: </span><span><code class="def-type">ap_linexpr1_t</code> <strong class="def-name">ap_linexpr1_make</strong> <code class="def-code-arguments">(ap_environment_t* <var class="var">env</var>, ap_linexpr_discr_t <var class="var">lin_discr</var>, size_t <var class="var">size</var>)</code><a class="copiable-link" href="#index-ap_005flinexpr1_005fmake"> &para;</a></span></dt>
+<dd><p>Build a linear expressions on the environment <var class="var">env</var>, with by
 default coefficients of type SCALAR and DOUBLE.
 </p>
-<p>If <var>lin_discr</var> selects a dense representation, the size of the
+<p>If <var class="var">lin_discr</var> selects a dense representation, the size of the
 expression is the size of the environment. Otherwise, the initial
-size is given by <var>size</var> and the expression may be resized lazily.
+size is given by <var class="var">size</var> and the expression may be resized lazily.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005flinexpr1_005fminimize">Function: <em>void</em> <strong>ap_linexpr1_minimize</strong> <em>(ap_linexpr1_t* <var>expr</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005flinexpr1_005fminimize"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">ap_linexpr1_minimize</strong> <code class="def-code-arguments">(ap_linexpr1_t* <var class="var">expr</var>)</code><a class="copiable-link" href="#index-ap_005flinexpr1_005fminimize"> &para;</a></span></dt>
 <dd><p>Reduce the coefficients (transform intervals into scalars when
 possible).  In case of sparse representation, also remove zero
 coefficients.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005flinexpr1_005fcopy">Function: <em>ap_linexpr1_t</em> <strong>ap_linexpr1_copy</strong> <em>(ap_linexpr1_t* <var>expr</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005flinexpr1_005fcopy"><span class="category-def">Function: </span><span><code class="def-type">ap_linexpr1_t</code> <strong class="def-name">ap_linexpr1_copy</strong> <code class="def-code-arguments">(ap_linexpr1_t* <var class="var">expr</var>)</code><a class="copiable-link" href="#index-ap_005flinexpr1_005fcopy"> &para;</a></span></dt>
 <dd><p>Duplication.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005flinexpr1_005fclear">Function: <em>void</em> <strong>ap_linexpr1_clear</strong> <em>(ap_linexpr1_t <var>expr</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005flinexpr1_005fclear"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">ap_linexpr1_clear</strong> <code class="def-code-arguments">(ap_linexpr1_t <var class="var">expr</var>)</code><a class="copiable-link" href="#index-ap_005flinexpr1_005fclear"> &para;</a></span></dt>
 <dd><p>Clear the linear expression.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005flinexpr1_005ffprint">Function: <em>void</em> <strong>ap_linexpr1_fprint</strong> <em>(FILE* <var>stream</var>, ap_linexpr1_t* <var>expr</var>)</em></dt>
-<dd><p>Print the linear expression on stream <var>stream</var>.
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005flinexpr1_005ffprint"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">ap_linexpr1_fprint</strong> <code class="def-code-arguments">(FILE* <var class="var">stream</var>, ap_linexpr1_t* <var class="var">expr</var>)</code><a class="copiable-link" href="#index-ap_005flinexpr1_005ffprint"> &para;</a></span></dt>
+<dd><p>Print the linear expression on stream <var class="var">stream</var>.
 </p></dd></dl>
 
 <hr>
-<span id="Tests-on-linear-expressions-of-level-1"></span><div class="header">
-<p>
-Next: <a href="#Access-to-linear-expressions-of-level-1" accesskey="n" rel="next">Access to linear expressions of level 1</a>, Previous: <a href="#Allocating-linear-expressions-of-level-1" accesskey="p" rel="prev">Allocating linear expressions of level 1</a>, Up: <a href="#Linear-expressions-of-level-1" accesskey="u" rel="up">Linear expressions of level 1</a> &nbsp; </p>
 </div>
-<span id="Tests-on-linear-expressions-of-level-1-1"></span><h4 class="subsection">Tests on linear expressions of level 1</h4>
+<div class="subsection-level-extent" id="Tests-on-linear-expressions-of-level-1">
+<div class="nav-panel">
+<p>
+Next: <a href="#Access-to-linear-expressions-of-level-1" accesskey="n" rel="next">Access to linear expressions of level 1</a>, Previous: <a href="#Allocating-linear-expressions-of-level-1" accesskey="p" rel="prev">Allocating linear expressions of level 1</a>, Up: <a href="#Linear-expressions-of-level-1" accesskey="u" rel="up">Linear expressions of level 1 (<samp class="file">ap_linexpr1.h</samp>)</a> &nbsp; </p>
+</div>
+<h4 class="subsection" id="Tests-on-linear-expressions-of-level-1-1"><span>Tests on linear expressions of level 1<a class="copiable-link" href="#Tests-on-linear-expressions-of-level-1-1"> &para;</a></span></h4>
 
-<dl>
-<dt id="index-ap_005flinexpr1_005fis_005finteger">Function: <em>bool</em> <strong>ap_linexpr1_is_integer</strong> <em>(ap_linexpr1_t* <var>expr</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005flinexpr1_005fis_005finteger"><span class="category-def">Function: </span><span><code class="def-type">bool</code> <strong class="def-name">ap_linexpr1_is_integer</strong> <code class="def-code-arguments">(ap_linexpr1_t* <var class="var">expr</var>)</code><a class="copiable-link" href="#index-ap_005flinexpr1_005fis_005finteger"> &para;</a></span></dt>
 <dd><p>Does the expression depends only on integer variables ?
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005flinexpr1_005fis_005freal">Function: <em>bool</em> <strong>ap_linexpr1_is_real</strong> <em>(ap_linexpr1_t* <var>expr</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005flinexpr1_005fis_005freal"><span class="category-def">Function: </span><span><code class="def-type">bool</code> <strong class="def-name">ap_linexpr1_is_real</strong> <code class="def-code-arguments">(ap_linexpr1_t* <var class="var">expr</var>)</code><a class="copiable-link" href="#index-ap_005flinexpr1_005fis_005freal"> &para;</a></span></dt>
 <dd><p>Does the expression depends only on real variables ?
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005flinexpr1_005fis_005flinear">Function: <em>bool</em> <strong>ap_linexpr1_is_linear</strong> <em>(ap_linexpr1_t* <var>expr</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005flinexpr1_005fis_005flinear"><span class="category-def">Function: </span><span><code class="def-type">bool</code> <strong class="def-name">ap_linexpr1_is_linear</strong> <code class="def-code-arguments">(ap_linexpr1_t* <var class="var">expr</var>)</code><a class="copiable-link" href="#index-ap_005flinexpr1_005fis_005flinear"> &para;</a></span></dt>
 <dd><p>Return true iff all involved coefficients are scalars.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005flinexpr1_005fis_005fquasilinear">Function: <em>bool</em> <strong>ap_linexpr1_is_quasilinear</strong> <em>(ap_linexpr1_t* <var>expr</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005flinexpr1_005fis_005fquasilinear"><span class="category-def">Function: </span><span><code class="def-type">bool</code> <strong class="def-name">ap_linexpr1_is_quasilinear</strong> <code class="def-code-arguments">(ap_linexpr1_t* <var class="var">expr</var>)</code><a class="copiable-link" href="#index-ap_005flinexpr1_005fis_005fquasilinear"> &para;</a></span></dt>
 <dd><p>Return true iff all involved coefficients but the constant are scalars.
 </p></dd></dl>
 
 <hr>
-<span id="Access-to-linear-expressions-of-level-1"></span><div class="header">
-<p>
-Next: <a href="#Change-of-dimensions-and-permutations-of-linear-expressions-of-level-1" accesskey="n" rel="next">Change of dimensions and permutations of linear expressions of level 1</a>, Previous: <a href="#Tests-on-linear-expressions-of-level-1" accesskey="p" rel="prev">Tests on linear expressions of level 1</a>, Up: <a href="#Linear-expressions-of-level-1" accesskey="u" rel="up">Linear expressions of level 1</a> &nbsp; </p>
 </div>
-<span id="Access-to-linear-expressions-of-level-1-1"></span><h4 class="subsection">Access to linear expressions of level 1</h4>
+<div class="subsection-level-extent" id="Access-to-linear-expressions-of-level-1">
+<div class="nav-panel">
+<p>
+Next: <a href="#Change-of-dimensions-and-permutations-of-linear-expressions-of-level-1" accesskey="n" rel="next">Change of dimensions and permutations of linear expressions of level 1</a>, Previous: <a href="#Tests-on-linear-expressions-of-level-1" accesskey="p" rel="prev">Tests on linear expressions of level 1</a>, Up: <a href="#Linear-expressions-of-level-1" accesskey="u" rel="up">Linear expressions of level 1 (<samp class="file">ap_linexpr1.h</samp>)</a> &nbsp; </p>
+</div>
+<h4 class="subsection" id="Access-to-linear-expressions-of-level-1-1"><span>Access to linear expressions of level 1<a class="copiable-link" href="#Access-to-linear-expressions-of-level-1-1"> &para;</a></span></h4>
 
-<dl>
-<dt id="index-ap_005flinexpr1_005fenvref">Function: <em>ap_environment_t*</em> <strong>ap_linexpr1_envref</strong> <em>(ap_linexpr1_t* <var>expr</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005flinexpr1_005fenvref"><span class="category-def">Function: </span><span><code class="def-type">ap_environment_t*</code> <strong class="def-name">ap_linexpr1_envref</strong> <code class="def-code-arguments">(ap_linexpr1_t* <var class="var">expr</var>)</code><a class="copiable-link" href="#index-ap_005flinexpr1_005fenvref"> &para;</a></span></dt>
 <dd><p>Get a reference to the underlying environment. Do not free it.
 </p></dd></dl>
-<dl>
-<dt id="index-ap_005flinexpr1_005flinexpr0ref">Function: <em>size_t</em> <strong>ap_linexpr1_linexpr0ref</strong> <em>(ap_linexpr1_t* <var>expr</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005flinexpr1_005flinexpr0ref"><span class="category-def">Function: </span><span><code class="def-type">size_t</code> <strong class="def-name">ap_linexpr1_linexpr0ref</strong> <code class="def-code-arguments">(ap_linexpr1_t* <var class="var">expr</var>)</code><a class="copiable-link" href="#index-ap_005flinexpr1_005flinexpr0ref"> &para;</a></span></dt>
 <dd><p>Get a reference to the underlying linear expression of level 0. Do not
 free it.
 </p></dd></dl>
 
-<span id="Getting-references"></span><h4 class="subsubsection">Getting references</h4>
+<ul class="mini-toc">
+<li><a href="#Getting-references" accesskey="1">Getting references</a></li>
+<li><a href="#Getting-values" accesskey="2">Getting values</a></li>
+<li><a href="#Assigning-values-with-a-list-of-arguments" accesskey="3">Assigning values with a list of arguments</a></li>
+<li><a href="#Assigning-values" accesskey="4">Assigning values</a></li>
+</ul>
+<div class="subsubsection-level-extent" id="Getting-references">
+<h4 class="subsubsection"><span>Getting references<a class="copiable-link" href="#Getting-references"> &para;</a></span></h4>
 
-<dl>
-<dt id="index-ap_005flinexpr1_005fcstref">Function: <em>ap_coefft*</em> <strong>ap_linexpr1_cstref</strong> <em>(ap_linexpr1_t* <var>e</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005flinexpr1_005fcstref"><span class="category-def">Function: </span><span><code class="def-type">ap_coefft*</code> <strong class="def-name">ap_linexpr1_cstref</strong> <code class="def-code-arguments">(ap_linexpr1_t* <var class="var">e</var>)</code><a class="copiable-link" href="#index-ap_005flinexpr1_005fcstref"> &para;</a></span></dt>
 <dd><p>Get a reference to the constant. Do not free it.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005flinexpr1_005fcoeffref">Function: <em>ap_coefft*</em> <strong>ap_linexpr1_coeffref</strong> <em>(ap_linexpr1_t* <var>e</var>, ap_var_t <var>var</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005flinexpr1_005fcoeffref"><span class="category-def">Function: </span><span><code class="def-type">ap_coefft*</code> <strong class="def-name">ap_linexpr1_coeffref</strong> <code class="def-code-arguments">(ap_linexpr1_t* <var class="var">e</var>, ap_var_t <var class="var">var</var>)</code><a class="copiable-link" href="#index-ap_005flinexpr1_005fcoeffref"> &para;</a></span></dt>
 <dd><p>Get a reference to the coefficient associated to the variable
-<var>var</var> in expression <var>e</var>.
+<var class="var">var</var> in expression <var class="var">e</var>.
 </p>
 <p>Do not free it. In case of sparse representation, possibly induce the
 addition of a new linear term.
 </p>
-<p>Return NULL if <var>var</var> is unknown in the environment of <var>e</var>.
+<p>Return NULL if <var class="var">var</var> is unknown in the environment of <var class="var">e</var>.
 </p></dd></dl>
 
-<span id="Getting-values"></span><h4 class="subsubsection">Getting values</h4>
+</div>
+<div class="subsubsection-level-extent" id="Getting-values">
+<h4 class="subsubsection"><span>Getting values<a class="copiable-link" href="#Getting-values"> &para;</a></span></h4>
 
-<dl>
-<dt id="index-ap_005flinexpr1_005fget_005fcst">Function: <em>void</em> <strong>ap_linexpr1_get_cst</strong> <em>(ap_coefft* <var>coeff</var>, ap_linexpr1_t* <var>e</var>)</em></dt>
-<dd><p>Assign to <var>coeff</var> the constant coefficient of <var>e</var>.
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005flinexpr1_005fget_005fcst"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">ap_linexpr1_get_cst</strong> <code class="def-code-arguments">(ap_coefft* <var class="var">coeff</var>, ap_linexpr1_t* <var class="var">e</var>)</code><a class="copiable-link" href="#index-ap_005flinexpr1_005fget_005fcst"> &para;</a></span></dt>
+<dd><p>Assign to <var class="var">coeff</var> the constant coefficient of <var class="var">e</var>.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005flinexpr1_005fget_005fcoeff">Function: <em>bool</em> <strong>ap_linexpr1_get_coeff</strong> <em>(ap_coefft* <var>coeff</var>, ap_linexpr1_t* <var>e</var>, ap_var_t <var>var</var>)</em></dt>
-<dd><p>Assign to <var>coeff</var> the coefficient of variable <var>var</var> in the expression <var>e</var>.
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005flinexpr1_005fget_005fcoeff"><span class="category-def">Function: </span><span><code class="def-type">bool</code> <strong class="def-name">ap_linexpr1_get_coeff</strong> <code class="def-code-arguments">(ap_coefft* <var class="var">coeff</var>, ap_linexpr1_t* <var class="var">e</var>, ap_var_t <var class="var">var</var>)</code><a class="copiable-link" href="#index-ap_005flinexpr1_005fget_005fcoeff"> &para;</a></span></dt>
+<dd><p>Assign to <var class="var">coeff</var> the coefficient of variable <var class="var">var</var> in the expression <var class="var">e</var>.
 </p>
-<p>Return true in case <code>ap_linexpr1_coeffref(e,dim)</code> returns NULL.
+<p>Return true in case <code class="code">ap_linexpr1_coeffref(e,dim)</code> returns NULL.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005flinexpr1_005fForeachLinterm">Macro: <strong>ap_linexpr1_ForeachLinterm</strong> <em>(ap_linexpr1_t* <var>e</var>, size_t <var>i</var>, ap_ap_var_t <var>var</var>, ap_coeff_t* <var>coeff</var>)</em></dt>
+<dl class="first-deffn first-defmac-alias-first-deffn def-block">
+<dt class="deffn defmac-alias-deffn def-line" id="index-ap_005flinexpr1_005fForeachLinterm"><span class="category-def">Macro: </span><span><strong class="def-name">ap_linexpr1_ForeachLinterm</strong> <var class="def-var-arguments">(ap_linexpr1_t* <var class="var">e</var>, size_t <var class="var">i</var>, ap_ap_var_t <var class="var">var</var>, ap_coeff_t* <var class="var">coeff</var>)</var><a class="copiable-link" href="#index-ap_005flinexpr1_005fForeachLinterm"> &para;</a></span></dt>
 <dd><p>Iterator on the coefficients associated to variables.
 </p>
-<p><code>ap_linexpr1_ForeachLinterm(E,I,VAR,COEFF){ body }</code>
-executes the body for each pair (<var>coeff</var>,<var>var</var>) in the
-expression <var>e</var>. <var>coeff</var> is a reference to the coefficient
-associated to variable <var>var</var> in <var>e</var>. <var>i</var> is an
+<p><code class="code">ap_linexpr1_ForeachLinterm(E,I,VAR,COEFF){ body }</code>
+executes the body for each pair (<var class="var">coeff</var>,<var class="var">var</var>) in the
+expression <var class="var">e</var>. <var class="var">coeff</var> is a reference to the coefficient
+associated to variable <var class="var">var</var> in <var class="var">e</var>. <var class="var">i</var> is an
 auxiliary variable used internally by the macro.
 </p></dd></dl>
 
-<span id="Assigning-values-with-a-list-of-arguments"></span><h4 class="subsubsection">Assigning values with a list of arguments</h4>
+</div>
+<div class="subsubsection-level-extent" id="Assigning-values-with-a-list-of-arguments">
+<h4 class="subsubsection"><span>Assigning values with a list of arguments<a class="copiable-link" href="#Assigning-values-with-a-list-of-arguments"> &para;</a></span></h4>
 
-<dl>
-<dt id="index-ap_005flinexpr1_005fset_005flist">Function: <em>bool</em> <strong>ap_linexpr1_set_list</strong> <em>(ap_linexpr1_t* <var>e</var>, ...)</em></dt>
-<dd><p>This function assign the linear expression <var>e</var> from a list of tags
-of type <code>ap_coefftag_t</code>, each followed by a number of arguments
-as specified in the definition of the type <code>ap_coefftag_t</code>
-(see <a href="Linear-expressions-of-level-0.html#Access-to-linear-expressions-of-level-0">Access to linear expressions of level 0</a>). The list should end
-with the tag <code>AP_COEFF_END</code>. The only difference with level 0 is that variables replace dimensions in the list.
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005flinexpr1_005fset_005flist"><span class="category-def">Function: </span><span><code class="def-type">bool</code> <strong class="def-name">ap_linexpr1_set_list</strong> <code class="def-code-arguments">(ap_linexpr1_t* <var class="var">e</var>, ...)</code><a class="copiable-link" href="#index-ap_005flinexpr1_005fset_005flist"> &para;</a></span></dt>
+<dd><p>This function assign the linear expression <var class="var">e</var> from a list of tags
+of type <code class="code">ap_coefftag_t</code>, each followed by a number of arguments
+as specified in the definition of the type <code class="code">ap_coefftag_t</code>
+(see <a class="pxref" href="Linear-expressions-of-level-0.html#Access-to-linear-expressions-of-level-0">Access to linear expressions of level 0</a>). The list should end
+with the tag <code class="code">AP_COEFF_END</code>. The only difference with level 0 is that variables replace dimensions in the list.
 </p>
-<p>Return <code>true</code> in case <code>ap_linexpr1_coeffref (e,dim)</code>
+<p>Return <code class="code">true</code> in case <code class="code">ap_linexpr1_coeffref (e,dim)</code>
 returns NULL for one of the variables involved.
 </p>
-<p>Here is a typical example, in the case where <code>ap_var_t</code> is actually <code>char*</code> (the default):
+<p>Here is a typical example, in the case where <code class="code">ap_var_t</code> is actually <code class="code">char*</code> (the default):
 </p><div class="example">
-<pre class="example">ap_linexpr1_set_list(e,
+<pre class="example-preformatted">ap_linexpr1_set_list(e,
 		     AP_COEFF_S_INT, 3, &quot;x&quot;,
 		     AP_COEFF_S_FRAC, 3,2, &quot;y&quot;,
 		     AP_COEFF_S_DOUBLE, 4.1, &quot;z&quot;,
 		     AP_CST_I_DOUBLE, -2.4, 3.6,
 		     AP_END); /* Do not forget the last tatg ! */
 </pre></div>
-<p>which transforms an null expression into <code>3 x + 3/2 y + 4.1 z + [-2.4,3.6]</code>
+<p>which transforms an null expression into <code class="code">3 x + 3/2 y + 4.1 z + [-2.4,3.6]</code>
 and is equivalent to:
 </p><div class="example">
-<pre class="example">ap_linexpr1_set_coeff_scalar_int(e, &quot;x&quot;, 3);
+<pre class="example-preformatted">ap_linexpr1_set_coeff_scalar_int(e, &quot;x&quot;, 3);
 ap_linexpr1_set_coeff_scalar_frac(e, &quot;y&quot;, 3,2);
 ap_linexpr1_set_coeff_scalar_double(e, &quot;z&quot;, 4.1);
 ap_linexpr1_set_cst_interval_double(e, -2.4, 3.6);
 </pre></div>
 </dd></dl>
 
-<span id="Assigning-values"></span><h4 class="subsubsection">Assigning values</h4>
+</div>
+<div class="subsubsection-level-extent" id="Assigning-values">
+<h4 class="subsubsection"><span>Assigning values<a class="copiable-link" href="#Assigning-values"> &para;</a></span></h4>
 
-<dl>
-<dt id="index-ap_005flinexpr1_005fset_005fcst">Function: <em>void</em> <strong>ap_linexpr1_set_cst</strong> <em>(ap_linexpr1_t* <var>e</var>, ap_coefft* <var>coeff</var>)</em></dt>
-<dt id="index-ap_005flinexpr1_005fset_005fcst_005fscalar">Function: <em>void</em> <strong>ap_linexpr1_set_cst_scalar</strong> <em>(ap_linexpr1_t* <var>e</var>, ap_scalar_t* <var>scalar</var>)</em></dt>
-<dt id="index-ap_005flinexpr1_005fset_005fcst_005fscalar_005fint">Function: <em>void</em> <strong>ap_linexpr1_set_cst_scalar_int</strong> <em>(ap_linexpr1_t* <var>e</var>, int <var>num</var>)</em></dt>
-<dt id="index-ap_005flinexpr1_005fset_005fcst_005fscalar_005ffrac">Function: <em>void</em> <strong>ap_linexpr1_set_cst_scalar_frac</strong> <em>(ap_linexpr1_t* <var>e</var>, int <var>num</var>, unsigned int <var>den</var>)</em></dt>
-<dt id="index-ap_005flinexpr1_005fset_005fcst_005fscalar_005fdouble">Function: <em>void</em> <strong>ap_linexpr1_set_cst_scalar_double</strong> <em>(ap_linexpr1_t* <var>e</var>, double <var>num</var>)</em></dt>
-<dt id="index-ap_005flinexpr1_005fset_005fcst_005finterval">Function: <em>void</em> <strong>ap_linexpr1_set_cst_interval</strong> <em>(ap_linexpr1_t* <var>e</var>, ap_interval_t* <var>itv</var>)</em></dt>
-<dt id="index-ap_005flinexpr1_005fset_005fcst_005finterval_005fscalar">Function: <em>void</em> <strong>ap_linexpr1_set_cst_interval_scalar</strong> <em>(ap_linexpr1_t* <var>e</var>, ap_scalar_t* <var>inf</var>, ap_scalar_t* <var>sup</var>)</em></dt>
-<dt id="index-ap_005flinexpr1_005fset_005fcst_005finterval_005fint">Function: <em>void</em> <strong>ap_linexpr1_set_cst_interval_int</strong> <em>(ap_linexpr1_t* <var>e</var>, int <var>inf</var>, int <var>sup</var>)</em></dt>
-<dt id="index-ap_005flinexpr1_005fset_005fcst_005finterval_005ffrac">Function: <em>void</em> <strong>ap_linexpr1_set_cst_interval_frac</strong> <em>(ap_linexpr1_t* <var>e</var>, int <var>numinf</var>, unsigned int <var>deninf</var>, int <var>numsup</var>, unsigned int <var>densup</var>)</em></dt>
-<dt id="index-ap_005flinexpr1_005fset_005fcst_005finterval_005fdouble">Function: <em>void</em> <strong>ap_linexpr1_set_cst_interval_double</strong> <em>(ap_linexpr1_t* <var>e</var>, double <var>inf</var>, double <var>sup</var>)</em></dt>
-<dd><p>Set the constant coefficient of expression <var>e</var>.
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005flinexpr1_005fset_005fcst"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">ap_linexpr1_set_cst</strong> <code class="def-code-arguments">(ap_linexpr1_t* <var class="var">e</var>, ap_coefft* <var class="var">coeff</var>)</code><a class="copiable-link" href="#index-ap_005flinexpr1_005fset_005fcst"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005flinexpr1_005fset_005fcst_005fscalar"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">ap_linexpr1_set_cst_scalar</strong> <code class="def-code-arguments">(ap_linexpr1_t* <var class="var">e</var>, ap_scalar_t* <var class="var">scalar</var>)</code><a class="copiable-link" href="#index-ap_005flinexpr1_005fset_005fcst_005fscalar"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005flinexpr1_005fset_005fcst_005fscalar_005fint"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">ap_linexpr1_set_cst_scalar_int</strong> <code class="def-code-arguments">(ap_linexpr1_t* <var class="var">e</var>, int <var class="var">num</var>)</code><a class="copiable-link" href="#index-ap_005flinexpr1_005fset_005fcst_005fscalar_005fint"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005flinexpr1_005fset_005fcst_005fscalar_005ffrac"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">ap_linexpr1_set_cst_scalar_frac</strong> <code class="def-code-arguments">(ap_linexpr1_t* <var class="var">e</var>, int <var class="var">num</var>, unsigned int <var class="var">den</var>)</code><a class="copiable-link" href="#index-ap_005flinexpr1_005fset_005fcst_005fscalar_005ffrac"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005flinexpr1_005fset_005fcst_005fscalar_005fdouble"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">ap_linexpr1_set_cst_scalar_double</strong> <code class="def-code-arguments">(ap_linexpr1_t* <var class="var">e</var>, double <var class="var">num</var>)</code><a class="copiable-link" href="#index-ap_005flinexpr1_005fset_005fcst_005fscalar_005fdouble"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005flinexpr1_005fset_005fcst_005finterval"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">ap_linexpr1_set_cst_interval</strong> <code class="def-code-arguments">(ap_linexpr1_t* <var class="var">e</var>, ap_interval_t* <var class="var">itv</var>)</code><a class="copiable-link" href="#index-ap_005flinexpr1_005fset_005fcst_005finterval"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005flinexpr1_005fset_005fcst_005finterval_005fscalar"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">ap_linexpr1_set_cst_interval_scalar</strong> <code class="def-code-arguments">(ap_linexpr1_t* <var class="var">e</var>, ap_scalar_t* <var class="var">inf</var>, ap_scalar_t* <var class="var">sup</var>)</code><a class="copiable-link" href="#index-ap_005flinexpr1_005fset_005fcst_005finterval_005fscalar"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005flinexpr1_005fset_005fcst_005finterval_005fint"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">ap_linexpr1_set_cst_interval_int</strong> <code class="def-code-arguments">(ap_linexpr1_t* <var class="var">e</var>, int <var class="var">inf</var>, int <var class="var">sup</var>)</code><a class="copiable-link" href="#index-ap_005flinexpr1_005fset_005fcst_005finterval_005fint"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005flinexpr1_005fset_005fcst_005finterval_005ffrac"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">ap_linexpr1_set_cst_interval_frac</strong> <code class="def-code-arguments">(ap_linexpr1_t* <var class="var">e</var>, int <var class="var">numinf</var>, unsigned int <var class="var">deninf</var>, int <var class="var">numsup</var>, unsigned int <var class="var">densup</var>)</code><a class="copiable-link" href="#index-ap_005flinexpr1_005fset_005fcst_005finterval_005ffrac"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005flinexpr1_005fset_005fcst_005finterval_005fdouble"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">ap_linexpr1_set_cst_interval_double</strong> <code class="def-code-arguments">(ap_linexpr1_t* <var class="var">e</var>, double <var class="var">inf</var>, double <var class="var">sup</var>)</code><a class="copiable-link" href="#index-ap_005flinexpr1_005fset_005fcst_005finterval_005fdouble"> &para;</a></span></dt>
+<dd><p>Set the constant coefficient of expression <var class="var">e</var>.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005flinexpr1_005fset_005fcoeff">Function: <em>bool</em> <strong>ap_linexpr1_set_coeff</strong> <em>(ap_linexpr1_t* <var>e</var>, ap_var_t <var>var</var>, ap_coefft* <var>coeff</var>)</em></dt>
-<dt id="index-ap_005flinexpr1_005fset_005fcoeff_005fscalar">Function: <em>bool</em> <strong>ap_linexpr1_set_coeff_scalar</strong> <em>(ap_linexpr1_t* <var>e</var>, ap_var_t <var>var</var>, ap_scalar_t* <var>scalar</var>)</em></dt>
-<dt id="index-ap_005flinexpr1_005fset_005fcoeff_005fscalar_005fint">Function: <em>bool</em> <strong>ap_linexpr1_set_coeff_scalar_int</strong> <em>(ap_linexpr1_t* <var>e</var>, ap_var_t <var>var</var>, int <var>num</var>)</em></dt>
-<dt id="index-ap_005flinexpr1_005fset_005fcoeff_005fscalar_005ffrac">Function: <em>bool</em> <strong>ap_linexpr1_set_coeff_scalar_frac</strong> <em>(ap_linexpr1_t* <var>e</var>, ap_var_t <var>var</var>, int <var>num</var>, unsigned int <var>den</var>)</em></dt>
-<dt id="index-ap_005flinexpr1_005fset_005fcoeff_005fscalar_005fdouble">Function: <em>bool</em> <strong>ap_linexpr1_set_coeff_scalar_double</strong> <em>(ap_linexpr1_t* <var>e</var>, ap_var_t <var>var</var>, double <var>num</var>)</em></dt>
-<dt id="index-ap_005flinexpr1_005fset_005fcoeff_005finterval">Function: <em>bool</em> <strong>ap_linexpr1_set_coeff_interval</strong> <em>(ap_linexpr1_t* <var>e</var>, ap_var_t <var>var</var>, ap_interval_t* <var>itv</var>)</em></dt>
-<dt id="index-ap_005flinexpr1_005fset_005fcoeff_005finterval_005fscalar">Function: <em>bool</em> <strong>ap_linexpr1_set_coeff_interval_scalar</strong> <em>(ap_linexpr1_t* <var>e</var>, ap_var_t <var>var</var>, ap_scalar_t* <var>inf</var>, ap_scalar_t* <var>sup</var>)</em></dt>
-<dt id="index-ap_005flinexpr1_005fset_005fcoeff_005finterval_005fint">Function: <em>bool</em> <strong>ap_linexpr1_set_coeff_interval_int</strong> <em>(ap_linexpr1_t* <var>e</var>, ap_var_t <var>var</var>, int <var>inf</var>, int <var>sup</var>)</em></dt>
-<dt id="index-ap_005flinexpr1_005fset_005fcoeff_005finterval_005ffrac">Function: <em>bool</em> <strong>ap_linexpr1_set_coeff_interval_frac</strong> <em>(ap_linexpr1_t* <var>e</var>, ap_var_t <var>var</var>,int <var>numinf</var>, unsigned int <var>deninf</var>, int <var>numsup</var>, unsigned int <var>densup</var>)</em></dt>
-<dt id="index-ap_005flinexpr1_005fset_005fcoeff_005finterval_005fdouble">Function: <em>void</em> <strong>ap_linexpr1_set_coeff_interval_double</strong> <em>(ap_linexpr1_t* <var>e</var>, ap_var_t <var>var</var>, double <var>inf</var>, double <var>sup</var>)</em></dt>
-<dd><p>Set the coefficient of the variable <var>var</var> of expression <var>e</var>.
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005flinexpr1_005fset_005fcoeff"><span class="category-def">Function: </span><span><code class="def-type">bool</code> <strong class="def-name">ap_linexpr1_set_coeff</strong> <code class="def-code-arguments">(ap_linexpr1_t* <var class="var">e</var>, ap_var_t <var class="var">var</var>, ap_coefft* <var class="var">coeff</var>)</code><a class="copiable-link" href="#index-ap_005flinexpr1_005fset_005fcoeff"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005flinexpr1_005fset_005fcoeff_005fscalar"><span class="category-def">Function: </span><span><code class="def-type">bool</code> <strong class="def-name">ap_linexpr1_set_coeff_scalar</strong> <code class="def-code-arguments">(ap_linexpr1_t* <var class="var">e</var>, ap_var_t <var class="var">var</var>, ap_scalar_t* <var class="var">scalar</var>)</code><a class="copiable-link" href="#index-ap_005flinexpr1_005fset_005fcoeff_005fscalar"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005flinexpr1_005fset_005fcoeff_005fscalar_005fint"><span class="category-def">Function: </span><span><code class="def-type">bool</code> <strong class="def-name">ap_linexpr1_set_coeff_scalar_int</strong> <code class="def-code-arguments">(ap_linexpr1_t* <var class="var">e</var>, ap_var_t <var class="var">var</var>, int <var class="var">num</var>)</code><a class="copiable-link" href="#index-ap_005flinexpr1_005fset_005fcoeff_005fscalar_005fint"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005flinexpr1_005fset_005fcoeff_005fscalar_005ffrac"><span class="category-def">Function: </span><span><code class="def-type">bool</code> <strong class="def-name">ap_linexpr1_set_coeff_scalar_frac</strong> <code class="def-code-arguments">(ap_linexpr1_t* <var class="var">e</var>, ap_var_t <var class="var">var</var>, int <var class="var">num</var>, unsigned int <var class="var">den</var>)</code><a class="copiable-link" href="#index-ap_005flinexpr1_005fset_005fcoeff_005fscalar_005ffrac"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005flinexpr1_005fset_005fcoeff_005fscalar_005fdouble"><span class="category-def">Function: </span><span><code class="def-type">bool</code> <strong class="def-name">ap_linexpr1_set_coeff_scalar_double</strong> <code class="def-code-arguments">(ap_linexpr1_t* <var class="var">e</var>, ap_var_t <var class="var">var</var>, double <var class="var">num</var>)</code><a class="copiable-link" href="#index-ap_005flinexpr1_005fset_005fcoeff_005fscalar_005fdouble"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005flinexpr1_005fset_005fcoeff_005finterval"><span class="category-def">Function: </span><span><code class="def-type">bool</code> <strong class="def-name">ap_linexpr1_set_coeff_interval</strong> <code class="def-code-arguments">(ap_linexpr1_t* <var class="var">e</var>, ap_var_t <var class="var">var</var>, ap_interval_t* <var class="var">itv</var>)</code><a class="copiable-link" href="#index-ap_005flinexpr1_005fset_005fcoeff_005finterval"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005flinexpr1_005fset_005fcoeff_005finterval_005fscalar"><span class="category-def">Function: </span><span><code class="def-type">bool</code> <strong class="def-name">ap_linexpr1_set_coeff_interval_scalar</strong> <code class="def-code-arguments">(ap_linexpr1_t* <var class="var">e</var>, ap_var_t <var class="var">var</var>, ap_scalar_t* <var class="var">inf</var>, ap_scalar_t* <var class="var">sup</var>)</code><a class="copiable-link" href="#index-ap_005flinexpr1_005fset_005fcoeff_005finterval_005fscalar"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005flinexpr1_005fset_005fcoeff_005finterval_005fint"><span class="category-def">Function: </span><span><code class="def-type">bool</code> <strong class="def-name">ap_linexpr1_set_coeff_interval_int</strong> <code class="def-code-arguments">(ap_linexpr1_t* <var class="var">e</var>, ap_var_t <var class="var">var</var>, int <var class="var">inf</var>, int <var class="var">sup</var>)</code><a class="copiable-link" href="#index-ap_005flinexpr1_005fset_005fcoeff_005finterval_005fint"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005flinexpr1_005fset_005fcoeff_005finterval_005ffrac"><span class="category-def">Function: </span><span><code class="def-type">bool</code> <strong class="def-name">ap_linexpr1_set_coeff_interval_frac</strong> <code class="def-code-arguments">(ap_linexpr1_t* <var class="var">e</var>, ap_var_t <var class="var">var</var>,int <var class="var">numinf</var>, unsigned int <var class="var">deninf</var>, int <var class="var">numsup</var>, unsigned int <var class="var">densup</var>)</code><a class="copiable-link" href="#index-ap_005flinexpr1_005fset_005fcoeff_005finterval_005ffrac"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005flinexpr1_005fset_005fcoeff_005finterval_005fdouble"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">ap_linexpr1_set_coeff_interval_double</strong> <code class="def-code-arguments">(ap_linexpr1_t* <var class="var">e</var>, ap_var_t <var class="var">var</var>, double <var class="var">inf</var>, double <var class="var">sup</var>)</code><a class="copiable-link" href="#index-ap_005flinexpr1_005fset_005fcoeff_005finterval_005fdouble"> &para;</a></span></dt>
+<dd><p>Set the coefficient of the variable <var class="var">var</var> of expression <var class="var">e</var>.
 </p>
-<p>Return <code>true</code> in case <code>ap_linexpr1_coeffref(e,var)</code> returns NULL.
+<p>Return <code class="code">true</code> in case <code class="code">ap_linexpr1_coeffref(e,var)</code> returns NULL.
 </p></dd></dl>
 
 <hr>
-<span id="Change-of-dimensions-and-permutations-of-linear-expressions-of-level-1"></span><div class="header">
-<p>
-Previous: <a href="#Access-to-linear-expressions-of-level-1" accesskey="p" rel="prev">Access to linear expressions of level 1</a>, Up: <a href="#Linear-expressions-of-level-1" accesskey="u" rel="up">Linear expressions of level 1</a> &nbsp; </p>
 </div>
-<span id="Change-of-dimensions-and-permutations-of-linear-expressions-of-level-1-1"></span><h4 class="subsection">Change of dimensions and permutations of linear expressions of level 1</h4>
+</div>
+<div class="subsection-level-extent" id="Change-of-dimensions-and-permutations-of-linear-expressions-of-level-1">
+<div class="nav-panel">
+<p>
+Previous: <a href="#Access-to-linear-expressions-of-level-1" accesskey="p" rel="prev">Access to linear expressions of level 1</a>, Up: <a href="#Linear-expressions-of-level-1" accesskey="u" rel="up">Linear expressions of level 1 (<samp class="file">ap_linexpr1.h</samp>)</a> &nbsp; </p>
+</div>
+<h4 class="subsection" id="Change-of-dimensions-and-permutations-of-linear-expressions-of-level-1-1"><span>Change of dimensions and permutations of linear expressions of level 1<a class="copiable-link" href="#Change-of-dimensions-and-permutations-of-linear-expressions-of-level-1-1"> &para;</a></span></h4>
 
-<dl>
-<dt id="index-ap_005flinexpr1_005fextend_005fenvironment">Function: <em>bool</em> <strong>ap_linexpr1_extend_environment</strong> <em>(ap_linexpr1_t* <var>nexpr</var>, ap_linexpr1_t* <var>expr</var>, ap_environment_t* <var>nenv</var>)</em></dt>
-<dt id="index-ap_005flinexpr1_005fextend_005fenvironment_005fwith">Function: <em>bool</em> <strong>ap_linexpr1_extend_environment_with</strong> <em>(ap_linexpr1_t* <var>expr</var>, ap_environment_t* <var>nenv</var>)</em></dt>
-<dd><p>Change the current environment of the expression <var>expr</var> with a
-super-environment <var>nenv</var>.  Return <code>true</code> if <var>nenv</var> is not
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005flinexpr1_005fextend_005fenvironment"><span class="category-def">Function: </span><span><code class="def-type">bool</code> <strong class="def-name">ap_linexpr1_extend_environment</strong> <code class="def-code-arguments">(ap_linexpr1_t* <var class="var">nexpr</var>, ap_linexpr1_t* <var class="var">expr</var>, ap_environment_t* <var class="var">nenv</var>)</code><a class="copiable-link" href="#index-ap_005flinexpr1_005fextend_005fenvironment"> &para;</a></span></dt>
+<dt class="deftypefnx deftypefunx-alias-deftypefnx def-cmd-deftypefn def-line" id="index-ap_005flinexpr1_005fextend_005fenvironment_005fwith"><span class="category-def">Function: </span><span><code class="def-type">bool</code> <strong class="def-name">ap_linexpr1_extend_environment_with</strong> <code class="def-code-arguments">(ap_linexpr1_t* <var class="var">expr</var>, ap_environment_t* <var class="var">nenv</var>)</code><a class="copiable-link" href="#index-ap_005flinexpr1_005fextend_005fenvironment_005fwith"> &para;</a></span></dt>
+<dd><p>Change the current environment of the expression <var class="var">expr</var> with a
+super-environment <var class="var">nenv</var>.  Return <code class="code">true</code> if <var class="var">nenv</var> is not
 a superenvironment.
 </p>
-<p>The first version store the result in the uninitialized <code>*nexpr</code>, the second one updates in-place its argument.
+<p>The first version store the result in the uninitialized <code class="code">*nexpr</code>, the second one updates in-place its argument.
 </p></dd></dl>
 
+</div>
+</div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
-Previous: <a href="#Access-to-linear-expressions-of-level-1" accesskey="p" rel="prev">Access to linear expressions of level 1</a>, Up: <a href="#Linear-expressions-of-level-1" accesskey="u" rel="up">Linear expressions of level 1</a> &nbsp; </p>
+Next: <a href="Linear-constraints-of-level-1.html#Linear-constraints-of-level-1" accesskey="n" rel="next">Linear constraints of level 1 (<samp class="file">ap_lincons1.h</samp>)</a>, Previous: <a href="Environments.html" accesskey="p" rel="prev">Environments (<samp class="file">ap_environment.h</samp>)</a>, Up: <a href="Level-1-of-the-interface.html" accesskey="u" rel="up">Level 1 of the interface</a> &nbsp; </p>
 </div>
 
 

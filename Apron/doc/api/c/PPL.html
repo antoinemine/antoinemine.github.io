@@ -1,35 +1,27 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 6.6, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.2, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>PPL (APRON 0.9.12)</title>
+<title>PPL (APRON 0.9.15)</title>
 
-<meta name="description" content="PPL (APRON 0.9.12)">
-<meta name="keywords" content="PPL (APRON 0.9.12)">
+<meta name="description" content="PPL (APRON 0.9.15)">
+<meta name="keywords" content="PPL (APRON 0.9.15)">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="texi2any">
-<link href="index.html#Top" rel="start" title="Top">
-<link href="Managers-and-Abstract-Domains.html#Managers-and-Abstract-Domains" rel="up" title="Managers and Abstract Domains">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Managers-and-Abstract-Domains.html" rel="up" title="Managers and Abstract Domains">
 <link href="pkgrid.html#pkgrid" rel="next" title="pkgrid">
-<link href="NewPolka.html#NewPolka-standard-options" rel="prev" title="NewPolka standard options">
+<link href="NewPolka.html#NewPolka" rel="prev" title="NewPolka">
 <style type="text/css">
 <!--
-a.summary-letter {text-decoration: none}
-blockquote.indentedblock {margin-right: 0em}
-div.display {margin-left: 3.2em}
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 div.example {margin-left: 3.2em}
-div.lisp {margin-left: 3.2em}
-kbd {font-style: oblique}
-pre.display {font-family: inherit}
-pre.format {font-family: inherit}
-pre.menu-comment {font-family: serif}
-pre.menu-preformatted {font-family: serif}
-span.nolinebreak {white-space: nowrap}
-span.roman {font-family: initial; font-weight: normal}
-span.sansserif {font-family: sans-serif; font-weight: normal}
-ul.no-bullet {list-style: none}
+span:hover a.copiable-link {visibility: visible}
+strong.def-name {font-family: monospace; font-weight: bold; font-size: larger}
 -->
 </style>
 
@@ -37,100 +29,103 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<span id="PPL"></span><div class="header">
+<div class="section-level-extent" id="PPL">
+<div class="nav-panel">
 <p>
-Next: <a href="pkgrid.html#pkgrid" accesskey="n" rel="next">pkgrid</a>, Previous: <a href="NewPolka.html#NewPolka" accesskey="p" rel="prev">NewPolka</a>, Up: <a href="Managers-and-Abstract-Domains.html#Managers-and-Abstract-Domains" accesskey="u" rel="up">Managers and Abstract Domains</a> &nbsp; </p>
+Next: <a href="pkgrid.html#pkgrid" accesskey="n" rel="next">pkgrid (<samp class="file">ap_pkgrid.h</samp>): reduced product of NewPolka convex polyhedra and PPL linear congruences abstract domains</a>, Previous: <a href="NewPolka.html#NewPolka" accesskey="p" rel="prev">NewPolka (<samp class="file">pk.h</samp>): convex polyhedra and linear equalities abstract domains</a>, Up: <a href="Managers-and-Abstract-Domains.html" accesskey="u" rel="up">Managers and Abstract Domains</a> &nbsp; </p>
 </div>
-<span id="PPL-_0028ap_005fppl_002eh_0029_003a-convex-polyhedra-and-linear-congruences-abstract-domains"></span><h3 class="section">PPL (<samp>ap_ppl.h</samp>): convex polyhedra and linear congruences abstract domains</h3>
+<h3 class="section" id="PPL-_0028ap_005fppl_002eh_0029_003a-convex-polyhedra-and-linear-congruences-abstract-domains"><span>PPL (<samp class="file">ap_ppl.h</samp>): convex polyhedra and linear congruences abstract domains<a class="copiable-link" href="#PPL-_0028ap_005fppl_002eh_0029_003a-convex-polyhedra-and-linear-congruences-abstract-domains"> &para;</a></span></h3>
 
 
 
-<p>The <small>APRON PPL</small> library is an APRON wrapper around the
-<a href="http://www.cs.unipr.it/ppl/">Parma Polyhedra Library (PPL)</a>. The
+<p>The <small class="sc">APRON PPL</small> library is an APRON wrapper around the
+<a class="uref" href="http://www.cs.unipr.it/ppl/">Parma Polyhedra Library (PPL)</a>. The
 wrapper offers the convex polyhedra and linear congruences abstract
 domains.
 </p>
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#Use-of-APRON-PPL" accesskey="1">Use of APRON PPL</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Allocating-APRON-PPL-managers" accesskey="2">Allocating APRON PPL managers</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#APRON-PPL-standard-options" accesskey="3">APRON PPL standard options</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
+<ul class="mini-toc">
+<li><a href="#Use-of-APRON-PPL" accesskey="1">Use of APRON PPL</a></li>
+<li><a href="#Allocating-APRON-PPL-managers" accesskey="2">Allocating APRON PPL managers</a></li>
+<li><a href="#APRON-PPL-standard-options" accesskey="3">APRON PPL standard options</a></li>
+</ul>
 <hr>
-<span id="Use-of-APRON-PPL"></span><div class="header">
+<div class="subsection-level-extent" id="Use-of-APRON-PPL">
+<div class="nav-panel">
 <p>
-Next: <a href="#Allocating-APRON-PPL-managers" accesskey="n" rel="next">Allocating APRON PPL managers</a>, Up: <a href="#PPL" accesskey="u" rel="up">PPL</a> &nbsp; </p>
+Next: <a href="#Allocating-APRON-PPL-managers" accesskey="n" rel="next">Allocating APRON PPL managers</a>, Up: <a href="#PPL" accesskey="u" rel="up">PPL (<samp class="file">ap_ppl.h</samp>): convex polyhedra and linear congruences abstract domains</a> &nbsp; </p>
 </div>
-<span id="Use-of-APRON-PPL-1"></span><h4 class="subsection">Use of APRON PPL</h4>
+<h4 class="subsection" id="Use-of-APRON-PPL-1"><span>Use of APRON PPL<a class="copiable-link" href="#Use-of-APRON-PPL-1"> &para;</a></span></h4>
 
-<p>To use APRON PPL in C, you need of course to install PPL, <em>after
-having patched it</em> following the recommendations of the <samp>README</samp>
+<p>To use APRON PPL in C, you need of course to install PPL, <em class="emph">after
+having patched it</em> following the recommendations of the <samp class="file">README</samp>
 file.  You need also to add
 </p><div class="example">
-<pre class="example">#include &quot;apron_ppl.h&quot;
+<pre class="example-preformatted">#include &quot;apron_ppl.h&quot;
 </pre></div>
-<p>in your source file(s) and add &lsquo;<samp>-I$(APRON_PREFIX)/include</samp>&rsquo; in the
+<p>in your source file(s) and add &lsquo;<samp class="samp">-I$(APRON_PREFIX)/include</samp>&rsquo; in the
 command line in your Makefile.
 </p>
 <p>You should also link your object files with the APRON PPL library to
-produce an executable, <em>using</em> &lsquo;<samp>g++</samp>&rsquo; (instead of &lsquo;<samp>gcc</samp>&rsquo;,
-because <samp>libppl.a</samp> is a C++ library), and adding something like
-&lsquo;<samp>-L$(APRON_PREFIX)/lib -lapron_ppl -L$(PPL_PREFIX)/lib -lppl
+produce an executable, <em class="emph">using</em> &lsquo;<samp class="samp">g++</samp>&rsquo; (instead of &lsquo;<samp class="samp">gcc</samp>&rsquo;,
+because <samp class="file">libppl.a</samp> is a C++ library), and adding something like
+&lsquo;<samp class="samp">-L$(APRON_PREFIX)/lib -lapron_ppl -L$(PPL_PREFIX)/lib -lppl
 -L$(GMP_PREFIX)/lib -lgmpxx</samp>&rsquo; in the command line in your Makefile
-(followed by the standard &lsquo;<samp>-lapron -litvmpq -litvdbl
+(followed by the standard &lsquo;<samp class="samp">-lapron -litvmpq -litvdbl
 -L$(MPFR_PREFIX)/lib -lmpfr -L$(GMP_PREFIX)/lib -lgmp</samp>&rsquo;). The
-<samp>libgmpxx.a</samp> library is the C++ wrapper on top of the GMP
+<samp class="file">libgmpxx.a</samp> library is the C++ wrapper on top of the GMP
 library. Ensure that your GMP installation contains it, as it is not
 always installed by default.
 </p>
-<p>All scalars of type <code>double</code> are converted to scalars of type
-<code>mpq_t</code> inside APRON PPL, as APRON PPL works internally with exact
+<p>All scalars of type <code class="code">double</code> are converted to scalars of type
+<code class="code">mpq_t</code> inside APRON PPL, as APRON PPL works internally with exact
 rational arithmetics. So when possible it is better for the user (in
-term of efficiency) to convert already <code>double</code> scalars to
-<code>mpq_t</code> scalars.
+term of efficiency) to convert already <code class="code">double</code> scalars to
+<code class="code">mpq_t</code> scalars.
 </p>
 <p>The wrapper library is available in debug mode
-(&lsquo;<samp>libapron_ppl_debug.a</samp>&rsquo;).
+(&lsquo;<samp class="samp">libapron_ppl_debug.a</samp>&rsquo;).
 </p>
 <hr>
-<span id="Allocating-APRON-PPL-managers"></span><div class="header">
-<p>
-Next: <a href="#APRON-PPL-standard-options" accesskey="n" rel="next">APRON PPL standard options</a>, Previous: <a href="#Use-of-APRON-PPL" accesskey="p" rel="prev">Use of APRON PPL</a>, Up: <a href="#PPL" accesskey="u" rel="up">PPL</a> &nbsp; </p>
 </div>
-<span id="Allocating-APRON-PPL-managers-1"></span><h4 class="subsection">Allocating APRON PPL managers</h4>
+<div class="subsection-level-extent" id="Allocating-APRON-PPL-managers">
+<div class="nav-panel">
+<p>
+Next: <a href="#APRON-PPL-standard-options" accesskey="n" rel="next">APRON PPL standard options</a>, Previous: <a href="#Use-of-APRON-PPL" accesskey="p" rel="prev">Use of APRON PPL</a>, Up: <a href="#PPL" accesskey="u" rel="up">PPL (<samp class="file">ap_ppl.h</samp>): convex polyhedra and linear congruences abstract domains</a> &nbsp; </p>
+</div>
+<h4 class="subsection" id="Allocating-APRON-PPL-managers-1"><span>Allocating APRON PPL managers<a class="copiable-link" href="#Allocating-APRON-PPL-managers-1"> &para;</a></span></h4>
 
-<dl>
-<dt id="index-ap_005fppl_005fpoly_005fmanager_005falloc">Function: <em>ap_manager_t*</em> <strong>ap_ppl_poly_manager_alloc</strong> <em>(bool <var>strict</var>)</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fppl_005fpoly_005fmanager_005falloc"><span class="category-def">Function: </span><span><code class="def-type">ap_manager_t*</code> <strong class="def-name">ap_ppl_poly_manager_alloc</strong> <code class="def-code-arguments">(bool <var class="var">strict</var>)</code><a class="copiable-link" href="#index-ap_005fppl_005fpoly_005fmanager_005falloc"> &para;</a></span></dt>
 <dd><p>Allocate a APRON manager for convex polyhedra, linked to the PPL
 library.
 </p>
-<p>The <var>strict</var> option, when true, enables strict constraints in polyhedra
-(like <code>x&gt;0</code>). Managers in strict mode or in loose mode
+<p>The <var class="var">strict</var> option, when true, enables strict constraints in polyhedra
+(like <code class="code">x&gt;0</code>). Managers in strict mode or in loose mode
 (strict constraints disabled) are not compatible, and so are
 corresponding abstract values.
 </p></dd></dl>
 
-<dl>
-<dt id="index-ap_005fppl_005fgrid_005fmanager_005falloc">Function: <em>ap_manager_t*</em> <strong>ap_ppl_grid_manager_alloc</strong> <em>()</em></dt>
+<dl class="first-deftypefn first-deftypefun-alias-first-deftypefn def-block">
+<dt class="deftypefn deftypefun-alias-deftypefn def-line" id="index-ap_005fppl_005fgrid_005fmanager_005falloc"><span class="category-def">Function: </span><span><code class="def-type">ap_manager_t*</code> <strong class="def-name">ap_ppl_grid_manager_alloc</strong> <code class="def-code-arguments">()</code><a class="copiable-link" href="#index-ap_005fppl_005fgrid_005fmanager_005falloc"> &para;</a></span></dt>
 <dd><p>Allocate an APRON manager for linear equalities, linked to the PPL
 library.
 </p></dd></dl>
 
 <hr>
-<span id="APRON-PPL-standard-options"></span><div class="header">
-<p>
-Previous: <a href="#Allocating-APRON-PPL-managers" accesskey="p" rel="prev">Allocating APRON PPL managers</a>, Up: <a href="#PPL" accesskey="u" rel="up">PPL</a> &nbsp; </p>
 </div>
-<span id="APRON-PPL-standard-options-1"></span><h4 class="subsection">APRON PPL standard options</h4>
+<div class="subsection-level-extent" id="APRON-PPL-standard-options">
+<div class="nav-panel">
+<p>
+Previous: <a href="#Allocating-APRON-PPL-managers" accesskey="p" rel="prev">Allocating APRON PPL managers</a>, Up: <a href="#PPL" accesskey="u" rel="up">PPL (<samp class="file">ap_ppl.h</samp>): convex polyhedra and linear congruences abstract domains</a> &nbsp; </p>
+</div>
+<h4 class="subsection" id="APRON-PPL-standard-options-1"><span>APRON PPL standard options<a class="copiable-link" href="#APRON-PPL-standard-options-1"> &para;</a></span></h4>
 
 <p>Currently, the only options available are related to the widening
 operators. 
 </p>
-<table>
-<tr><td width="20%">Function</td><td width="6%">algo</td><td width="74%">Comments</td></tr>
+<table class="multitable">
+<tbody><tr><td width="20%">Function</td><td width="6%">algo</td><td width="74%">Comments</td></tr>
 <tr><td width="20%"></td></tr>
 <tr><td width="20%">widening</td><td width="6%">&lt;=0</td><td width="74%">CH78 standard widening (Cousot &amp; Halbwachs, POPL&rsquo;1978).</td></tr>
 <tr><td width="20%"></td><td width="6%">&gt;0</td><td width="74%">BHRZ03 widening (Bagnara, Hill, Ricci &amp; Zafanella, SAS&rsquo;2003)</td></tr>
@@ -141,12 +136,15 @@ operators.
 <tr><td width="20%"></td><td width="6%">=1</td><td width="74%">standard widening with threshold, intersected by the bounding box of the convex hull of the second argument. This is actually an extrapolation rather than a widening (termination is not guaranteed)</td></tr>
 <tr><td width="20%"></td><td width="6%">=2</td><td width="74%">BHRZ03 widening with threshold</td></tr>
 <tr><td width="20%"></td><td width="6%">=3</td><td width="74%">BHRZ03 widening with threshold, intersected by the bounding box of the convex hull of the second argument. This is actually an extrapolation rather than a widening (termination is not guaranteed)</td></tr>
+</tbody>
 </table>
 
+</div>
+</div>
 <hr>
-<div class="header">
+<div class="nav-panel">
 <p>
-Previous: <a href="#Allocating-APRON-PPL-managers" accesskey="p" rel="prev">Allocating APRON PPL managers</a>, Up: <a href="#PPL" accesskey="u" rel="up">PPL</a> &nbsp; </p>
+Next: <a href="pkgrid.html#pkgrid" accesskey="n" rel="next">pkgrid (<samp class="file">ap_pkgrid.h</samp>): reduced product of NewPolka convex polyhedra and PPL linear congruences abstract domains</a>, Previous: <a href="NewPolka.html#NewPolka" accesskey="p" rel="prev">NewPolka (<samp class="file">pk.h</samp>): convex polyhedra and linear equalities abstract domains</a>, Up: <a href="Managers-and-Abstract-Domains.html" accesskey="u" rel="up">Managers and Abstract Domains</a> &nbsp; </p>
 </div>
 
 
