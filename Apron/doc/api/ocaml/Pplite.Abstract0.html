@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="Start" href="index.html">
+<link rel="next" href="Pplite.Abstract1.html">
+<link rel="Up" href="Pplite.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Introduction" rel="Chapter" href="Introduction.html">
+<link title="Scalar" rel="Chapter" href="Scalar.html">
+<link title="Interval" rel="Chapter" href="Interval.html">
+<link title="Coeff" rel="Chapter" href="Coeff.html">
+<link title="Dim" rel="Chapter" href="Dim.html">
+<link title="Linexpr0" rel="Chapter" href="Linexpr0.html">
+<link title="Lincons0" rel="Chapter" href="Lincons0.html">
+<link title="Generator0" rel="Chapter" href="Generator0.html">
+<link title="Texpr0" rel="Chapter" href="Texpr0.html">
+<link title="Tcons0" rel="Chapter" href="Tcons0.html">
+<link title="Manager" rel="Chapter" href="Manager.html">
+<link title="Abstract0" rel="Chapter" href="Abstract0.html">
+<link title="Var" rel="Chapter" href="Var.html">
+<link title="Environment" rel="Chapter" href="Environment.html">
+<link title="Linexpr1" rel="Chapter" href="Linexpr1.html">
+<link title="Lincons1" rel="Chapter" href="Lincons1.html">
+<link title="Generator1" rel="Chapter" href="Generator1.html">
+<link title="Texpr1" rel="Chapter" href="Texpr1.html">
+<link title="Tcons1" rel="Chapter" href="Tcons1.html">
+<link title="Abstract1" rel="Chapter" href="Abstract1.html">
+<link title="Policy" rel="Chapter" href="Policy.html">
+<link title="Disjunction" rel="Chapter" href="Disjunction.html">
+<link title="Version" rel="Chapter" href="Version.html">
+<link title="Parser" rel="Chapter" href="Parser.html">
+<link title="Box" rel="Chapter" href="Box.html">
+<link title="Oct" rel="Chapter" href="Oct.html">
+<link title="Polka" rel="Chapter" href="Polka.html">
+<link title="T1p" rel="Chapter" href="T1p.html">
+<link title="Ppl" rel="Chapter" href="Ppl.html">
+<link title="PolkaGrid" rel="Chapter" href="PolkaGrid.html">
+<link title="Pplite" rel="Chapter" href="Pplite.html">
+<link title="Mpz" rel="Chapter" href="Mpz.html">
+<link title="Mpq" rel="Chapter" href="Mpq.html">
+<link title="Gmp_random" rel="Chapter" href="Gmp_random.html">
+<link title="Mpf" rel="Chapter" href="Mpf.html">
+<link title="Mpfr" rel="Chapter" href="Mpfr.html">
+<link title="Mpzf" rel="Chapter" href="Mpzf.html">
+<link title="Mpqf" rel="Chapter" href="Mpqf.html">
+<link title="Mpfrf" rel="Chapter" href="Mpfrf.html"><title>Pplite.Abstract0</title>
+</head>
+<body>
+<div class="navbar">&nbsp;<a class="up" href="Pplite.html" title="Pplite">Up</a>
+&nbsp;<a class="post" href="Pplite.Abstract1.html" title="Pplite.Abstract1">Next</a>
+</div>
+<h1>Module <a href="type_Pplite.Abstract0.html">Pplite.Abstract0</a></h1>
+
+<pre><span id="MODULEAbstract0"><span class="keyword">module</span> Abstract0</span>: <code class="code"><span class="keyword">sig</span></code> <a href="Pplite.Abstract0.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><hr width="100%">
+
+<pre><span id="VALis_pplite"><span class="keyword">val</span> is_pplite</span> : <code class="type">'a Apron.Abstract0.t -&gt; bool</code></pre>
+<pre><span id="VALis_pplite_loose"><span class="keyword">val</span> is_pplite_loose</span> : <code class="type">'a Apron.Abstract0.t -&gt; bool</code></pre>
+<pre><span id="VALis_pplite_strict"><span class="keyword">val</span> is_pplite_strict</span> : <code class="type">'a Apron.Abstract0.t -&gt; bool</code></pre><div class="info ">
+<div class="info-desc">
+<p>Return <code class="code"><span class="keyword">true</span></code> iff the argument manager is a PPLite value</p>
+</div>
+</div>
+
+<pre><span id="VALof_pplite"><span class="keyword">val</span> of_pplite</span> : <code class="type">'a <a href="Pplite.html#TYPEt">Pplite.t</a> Apron.Abstract0.t -&gt; 'b Apron.Abstract0.t</code></pre>
+<pre><span id="VALof_pplite_loose"><span class="keyword">val</span> of_pplite_loose</span> : <code class="type"><a href="Pplite.html#TYPEloose">Pplite.loose</a> <a href="Pplite.html#TYPEt">Pplite.t</a> Apron.Abstract0.t -&gt; 'a Apron.Abstract0.t</code></pre>
+<pre><span id="VALof_pplite_strict"><span class="keyword">val</span> of_pplite_strict</span> : <code class="type"><a href="Pplite.html#TYPEstrict">Pplite.strict</a> <a href="Pplite.html#TYPEt">Pplite.t</a> Apron.Abstract0.t -&gt; 'a Apron.Abstract0.t</code></pre><div class="info ">
+<div class="info-desc">
+<p>Make a PPLite value generic</p>
+</div>
+</div>
+
+<pre><span id="VALto_pplite"><span class="keyword">val</span> to_pplite</span> : <code class="type">'a Apron.Abstract0.t -&gt; 'b <a href="Pplite.html#TYPEt">Pplite.t</a> Apron.Abstract0.t</code></pre>
+<pre><span id="VALto_pplite_loose"><span class="keyword">val</span> to_pplite_loose</span> : <code class="type">'a Apron.Abstract0.t -&gt; <a href="Pplite.html#TYPEloose">Pplite.loose</a> <a href="Pplite.html#TYPEt">Pplite.t</a> Apron.Abstract0.t</code></pre>
+<pre><span id="VALto_pplite_strict"><span class="keyword">val</span> to_pplite_strict</span> : <code class="type">'a Apron.Abstract0.t -&gt; <a href="Pplite.html#TYPEstrict">Pplite.strict</a> <a href="Pplite.html#TYPEt">Pplite.t</a> Apron.Abstract0.t</code></pre><div class="info ">
+<div class="info-desc">
+<p>Instantiate the type of a PPLite value.
+	Raises <code class="code"><span class="constructor">Failure</span></code> if the argument manager is not a PPLite manager</p>
+</div>
+</div>
+</body></html>

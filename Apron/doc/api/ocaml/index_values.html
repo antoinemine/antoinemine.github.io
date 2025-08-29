@@ -38,6 +38,7 @@
 <link title="T1p" rel="Chapter" href="T1p.html">
 <link title="Ppl" rel="Chapter" href="Ppl.html">
 <link title="PolkaGrid" rel="Chapter" href="PolkaGrid.html">
+<link title="Pplite" rel="Chapter" href="Pplite.html">
 <link title="Mpz" rel="Chapter" href="Mpz.html">
 <link title="Mpq" rel="Chapter" href="Mpq.html">
 <link title="Gmp_random" rel="Chapter" href="Gmp_random.html">
@@ -141,6 +142,48 @@
 <tr><td><a href="Abstract1.html#VALabstract0">abstract0</a> [<a href="Abstract1.html">Abstract1</a>]</td>
 <td><div class="info">
 <p>Return resp.</p>
+
+</div>
+</td></tr>
+<tr><td><a href="Pplite.html#VALabstract0_collapse">abstract0_collapse</a> [<a href="Pplite.html">Pplite</a>]</td>
+<td><div class="info">
+<p>Modify abstract element to have n disjunct at most.</p>
+
+</div>
+</td></tr>
+<tr><td><a href="Pplite.html#VALabstract0_disj_to_lincons_array">abstract0_disj_to_lincons_array</a> [<a href="Pplite.html">Pplite</a>]</td>
+<td><div class="info">
+<p>Get the linear constraints of the n-th disjunct.</p>
+
+</div>
+</td></tr>
+<tr><td><a href="Pplite.html#VALabstract0_disj_to_tcons_array">abstract0_disj_to_tcons_array</a> [<a href="Pplite.html">Pplite</a>]</td>
+<td><div class="info">
+<p>Get the tree constraints of the n-th disjunct.</p>
+
+</div>
+</td></tr>
+<tr><td><a href="Pplite.html#VALabstract0_geom_subseteq">abstract0_geom_subseteq</a> [<a href="Pplite.html">Pplite</a>]</td>
+<td><div class="info">
+<p>Returns true if abs1 is geometrically contained in abs2</p>
+
+</div>
+</td></tr>
+<tr><td><a href="Pplite.html#VALabstract0_is_disjunctive">abstract0_is_disjunctive</a> [<a href="Pplite.html">Pplite</a>]</td>
+<td><div class="info">
+<p>Returns true if abs is a powerset of polyhedra</p>
+
+</div>
+</td></tr>
+<tr><td><a href="Pplite.html#VALabstract0_num_disjuncts">abstract0_num_disjuncts</a> [<a href="Pplite.html">Pplite</a>]</td>
+<td><div class="info">
+<p>Get the number of disjuncts of a polyhedra powerset.</p>
+
+</div>
+</td></tr>
+<tr><td><a href="Pplite.html#VALabstract0_split">abstract0_split</a> [<a href="Pplite.html">Pplite</a>]</td>
+<td><div class="info">
+<p>Splits abstract element on linear constraint</p>
 
 </div>
 </td></tr>
@@ -1808,6 +1851,26 @@ and put the result in the first dimension of the array.</p>
 <td></td></tr>
 <tr><td><a href="Ppl.Abstract0.html#VALis_ppl_strict">is_ppl_strict</a> [<a href="Ppl.Abstract0.html">Ppl.Abstract0</a>]</td>
 <td></td></tr>
+<tr><td><a href="Pplite.Abstract1.html#VALis_pplite">is_pplite</a> [<a href="Pplite.Abstract1.html">Pplite.Abstract1</a>]</td>
+<td></td></tr>
+<tr><td><a href="Pplite.Abstract0.html#VALis_pplite">is_pplite</a> [<a href="Pplite.Abstract0.html">Pplite.Abstract0</a>]</td>
+<td></td></tr>
+<tr><td><a href="Pplite.Abstract1.html#VALis_pplite_loose">is_pplite_loose</a> [<a href="Pplite.Abstract1.html">Pplite.Abstract1</a>]</td>
+<td></td></tr>
+<tr><td><a href="Pplite.Abstract0.html#VALis_pplite_loose">is_pplite_loose</a> [<a href="Pplite.Abstract0.html">Pplite.Abstract0</a>]</td>
+<td></td></tr>
+<tr><td><a href="Pplite.Abstract1.html#VALis_pplite_strict">is_pplite_strict</a> [<a href="Pplite.Abstract1.html">Pplite.Abstract1</a>]</td>
+<td><div class="info">
+<p>Return <code class="code"><span class="keyword">true</span></code> iff the argument manager is a PPLite value</p>
+
+</div>
+</td></tr>
+<tr><td><a href="Pplite.Abstract0.html#VALis_pplite_strict">is_pplite_strict</a> [<a href="Pplite.Abstract0.html">Pplite.Abstract0</a>]</td>
+<td><div class="info">
+<p>Return <code class="code"><span class="keyword">true</span></code> iff the argument manager is a PPLite value</p>
+
+</div>
+</td></tr>
 <tr><td><a href="Linexpr1.html#VALis_real">is_real</a> [<a href="Linexpr1.html">Linexpr1</a>]</td>
 <td><div class="info">
 <p>Does the linear expression depend only on real variables ?</p>
@@ -2086,6 +2149,12 @@ default.</p>
 
 </div>
 </td></tr>
+<tr><td><a href="Pplite.html#VALmanager_alloc_loose">manager_alloc_loose</a> [<a href="Pplite.html">Pplite</a>]</td>
+<td><div class="info">
+<p>Allocate a PPLite manager for loose convex polyhedra.</p>
+
+</div>
+</td></tr>
 <tr><td><a href="Ppl.html#VALmanager_alloc_loose">manager_alloc_loose</a> [<a href="Ppl.html">Ppl</a>]</td>
 <td><div class="info">
 <p>Allocate a PPL manager for loose convex polyhedra.</p>
@@ -2095,6 +2164,12 @@ default.</p>
 <tr><td><a href="Polka.html#VALmanager_alloc_loose">manager_alloc_loose</a> [<a href="Polka.html">Polka</a>]</td>
 <td><div class="info">
 <p>Create a NewPolka manager for loose convex polyhedra.</p>
+
+</div>
+</td></tr>
+<tr><td><a href="Pplite.html#VALmanager_alloc_strict">manager_alloc_strict</a> [<a href="Pplite.html">Pplite</a>]</td>
+<td><div class="info">
+<p>Allocate a PPLite manager for strict convex polyhedra.</p>
 
 </div>
 </td></tr>
@@ -2130,9 +2205,21 @@ default.</p>
 
 </div>
 </td></tr>
+<tr><td><a href="Pplite.html#VALmanager_get_kind">manager_get_kind</a> [<a href="Pplite.html">Pplite</a>]</td>
+<td><div class="info">
+<p>Get the polyhedra kind from PPLite manager.</p>
+
+</div>
+</td></tr>
 <tr><td><a href="Policy.html#VALmanager_get_manager">manager_get_manager</a> [<a href="Policy.html">Policy</a>]</td>
 <td><div class="info">
 <p>Policy manager</p>
+
+</div>
+</td></tr>
+<tr><td><a href="Pplite.html#VALmanager_get_widen_spec">manager_get_widen_spec</a> [<a href="Pplite.html">Pplite</a>]</td>
+<td><div class="info">
+<p>Get the widening specification from PPLite manager.</p>
 
 </div>
 </td></tr>
@@ -2188,6 +2275,16 @@ default.</p>
 <td></td></tr>
 <tr><td><a href="Ppl.html#VALmanager_is_ppl_strict">manager_is_ppl_strict</a> [<a href="Ppl.html">Ppl</a>]</td>
 <td></td></tr>
+<tr><td><a href="Pplite.html#VALmanager_is_pplite">manager_is_pplite</a> [<a href="Pplite.html">Pplite</a>]</td>
+<td></td></tr>
+<tr><td><a href="Pplite.html#VALmanager_is_pplite_loose">manager_is_pplite_loose</a> [<a href="Pplite.html">Pplite</a>]</td>
+<td></td></tr>
+<tr><td><a href="Pplite.html#VALmanager_is_pplite_strict">manager_is_pplite_strict</a> [<a href="Pplite.html">Pplite</a>]</td>
+<td><div class="info">
+<p>Return <code class="code"><span class="keyword">true</span></code> iff the argument manager is a PPLite manager</p>
+
+</div>
+</td></tr>
 <tr><td><a href="Box.html#VALmanager_of_box">manager_of_box</a> [<a href="Box.html">Box</a>]</td>
 <td><div class="info">
 <p>Make a box manager generic</p>
@@ -2236,6 +2333,28 @@ default.</p>
 <td></td></tr>
 <tr><td><a href="Ppl.html#VALmanager_of_ppl_strict">manager_of_ppl_strict</a> [<a href="Ppl.html">Ppl</a>]</td>
 <td></td></tr>
+<tr><td><a href="Pplite.html#VALmanager_of_pplite">manager_of_pplite</a> [<a href="Pplite.html">Pplite</a>]</td>
+<td></td></tr>
+<tr><td><a href="Pplite.html#VALmanager_of_pplite_loose">manager_of_pplite_loose</a> [<a href="Pplite.html">Pplite</a>]</td>
+<td></td></tr>
+<tr><td><a href="Pplite.html#VALmanager_of_pplite_strict">manager_of_pplite_strict</a> [<a href="Pplite.html">Pplite</a>]</td>
+<td><div class="info">
+<p>Make a PPLite manager generic</p>
+
+</div>
+</td></tr>
+<tr><td><a href="Pplite.html#VALmanager_set_kind">manager_set_kind</a> [<a href="Pplite.html">Pplite</a>]</td>
+<td><div class="info">
+<p>Set the polyhedra kind for PPLite manager.</p>
+
+</div>
+</td></tr>
+<tr><td><a href="Pplite.html#VALmanager_set_widen_spec">manager_set_widen_spec</a> [<a href="Pplite.html">Pplite</a>]</td>
+<td><div class="info">
+<p>Set the widening specification for PPLite manager.</p>
+
+</div>
+</td></tr>
 <tr><td><a href="Box.html#VALmanager_to_box">manager_to_box</a> [<a href="Box.html">Box</a>]</td>
 <td><div class="info">
 <p>Instanciate the type of a box manager.</p>
@@ -2284,6 +2403,16 @@ default.</p>
 <td></td></tr>
 <tr><td><a href="Ppl.html#VALmanager_to_ppl_strict">manager_to_ppl_strict</a> [<a href="Ppl.html">Ppl</a>]</td>
 <td></td></tr>
+<tr><td><a href="Pplite.html#VALmanager_to_pplite">manager_to_pplite</a> [<a href="Pplite.html">Pplite</a>]</td>
+<td></td></tr>
+<tr><td><a href="Pplite.html#VALmanager_to_pplite_loose">manager_to_pplite_loose</a> [<a href="Pplite.html">Pplite</a>]</td>
+<td></td></tr>
+<tr><td><a href="Pplite.html#VALmanager_to_pplite_strict">manager_to_pplite_strict</a> [<a href="Pplite.html">Pplite</a>]</td>
+<td><div class="info">
+<p>Instantiate the type of a PPLite manager.</p>
+
+</div>
+</td></tr>
 <tr><td><a href="Mpfr.html#VALmax">max</a> [<a href="Mpfr.html">Mpfr</a>]</td>
 <td></td></tr>
 <tr><td><a href="Abstract1.html#VALmeet">meet</a> [<a href="Abstract1.html">Abstract1</a>]</td>
@@ -2836,6 +2965,26 @@ infinity (resulting in minus infinity, zero, or infinity</p>
 <td></td></tr>
 <tr><td><a href="Ppl.Abstract0.html#VALof_ppl_strict">of_ppl_strict</a> [<a href="Ppl.Abstract0.html">Ppl.Abstract0</a>]</td>
 <td></td></tr>
+<tr><td><a href="Pplite.Abstract1.html#VALof_pplite">of_pplite</a> [<a href="Pplite.Abstract1.html">Pplite.Abstract1</a>]</td>
+<td></td></tr>
+<tr><td><a href="Pplite.Abstract0.html#VALof_pplite">of_pplite</a> [<a href="Pplite.Abstract0.html">Pplite.Abstract0</a>]</td>
+<td></td></tr>
+<tr><td><a href="Pplite.Abstract1.html#VALof_pplite_loose">of_pplite_loose</a> [<a href="Pplite.Abstract1.html">Pplite.Abstract1</a>]</td>
+<td></td></tr>
+<tr><td><a href="Pplite.Abstract0.html#VALof_pplite_loose">of_pplite_loose</a> [<a href="Pplite.Abstract0.html">Pplite.Abstract0</a>]</td>
+<td></td></tr>
+<tr><td><a href="Pplite.Abstract1.html#VALof_pplite_strict">of_pplite_strict</a> [<a href="Pplite.Abstract1.html">Pplite.Abstract1</a>]</td>
+<td><div class="info">
+<p>Make a PPLite value generic</p>
+
+</div>
+</td></tr>
+<tr><td><a href="Pplite.Abstract0.html#VALof_pplite_strict">of_pplite_strict</a> [<a href="Pplite.Abstract0.html">Pplite.Abstract0</a>]</td>
+<td><div class="info">
+<p>Make a PPLite value generic</p>
+
+</div>
+</td></tr>
 <tr><td><a href="Interval.html#VALof_scalar">of_scalar</a> [<a href="Interval.html">Interval</a>]</td>
 <td><div class="info">
 <p>Build an interval from a lower and an upper bound</p>
@@ -3941,6 +4090,26 @@ or a positive value.</p>
 <td></td></tr>
 <tr><td><a href="Ppl.Abstract0.html#VALto_ppl_strict">to_ppl_strict</a> [<a href="Ppl.Abstract0.html">Ppl.Abstract0</a>]</td>
 <td></td></tr>
+<tr><td><a href="Pplite.Abstract1.html#VALto_pplite">to_pplite</a> [<a href="Pplite.Abstract1.html">Pplite.Abstract1</a>]</td>
+<td></td></tr>
+<tr><td><a href="Pplite.Abstract0.html#VALto_pplite">to_pplite</a> [<a href="Pplite.Abstract0.html">Pplite.Abstract0</a>]</td>
+<td></td></tr>
+<tr><td><a href="Pplite.Abstract1.html#VALto_pplite_loose">to_pplite_loose</a> [<a href="Pplite.Abstract1.html">Pplite.Abstract1</a>]</td>
+<td></td></tr>
+<tr><td><a href="Pplite.Abstract0.html#VALto_pplite_loose">to_pplite_loose</a> [<a href="Pplite.Abstract0.html">Pplite.Abstract0</a>]</td>
+<td></td></tr>
+<tr><td><a href="Pplite.Abstract1.html#VALto_pplite_strict">to_pplite_strict</a> [<a href="Pplite.Abstract1.html">Pplite.Abstract1</a>]</td>
+<td><div class="info">
+<p>Instantiate the type of a PPLite value.</p>
+
+</div>
+</td></tr>
+<tr><td><a href="Pplite.Abstract0.html#VALto_pplite_strict">to_pplite_strict</a> [<a href="Pplite.Abstract0.html">Pplite.Abstract0</a>]</td>
+<td><div class="info">
+<p>Instantiate the type of a PPLite value.</p>
+
+</div>
+</td></tr>
 <tr><td><a href="Mpfrf.html#VALto_string">to_string</a> [<a href="Mpfrf.html">Mpfrf</a>]</td>
 <td></td></tr>
 <tr><td><a href="Mpqf.html#VALto_string">to_string</a> [<a href="Mpqf.html">Mpqf</a>]</td>
